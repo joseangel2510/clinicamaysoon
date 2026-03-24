@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg-primary: #FAF7F2;
+  --color-bg-secondary: #F3EDE4;
+  --color-bg-dark: #1A1614;
+  --color-accent-gold: #C4A265;
+  --color-accent-gold-light: #D4B87A;
+  --color-text-primary: #1A1614;
+  --color-text-secondary: #6B5E54;
+  --color-text-light: #FAF7F2;
+  --color-text-muted: #9B8E82;
+
+  --font-display: "Playfair Display", serif;
+  --font-body: "DM Sans", sans-serif;
+
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-body);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::selection {
+    background-color: var(--color-accent-gold);
+    color: var(--color-bg-primary);
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--color-accent-gold);
+    outline-offset: 2px;
+  }
+}
+
+/* CTA Ken Burns background zoom */
+@keyframes ken-burns {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+/* CTA primary button ripple pulse */
+@keyframes cta-ripple {
+  0% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* WhatsApp button ripple */
+@keyframes wa-ripple {
+  0%, 80% {
+    transform: scale(1);
+    opacity: 0;
+  }
+  85% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
