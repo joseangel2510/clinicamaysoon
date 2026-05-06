@@ -39,7 +39,7 @@ export function BeforeAfterSection() {
         className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[500px] rounded-full pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse, rgba(196,162,101,0.05) 0%, transparent 60%)",
+            "radial-gradient(ellipse, rgba(184,115,85,0.05) 0%, transparent 60%)",
         }}
       />
 
@@ -68,7 +68,7 @@ export function BeforeAfterSection() {
           <div className="mb-5">
             <motion.h2
               variants={clipReveal}
-              className="font-display font-normal not-italic text-[#1A1614] leading-[1.1] tracking-[-0.02em]"
+              className="font-display font-normal not-italic text-[#0F0E0D] leading-[1.1] tracking-[-0.02em]"
               style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
             >
               La Transformación

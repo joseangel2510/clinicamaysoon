@@ -108,7 +108,7 @@ function GoldParticles() {
             height: p.size,
             left: `${p.x}%`,
             top: `${p.y}%`,
-            backgroundColor: "#C4A265",
+            backgroundColor: "#B87355",
           }}
           animate={{
             opacity: [0, p.opacity, p.opacity * 0.6, 0],
@@ -138,9 +138,9 @@ function GeometricAccents({ activeStep }: { activeStep: number }) {
         transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
       >
         <svg viewBox="0 0 500 500" fill="none" className="w-full h-full opacity-[0.06]">
-          <circle cx="250" cy="250" r="230" stroke="#C4A265" strokeWidth="0.5" strokeDasharray="10 14" />
-          <circle cx="250" cy="250" r="190" stroke="#C4A265" strokeWidth="0.5" />
-          <circle cx="250" cy="250" r="150" stroke="#C4A265" strokeWidth="0.3" strokeDasharray="4 10" />
+          <circle cx="250" cy="250" r="230" stroke="#B87355" strokeWidth="0.5" strokeDasharray="10 14" />
+          <circle cx="250" cy="250" r="190" stroke="#B87355" strokeWidth="0.5" />
+          <circle cx="250" cy="250" r="150" stroke="#B87355" strokeWidth="0.3" strokeDasharray="4 10" />
         </svg>
       </motion.div>
 
@@ -149,7 +149,7 @@ function GeometricAccents({ activeStep }: { activeStep: number }) {
         className="absolute right-[14%] top-[8%] bottom-[8%] w-px hidden md:block"
         style={{
           background:
-            "linear-gradient(to bottom, transparent 0%, rgba(196,162,101,0.18) 30%, rgba(196,162,101,0.18) 70%, transparent 100%)",
+            "linear-gradient(to bottom, transparent 0%, rgba(184,115,85,0.18) 30%, rgba(184,115,85,0.18) 70%, transparent 100%)",
         }}
         animate={{ opacity: [0.2, 0.7, 0.2] }}
         transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
@@ -175,9 +175,9 @@ function GeometricAccents({ activeStep }: { activeStep: number }) {
         viewBox="0 0 1440 900"
         preserveAspectRatio="none"
       >
-        <line x1="900" y1="0" x2="1440" y2="600" stroke="#C4A265" strokeWidth="1" />
-        <line x1="1000" y1="0" x2="1440" y2="400" stroke="#C4A265" strokeWidth="0.5" />
-        <line x1="800" y1="900" x2="1440" y2="250" stroke="#C4A265" strokeWidth="0.5" />
+        <line x1="900" y1="0" x2="1440" y2="600" stroke="#B87355" strokeWidth="1" />
+        <line x1="1000" y1="0" x2="1440" y2="400" stroke="#B87355" strokeWidth="0.5" />
+        <line x1="800" y1="900" x2="1440" y2="250" stroke="#B87355" strokeWidth="0.5" />
       </svg>
 
       {/* Horizontal gold rule — bottom-left accent */}
@@ -294,14 +294,14 @@ export function ExperienceSection() {
         <div
           className="absolute inset-0 z-[2]"
           style={{
-            background: `linear-gradient(to right, rgba(26,22,20,0.88) 0%, rgba(26,22,20,0.65) 28%, rgba(26,22,20,0.30) 52%, rgba(26,22,20,0.08) 75%, rgba(26,22,20,0.15) 100%)`,
+            background: `linear-gradient(to right, rgba(15,14,13,0.88) 0%, rgba(15,14,13,0.65) 28%, rgba(15,14,13,0.30) 52%, rgba(15,14,13,0.08) 75%, rgba(15,14,13,0.15) 100%)`,
           }}
         />
 
         {/* ── Layer 2b: Mobile stronger overlay ── */}
         <div
           className="absolute inset-0 z-[2] md:hidden"
-          style={{ background: "rgba(26,22,20,0.50)" }}
+          style={{ background: "rgba(15,14,13,0.50)" }}
         />
 
         {/* ── Layer 2c: Bottom gradient for depth ── */}
@@ -309,7 +309,7 @@ export function ExperienceSection() {
           className="absolute inset-0 z-[2]"
           style={{
             background:
-              "linear-gradient(to top, rgba(26,22,20,0.50) 0%, transparent 35%)",
+              "linear-gradient(to top, rgba(15,14,13,0.50) 0%, transparent 35%)",
           }}
         />
 
@@ -318,7 +318,7 @@ export function ExperienceSection() {
           className="absolute inset-0 z-[2]"
           style={{
             background:
-              "linear-gradient(to bottom, rgba(26,22,20,0.25) 0%, transparent 20%)",
+              "linear-gradient(to bottom, rgba(15,14,13,0.25) 0%, transparent 20%)",
           }}
         />
 
@@ -332,7 +332,7 @@ export function ExperienceSection() {
             exit={{ opacity: 0 }}
             transition={{ duration: 1.8 }}
             style={{
-              background: `radial-gradient(ellipse 45% 45% at ${steps[activeStep].accentPos}, rgba(196,162,101,0.07) 0%, transparent 70%)`,
+              background: `radial-gradient(ellipse 45% 45% at ${steps[activeStep].accentPos}, rgba(184,115,85,0.07) 0%, transparent 70%)`,
             }}
           />
         </AnimatePresence>

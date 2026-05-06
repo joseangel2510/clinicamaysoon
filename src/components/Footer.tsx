@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
@@ -201,17 +202,24 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
           {/* Column 1: Brand */}
           <motion.div variants={fadeInUp}>
-            <div>
-              <h3 className="font-display tracking-[0.3em] uppercase text-xl text-text-light">
-                MAYSOON
-              </h3>
+            <div className="flex flex-col items-start">
+              <Image
+                src="/brand/logo-maysoon.png"
+                alt="Maysoon TAN Pearl · Clínica Médico-Estética"
+                width={96}
+                height={96}
+                className="h-24 w-auto brightness-0 invert opacity-85"
+              />
+              <p className="font-display text-lg text-text-light tracking-[0.05em] mt-4">
+                Maysoon <span className="italic text-accent-gold">TAN Pearl</span>
+              </p>
               <p className="font-body text-[10px] uppercase tracking-[0.3em] text-text-light/40 mt-1">
                 Clínica Médico-Estética
               </p>
             </div>
 
-            {/* Gold separator */}
-            <div className="w-10 h-px bg-accent-gold/30 my-6" />
+            {/* Terracotta separator */}
+            <div className="w-10 h-px bg-accent-gold/40 my-6" />
 
             <p className="font-body text-sm text-text-light/50 leading-[1.7] max-w-[280px]">
               Donde las más avanzadas técnicas en medicina estética y láser se ponen al
@@ -304,7 +312,7 @@ export function Footer() {
       <div className="border-t border-text-light/8">
         <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-center">
           <p className="font-body text-xs text-text-light/30 text-center">
-            © 2025 Clínica Médico-Estética Maysoon. Todos los derechos reservados.
+            © 2025 Maysoon TAN Pearl · Clínica Médico-Estética. Todos los derechos reservados.
           </p>
         </div>
       </div>

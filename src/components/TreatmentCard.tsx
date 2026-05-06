@@ -26,7 +26,7 @@ export function TreatmentCard({
     <motion.a
       href={link}
       variants={fadeInUp}
-      className="group block rounded-2xl overflow-hidden bg-white shadow-[0_4px_20px_rgba(26,22,20,0.06)] transition-all duration-[400ms] ease-[cubic-bezier(0.25,0.4,0.25,1)] hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(26,22,20,0.12)]"
+      className="group block rounded-2xl overflow-hidden bg-white shadow-[0_4px_20px_rgba(15,14,13,0.06)] transition-all duration-[400ms] ease-[cubic-bezier(0.25,0.4,0.25,1)] hover:-translate-y-2 hover:shadow-[0_20px_50px_rgba(15,14,13,0.12)]"
     >
       {/* Image container */}
       <div className="relative aspect-[3/4] overflow-hidden">

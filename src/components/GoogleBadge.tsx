@@ -24,7 +24,7 @@ export function GoogleBadge() {
       {/* Google "G" */}
       <div className="relative flex h-8 w-8 items-center justify-center rounded-full border-2 border-transparent"
         style={{
-          backgroundImage: "linear-gradient(#1A1614, #1A1614), conic-gradient(from 0deg, #4285F4, #EA4335, #FBBC05, #34A853, #4285F4)",
+          backgroundImage: "linear-gradient(#0F0E0D, #0F0E0D), conic-gradient(from 0deg, #4285F4, #EA4335, #FBBC05, #34A853, #4285F4)",
           backgroundOrigin: "border-box",
           backgroundClip: "padding-box, border-box",
         }}

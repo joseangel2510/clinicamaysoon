@@ -15,9 +15,9 @@ export function AuthorizationBadge() {
         className="absolute inset-0 rounded-full"
         animate={{
           boxShadow: [
-            "0 0 0px rgba(196,162,101,0)",
-            "0 0 30px rgba(196,162,101,0.15)",
-            "0 0 0px rgba(196,162,101,0)",
+            "0 0 0px rgba(184,115,85,0)",
+            "0 0 30px rgba(184,115,85,0.15)",
+            "0 0 0px rgba(184,115,85,0)",
           ],
         }}
         transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
@@ -42,7 +42,7 @@ export function AuthorizationBadge() {
                 cx={cx}
                 cy={cy}
                 r={i % 6 === 0 ? 2.5 : 1.2}
-                fill={i % 6 === 0 ? "#C4A265" : "rgba(196,162,101,0.4)"}
+                fill={i % 6 === 0 ? "#B87355" : "rgba(184,115,85,0.4)"}
               />
             );
           })}
@@ -161,7 +161,7 @@ export function AuthorizationBadge() {
           className="absolute inset-0"
           style={{
             background:
-              "linear-gradient(105deg, transparent 40%, rgba(196,162,101,0.08) 45%, rgba(196,162,101,0.15) 50%, rgba(196,162,101,0.08) 55%, transparent 60%)",
+              "linear-gradient(105deg, transparent 40%, rgba(184,115,85,0.08) 45%, rgba(184,115,85,0.15) 50%, rgba(184,115,85,0.08) 55%, transparent 60%)",
           }}
           animate={{ x: ["-100%", "200%"] }}
           transition={{ duration: 3, repeat: Infinity, repeatDelay: 4, ease: "easeInOut" }}

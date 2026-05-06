@@ -57,7 +57,7 @@ function GoldenParticles() {
 
         ctx.beginPath();
         ctx.arc(p.x + wx, p.y, p.size, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(196, 162, 101, ${p.opacity})`;
+        ctx.fillStyle = `rgba(184, 115, 85, ${p.opacity})`;
         ctx.fill();
       }
       animationId = requestAnimationFrame(animate);
@@ -115,7 +115,7 @@ export function CTASection() {
             backgroundImage: "url('/images/cta-background.webp')",
             backgroundSize: "cover",
             backgroundPosition: "center",
-            backgroundColor: "#2A2420",
+            backgroundColor: "#1F1B17",
           }}
         />
         {/* Warm gradient fallback layer */}
@@ -123,7 +123,7 @@ export function CTASection() {
           className="absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse at 30% 50%, rgba(196,162,101,0.15) 0%, transparent 60%), radial-gradient(ellipse at 70% 30%, rgba(212,184,122,0.1) 0%, transparent 50%), linear-gradient(135deg, #2A2420 0%, #1A1614 50%, #2A2420 100%)",
+              "radial-gradient(ellipse at 30% 50%, rgba(184,115,85,0.15) 0%, transparent 60%), radial-gradient(ellipse at 70% 30%, rgba(201,135,107,0.1) 0%, transparent 50%), linear-gradient(135deg, #1F1B17 0%, #0F0E0D 50%, #1F1B17 100%)",
           }}
         />
       </div>
@@ -133,25 +133,25 @@ export function CTASection() {
         className="absolute inset-0 z-[1]"
         style={{
           background: `
-            rgba(26,22,20,0.55),
-            linear-gradient(to top, rgba(26,22,20,0.7) 0%, rgba(26,22,20,0.3) 100%)
+            rgba(15,14,13,0.55),
+            linear-gradient(to top, rgba(15,14,13,0.7) 0%, rgba(15,14,13,0.3) 100%)
           `.replace(/\n/g, ""),
         }}
       />
       <div
         className="absolute inset-0 z-[1]"
         style={{
-          background: "linear-gradient(to top, rgba(26,22,20,0.7) 0%, rgba(26,22,20,0.3) 100%)",
+          background: "linear-gradient(to top, rgba(15,14,13,0.7) 0%, rgba(15,14,13,0.3) 100%)",
         }}
       />
       <div
         className="absolute inset-0 z-[1]"
-        style={{ background: "rgba(26,22,20,0.5)" }}
+        style={{ background: "rgba(15,14,13,0.5)" }}
       />
       <div
         className="absolute inset-0 z-[1]"
         style={{
-          background: "rgba(196,162,101,0.05)",
+          background: "rgba(184,115,85,0.05)",
         }}
       />
 
@@ -160,7 +160,7 @@ export function CTASection() {
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at center, transparent 50%, rgba(26,22,20,0.4) 100%)",
+            "radial-gradient(ellipse at center, transparent 50%, rgba(15,14,13,0.4) 100%)",
         }}
       />
 
@@ -215,7 +215,7 @@ export function CTASection() {
           {/* Subtitle */}
           <motion.p
             className="font-body text-lg leading-[1.8] max-w-xl mx-auto mb-10"
-            style={{ color: "rgba(250,247,242,0.8)" }}
+            style={{ color: "rgba(244,239,231,0.8)" }}
             variants={{
               hidden: { opacity: 0, y: 20 },
               visible: {
@@ -248,15 +248,15 @@ export function CTASection() {
               rel="noopener noreferrer"
               className="relative inline-flex items-center justify-center bg-accent-gold text-bg-dark font-semibold text-lg rounded-full px-10 py-4 transition-all duration-300 hover:bg-accent-gold-light hover:scale-105 active:scale-[0.98] focus-visible:ring-2 focus-visible:ring-accent-gold focus-visible:ring-offset-2 focus-visible:ring-offset-bg-dark"
               style={{
-                boxShadow: "0 4px 20px rgba(196,162,101,0.3)",
+                boxShadow: "0 4px 20px rgba(184,115,85,0.3)",
               }}
               onMouseEnter={(e) => {
                 (e.currentTarget as HTMLElement).style.boxShadow =
-                  "0 8px 40px rgba(196,162,101,0.4)";
+                  "0 8px 40px rgba(184,115,85,0.4)";
               }}
               onMouseLeave={(e) => {
                 (e.currentTarget as HTMLElement).style.boxShadow =
-                  "0 4px 20px rgba(196,162,101,0.3)";
+                  "0 4px 20px rgba(184,115,85,0.3)";
               }}
             >
               Reserva tu Consulta
@@ -285,7 +285,7 @@ export function CTASection() {
           {/* Phone */}
           <motion.p
             className="mt-8 font-body text-sm"
-            style={{ color: "rgba(250,247,242,0.5)" }}
+            style={{ color: "rgba(244,239,231,0.5)" }}
             variants={{
               hidden: { opacity: 0 },
               visible: {
@@ -298,7 +298,7 @@ export function CTASection() {
             <a
               href="tel:+34963201133"
               className="transition-colors duration-300 hover:text-text-light/80 hover:underline"
-              style={{ color: "rgba(250,247,242,0.5)" }}
+              style={{ color: "rgba(244,239,231,0.5)" }}
             >
               +34 963 20 11 33
             </a>

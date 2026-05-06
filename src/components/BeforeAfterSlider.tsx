@@ -92,7 +92,7 @@ export function BeforeAfterSlider({
       {/* Slider container */}
       <div
         ref={containerRef}
-        className="relative aspect-square rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(26,22,20,0.08)] cursor-ew-resize select-none transition-shadow duration-400 group-hover:shadow-[0_24px_70px_rgba(26,22,20,0.14)] group-hover:scale-[1.02] transition-transform"
+        className="relative aspect-square rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(15,14,13,0.08)] cursor-ew-resize select-none transition-shadow duration-400 group-hover:shadow-[0_24px_70px_rgba(15,14,13,0.14)] group-hover:scale-[1.02] transition-transform"
         onMouseDown={handleMouseDown}
         onTouchStart={() => setIsDragging(true)}
         onTouchMove={handleTouchMove}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { fadeInDown } from "@/lib/animations";
@@ -31,7 +32,7 @@ export function Navbar() {
         animate="visible"
         className={`fixed top-0 left-0 right-0 z-50 transition-colors transition-shadow duration-500 ${
           scrolled
-            ? "bg-bg-primary/80 backdrop-blur-xl shadow-[0_1px_3px_rgba(26,22,20,0.06)]"
+            ? "bg-bg-primary/80 backdrop-blur-xl shadow-[0_1px_3px_rgba(15,14,13,0.06)]"
             : "bg-transparent"
         }`}
       >
@@ -42,16 +43,21 @@ export function Navbar() {
             }`}
           >
             {/* Logo */}
-            <a href="#" className="flex items-center gap-3 group">
-              <div>
-                <span className="font-display text-xl font-bold tracking-[0.15em] text-accent-gold">
-                  MAYSOON
-                </span>
-                <div className="mt-0.5 h-px w-full bg-accent-gold/40" />
-                <span className="block text-[0.65rem] font-body font-medium uppercase tracking-[0.2em] text-text-muted mt-0.5">
-                  Clínica Médico-Estética
-                </span>
-              </div>
+            <a
+              href="#"
+              aria-label="Maysoon TAN Pearl — Inicio"
+              className="flex items-center group transition-opacity duration-300 hover:opacity-80"
+            >
+              <Image
+                src="/brand/logo-maysoon.png"
+                alt="Maysoon TAN Pearl · Clínica Médico-Estética"
+                width={120}
+                height={120}
+                priority
+                className={`transition-[height] duration-500 w-auto ${
+                  scrolled ? "h-16" : "h-20"
+                }`}
+              />
             </a>
 
             {/* Desktop Nav Links */}
@@ -73,7 +79,7 @@ export function Navbar() {
               href="https://wa.me/34651545268?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20cita"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden lg:inline-flex items-center bg-accent-gold text-bg-dark px-6 py-2.5 rounded-lg font-body text-sm font-semibold transition-transform transition-colors duration-300 hover:bg-accent-gold-light hover:scale-[1.03] active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-accent-gold/50 shadow-[0_4px_16px_rgba(196,162,101,0.2)]"
+              className="hidden lg:inline-flex items-center bg-accent-gold text-bg-dark px-6 py-2.5 rounded-lg font-body text-sm font-semibold transition-transform transition-colors duration-300 hover:bg-accent-gold-light hover:scale-[1.03] active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-accent-gold/50 shadow-[0_4px_16px_rgba(184,115,85,0.2)]"
             >
               Reserva tu Cita
             </a>

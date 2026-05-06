@@ -20,7 +20,7 @@ export function TeamMemberCard({
   return (
     <motion.div
       variants={fadeInUp}
-      className="group bg-white rounded-2xl p-6 shadow-[0_4px_20px_rgba(26,22,20,0.05)] text-center transition-transform transition-shadow duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(26,22,20,0.1)]"
+      className="group bg-white rounded-2xl p-6 shadow-[0_4px_20px_rgba(15,14,13,0.05)] text-center transition-transform transition-shadow duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(15,14,13,0.1)]"
     >
       <div className="relative w-[120px] h-[120px] mx-auto rounded-full overflow-hidden border-3 border-bg-secondary transition-colors duration-300 group-hover:border-accent-gold">
         <Image

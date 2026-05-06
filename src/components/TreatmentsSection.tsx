@@ -82,7 +82,7 @@ export function TreatmentsSection() {
           <div className="mb-5">
             <motion.h2
               variants={clipReveal}
-              className="font-display font-normal not-italic text-[#1A1614] leading-[1.1] tracking-[-0.02em]"
+              className="font-display font-normal not-italic text-[#0F0E0D] leading-[1.1] tracking-[-0.02em]"
               style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
             >
               Soluciones Personalizadas
@@ -138,7 +138,7 @@ export function TreatmentsSection() {
         >
           <a
             href="tel:+34963201133"
-            className="inline-flex items-center justify-center bg-accent-gold text-bg-dark px-10 py-4 rounded-full font-body text-base font-medium transition-transform transition-shadow duration-300 hover:bg-accent-gold-light hover:scale-[1.03] hover:shadow-[0_8px_30px_rgba(196,162,101,0.3)] active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-accent-gold/50"
+            className="inline-flex items-center justify-center bg-accent-gold text-bg-dark px-10 py-4 rounded-full font-body text-base font-medium transition-transform transition-shadow duration-300 hover:bg-accent-gold-light hover:scale-[1.03] hover:shadow-[0_8px_30px_rgba(184,115,85,0.3)] active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-accent-gold/50"
           >
             Solicita tu Consulta Gratuita
           </a>

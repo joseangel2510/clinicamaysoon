@@ -106,7 +106,7 @@ export function WhyMaysoonSection() {
       <div
         className="h-20"
         style={{
-          background: "linear-gradient(to bottom, #1A1614, #FAF7F2)",
+          background: "linear-gradient(to bottom, #0F0E0D, #F4EFE7)",
         }}
       />
 
@@ -137,7 +137,7 @@ export function WhyMaysoonSection() {
             <div className="mb-5">
               <motion.h2
                 variants={clipReveal}
-                className="font-display font-normal not-italic text-[#1A1614] leading-[1.1] tracking-[-0.02em]"
+                className="font-display font-normal not-italic text-[#0F0E0D] leading-[1.1] tracking-[-0.02em]"
                 style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
               >
                 La Excelencia
@@ -156,13 +156,13 @@ export function WhyMaysoonSection() {
               variants={fadeInUp}
               className="font-body text-sm sm:text-base text-text-secondary leading-[1.8] max-w-lg mx-auto"
             >
-              En Clínica Maysoon no solo cuidamos tu imagen, cuidamos cada
+              En Maysoon TAN Pearl no solo cuidamos tu imagen, cuidamos cada
               detalle de tu experiencia.
             </motion.p>
           </motion.div>
 
           {/* 2-Column: Image + Features */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(26,22,20,0.08)]">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(15,14,13,0.08)]">
             {/* Left: Clinic Interior Image */}
             <motion.div
               initial={{ opacity: 0, scale: 0.98 }}
@@ -182,7 +182,7 @@ export function WhyMaysoonSection() {
               >
                 <Image
                   src="/images/clinic-interior.webp"
-                  alt="Interior de Clínica Maysoon"
+                  alt="Interior de Maysoon TAN Pearl — Clínica Médico-Estética"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"

@@ -25,7 +25,7 @@ export function ExperienceProgressBar({
           className="absolute top-1/2 h-2 w-2 -translate-y-1/2 rounded-full bg-accent-gold"
           style={{
             left: useTransform(progress, [0, 1], ["0%", "100%"]),
-            boxShadow: "0 0 8px rgba(196,162,101,0.6)",
+            boxShadow: "0 0 8px rgba(184,115,85,0.6)",
           }}
         />
       </div>

@@ -26,7 +26,7 @@ export function HeroSection() {
         >
           <Image
             src="/images/hero-maysoon.webp"
-            alt="Mujer con piel luminosa — Clínica Maysoon"
+            alt="Mujer con piel luminosa — Maysoon TAN Pearl"
             fill
             priority
             className="object-cover object-top"
@@ -50,7 +50,7 @@ export function HeroSection() {
           className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse, rgba(196,162,101,0.06) 0%, transparent 65%)",
+              "radial-gradient(ellipse, rgba(184,115,85,0.06) 0%, transparent 65%)",
           }}
         />
 
@@ -67,7 +67,7 @@ export function HeroSection() {
           <div className="mb-5 lg:mb-6">
             <motion.h1
               variants={clipReveal}
-              className="font-display font-normal not-italic text-[#1A1614] leading-[1.05] tracking-[-0.02em]"
+              className="font-display font-normal not-italic text-[#0F0E0D] leading-[1.05] tracking-[-0.02em]"
               style={{ fontSize: "clamp(2.25rem, 5vw, 4.5rem)" }}
             >
               Tu Belleza,
@@ -118,7 +118,7 @@ export function HeroSection() {
               href="https://wa.me/34651545268?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20consulta"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-2.5 bg-accent-gold text-bg-dark px-8 py-3.5 rounded-full font-body text-base font-medium transition-transform transition-shadow duration-300 hover:bg-accent-gold-light hover:scale-[1.03] hover:shadow-[0_8px_30px_rgba(196,162,101,0.3)] active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-accent-gold/50"
+              className="inline-flex items-center justify-center gap-2.5 bg-accent-gold text-bg-dark px-8 py-3.5 rounded-full font-body text-base font-medium transition-transform transition-shadow duration-300 hover:bg-accent-gold-light hover:scale-[1.03] hover:shadow-[0_8px_30px_rgba(184,115,85,0.3)] active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-accent-gold/50"
             >
               <MessageCircle size={20} strokeWidth={2} />
               Escríbenos por WhatsApp
@@ -146,7 +146,7 @@ export function HeroSection() {
         >
           <Image
             src="/images/hero-maysoon.webp"
-            alt="Mujer con piel luminosa — Clínica Maysoon"
+            alt="Mujer con piel luminosa — Maysoon TAN Pearl"
             fill
             priority
             className="object-cover object-center"

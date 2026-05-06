@@ -64,7 +64,7 @@ export function DoctorSection() {
           <div className="mb-5">
             <motion.h2
               variants={clipReveal}
-              className="font-display font-normal not-italic text-[#1A1614] leading-[1.1] tracking-[-0.02em]"
+              className="font-display font-normal not-italic text-[#0F0E0D] leading-[1.1] tracking-[-0.02em]"
               style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
             >
               Profesionales

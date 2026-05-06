@@ -19,7 +19,7 @@ const credentials = [
 
 export function DoctorHighlight() {
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-[45%_55%] max-w-5xl mx-auto mt-16 rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(26,22,20,0.06)] bg-white">
+    <div className="grid grid-cols-1 lg:grid-cols-[45%_55%] max-w-5xl mx-auto mt-16 rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(15,14,13,0.06)] bg-white">
       {/* Left: Doctor Photo */}
       <motion.div
         initial={{ opacity: 0, scale: 1.05 }}
@@ -60,7 +60,7 @@ export function DoctorHighlight() {
           variants={fadeInRight}
           className="font-body text-sm uppercase tracking-[0.15em] text-accent-gold mt-2"
         >
-          Director Médico · Responsable Clínica Maysoon
+          Director Médico · Responsable Maysoon TAN Pearl
         </motion.p>
 
         {/* Separator */}

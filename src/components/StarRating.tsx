@@ -14,14 +14,14 @@ function StarIcon({ filled, half, size }: { filled: boolean; half?: boolean; siz
       <svg width={size} height={size} viewBox="0 0 20 20" fill="none">
         <defs>
           <linearGradient id="halfStar">
-            <stop offset="50%" stopColor="#C4A265" />
+            <stop offset="50%" stopColor="#B87355" />
             <stop offset="50%" stopColor="transparent" />
           </linearGradient>
         </defs>
         <path
           d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.49L10 14.25 5.06 16.7 6 11.21l-4-3.9 5.53-.8L10 1.5z"
           fill="url(#halfStar)"
-          stroke="#C4A265"
+          stroke="#B87355"
           strokeWidth="1"
         />
       </svg>
@@ -31,8 +31,8 @@ function StarIcon({ filled, half, size }: { filled: boolean; half?: boolean; siz
     <svg width={size} height={size} viewBox="0 0 20 20" fill="none">
       <path
         d="M10 1.5l2.47 5.01 5.53.8-4 3.9.94 5.49L10 14.25 5.06 16.7 6 11.21l-4-3.9 5.53-.8L10 1.5z"
-        fill={filled ? "#C4A265" : "none"}
-        stroke="#C4A265"
+        fill={filled ? "#B87355" : "none"}
+        stroke="#B87355"
         strokeWidth="1"
       />
     </svg>

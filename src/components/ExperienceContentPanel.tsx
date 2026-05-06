@@ -62,10 +62,10 @@ export function ExperienceContentPanel({
                 width: activeStep === i ? 12 : 8,
                 height: activeStep === i ? 12 : 8,
                 backgroundColor:
-                  activeStep === i ? "#C4A265" : "rgba(250,247,242,0.25)",
+                  activeStep === i ? "#B87355" : "rgba(244,239,231,0.25)",
                 boxShadow:
                   activeStep === i
-                    ? "0 0 16px rgba(196,162,101,0.5), 0 0 32px rgba(196,162,101,0.2)"
+                    ? "0 0 16px rgba(184,115,85,0.5), 0 0 32px rgba(184,115,85,0.2)"
                     : "none",
               }}
               transition={{ duration: 0.5, ease: "easeOut" }}
@@ -100,7 +100,7 @@ export function ExperienceContentPanel({
             className="absolute font-display text-[6rem] md:text-[9rem] font-bold leading-none"
             style={{
               color: "transparent",
-              WebkitTextStroke: "1px rgba(196,162,101,0.12)",
+              WebkitTextStroke: "1px rgba(184,115,85,0.12)",
             }}
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
