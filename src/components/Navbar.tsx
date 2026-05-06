@@ -9,7 +9,7 @@ import { fadeInDown } from "@/lib/animations";
 const navLinks = [
   { label: "Inicio", href: "#" },
   { label: "Tratamientos", href: "#tratamientos" },
-  { label: "Nosotros", href: "#nosotros" },
+  { label: "Quiénes Somos", href: "#nosotros" },
   { label: "Blog", href: "#blog" },
   { label: "Contacto", href: "#contacto" },
 ];
