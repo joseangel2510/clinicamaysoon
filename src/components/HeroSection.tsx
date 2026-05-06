@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
 import {
@@ -13,29 +12,17 @@ import {
 } from "@/lib/animations";
 import { ScrollIndicator } from "./ScrollIndicator";
 import { AuthorizationBadge } from "./AuthorizationBadge";
+import { HeroSlideshow } from "./HeroSlideshow";
 
 export function HeroSection() {
   return (
     <section className="relative min-h-screen lg:h-screen flex flex-col lg:flex-row overflow-hidden">
       {/* ── Mobile Image (top, 40vh) ── */}
       <div className="relative w-full h-[40vh] overflow-hidden lg:hidden flex-shrink-0">
-        <motion.div
-          animate={{ scale: [1, 1.15, 1] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="w-[110%] h-[110%] -ml-[5%] -mt-[5%]"
-        >
-          <Image
-            src="/images/hero-maysoon.webp"
-            alt="Mujer con piel luminosa — Maysoon TAN Pearl"
-            fill
-            priority
-            className="object-cover object-top"
-            sizes="100vw"
-          />
-        </motion.div>
+        <HeroSlideshow sizes="100vw" objectPosition="center top" />
         {/* Dark overlay for mobile */}
-        <div className="absolute inset-0 bg-gradient-to-b from-bg-dark/30 via-transparent to-bg-primary" />
-        <div className="absolute inset-0 bg-accent-gold/5" />
+        <div className="absolute inset-0 bg-gradient-to-b from-bg-dark/30 via-transparent to-bg-primary z-20 pointer-events-none" />
+        <div className="absolute inset-0 bg-accent-gold/5 z-20 pointer-events-none" />
       </div>
 
       {/* ── Left Side — Text Content ── */}
@@ -135,36 +122,21 @@ export function HeroSection() {
         className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-accent-gold/15 z-20 origin-top"
       />
 
-      {/* ── Right Side — Desktop Hero Image with Ken Burns ── */}
+      {/* ── Right Side — Desktop Hero Slideshow ── */}
       <div className="hidden lg:block relative w-1/2 h-screen overflow-hidden">
-        {/* Ken Burns animated image */}
-        <motion.div
-          animate={{ scale: [1, 1.15, 1] }}
-          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-          className="absolute inset-0"
-          style={{ width: "110%", height: "110%", marginLeft: "-5%", marginTop: "-5%" }}
-        >
-          <Image
-            src="/images/hero-maysoon.webp"
-            alt="Mujer con piel luminosa — Maysoon TAN Pearl"
-            fill
-            priority
-            className="object-cover object-center"
-            sizes="50vw"
-          />
-        </motion.div>
+        <HeroSlideshow sizes="50vw" objectPosition="center" />
 
         {/* Gradient overlay — left fade into text area */}
         <div
-          className="absolute inset-y-0 left-0 w-[35%] z-10"
+          className="absolute inset-y-0 left-0 w-[35%] z-10 pointer-events-none"
           style={{
             background:
               "linear-gradient(to right, var(--color-bg-primary) 0%, transparent 100%)",
           }}
         />
 
-        {/* Subtle gold tint overlay */}
-        <div className="absolute inset-0 bg-accent-gold/5 z-[5]" />
+        {/* Subtle terracotta tint overlay */}
+        <div className="absolute inset-0 bg-accent-gold/5 z-[5] pointer-events-none" />
       </div>
 
       {/* Scroll Indicator */}

@@ -20,6 +20,10 @@ dist/
 # Temp / screenshots
 temporary screenshots/
 
+# Photo originals (large source files — optimized versions go to public/)
+media/DSC_*.jpg
+media/DSC_*.JPG
+
 # OS
 .DS_Store
 Thumbs.db
