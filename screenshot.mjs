@@ -41,25 +41,24 @@ async function takeScreenshot(url, label) {
 
   await page.goto(url, { waitUntil: "networkidle2", timeout: 30000 });
 
-  // Auto-scroll to bottom in steps so IntersectionObserver-based animations fire
+  // Auto-scroll to bottom in steps so IntersectionObserver-based animations fire.
+  // Slow pace + dwell at each step gives whileInView time to register every section.
   await page.evaluate(async () => {
-    await new Promise((resolve) => {
-      let total = 0;
-      const step = 400;
-      const timer = setInterval(() => {
-        window.scrollBy(0, step);
-        total += step;
-        if (total >= document.body.scrollHeight) {
-          clearInterval(timer);
-          resolve();
-        }
-      }, 120);
-    });
+    const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+    const step = 600;
+    let total = 0;
+    while (total < document.documentElement.scrollHeight) {
+      window.scrollBy(0, step);
+      total += step;
+      await sleep(180);
+    }
+    // Bottom dwell
+    await sleep(400);
   });
 
   // Scroll back to top and let any final settle complete
   await page.evaluate(() => window.scrollTo(0, 0));
-  await new Promise((resolve) => setTimeout(resolve, 1500));
+  await new Promise((resolve) => setTimeout(resolve, 1200));
 
   // Take full page screenshot
   await page.screenshot({ path: filepath, fullPage: true });

@@ -17,10 +17,10 @@ export default function MedicinaEsteticaPage() {
     <main>
       <Navbar />
       <PageHero
-        eyebrow="Medicina Estética"
-        titleLine1="Ciencia"
-        titleLine2="Aplicada a la Belleza"
-        subtitle="Protocolos médicos avanzados que realzan tu belleza natural. Cada tratamiento se diseña tras una valoración integral, con productos certificados de primera línea."
+        eyebrow="Medicina Estética · Mujer"
+        titleLine1="Tratamientos Faciales"
+        titleLine2="que Realzan tu Esencia"
+        subtitle="Cada zona del rostro tiene su técnica, su ritmo y su precio. Aquí está nuestro catálogo completo de tratamientos faciales para mujer — con tarifas reales y filosofía de naturalidad."
         image="/images/sections/hero-medicina-estetica.webp"
         imageAlt="Sala de tratamiento de medicina estética Maysoon"
       />
