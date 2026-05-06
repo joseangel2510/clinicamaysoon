@@ -114,7 +114,7 @@ export function BeforeAfterSection() {
           className="mt-14 lg:mt-16 text-center"
         >
           <a
-            href="#tratamientos"
+            href="/medicina-estetica"
             className="group/cta inline-flex items-center gap-2 font-body font-medium text-accent-gold tracking-wide hover:underline decoration-accent-gold/40 underline-offset-4 transition-colors duration-300"
           >
             Ver Todos los Tratamientos

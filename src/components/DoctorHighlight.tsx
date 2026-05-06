@@ -103,7 +103,7 @@ export function DoctorHighlight() {
         {/* CTA Link */}
         <motion.a
           variants={fadeInUp}
-          href="#equipo"
+          href="/quienes-somos"
           className="group/link inline-flex items-center gap-2 font-body text-sm font-medium text-accent-gold mt-8 transition-colors duration-300 hover:text-accent-gold-light"
         >
           Conoce a todo el equipo

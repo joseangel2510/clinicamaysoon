@@ -233,13 +233,13 @@ export function Footer() {
           <motion.div variants={fadeInUp}>
             <FooterColumn title="Tratamientos" collapsible>
               <nav aria-label="Tratamientos">
-                <FooterLink href="#tratamientos">Rejuvenecimiento Facial</FooterLink>
-                <FooterLink href="#tratamientos">Aumento de Labios</FooterLink>
-                <FooterLink href="#tratamientos">Depilación Láser</FooterLink>
-                <FooterLink href="#tratamientos">Tratamientos Capilares</FooterLink>
-                <FooterLink href="#tratamientos">Reafirmación Corporal</FooterLink>
-                <FooterLink href="#tratamientos">Medicina Estética Facial</FooterLink>
-                <FooterLink href="#tratamientos">Masajes Terapéuticos</FooterLink>
+                <FooterLink href="/medicina-estetica">Medicina Estética</FooterLink>
+                <FooterLink href="/aparatologia">Aparatología & Técnicas</FooterLink>
+                <FooterLink href="/cirugias-menores">Cirugías Menores</FooterLink>
+                <FooterLink href="/unidad-capilar">Unidad Capilar</FooterLink>
+                <FooterLink href="/estetica">Estética</FooterLink>
+                <FooterLink href="/masajes">Masajes</FooterLink>
+                <FooterLink href="/formaciones">Formaciones</FooterLink>
               </nav>
             </FooterColumn>
           </motion.div>
@@ -248,9 +248,10 @@ export function Footer() {
           <motion.div variants={fadeInUp}>
             <FooterColumn title="Clínica" collapsible>
               <nav aria-label="Clínica">
-                <FooterLink href="#nosotros">Nosotros</FooterLink>
-                <FooterLink href="#equipo">Equipo Médico</FooterLink>
-                <FooterLink href="#blog">Blog</FooterLink>
+                <FooterLink href="/quienes-somos">Quiénes Somos</FooterLink>
+                <FooterLink href="/quienes-somos">Equipo Médico</FooterLink>
+                <FooterLink href="/por-que-maysoon">¿Por qué Maysoon?</FooterLink>
+                <FooterLink href="/contacto">Contacto</FooterLink>
                 <FooterLink href="/politica-privacidad">Política de Privacidad</FooterLink>
                 <FooterLink href="/aviso-legal">Aviso Legal</FooterLink>
               </nav>

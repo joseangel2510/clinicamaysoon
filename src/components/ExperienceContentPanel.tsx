@@ -167,7 +167,7 @@ export function ExperienceContentPanel({
         transition={{ delay: 0.5, duration: 0.4 }}
       >
         <motion.a
-          href="#contacto"
+          href="/contacto"
           className="group inline-flex items-center gap-2 font-body text-sm font-medium uppercase tracking-[0.15em] text-accent-gold transition-colors hover:text-accent-gold-light"
           whileHover={{ x: 4 }}
           transition={{ duration: 0.25 }}
