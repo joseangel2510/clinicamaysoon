@@ -181,8 +181,8 @@ export function WhyMaysoonSection() {
                 className="absolute inset-0"
               >
                 <Image
-                  src="/images/clinic-interior.webp"
-                  alt="Interior de Maysoon TAN Pearl — Clínica Médico-Estética"
+                  src="/images/why-maysoon.jpg"
+                  alt="Maysoon TAN Pearl — Excelencia y experiencia clínica"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"

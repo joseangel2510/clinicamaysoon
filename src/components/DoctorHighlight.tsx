@@ -29,7 +29,7 @@ export function DoctorHighlight() {
         className="relative h-[400px] lg:h-auto lg:min-h-[500px] border-b-3 lg:border-b-0 lg:border-r-3 border-accent-gold/30"
       >
         <Image
-          src="/images/team/doctor-principal.webp"
+          src="/images/team/dr-daniel.jpg"
           alt="Dr. Daniel Sánchez Salvador — Director Médico"
           fill
           className="object-cover"
