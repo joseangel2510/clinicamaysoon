@@ -8,8 +8,9 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { fadeInDown } from "@/lib/animations";
 
 const services = [
-  { label: "Medicina Estética · Facial", href: "/medicina-estetica" },
-  { label: "Medicina Estética · Cuerpo", href: "/medicina-estetica/corporal" },
+  { label: "Medicina Estética · Mujer · Facial", href: "/medicina-estetica" },
+  { label: "Medicina Estética · Mujer · Cuerpo", href: "/medicina-estetica/corporal" },
+  { label: "Medicina Estética · Hombre · Facial", href: "/medicina-estetica/hombre" },
   { label: "Aparatología & Técnicas", href: "/aparatologia" },
   { label: "Cirugías Menores", href: "/cirugias-menores" },
   { label: "Unidad Capilar", href: "/unidad-capilar" },
