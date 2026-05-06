@@ -51,11 +51,11 @@ export function Navbar() {
               <Image
                 src="/brand/logo-maysoon.png"
                 alt="Maysoon TAN Pearl · Clínica Médico-Estética"
-                width={120}
-                height={120}
+                width={364}
+                height={121}
                 priority
                 className={`transition-[height] duration-500 w-auto ${
-                  scrolled ? "h-16" : "h-20"
+                  scrolled ? "h-12" : "h-16"
                 }`}
               />
             </a>

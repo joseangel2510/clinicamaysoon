@@ -206,9 +206,9 @@ export function Footer() {
               <Image
                 src="/brand/logo-maysoon.png"
                 alt="Maysoon TAN Pearl · Clínica Médico-Estética"
-                width={96}
-                height={96}
-                className="h-24 w-auto brightness-0 invert opacity-85"
+                width={364}
+                height={121}
+                className="h-20 w-auto brightness-0 invert opacity-90"
               />
               <p className="font-display text-lg text-text-light tracking-[0.05em] mt-4">
                 Maysoon <span className="italic text-accent-gold">TAN Pearl</span>
