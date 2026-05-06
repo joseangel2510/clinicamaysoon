@@ -50,7 +50,7 @@ export function ZonaBlock({
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.15 }}
-      className="scroll-mt-24 py-16 lg:py-20 border-t border-text-secondary/15 first:border-t-0"
+      className="scroll-mt-24 py-12 lg:py-14 border-t border-text-secondary/15 first:border-t-0"
     >
       <div
         className={`grid grid-cols-1 ${

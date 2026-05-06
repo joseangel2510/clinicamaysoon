@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Sparkles, Award } from "lucide-react";
-import { fadeInUp, staggerContainer } from "@/lib/animations";
+import { fadeInUp, staggerContainer, staggerFast } from "@/lib/animations";
 import { ZonaNav } from "./ZonaNav";
 import { ZonaBlock } from "./ZonaBlock";
 import { PricingTable } from "./PricingTable";
@@ -26,25 +26,28 @@ export function MedicinaEsteticaSection() {
   return (
     <section className="bg-bg-primary pt-12 pb-20 lg:pb-28">
       {/* ── Sticky-feel zona nav ── */}
-      <div className="mb-16 lg:mb-20">
+      <div className="mb-12 lg:mb-16">
         <ZonaNav zonas={zonasNav} />
       </div>
 
       <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        {/* ── ZONA: CAPILAR ── */}
+        {/* ── 01 · CAPILAR ── */}
         <ZonaBlock
           id="zona-capilar"
           index={0}
           eyebrow="Zona Capilar"
           title="Cuero Cabelludo"
-          description="Tratamientos de cabecera para frenar la caída y reforzar el folículo desde dentro. Cada protocolo se adapta al patrón capilar de cada paciente."
+          description="Tratamientos para frenar la caída y reforzar el folículo desde dentro. Cada protocolo se adapta al patrón capilar de cada paciente."
           treatments={[
             "Mesoterapia Capilar",
             "Factores de crecimiento (PRP)",
           ]}
+          image="/images/sections/closeup-capilar.webp"
+          imageAlt="Cuero cabelludo y cabello — Maysoon TAN Pearl"
+          imageSide="right"
         />
 
-        {/* ── ZONA: FRENTE ── */}
+        {/* ── 02 · FRENTE ── */}
         <ZonaBlock
           id="zona-frente"
           index={1}
@@ -55,9 +58,12 @@ export function MedicinaEsteticaSection() {
             "Ácido hialurónico (rellenos faciales)",
             "Neuromoduladores (toxina botulínica)",
           ]}
+          image="/images/sections/closeup-frente.webp"
+          imageAlt="Frente femenina — Maysoon TAN Pearl"
+          imageSide="left"
         />
 
-        {/* ── ZONA: ENTRECEJO ── */}
+        {/* ── 03 · ENTRECEJO ── */}
         <ZonaBlock
           id="zona-entrecejo"
           index={2}
@@ -65,9 +71,12 @@ export function MedicinaEsteticaSection() {
           title="Mirada Distendida"
           description="Relajación selectiva del músculo del entrecejo. Adiós al gesto preocupado sin perder expresión."
           treatments={["Neuromoduladores (toxina botulínica)"]}
+          image="/images/sections/closeup-entrecejo.webp"
+          imageAlt="Zona del entrecejo — Maysoon TAN Pearl"
+          imageSide="right"
         />
 
-        {/* ── ZONA: FACIAL (la más densa) ── */}
+        {/* ── 04 · FACIAL ── */}
         <ZonaBlock
           id="zona-facial"
           index={3}
@@ -89,75 +98,18 @@ export function MedicinaEsteticaSection() {
             "Estimuladores de colágeno (ácido poliláctico)",
           ]}
           image="/images/sections/closeup-rostro.webp"
-          imageAlt="Close-up editorial de rostro femenino — Maysoon TAN Pearl"
+          imageAlt="Rostro femenino — Maysoon TAN Pearl"
           imageOrientation="portrait"
-        >
-          {/* Pricing — Rellenos faciales (Teoxane) */}
-          <PricingTable
-            title="Rellenos Faciales · Teoxane (ácido hialurónico)"
-            intro="El relleno más extendido por su alta tolerancia y versatilidad. Hidrata, revoluminiza y produce un efecto lifting natural. Tratamiento indoloro con reincorporación inmediata."
-            rows={[
-              { label: "Labios", price: "280 €" },
-              { label: "Ojeras", detail: "1 vial", price: "350 €" },
-              { label: "Ojeras", detail: "2 viales", price: "550 €" },
-              { label: "Rinomodelación", detail: "1 vial", price: "450 €" },
-              { label: "Otras áreas faciales", detail: "1 vial", price: "280 €" },
-              { label: "Otras áreas faciales", detail: "2 viales", price: "540 €" },
-              { label: "Otras áreas faciales", detail: "3 viales", price: "780 €" },
-              { label: "Otras áreas faciales", detail: "4 viales", price: "1.000 €" },
-              { label: "Otras áreas faciales", detail: "5 viales", price: "1.200 €" },
-            ]}
-            footnote="Presupuestos personalizados para fullface o técnica MLT 3.1."
-          />
+          imageSide="left"
+        />
 
-          {/* Pricing — Hilos tensores */}
-          <PricingTable
-            title="Hilos Tensores"
-            intro="Tres tipos según necesidad: PDO lisos (generadores de colágeno), PDO arponados (efecto lifting inmediato + colagénesis) y suturas APTOS (última generación, ácido poliláctico + policaprolactona, máxima tracción). Sesión 30–45 min, efecto definitivo a los 2 meses, duración hasta 18 meses."
-            rows={[
-              { label: "PDO monofilamento", price: "desde 10 €/hilo" },
-              {
-                label: "Arponados Dual y Fox Eyes",
-                detail: "PDO · pack 2 hilos dobles",
-                price: "desde 350 €",
-              },
-              {
-                label: "Arponados PCLA",
-                detail: "pack 2 hilos dobles",
-                price: "desde 450 €",
-              },
-              {
-                label: "Otoplastia con APTOS permanentes",
-                detail: "ambas orejas",
-                price: "900 €",
-              },
-            ]}
-          />
+        {/* ── Facial · Tablas de precios lado a lado ── */}
+        <FacialPricingGrid />
 
-          {/* Featured treatment — Morpheus 8 */}
-          <FeaturedTreatment
-            badge="Aprobado por la FDA"
-            title="Morpheus 8"
-            description="Radiofrecuencia fraccionada con microagujas. Primer y único dispositivo que trata acumulación de grasa y flacidez cutánea en un solo tratamiento. Rejuvenece la piel, estimula colágeno, reafirma, retensa y elimina grasa de forma permanente."
-            extras={[
-              "También trata celulitis, arrugas, hiperhidrosis, marcas de acné y estrías",
-              "Resultados visibles desde la primera sesión",
-            ]}
-          />
+        {/* ── Facial · Tratamientos destacados lado a lado ── */}
+        <FacialDestacados />
 
-          {/* Featured treatment — Estimuladores de colágeno */}
-          <FeaturedTreatment
-            badge="Bioestimulación"
-            title="Estimuladores de Colágeno · Ácido Poliláctico"
-            description="Biopolímero reabsorbible y biocompatible. No aporta volumen inmediato — estimula la producción natural de colágeno. Indicado para rostro, cuello, escote y brazos a partir de los 35 años."
-            extras={[
-              "2–3 sesiones espaciadas 4–6 semanas",
-              "Mantenimiento anual recomendado",
-            ]}
-          />
-        </ZonaBlock>
-
-        {/* ── ZONA: ACNÉ Y MANCHAS ── */}
+        {/* ── 05 · ACNÉ Y MANCHAS ── */}
         <ZonaBlock
           id="zona-acne"
           index={4}
@@ -170,9 +122,12 @@ export function MedicinaEsteticaSection() {
             "Luz Pulsada Intensa (IPL)",
             "Morpheus 8",
           ]}
+          image="/images/sections/closeup-acne.webp"
+          imageAlt="Piel renovada y luminosa — Maysoon TAN Pearl"
+          imageSide="right"
         />
 
-        {/* ── ZONA: OJERAS ── */}
+        {/* ── 06 · OJERAS ── */}
         <ZonaBlock
           id="zona-ojeras"
           index={5}
@@ -180,16 +135,16 @@ export function MedicinaEsteticaSection() {
           title="Mirada Descansada"
           description="Tratamos surcos, oscurecimiento y bolsas con técnicas específicas para el contorno de ojos. Producto y dosis pensados para esta zona delicada."
           treatments={[
-            "Corrección de ojeras con Redensity II de Teoxane (específico para ojeras)",
+            "Corrección de ojeras con Redensity II de Teoxane",
             "Plasmage / Blefaroplastia sin cirugía",
             "Eliminación de bolsas con Endoláser",
           ]}
           image="/images/sections/closeup-ojos.webp"
-          imageAlt="Close-up editorial de ojo y ceja — Maysoon TAN Pearl"
+          imageAlt="Contorno de ojos — Maysoon TAN Pearl"
           imageSide="left"
         />
 
-        {/* ── ZONA: CEJAS ── */}
+        {/* ── 07 · CEJAS ── */}
         <ZonaBlock
           id="zona-cejas"
           index={6}
@@ -201,9 +156,12 @@ export function MedicinaEsteticaSection() {
             "Lifting con hilos tensores",
             "Neuromoduladores (toxina botulínica)",
           ]}
+          image="/images/sections/closeup-cejas.webp"
+          imageAlt="Detalle de ceja — Maysoon TAN Pearl"
+          imageSide="right"
         />
 
-        {/* ── ZONA: PÁRPADOS ── */}
+        {/* ── 08 · PÁRPADOS ── */}
         <ZonaBlock
           id="zona-parpados"
           index={7}
@@ -211,9 +169,12 @@ export function MedicinaEsteticaSection() {
           title="Sin Quirófano"
           description="Tensado del párpado y reducción del exceso de piel mediante tecnología plasma, sin cirugía y con recuperación rápida."
           treatments={["Blefaroplastia con PLASMAGE (sin cirugía)"]}
+          image="/images/sections/closeup-parpados.webp"
+          imageAlt="Párpado y pestañas — Maysoon TAN Pearl"
+          imageSide="left"
         />
 
-        {/* ── ZONA: NARIZ ── */}
+        {/* ── 09 · NARIZ ── */}
         <ZonaBlock
           id="zona-nariz"
           index={8}
@@ -225,11 +186,12 @@ export function MedicinaEsteticaSection() {
             "Correcciones de dorso, punta y simetría",
           ]}
           image="/images/sections/closeup-perfil.webp"
-          imageAlt="Perfil editorial de rostro — Maysoon TAN Pearl"
+          imageAlt="Perfil de rostro — Maysoon TAN Pearl"
           imageOrientation="portrait"
+          imageSide="right"
         />
 
-        {/* ── ZONA: LABIOS ── */}
+        {/* ── 10 · LABIOS ── */}
         <ZonaBlock
           id="zona-labios"
           index={9}
@@ -241,11 +203,11 @@ export function MedicinaEsteticaSection() {
             "Código de barras (arrugas peribucales)",
           ]}
           image="/images/sections/closeup-labios.webp"
-          imageAlt="Close-up editorial de labios — Maysoon TAN Pearl"
+          imageAlt="Detalle de labios — Maysoon TAN Pearl"
           imageSide="left"
         />
 
-        {/* ── ZONA: MANDÍBULA ── */}
+        {/* ── 11 · MANDÍBULA ── */}
         <ZonaBlock
           id="zona-mandibula"
           index={10}
@@ -256,6 +218,9 @@ export function MedicinaEsteticaSection() {
             "Corrección de Bruxismo",
             "Armonización mandibular",
           ]}
+          image="/images/sections/closeup-mandibula.webp"
+          imageAlt="Mandíbula y cuello — Maysoon TAN Pearl"
+          imageSide="right"
         />
 
         {/* ── FEATURED: NEUROMODULACIÓN ── */}
@@ -271,7 +236,99 @@ export function MedicinaEsteticaSection() {
 }
 
 /* ─────────────────────────────────────────────────
-   FeaturedTreatment — destacado dentro de un zona
+   FacialPricingGrid — Rellenos + Hilos lado a lado
+   ───────────────────────────────────────────────── */
+
+function FacialPricingGrid() {
+  return (
+    <motion.div
+      variants={staggerFast}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.05 }}
+      className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mt-2"
+    >
+      <PricingTable
+        title="Rellenos Faciales · Teoxane"
+        intro="El relleno más extendido por su alta tolerancia y versatilidad. Hidrata, revoluminiza y produce un efecto lifting natural. Tratamiento indoloro con reincorporación inmediata."
+        rows={[
+          { label: "Labios", price: "280 €" },
+          { label: "Ojeras", detail: "1 vial", price: "350 €" },
+          { label: "Ojeras", detail: "2 viales", price: "550 €" },
+          { label: "Rinomodelación", detail: "1 vial", price: "450 €" },
+          { label: "Otras áreas faciales", detail: "1 vial", price: "280 €" },
+          { label: "Otras áreas faciales", detail: "2 viales", price: "540 €" },
+          { label: "Otras áreas faciales", detail: "3 viales", price: "780 €" },
+          { label: "Otras áreas faciales", detail: "4 viales", price: "1.000 €" },
+          { label: "Otras áreas faciales", detail: "5 viales", price: "1.200 €" },
+        ]}
+        footnote="Presupuestos personalizados para fullface o técnica MLT 3.1."
+      />
+
+      <PricingTable
+        title="Hilos Tensores"
+        intro="Tres tipos según necesidad: PDO lisos (generan colágeno), PDO arponados (lifting inmediato) y suturas APTOS (última generación, máxima tracción). Sesión 30–45 min, efecto definitivo a los 2 meses, duración hasta 18 meses."
+        rows={[
+          { label: "PDO monofilamento", price: "desde 10 €/hilo" },
+          {
+            label: "Arponados Dual y Fox Eyes",
+            detail: "PDO · pack 2 hilos dobles",
+            price: "desde 350 €",
+          },
+          {
+            label: "Arponados PCLA",
+            detail: "pack 2 hilos dobles",
+            price: "desde 450 €",
+          },
+          {
+            label: "Otoplastia con APTOS permanentes",
+            detail: "ambas orejas",
+            price: "900 €",
+          },
+        ]}
+      />
+    </motion.div>
+  );
+}
+
+/* ─────────────────────────────────────────────────
+   FacialDestacados — Morpheus + Estimuladores lado a lado
+   ───────────────────────────────────────────────── */
+
+function FacialDestacados() {
+  return (
+    <motion.div
+      variants={staggerFast}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.05 }}
+      className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mt-6 lg:mt-8"
+    >
+      <FeaturedTreatment
+        badge="Aprobado por la FDA"
+        title="Morpheus 8"
+        description="Radiofrecuencia fraccionada con microagujas. Primer y único dispositivo que trata acumulación de grasa y flacidez cutánea en un solo tratamiento. Rejuvenece, estimula colágeno, reafirma, retensa y elimina grasa de forma permanente."
+        extras={[
+          "También trata celulitis, arrugas, hiperhidrosis, marcas de acné y estrías",
+          "Resultados visibles desde la primera sesión",
+        ]}
+      />
+
+      <FeaturedTreatment
+        badge="Bioestimulación"
+        title="Estimuladores de Colágeno · Ácido Poliláctico"
+        description="Biopolímero reabsorbible y biocompatible. No aporta volumen inmediato — estimula la producción natural de colágeno. Indicado para rostro, cuello, escote y brazos a partir de los 35 años."
+        extras={[
+          "2–3 sesiones espaciadas 4–6 semanas",
+          "Mantenimiento anual recomendado",
+        ]}
+      />
+    </motion.div>
+  );
+}
+
+/* ─────────────────────────────────────────────────
+   FeaturedTreatment — card oscura con badge dorado
    ───────────────────────────────────────────────── */
 
 function FeaturedTreatment({
@@ -288,7 +345,7 @@ function FeaturedTreatment({
   return (
     <motion.div
       variants={fadeInUp}
-      className="rounded-2xl bg-bg-dark text-text-light p-7 lg:p-9 relative overflow-hidden"
+      className="rounded-2xl bg-bg-dark text-text-light p-7 lg:p-9 relative overflow-hidden h-full flex flex-col"
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -297,8 +354,8 @@ function FeaturedTreatment({
             "radial-gradient(circle at 0% 100%, rgba(184,115,85,0.18), transparent 60%)",
         }}
       />
-      <div className="relative">
-        <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-accent-gold/15 border border-accent-gold/30">
+      <div className="relative flex flex-col flex-1">
+        <div className="inline-flex items-center self-start gap-2 mb-4 px-3 py-1 rounded-full bg-accent-gold/15 border border-accent-gold/30">
           <Award size={12} strokeWidth={2.2} className="text-accent-gold" />
           <span className="font-body text-[10px] font-medium uppercase tracking-[0.25em] text-accent-gold">
             {badge}
@@ -307,11 +364,11 @@ function FeaturedTreatment({
         <h4 className="font-display font-normal text-2xl lg:text-3xl text-text-light leading-tight tracking-[-0.01em] mb-4">
           {title}
         </h4>
-        <p className="font-body text-sm lg:text-[15px] text-text-light/75 leading-[1.8] mb-5 max-w-2xl">
+        <p className="font-body text-sm lg:text-[15px] text-text-light/75 leading-[1.8] mb-5">
           {description}
         </p>
         {extras.length > 0 && (
-          <ul className="flex flex-col gap-2">
+          <ul className="flex flex-col gap-2 mt-auto">
             {extras.map((e) => (
               <li key={e} className="flex items-start gap-2.5">
                 <span className="text-accent-gold mt-1 flex-shrink-0">✦</span>
@@ -337,7 +394,7 @@ function NeuromodulacionFeatured() {
       variants={staggerContainer}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.15 }}
+      viewport={{ once: true, amount: 0.1 }}
       className="mt-16 lg:mt-20 rounded-3xl overflow-hidden bg-bg-dark text-text-light relative"
     >
       <div
