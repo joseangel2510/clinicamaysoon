@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { PageHero } from "@/components/PageHero";
+import { MedicinaEsteticaTabs } from "@/components/MedicinaEsteticaTabs";
 import { MedicinaEsteticaSection } from "@/components/MedicinaEsteticaSection";
 import { BeforeAfterSection } from "@/components/BeforeAfterSection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
@@ -24,6 +25,7 @@ export default function MedicinaEsteticaPage() {
         image="/images/sections/hero-medicina-estetica.webp"
         imageAlt="Sala de tratamiento de medicina estética Maysoon"
       />
+      <MedicinaEsteticaTabs />
       <MedicinaEsteticaSection />
       <BeforeAfterSection />
       <TestimonialsSection />
