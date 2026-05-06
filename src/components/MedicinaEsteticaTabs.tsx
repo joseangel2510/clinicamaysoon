@@ -9,6 +9,7 @@ const tabs = [
   { href: "/medicina-estetica", label: "Mujer · Facial" },
   { href: "/medicina-estetica/corporal", label: "Mujer · Cuerpo" },
   { href: "/medicina-estetica/hombre", label: "Hombre · Facial" },
+  { href: "/medicina-estetica/hombre/corporal", label: "Hombre · Cuerpo" },
 ];
 
 export function MedicinaEsteticaTabs() {

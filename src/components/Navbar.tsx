@@ -11,6 +11,7 @@ const services = [
   { label: "Medicina Estética · Mujer · Facial", href: "/medicina-estetica" },
   { label: "Medicina Estética · Mujer · Cuerpo", href: "/medicina-estetica/corporal" },
   { label: "Medicina Estética · Hombre · Facial", href: "/medicina-estetica/hombre" },
+  { label: "Medicina Estética · Hombre · Cuerpo", href: "/medicina-estetica/hombre/corporal" },
   { label: "Aparatología & Técnicas", href: "/aparatologia" },
   { label: "Cirugías Menores", href: "/cirugias-menores" },
   { label: "Unidad Capilar", href: "/unidad-capilar" },
