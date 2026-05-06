@@ -9,8 +9,8 @@ import { fadeInDown } from "@/lib/animations";
 const navLinks = [
   { label: "Inicio", href: "#" },
   { label: "Tratamientos", href: "#tratamientos" },
+  { label: "¿Por qué Maysoon?", href: "#por-que-maysoon" },
   { label: "Quiénes Somos", href: "#nosotros" },
-  { label: "Blog", href: "#blog" },
   { label: "Contacto", href: "#contacto" },
 ];
 

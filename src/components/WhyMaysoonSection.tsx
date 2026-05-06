@@ -128,7 +128,7 @@ export function WhyMaysoonSection() {
             >
               <span className="block w-10 h-px bg-accent-gold" />
               <span className="font-body text-xs font-medium uppercase tracking-[0.35em] text-accent-gold">
-                ¿Por Qué Elegirnos?
+                ¿Por qué Maysoon?
               </span>
               <span className="block w-10 h-px bg-accent-gold" />
             </motion.div>
