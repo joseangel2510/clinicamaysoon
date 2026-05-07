@@ -238,6 +238,7 @@ export function Footer() {
                 <FooterLink href="/medicina-estetica/corporal">Med. Estética · Mujer · Cuerpo</FooterLink>
                 <FooterLink href="/medicina-estetica/hombre">Med. Estética · Hombre · Facial</FooterLink>
                 <FooterLink href="/medicina-estetica/hombre/corporal">Med. Estética · Hombre · Cuerpo</FooterLink>
+                <FooterLink href="/depilacion-laser">Depilación Láser · HS-810</FooterLink>
                 <FooterLink href="/aparatologia">Aparatología & Técnicas</FooterLink>
                 <FooterLink href="/cirugias-menores">Cirugías Menores</FooterLink>
                 <FooterLink href="/unidad-capilar">Unidad Capilar</FooterLink>
