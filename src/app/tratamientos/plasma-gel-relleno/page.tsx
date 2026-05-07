@@ -10,7 +10,7 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Plasma-Gel Relleno · 100% Autólogo | Maysoon TAN Pearl",
+  title: "Plasma-Gel Relleno · 100% Autólogo | Maysoon",
   description:
     "Plasma-Gel: relleno facial obtenido de tu propia sangre. Sin riesgo de alergias ni rechazos, 25% se fija de forma definitiva. Desde 50 €/ml en pack 3 sesiones.",
 };
@@ -25,7 +25,7 @@ export default function PlasmaGelPage() {
         titleLine2="Relleno"
         subtitle="Lo último en rellenos faciales. Se obtiene de tu propia sangre, sin sustancias externas. Cero riesgo de alergias y un 25% de fijación definitiva con producción de colágeno nuevo."
         image="/images/sections/closeup-rostro.webp"
-        imageAlt="Tratamiento de Plasma-Gel — Maysoon TAN Pearl"
+        imageAlt="Tratamiento de Plasma-Gel — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">

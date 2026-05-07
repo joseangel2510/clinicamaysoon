@@ -5,7 +5,7 @@ import { FormacionesPlaceholder } from "@/components/FormacionesPlaceholder";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Formaciones | Maysoon TAN Pearl",
+  title: "Formaciones | Maysoon",
   description:
     "Próximamente abriremos un programa de formaciones para profesionales del sector estético y médico. Apúntate a la lista de interés.",
 };
@@ -20,7 +20,7 @@ export default function FormacionesPage() {
         titleLine2="que Sabemos Hacer"
         subtitle="Estamos preparando un programa de formaciones para profesionales. Si quieres ser de los primeros en saberlo, escríbenos."
         image="/images/sections/hero-formaciones.webp"
-        imageAlt="Sesión de formación profesional en Maysoon TAN Pearl"
+        imageAlt="Sesión de formación profesional en Maysoon"
       />
       <FormacionesPlaceholder />
       <Footer />

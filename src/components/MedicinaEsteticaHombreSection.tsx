@@ -45,7 +45,7 @@ export function MedicinaEsteticaHombreSection() {
             "Trasplante capilar FUE",
           ]}
           image="/images/sections/closeup-hombre-capilar.webp"
-          imageAlt="Cuero cabelludo masculino — Maysoon TAN Pearl"
+          imageAlt="Cuero cabelludo masculino — Maysoon"
           imageSide="right"
         />
 
@@ -65,7 +65,7 @@ export function MedicinaEsteticaHombreSection() {
             "Carbonpeel",
           ]}
           image="/images/sections/closeup-hombre-acne.webp"
-          imageAlt="Piel masculina renovada — Maysoon TAN Pearl"
+          imageAlt="Piel masculina renovada — Maysoon"
           imageSide="left"
         />
 
@@ -89,7 +89,7 @@ export function MedicinaEsteticaHombreSection() {
             "Resurfacing con Láser Erbio YAG",
           ]}
           image="/images/sections/closeup-hombre-facial.webp"
-          imageAlt="Retrato editorial masculino — Maysoon TAN Pearl"
+          imageAlt="Retrato editorial masculino — Maysoon"
           imageOrientation="portrait"
           imageSide="right"
         />
@@ -109,7 +109,7 @@ export function MedicinaEsteticaHombreSection() {
             "Neuromoduladores (toxina botulínica)",
           ]}
           image="/images/sections/closeup-hombre-frente.webp"
-          imageAlt="Frente masculina — Maysoon TAN Pearl"
+          imageAlt="Frente masculina — Maysoon"
           imageSide="left"
         />
 
@@ -122,7 +122,7 @@ export function MedicinaEsteticaHombreSection() {
           description="Relajación selectiva del músculo del entrecejo. Adiós al gesto de tensión sin perder expresión natural."
           treatments={["Neuromodulación (toxina botulínica)"]}
           image="/images/sections/closeup-hombre-entrecejo.webp"
-          imageAlt="Entrecejo masculino — Maysoon TAN Pearl"
+          imageAlt="Entrecejo masculino — Maysoon"
           imageSide="right"
         />
 
@@ -139,7 +139,7 @@ export function MedicinaEsteticaHombreSection() {
             "Neuromoduladores (toxina botulínica)",
           ]}
           image="/images/sections/closeup-hombre-cejas.webp"
-          imageAlt="Ceja masculina — Maysoon TAN Pearl"
+          imageAlt="Ceja masculina — Maysoon"
           imageSide="left"
         />
 
@@ -152,7 +152,7 @@ export function MedicinaEsteticaHombreSection() {
           description="Tensado del párpado y reducción del exceso de piel mediante tecnología plasma. Sin cirugía, recuperación rápida y sin baja."
           treatments={["Blefaroplastia con PLASMAGE (sin cirugía)"]}
           image="/images/sections/closeup-hombre-parpados.webp"
-          imageAlt="Párpado masculino — Maysoon TAN Pearl"
+          imageAlt="Párpado masculino — Maysoon"
           imageSide="right"
         />
 
@@ -169,7 +169,7 @@ export function MedicinaEsteticaHombreSection() {
             "Eliminación de bolsas con Endoláser",
           ]}
           image="/images/sections/closeup-hombre-ojeras.webp"
-          imageAlt="Contorno de ojos masculino — Maysoon TAN Pearl"
+          imageAlt="Contorno de ojos masculino — Maysoon"
           imageSide="left"
         />
 
@@ -185,7 +185,7 @@ export function MedicinaEsteticaHombreSection() {
             "Correcciones de dorso, punta y simetría",
           ]}
           image="/images/sections/closeup-hombre-nariz.webp"
-          imageAlt="Perfil masculino — Maysoon TAN Pearl"
+          imageAlt="Perfil masculino — Maysoon"
           imageOrientation="portrait"
           imageSide="right"
         />
@@ -203,7 +203,7 @@ export function MedicinaEsteticaHombreSection() {
             "MASCULOOK — definición masculina del ángulo mandibular",
           ]}
           image="/images/sections/closeup-hombre-mandibula.webp"
-          imageAlt="Mandíbula masculina definida — Maysoon TAN Pearl"
+          imageAlt="Mandíbula masculina definida — Maysoon"
           imageSide="left"
         />
 
@@ -219,7 +219,7 @@ export function MedicinaEsteticaHombreSection() {
           description="Diseño masculino del contorno labial buscando volumen natural y armonía con el resto del rostro."
           treatments={["Aumento de labios"]}
           image="/images/sections/closeup-hombre-labios.webp"
-          imageAlt="Labios masculinos — Maysoon TAN Pearl"
+          imageAlt="Labios masculinos — Maysoon"
           imageSide="right"
         />
 

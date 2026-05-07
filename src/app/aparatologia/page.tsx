@@ -5,7 +5,7 @@ import { AparatologiaSection } from "@/components/AparatologiaSection";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Aparatología y Técnicas Avanzadas | Maysoon TAN Pearl",
+  title: "Aparatología y Técnicas Avanzadas | Maysoon",
   description:
     "Láser diodo HS-810 y tecnologías avanzadas en aparatología estética. Equipos de última generación con protocolos personalizados en Maysoon Valencia.",
 };

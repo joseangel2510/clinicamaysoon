@@ -7,7 +7,7 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Láser Vascular Diodo 980 nm (Fox III) | Maysoon TAN Pearl",
+  title: "Láser Vascular Diodo 980 nm (Fox III) | Maysoon",
   description:
     "Eliminación de arañas vasculares, puntos rubí y capilares hasta 2 mm en cualquier zona del cuerpo o rostro con láser de diodo 980 nm. Sin geles ni anestesia, transdérmico.",
 };
@@ -22,7 +22,7 @@ export default function LaserVascularPage() {
         titleLine2="Vascular"
         subtitle="El láser de diodo 980 nm más avanzado del mercado. Elimina arañas vasculares, puntos rubí y pequeños capilares de hasta 2 mm sin dañar tejidos sanos."
         image="/images/sections/hero-treatment-laser-vascular.webp"
-        imageAlt="Tratamiento de Láser Vascular — Maysoon TAN Pearl"
+        imageAlt="Tratamiento de Láser Vascular — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">

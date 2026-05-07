@@ -60,7 +60,7 @@ export function DoctorHighlight() {
           variants={fadeInRight}
           className="font-body text-sm uppercase tracking-[0.15em] text-accent-gold mt-2"
         >
-          Director Médico · Responsable Maysoon TAN Pearl
+          Director Médico · Responsable Maysoon
         </motion.p>
 
         {/* Separator */}

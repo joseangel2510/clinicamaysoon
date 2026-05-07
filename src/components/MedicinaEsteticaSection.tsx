@@ -43,7 +43,7 @@ export function MedicinaEsteticaSection() {
             "Factores de crecimiento (PRP)",
           ]}
           image="/images/sections/closeup-capilar.webp"
-          imageAlt="Cuero cabelludo y cabello — Maysoon TAN Pearl"
+          imageAlt="Cuero cabelludo y cabello — Maysoon"
           imageSide="right"
         />
 
@@ -59,7 +59,7 @@ export function MedicinaEsteticaSection() {
             "Neuromoduladores (toxina botulínica)",
           ]}
           image="/images/sections/closeup-frente.webp"
-          imageAlt="Frente femenina — Maysoon TAN Pearl"
+          imageAlt="Frente femenina — Maysoon"
           imageSide="left"
         />
 
@@ -72,7 +72,7 @@ export function MedicinaEsteticaSection() {
           description="Relajación selectiva del músculo del entrecejo. Adiós al gesto preocupado sin perder expresión."
           treatments={["Neuromoduladores (toxina botulínica)"]}
           image="/images/sections/closeup-entrecejo.webp"
-          imageAlt="Zona del entrecejo — Maysoon TAN Pearl"
+          imageAlt="Zona del entrecejo — Maysoon"
           imageSide="right"
         />
 
@@ -98,7 +98,7 @@ export function MedicinaEsteticaSection() {
             "Estimuladores de colágeno (ácido poliláctico)",
           ]}
           image="/images/sections/closeup-rostro.webp"
-          imageAlt="Rostro femenino — Maysoon TAN Pearl"
+          imageAlt="Rostro femenino — Maysoon"
           imageOrientation="portrait"
           imageSide="left"
         />
@@ -123,7 +123,7 @@ export function MedicinaEsteticaSection() {
             "Morpheus 8",
           ]}
           image="/images/sections/closeup-acne.webp"
-          imageAlt="Piel renovada y luminosa — Maysoon TAN Pearl"
+          imageAlt="Piel renovada y luminosa — Maysoon"
           imageSide="right"
         />
 
@@ -140,7 +140,7 @@ export function MedicinaEsteticaSection() {
             "Eliminación de bolsas con Endoláser",
           ]}
           image="/images/sections/closeup-ojos.webp"
-          imageAlt="Contorno de ojos — Maysoon TAN Pearl"
+          imageAlt="Contorno de ojos — Maysoon"
           imageSide="left"
         />
 
@@ -157,7 +157,7 @@ export function MedicinaEsteticaSection() {
             "Neuromoduladores (toxina botulínica)",
           ]}
           image="/images/sections/closeup-cejas.webp"
-          imageAlt="Detalle de ceja — Maysoon TAN Pearl"
+          imageAlt="Detalle de ceja — Maysoon"
           imageSide="right"
         />
 
@@ -170,7 +170,7 @@ export function MedicinaEsteticaSection() {
           description="Tensado del párpado y reducción del exceso de piel mediante tecnología plasma, sin cirugía y con recuperación rápida."
           treatments={["Blefaroplastia con PLASMAGE (sin cirugía)"]}
           image="/images/sections/closeup-parpados.webp"
-          imageAlt="Párpado y pestañas — Maysoon TAN Pearl"
+          imageAlt="Párpado y pestañas — Maysoon"
           imageSide="left"
         />
 
@@ -186,7 +186,7 @@ export function MedicinaEsteticaSection() {
             "Correcciones de dorso, punta y simetría",
           ]}
           image="/images/sections/closeup-perfil.webp"
-          imageAlt="Perfil de rostro — Maysoon TAN Pearl"
+          imageAlt="Perfil de rostro — Maysoon"
           imageOrientation="portrait"
           imageSide="right"
         />
@@ -203,7 +203,7 @@ export function MedicinaEsteticaSection() {
             "Código de barras (arrugas peribucales)",
           ]}
           image="/images/sections/closeup-labios.webp"
-          imageAlt="Detalle de labios — Maysoon TAN Pearl"
+          imageAlt="Detalle de labios — Maysoon"
           imageSide="left"
         />
 
@@ -219,7 +219,7 @@ export function MedicinaEsteticaSection() {
             "Armonización mandibular",
           ]}
           image="/images/sections/closeup-mandibula.webp"
-          imageAlt="Mandíbula y cuello — Maysoon TAN Pearl"
+          imageAlt="Mandíbula y cuello — Maysoon"
           imageSide="right"
         />
 

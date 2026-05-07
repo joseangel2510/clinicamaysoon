@@ -131,7 +131,7 @@ export default function DepilacionLaserPage() {
         titleLine2="con Garantía Médica"
         subtitle="Láser de diodo de alta potencia HS-810 · 1600 W. Apto para todos los tipos de piel, sin riesgo de quemaduras y disponible todo el año — incluso en verano."
         image="/images/sections/hero-treatment-laser-vascular.webp"
-        imageAlt="Depilación Láser HS-810 — Maysoon TAN Pearl"
+        imageAlt="Depilación Láser HS-810 — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">

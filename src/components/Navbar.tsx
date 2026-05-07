@@ -75,12 +75,12 @@ export function Navbar() {
             {/* Logo */}
             <Link
               href="/"
-              aria-label="Maysoon TAN Pearl — Inicio"
+              aria-label="Maysoon — Inicio"
               className="flex items-center group transition-opacity duration-300 hover:opacity-80"
             >
               <Image
                 src="/brand/logo-maysoon.png"
-                alt="Maysoon TAN Pearl · Clínica Médico-Estética"
+                alt="Maysoon · Clínica Médico-Estética"
                 width={364}
                 height={121}
                 priority

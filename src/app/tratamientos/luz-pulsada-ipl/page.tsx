@@ -8,7 +8,7 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Luz Pulsada Intensa (IPL) | Maysoon TAN Pearl",
+  title: "Luz Pulsada Intensa (IPL) | Maysoon",
   description:
     "IPL: manchas solares, pecas, puntos rubí, telangiectasias, acné, fotorrejuvenecimiento. Resultados visibles desde la primera sesión. Desde 134 €/sesión con bono.",
 };
@@ -23,7 +23,7 @@ export default function IPLPage() {
         titleLine2="Fotorrejuvenecimiento"
         subtitle="Tecnología de filtros que selecciona la longitud de onda según el objetivo: lesiones pigmentadas, vasculares o tratamiento del acné. Resultados desde la primera sesión."
         image="/images/sections/hero-treatment-ipl.webp"
-        imageAlt="Tratamiento IPL — Maysoon TAN Pearl"
+        imageAlt="Tratamiento IPL — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">

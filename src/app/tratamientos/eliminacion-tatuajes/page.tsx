@@ -9,7 +9,7 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Eliminación de Tatuajes con Láser | Maysoon TAN Pearl",
+  title: "Eliminación de Tatuajes con Láser | Maysoon",
   description:
     "Eliminación de tatuajes con tecnología láser. Borrado progresivo, controlado y respetando la piel. Sesiones espaciadas para resultados óptimos sin marcas.",
 };
@@ -24,7 +24,7 @@ export default function EliminacionTatuajesPage() {
         titleLine2="de Tatuajes con Láser"
         subtitle="Borrado progresivo y controlado de tatuajes con tecnología láser. Respetamos la integridad de la piel — sin cicatrices, sin marcas y con resultados visibles desde las primeras sesiones."
         image="/images/sections/closeup-brazo.webp"
-        imageAlt="Eliminación de Tatuajes con Láser — Maysoon TAN Pearl"
+        imageAlt="Eliminación de Tatuajes con Láser — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">

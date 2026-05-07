@@ -156,7 +156,7 @@ export function WhyMaysoonSection() {
               variants={fadeInUp}
               className="font-body text-sm sm:text-base text-text-secondary leading-[1.8] max-w-lg mx-auto"
             >
-              En Maysoon TAN Pearl no solo cuidamos tu imagen, cuidamos cada
+              En Maysoon no solo cuidamos tu imagen, cuidamos cada
               detalle de tu experiencia.
             </motion.p>
           </motion.div>
@@ -182,7 +182,7 @@ export function WhyMaysoonSection() {
               >
                 <Image
                   src="/images/why-maysoon.jpg"
-                  alt="Maysoon TAN Pearl — Excelencia y experiencia clínica"
+                  alt="Maysoon — Excelencia y experiencia clínica"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 50vw"

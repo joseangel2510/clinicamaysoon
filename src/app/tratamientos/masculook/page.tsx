@@ -8,7 +8,7 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "MASCULOOK · Armonización Mandibular Masculina | Maysoon TAN Pearl",
+  title: "MASCULOOK · Armonización Mandibular Masculina | Maysoon",
   description:
     "MASCULOOK: armonización mandibular exclusiva para hombre con ácido hialurónico. Mandíbula marcada, ángulo definido y mentón prominente. Aspecto masculino y atractivo.",
 };
@@ -23,7 +23,7 @@ export default function MasculookPage() {
         titleLine2="Mandíbula Marcada"
         subtitle="Armonización mandibular masculina con ácido hialurónico. Diseñado para conseguir contornos potentes, líneas mandibulares cuadradas y un mentón prominente — el aspecto masculino y atractivo de referencia."
         image="/images/sections/closeup-hombre-mandibula.webp"
-        imageAlt="MASCULOOK · Armonización Mandibular Masculina — Maysoon TAN Pearl"
+        imageAlt="MASCULOOK · Armonización Mandibular Masculina — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">

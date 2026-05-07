@@ -19,11 +19,11 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Maysoon TAN Pearl | Clínica Médico-Estética en Valencia",
+  title: "Maysoon | Clínica Médico-Estética en Valencia",
   description:
-    "Maysoon TAN Pearl — Clínica médico-estética en Valencia. Tratamientos personalizados con tecnología de última generación. Resultados naturales, atención exclusiva. Reserva tu consulta.",
+    "Maysoon — Clínica médico-estética en Valencia. Tratamientos personalizados con tecnología de última generación. Resultados naturales, atención exclusiva. Reserva tu consulta.",
   keywords: [
-    "Maysoon TAN Pearl",
+    "Maysoon",
     "Clínica Maysoon",
     "medicina estética Valencia",
     "clínica estética Valencia",

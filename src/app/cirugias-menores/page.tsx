@@ -5,9 +5,9 @@ import { CirugiasMenoresSection } from "@/components/CirugiasMenoresSection";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Cirugías Menores | Maysoon TAN Pearl",
+  title: "Cirugías Menores | Maysoon",
   description:
-    "Blefaroplastia y cirugías menores en Maysoon TAN Pearl Valencia. Intervenciones planificadas, resultados naturales y seguimiento médico personalizado.",
+    "Blefaroplastia y cirugías menores en Maysoon Valencia. Intervenciones planificadas, resultados naturales y seguimiento médico personalizado.",
 };
 
 export default function CirugiasMenoresPage() {
@@ -20,7 +20,7 @@ export default function CirugiasMenoresPage() {
         titleLine2="Grandes Resultados"
         subtitle="Intervenciones precisas y planificadas que resuelven detalles concretos con resultados naturales y cicatrización mínima."
         image="/images/sections/hero-cirugias.webp"
-        imageAlt="Sala de cirugías menores en Maysoon TAN Pearl"
+        imageAlt="Sala de cirugías menores en Maysoon"
       />
       <CirugiasMenoresSection />
       <Footer />

@@ -7,9 +7,9 @@ import { BeforeAfterSection } from "@/components/BeforeAfterSection";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Medicina Estética Corporal · Hombre | Maysoon TAN Pearl",
+  title: "Medicina Estética Corporal · Hombre | Maysoon",
   description:
-    "Tratamientos corporales para hombre en Maysoon TAN Pearl Valencia: pectoral, abdomen, BodyTite, ENDOLÁSER Fox III, engrosamiento de pene y aumento de gemelos. Catálogo masculino completo por zona.",
+    "Tratamientos corporales para hombre en Maysoon Valencia: pectoral, abdomen, BodyTite, ENDOLÁSER Fox III, engrosamiento de pene y aumento de gemelos. Catálogo masculino completo por zona.",
 };
 
 export default function MedicinaCorporalHombrePage() {

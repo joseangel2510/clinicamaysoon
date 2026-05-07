@@ -7,7 +7,7 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Micropigmentación · Microblading | Maysoon TAN Pearl",
+  title: "Micropigmentación · Microblading | Maysoon",
   description:
     "Microblading: maquillaje semipermanente de cejas con trazos finos pelo a pelo. Aspecto totalmente natural, durabilidad 1-3 años. Poco invasivo y prácticamente indoloro.",
 };
@@ -22,7 +22,7 @@ export default function MicropigmentacionPage() {
         titleLine2="Pelo a Pelo"
         subtitle="Procedimiento semipermanente de maquillaje para cejas. Trazos finos que imitan el crecimiento natural del vello — el aspecto más natural posible. Durabilidad de 1 a 3 años."
         image="/images/sections/closeup-cejas.webp"
-        imageAlt="Tratamiento de Microblading — Maysoon TAN Pearl"
+        imageAlt="Tratamiento de Microblading — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">

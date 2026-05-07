@@ -161,7 +161,7 @@ export function ContactoSection() {
             className="relative rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(15,14,13,0.1)] min-h-[480px] lg:min-h-[600px]"
           >
             <iframe
-              title="Maysoon TAN Pearl en Google Maps"
+              title="Maysoon en Google Maps"
               src="https://www.google.com/maps?q=Avenida+Cardenal+Benlloch+11,+46021+Valencia&output=embed"
               width="100%"
               height="100%"

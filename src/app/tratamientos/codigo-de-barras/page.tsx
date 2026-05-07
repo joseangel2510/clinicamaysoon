@@ -7,7 +7,7 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Código de Barras · Arrugas Peribucales | Maysoon TAN Pearl",
+  title: "Código de Barras · Arrugas Peribucales | Maysoon",
   description:
     "Tratamiento personalizado de las arrugas verticales del labio superior. Ácido hialurónico, toxina botulínica y láser CO2/plasma según el grado y tipo de piel.",
 };
@@ -22,7 +22,7 @@ export default function CodigoBarrasPage() {
         titleLine2="de Barras"
         subtitle="Las arrugas verticales del labio superior — más prematuras en fumadoras. Tratamientos personalizados según el grado de arruga, el tipo de piel y la edad de la paciente."
         image="/images/sections/closeup-labios.webp"
-        imageAlt="Tratamiento Código de Barras — Maysoon TAN Pearl"
+        imageAlt="Tratamiento Código de Barras — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">

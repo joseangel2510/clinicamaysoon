@@ -7,7 +7,7 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Armonización Mandibular | Maysoon TAN Pearl",
+  title: "Armonización Mandibular | Maysoon",
   description:
     "Remodelación del tercio inferior facial con ácido hialurónico: forma en V femenina o definición masculina. Tratamiento rápido, indoloro, sin cicatrices.",
 };
@@ -22,7 +22,7 @@ export default function ArmonizacionMandibularPage() {
         titleLine2="Mandibular"
         subtitle="Remodelación del tercio inferior facial con ácido hialurónico. Devuelve volumen, resuelve descolgamientos y da forma en V femenina o definición masculina al óvalo facial."
         image="/images/sections/closeup-mandibula.webp"
-        imageAlt="Armonización Mandibular — Maysoon TAN Pearl"
+        imageAlt="Armonización Mandibular — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">

@@ -8,7 +8,7 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Hiperhidrosis · Sudoración Excesiva | Maysoon TAN Pearl",
+  title: "Hiperhidrosis · Sudoración Excesiva | Maysoon",
   description:
     "Tratamiento de hiperhidrosis con toxina botulínica (500 €) o Morpheus 8. Hasta 6 meses (botox) o 2+ años (Morpheus 8) sin sudoración excesiva. 90% de efectividad.",
 };
@@ -23,7 +23,7 @@ export default function HiperhidrosisPage() {
         titleLine2="Bajo Control"
         subtitle="Dos tratamientos disponibles según el caso: toxina botulínica (efecto hasta 6 meses) o Morpheus 8 (efecto duradero hasta 2+ años). Sin hipersudoración compensatoria."
         image="/images/sections/closeup-brazo.webp"
-        imageAlt="Tratamiento de Hiperhidrosis — Maysoon TAN Pearl"
+        imageAlt="Tratamiento de Hiperhidrosis — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">

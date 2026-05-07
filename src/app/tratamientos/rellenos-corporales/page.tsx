@@ -7,7 +7,7 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Rellenos Corporales · Lanluma X y Powerfill | Maysoon TAN Pearl",
+  title: "Rellenos Corporales · Lanluma X y Powerfill | Maysoon",
   description:
     "Rellenos corporales con ácido hialurónico y ácido poliláctico (Lanluma X®, Powerfill®). Aumento de gemelos, pectorales, glúteos, abdominales y rejuvenecimiento genital.",
 };
@@ -22,7 +22,7 @@ export default function RellenosCorporalesPage() {
         titleLine2="Corporales"
         subtitle="Volumen estructural con los únicos productos heterólogos autorizados para revoluminización corporal. Ácido hialurónico corporal y ácido poliláctico Lanluma X® y Powerfill®."
         image="/images/sections/hero-treatment-rellenos-corporales.webp"
-        imageAlt="Tratamiento de Rellenos Corporales — Maysoon TAN Pearl"
+        imageAlt="Tratamiento de Rellenos Corporales — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">

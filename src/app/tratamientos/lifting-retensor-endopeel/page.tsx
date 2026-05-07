@@ -8,7 +8,7 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Lifting Retensor Cutáneo (Endopeel) | Maysoon TAN Pearl",
+  title: "Lifting Retensor Cutáneo (Endopeel) | Maysoon",
   description:
     "Endopeel: lifting sin cirugía con resultados visibles a los 30 minutos. Mejora flacidez, tono muscular y elevación facial y corporal sin alterar tus rasgos. Desde 350 € pack 3 sesiones.",
 };
@@ -23,7 +23,7 @@ export default function EndopeelPage() {
         titleLine2="Endopeel"
         subtitle="La técnica del siglo XXI más importante en medicina estética y antienvejecimiento. Lifting sin cirugía, sin prótesis y sin estiramientos — manteniendo tus rasgos naturales."
         image="/images/sections/hero-treatment-endopeel.webp"
-        imageAlt="Tratamiento de Lifting Retensor Endopeel — Maysoon TAN Pearl"
+        imageAlt="Tratamiento de Lifting Retensor Endopeel — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">

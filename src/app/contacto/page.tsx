@@ -5,9 +5,9 @@ import { ContactoSection } from "@/components/ContactoSection";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Contacto y Dónde Estamos | Maysoon TAN Pearl",
+  title: "Contacto y Dónde Estamos | Maysoon",
   description:
-    "Maysoon TAN Pearl en Avda. Cardenal Benlloch 11, Valencia. Teléfono, WhatsApp, horario y mapa. Reserva tu cita médico-estética.",
+    "Maysoon en Avda. Cardenal Benlloch 11, Valencia. Teléfono, WhatsApp, horario y mapa. Reserva tu cita médico-estética.",
 };
 
 export default function ContactoPage() {
@@ -20,7 +20,7 @@ export default function ContactoPage() {
         titleLine2="o Visítanos"
         subtitle="Estamos en Avda. Cardenal Benlloch 11, Valencia. Pide consulta por teléfono, WhatsApp o email — te respondemos lo antes posible."
         image="/images/sections/hero-contacto.webp"
-        imageAlt="Recepción de Maysoon TAN Pearl en Valencia"
+        imageAlt="Recepción de Maysoon en Valencia"
       />
       <ContactoSection />
       <Footer />

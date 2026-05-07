@@ -7,7 +7,7 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Láser Erbio YAG | Maysoon TAN Pearl",
+  title: "Láser Erbio YAG | Maysoon",
   description:
     "Láser Erbio YAG con tres modalidades: quirúrgico, Velo de Novia (peeling láser) y fraccionado/resurfacing. Más selectivo que el CO2 con menos daño térmico.",
 };
@@ -22,7 +22,7 @@ export default function LaserErbioPage() {
         titleLine2="YAG"
         subtitle="Láser de alta potencia y elevada longitud de onda. Focaliza su acción en el agua de los tejidos vaporizándolos por capas — más selectivo que el CO2, con menos daño térmico y recuperación más rápida."
         image="/images/sections/closeup-acne.webp"
-        imageAlt="Tratamiento de Láser Erbio YAG — Maysoon TAN Pearl"
+        imageAlt="Tratamiento de Láser Erbio YAG — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">

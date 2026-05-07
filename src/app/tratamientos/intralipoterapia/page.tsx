@@ -7,7 +7,7 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Intralipoterapia | Maysoon TAN Pearl",
+  title: "Intralipoterapia | Maysoon",
   description:
     "Eliminación de grasa localizada sin cirugía con intralipoterapia. Indoloro, ambulatorio, reincorporación inmediata. Desde 75 €/ampolla, packs hasta 5 ampollas.",
 };
@@ -22,7 +22,7 @@ export default function IntralipoterapiaPage() {
         titleLine2="Sin Cirugía"
         subtitle="Eliminación de grasa localizada mediante agujas especiales que acceden directamente al panículo adiposo. Indoloro, ambulatorio y con reincorporación inmediata."
         image="/images/sections/hero-treatment-intralipoterapia.webp"
-        imageAlt="Tratamiento de Intralipoterapia — Maysoon TAN Pearl"
+        imageAlt="Tratamiento de Intralipoterapia — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">

@@ -7,9 +7,9 @@ import { BeforeAfterSection } from "@/components/BeforeAfterSection";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Medicina Estética Corporal · Mujer | Maysoon TAN Pearl",
+  title: "Medicina Estética Corporal · Mujer | Maysoon",
   description:
-    "Tratamientos corporales para mujer en Maysoon TAN Pearl Valencia: Morpheus 8, BodyTite, ENDOLÁSER Fox III, Intralipoterapia AQUALIX y sueroterapia. Catálogo por zona: cuello, brazos, abdomen, glúteos, piernas y más.",
+    "Tratamientos corporales para mujer en Maysoon Valencia: Morpheus 8, BodyTite, ENDOLÁSER Fox III, Intralipoterapia AQUALIX y sueroterapia. Catálogo por zona: cuello, brazos, abdomen, glúteos, piernas y más.",
 };
 
 export default function MedicinaCorporalPage() {
@@ -22,7 +22,7 @@ export default function MedicinaCorporalPage() {
         titleLine2="que Sienten tu Cuerpo"
         subtitle="Cada zona del cuerpo merece su técnica. Morpheus 8, BodyTite, ENDOLÁSER Fox III y bioestimulación combinados según tu objetivo y tu ritmo."
         image="/images/sections/hero-corporal.webp"
-        imageAlt="Sala de tratamiento corporal Maysoon TAN Pearl"
+        imageAlt="Sala de tratamiento corporal Maysoon"
       />
       <MedicinaEsteticaTabs />
       <MedicinaCorporalSection />

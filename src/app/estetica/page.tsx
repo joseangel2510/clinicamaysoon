@@ -5,9 +5,9 @@ import { EsteticaSection } from "@/components/EsteticaSection";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Estética | Maysoon TAN Pearl",
+  title: "Estética | Maysoon",
   description:
-    "Microblading de cejas y servicios estéticos personalizados en Maysoon TAN Pearl Valencia. Diseño, técnica y resultado natural.",
+    "Microblading de cejas y servicios estéticos personalizados en Maysoon Valencia. Diseño, técnica y resultado natural.",
 };
 
 export default function EsteticaPage() {
@@ -20,7 +20,7 @@ export default function EsteticaPage() {
         titleLine2="en los Detalles"
         subtitle="Servicios estéticos refinados, ejecutados con técnica y mirada artística. Tu rostro merece detalles cuidados al milímetro."
         image="/images/sections/hero-estetica.webp"
-        imageAlt="Sesión de microblading en Maysoon TAN Pearl"
+        imageAlt="Sesión de microblading en Maysoon"
       />
       <EsteticaSection />
       <Footer />

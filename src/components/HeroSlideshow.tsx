@@ -5,11 +5,11 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const slides = [
-  { src: "/hero/dsc_0117.webp", alt: "Equipo de Maysoon TAN Pearl en la clínica" },
+  { src: "/hero/dsc_0117.webp", alt: "Equipo de Maysoon en la clínica" },
   { src: "/hero/dsc_9921.webp", alt: "Logo Maysoon en la recepción de la clínica" },
-  { src: "/hero/dsc_0429.webp", alt: "Sala de tratamiento Maysoon TAN Pearl" },
+  { src: "/hero/dsc_0429.webp", alt: "Sala de tratamiento Maysoon" },
   { src: "/hero/dsc_0428.webp", alt: "Tecnología láser de última generación" },
-  { src: "/hero/dsc_0444.webp", alt: "Instalaciones de Maysoon TAN Pearl" },
+  { src: "/hero/dsc_0444.webp", alt: "Instalaciones de Maysoon" },
 ];
 
 const SLIDE_DURATION_MS = 5000;

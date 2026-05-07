@@ -7,9 +7,9 @@ import { BeforeAfterSection } from "@/components/BeforeAfterSection";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Medicina Estética Facial · Hombre | Maysoon TAN Pearl",
+  title: "Medicina Estética Facial · Hombre | Maysoon",
   description:
-    "Tratamientos faciales para hombre en Maysoon TAN Pearl Valencia: MASCULOOK (definición masculina del ángulo mandibular), Lumixa, Carbonpeel, trasplante FUE, tricopigmentación y todo el catálogo facial masculino con tarifas reales.",
+    "Tratamientos faciales para hombre en Maysoon Valencia: MASCULOOK (definición masculina del ángulo mandibular), Lumixa, Carbonpeel, trasplante FUE, tricopigmentación y todo el catálogo facial masculino con tarifas reales.",
 };
 
 export default function MedicinaEsteticaHombrePage() {
@@ -22,7 +22,7 @@ export default function MedicinaEsteticaHombrePage() {
         titleLine2="con Carácter"
         subtitle="Tratamientos faciales pensados para el rostro masculino: definición mandibular, soluciones capilares y rejuvenecimiento sin perder tu carácter. MASCULOOK, Lumixa y Carbonpeel exclusivos en este catálogo."
         image="/images/sections/hero-hombre-facial.webp"
-        imageAlt="Tratamiento facial masculino Maysoon TAN Pearl"
+        imageAlt="Tratamiento facial masculino Maysoon"
       />
       <MedicinaEsteticaTabs />
       <MedicinaEsteticaHombreSection />

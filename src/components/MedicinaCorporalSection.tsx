@@ -44,7 +44,7 @@ export function MedicinaCorporalSection() {
             "Morpheus 8",
           ]}
           image="/images/sections/closeup-cuello.webp"
-          imageAlt="Cuello y mandíbula — Maysoon TAN Pearl"
+          imageAlt="Cuello y mandíbula — Maysoon"
           imageSide="right"
         />
 
@@ -65,7 +65,7 @@ export function MedicinaCorporalSection() {
             "Sueroterapia — recuperación de vitalidad",
           ]}
           image="/images/sections/closeup-brazo.webp"
-          imageAlt="Brazo y hombro — Maysoon TAN Pearl"
+          imageAlt="Brazo y hombro — Maysoon"
           imageSide="left"
         />
 
@@ -83,7 +83,7 @@ export function MedicinaCorporalSection() {
             "Arañas vasculares con ENDOLÁSER",
           ]}
           image="/images/sections/closeup-escote.webp"
-          imageAlt="Escote y clavícula — Maysoon TAN Pearl"
+          imageAlt="Escote y clavícula — Maysoon"
           imageSide="right"
         />
 
@@ -105,7 +105,7 @@ export function MedicinaCorporalSection() {
             "BodyTite",
           ]}
           image="/images/sections/closeup-abdomen.webp"
-          imageAlt="Abdomen — Maysoon TAN Pearl"
+          imageAlt="Abdomen — Maysoon"
           imageSide="left"
         />
 
@@ -123,7 +123,7 @@ export function MedicinaCorporalSection() {
             "BodyTite",
           ]}
           image="/images/sections/closeup-flancos.webp"
-          imageAlt="Cintura y flancos — Maysoon TAN Pearl"
+          imageAlt="Cintura y flancos — Maysoon"
           imageSide="right"
         />
 
@@ -143,7 +143,7 @@ export function MedicinaCorporalSection() {
             "BodyTite",
           ]}
           image="/images/sections/closeup-gluteos.webp"
-          imageAlt="Espalda baja y glúteos — Maysoon TAN Pearl"
+          imageAlt="Espalda baja y glúteos — Maysoon"
           imageSide="left"
         />
 
@@ -159,7 +159,7 @@ export function MedicinaCorporalSection() {
             "Rejuvenecimiento de manos con rellenos corporales",
           ]}
           image="/images/sections/closeup-manos.webp"
-          imageAlt="Manos elegantes — Maysoon TAN Pearl"
+          imageAlt="Manos elegantes — Maysoon"
           imageSide="right"
         />
 
@@ -175,7 +175,7 @@ export function MedicinaCorporalSection() {
             "Eliminación de verrugas con PLASMAGE",
           ]}
           image="/images/sections/closeup-intima.webp"
-          imageAlt="Detalle estético — Maysoon TAN Pearl"
+          imageAlt="Detalle estético — Maysoon"
           imageSide="left"
         />
 
@@ -192,7 +192,7 @@ export function MedicinaCorporalSection() {
             "Arañas vasculares con láser vascular",
           ]}
           image="/images/sections/closeup-piernas.webp"
-          imageAlt="Piernas — Maysoon TAN Pearl"
+          imageAlt="Piernas — Maysoon"
           imageSide="right"
         />
 

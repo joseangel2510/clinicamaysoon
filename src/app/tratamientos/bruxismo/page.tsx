@@ -7,7 +7,7 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Bruxismo · Tratamiento con Toxina Botulínica | Maysoon TAN Pearl",
+  title: "Bruxismo · Tratamiento con Toxina Botulínica | Maysoon",
   description:
     "Tratamiento del bruxismo con toxina botulínica en maseteros. Reduce cefaleas, protege ATM y dientes. También afina la cara y da forma en V a la mandíbula femenina.",
 };
@@ -22,7 +22,7 @@ export default function BruxismoPage() {
         titleLine2="Sin Tensión"
         subtitle="Toxina botulínica en maseteros: relajación efectiva que elimina la causa, no solo las consecuencias. Reduce cefaleas, protege la ATM y las piezas dentales."
         image="/images/sections/closeup-mandibula.webp"
-        imageAlt="Tratamiento del Bruxismo — Maysoon TAN Pearl"
+        imageAlt="Tratamiento del Bruxismo — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">

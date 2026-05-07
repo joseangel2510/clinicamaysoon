@@ -43,7 +43,7 @@ export function MedicinaCorporalHombreSection() {
             "BodyTite",
           ]}
           image="/images/sections/closeup-hombre-cuello.webp"
-          imageAlt="Cuello masculino — Maysoon TAN Pearl"
+          imageAlt="Cuello masculino — Maysoon"
           imageSide="right"
         />
 
@@ -62,7 +62,7 @@ export function MedicinaCorporalHombreSection() {
             "Sueroterapia — recuperación de vitalidad",
           ]}
           image="/images/sections/closeup-hombre-brazo.webp"
-          imageAlt="Brazo masculino — Maysoon TAN Pearl"
+          imageAlt="Brazo masculino — Maysoon"
           imageSide="left"
         />
 
@@ -78,7 +78,7 @@ export function MedicinaCorporalHombreSection() {
             "Rellenos Corporales",
           ]}
           image="/images/sections/closeup-hombre-pectoral.webp"
-          imageAlt="Zona pectoral masculina — Maysoon TAN Pearl"
+          imageAlt="Zona pectoral masculina — Maysoon"
           imageSide="right"
         />
 
@@ -98,7 +98,7 @@ export function MedicinaCorporalHombreSection() {
             "BodyTite",
           ]}
           image="/images/sections/closeup-hombre-abdomen.webp"
-          imageAlt="Abdomen masculino — Maysoon TAN Pearl"
+          imageAlt="Abdomen masculino — Maysoon"
           imageSide="left"
         />
 
@@ -115,7 +115,7 @@ export function MedicinaCorporalHombreSection() {
             "Verrugas genitales · eliminación con PLASMAGE",
           ]}
           image="/images/sections/closeup-hombre-intima.webp"
-          imageAlt="Detalle estético masculino — Maysoon TAN Pearl"
+          imageAlt="Detalle estético masculino — Maysoon"
           imageSide="right"
         />
 
@@ -134,7 +134,7 @@ export function MedicinaCorporalHombreSection() {
             "BodyTite",
           ]}
           image="/images/sections/closeup-hombre-gluteos.webp"
-          imageAlt="Espalda y glúteos masculinos — Maysoon TAN Pearl"
+          imageAlt="Espalda y glúteos masculinos — Maysoon"
           imageSide="left"
         />
 
@@ -151,7 +151,7 @@ export function MedicinaCorporalHombreSection() {
             "Aumento de gemelos · Exclusivo Hombre",
           ]}
           image="/images/sections/closeup-hombre-piernas.webp"
-          imageAlt="Piernas masculinas — Maysoon TAN Pearl"
+          imageAlt="Piernas masculinas — Maysoon"
           imageSide="right"
         />
 

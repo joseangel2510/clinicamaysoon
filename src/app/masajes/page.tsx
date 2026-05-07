@@ -5,9 +5,9 @@ import { MasajesSection } from "@/components/MasajesSection";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Masajes | Maysoon TAN Pearl",
+  title: "Masajes | Maysoon",
   description:
-    "Masajes estéticos anticelulíticos, relajantes y terapéuticos en Maysoon TAN Pearl Valencia. Sesiones impartidas por masajista titulado.",
+    "Masajes estéticos anticelulíticos, relajantes y terapéuticos en Maysoon Valencia. Sesiones impartidas por masajista titulado.",
 };
 
 export default function MasajesPage() {
@@ -20,7 +20,7 @@ export default function MasajesPage() {
         titleLine2="que se Siente"
         subtitle="Sesiones diseñadas según tu necesidad: estética, relajación profunda o terapia muscular. En manos de un equipo titulado."
         image="/images/sections/hero-masajes.webp"
-        imageAlt="Sala de masaje en Maysoon TAN Pearl"
+        imageAlt="Sala de masaje en Maysoon"
       />
       <MasajesSection />
       <Footer />

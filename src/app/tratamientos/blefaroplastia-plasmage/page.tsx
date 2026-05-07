@@ -8,7 +8,7 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Blefaroplastia PLASMAGE | Maysoon TAN Pearl",
+  title: "Blefaroplastia PLASMAGE | Maysoon",
   description:
     "PLASMAGE: tecnología de plasma (4º estado de la materia) para blefaroplastia no quirúrgica, código de barras, plasmalift y mucho más. Desde 700 € por párpado.",
 };
@@ -23,7 +23,7 @@ export default function PlasmagePage() {
         titleLine2="PLASMAGE"
         subtitle="El cuarto estado de la materia aplicado a la medicina estética. Blefaroplastia sin cirugía, código de barras, plasmalift y tratamiento de lesiones cutáneas con un solo dispositivo."
         image="/images/sections/hero-treatment-plasmage.webp"
-        imageAlt="Tratamiento PLASMAGE — Maysoon TAN Pearl"
+        imageAlt="Tratamiento PLASMAGE — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">

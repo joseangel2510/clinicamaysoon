@@ -9,7 +9,7 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Sueroterapia · 7 Fórmulas | Maysoon TAN Pearl",
+  title: "Sueroterapia · 7 Fórmulas | Maysoon",
   description:
     "Sueroterapia intravenosa con 7 fórmulas: Antiaging, Sport, Inmuno, Energy, Detox, Mayers y Fitness. Sesiones de 30-50 min. Desde 130 € gotero o 450 € pack 4.",
 };
@@ -24,7 +24,7 @@ export default function SueroterapiaPage() {
         titleLine2="7 Fórmulas"
         subtitle="Administración intravenosa de soluciones ricas en vitaminas, minerales y nutrientes esenciales. Absorción óptima y resultados rápidos — muy superior a la vía digestiva."
         image="/images/sections/closeup-brazo.webp"
-        imageAlt="Tratamiento de Sueroterapia — Maysoon TAN Pearl"
+        imageAlt="Tratamiento de Sueroterapia — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">

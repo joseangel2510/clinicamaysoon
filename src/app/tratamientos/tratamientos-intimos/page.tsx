@@ -9,7 +9,7 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Engrosamiento de Pene y Aumento de Labios Mayores | Maysoon TAN Pearl",
+  title: "Engrosamiento de Pene y Aumento de Labios Mayores | Maysoon",
   description:
     "Tratamientos íntimos con ácido hialurónico corporal: engrosamiento de pene (hasta 4 cm circunferencia), aumento de glande y aumento de labios mayores. Discreción total.",
 };
@@ -24,7 +24,7 @@ export default function TratamientosIntimosPage() {
         titleLine2="con Discreción"
         subtitle="Tratamientos íntimos con ácido hialurónico corporal de máxima calidad. Engrosamiento de pene, aumento de glande y aumento de labios mayores con técnica reversible y resultado natural."
         image="/images/sections/closeup-hombre-intima.webp"
-        imageAlt="Tratamientos íntimos — Maysoon TAN Pearl"
+        imageAlt="Tratamientos íntimos — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">

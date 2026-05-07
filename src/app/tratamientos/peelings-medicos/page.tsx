@@ -9,7 +9,7 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Peelings Médicos · 4 Profundidades | Maysoon TAN Pearl",
+  title: "Peelings Médicos · 4 Profundidades | Maysoon",
   description:
     "Peelings médicos en cuatro profundidades: superficial (75 €), medio (220 €), profundo (350 €) y específico para melasma New Melan (480 €). Disponibles todo el año.",
 };
@@ -24,7 +24,7 @@ export default function PeelingsMedicosPage() {
         titleLine2="Médicos"
         subtitle="Diferentes a los peelings de salón de belleza por la potencia de los ácidos empleados. Cuatro niveles de profundidad para tratar manchas, flacidez, acné, cicatrices y arrugas profundas."
         image="/images/sections/closeup-rostro.webp"
-        imageAlt="Peelings Médicos — Maysoon TAN Pearl"
+        imageAlt="Peelings Médicos — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">

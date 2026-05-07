@@ -9,7 +9,7 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Tratamiento de Celulitis · Alidya | Maysoon TAN Pearl",
+  title: "Tratamiento de Celulitis · Alidya | Maysoon",
   description:
     "Abordaje multidisciplinar de la celulitis: maderoterapia, mesoterapia drenante y Alidya® específico. 75 € por ampolla, máximo 2 por sesión.",
 };
@@ -24,7 +24,7 @@ export default function CelulitisPage() {
         titleLine2="de Celulitis"
         subtitle="Abordaje multidisciplinar: combinamos maderoterapia, mesoterapia reductora y Alidya® — el tratamiento específico para celulitis en personas sin sobrepeso."
         image="/images/sections/closeup-flancos.webp"
-        imageAlt="Tratamiento de Celulitis — Maysoon TAN Pearl"
+        imageAlt="Tratamiento de Celulitis — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">

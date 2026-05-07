@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  /* Maysoon TAN Pearl — paleta de marca: terracota + perla + piedra + negro.
+  /* Maysoon — paleta de marca: terracota + perla + piedra + negro.
      Nota: el token "accent-gold" mantiene su nombre por compatibilidad
      con todos los componentes; su valor ahora es terracota cálida. */
   --color-bg-primary: #F4EFE7;

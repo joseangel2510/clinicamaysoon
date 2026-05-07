@@ -7,7 +7,7 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Plasma Rico en Plaquetas (PRP) | Maysoon TAN Pearl",
+  title: "Plasma Rico en Plaquetas (PRP) | Maysoon",
   description:
     "PRP capilar y facial: el único tratamiento capaz de aumentar el número de fibroblastos. Pack de 3 sesiones desde 285 €, packs con LED desde 540 €.",
 };
@@ -22,7 +22,7 @@ export default function PRPPage() {
         titleLine2="en Plaquetas"
         subtitle="El único tratamiento capaz de aumentar el número de fibroblastos, no solo estimular los existentes. Alta concentración de factores de crecimiento, colágeno nuevo y neovascularización."
         image="/images/sections/hero-treatment-prp.webp"
-        imageAlt="Tratamiento de PRP — Maysoon TAN Pearl"
+        imageAlt="Tratamiento de PRP — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">

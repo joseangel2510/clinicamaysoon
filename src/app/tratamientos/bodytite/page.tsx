@@ -8,7 +8,7 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "BodyTite · Remodelación Corporal con Radiofrecuencia | Maysoon TAN Pearl",
+  title: "BodyTite · Remodelación Corporal con Radiofrecuencia | Maysoon",
   description:
     "BodyTite: alternativa mínimamente invasiva a la liposucción. Aprobado por la FDA. Radiofrecuencia profunda + tensado simultáneo de la piel. Variantes FaceTite y AccuTite.",
 };
@@ -23,7 +23,7 @@ export default function BodyTitePage() {
         titleLine2="Sin Liposucción"
         subtitle="Procedimiento mínimamente invasivo de remodelación corporal con radiofrecuencia. Aprobado por la FDA. Disuelve la grasa subcutánea mientras tensa la piel desde dentro — la alternativa moderna a la liposucción tradicional."
         image="/images/sections/closeup-abdomen.webp"
-        imageAlt="Tratamiento BodyTite — Maysoon TAN Pearl"
+        imageAlt="Tratamiento BodyTite — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">

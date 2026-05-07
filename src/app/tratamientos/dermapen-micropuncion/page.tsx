@@ -9,7 +9,7 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "DermaPen · Micropunción | Maysoon TAN Pearl",
+  title: "DermaPen · Micropunción | Maysoon",
   description:
     "DermaPen: 65.000 microcanales por minuto en tu piel. Doble función absorción + estimulación de colágeno. Desde 83 €/sesión facial con bono.",
 };
@@ -24,7 +24,7 @@ export default function DermapenPage() {
         titleLine2="Micropunción"
         subtitle="Dispositivo médico que abre hasta 65.000 microcanales por minuto en la epidermis. Doble función: permite la absorción de principios activos en capas profundas y estimula directamente la producción de colágeno y elastina."
         image="/images/sections/hero-treatment-mesoterapia.webp"
-        imageAlt="Tratamiento DermaPen — Maysoon TAN Pearl"
+        imageAlt="Tratamiento DermaPen — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">

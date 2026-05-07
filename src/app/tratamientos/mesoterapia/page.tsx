@@ -7,7 +7,7 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Mesoterapia Facial, Corporal y Capilar | Maysoon TAN Pearl",
+  title: "Mesoterapia Facial, Corporal y Capilar | Maysoon",
   description:
     "Mesoterapia personalizada: facial desde 50 €, capilar desde 80 €, corporal desde 48 €. Hidratación, flacidez, retención de líquidos, frenar caída capilar y más.",
 };
@@ -22,7 +22,7 @@ export default function MesoterapiaPage() {
         titleLine2="Facial · Corporal · Capilar"
         subtitle="Introducción intradérmica de cocktails personalizados de activos. Una técnica versátil que se adapta al diagnóstico de cada paciente."
         image="/images/sections/hero-treatment-mesoterapia.webp"
-        imageAlt="Tratamiento de Mesoterapia — Maysoon TAN Pearl"
+        imageAlt="Tratamiento de Mesoterapia — Maysoon"
       />
 
       <section className="bg-bg-primary py-14 lg:py-20">
