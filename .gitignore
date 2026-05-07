@@ -23,6 +23,9 @@ temporary screenshots/
 # Photo originals (large source files — optimized versions go to public/)
 media/DSC_*.jpg
 media/DSC_*.JPG
+media/staff/
+media/Captura*.jpg
+media/foto*.jpg
 
 # OS
 .DS_Store

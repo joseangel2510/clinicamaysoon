@@ -14,25 +14,39 @@ import { CredentialsBadge } from "./CredentialsBadge";
 
 const teamMembers = [
   {
-    image: "/images/team/doctora-colaboradora.webp",
-    name: "Dra. Colaboradora",
-    role: "Cirugía Estética",
+    image: "/images/team/dr-jose-david.webp",
+    name: "Dr. José David",
+    role: "Médico Estético",
     description:
-      "Especialista con experiencia internacional y colaboración con ISAPS.",
+      "Criterio clínico y técnica al servicio del resultado natural. Diseña cada protocolo respetando tus rasgos y tus tiempos.",
   },
   {
-    image: "/images/team/doctor-principal.webp",
-    name: "Daniel Almela",
-    role: "Gestión y Atención al Paciente",
+    image: "/images/team/sandra-auxiliar.webp",
+    name: "Sandra",
+    role: "Auxiliar Médica",
     description:
-      "Responsable de que cada detalle de tu experiencia sea perfecto.",
+      "El apoyo del gabinete. Acompaña cada tratamiento con precisión, asegurando higiene, seguridad y la calma que necesitas en cada sesión.",
   },
   {
-    image: "/images/team/clinica-equipo.webp",
-    name: "Equipo Terapéutico",
-    role: "Profesionales Titulados",
+    image: "/images/team/ricardo-masajista.webp",
+    name: "Ricardo",
+    role: "Masajista Profesional",
     description:
-      "Fisioterapeutas, esteticistas y personal cualificado en cada área.",
+      "Manos expertas. Especialista en técnicas terapéuticas y de bienestar para liberar tensión y devolver el equilibrio al cuerpo.",
+  },
+  {
+    image: "/images/team/laura-fernandez.webp",
+    name: "Laura Fernández",
+    role: "Comercial y Ventas",
+    description:
+      "Tu primera guía. Te acompaña desde el primer contacto, resolviendo dudas y diseñando el plan que mejor encaja con tus objetivos.",
+  },
+  {
+    image: "/images/team/lisa-recepcion.webp",
+    name: "Lisa",
+    role: "Recepción y Atención",
+    description:
+      "El rostro que te recibe. Coordina agendas y se asegura de que cada visita transcurra con calma, puntualidad y cercanía.",
   },
 ];
 
