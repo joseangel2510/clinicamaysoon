@@ -8,6 +8,7 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import { fadeInDown } from "@/lib/animations";
 
 const services = [
+  { label: "Catálogo de Tratamientos", href: "/tratamientos", featured: true },
   { label: "Medicina Estética · Mujer · Facial", href: "/medicina-estetica" },
   { label: "Medicina Estética · Mujer · Cuerpo", href: "/medicina-estetica/corporal" },
   { label: "Medicina Estética · Hombre · Facial", href: "/medicina-estetica/hombre" },
@@ -128,16 +129,30 @@ export function Navbar() {
                           className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-72 rounded-xl bg-bg-primary/95 backdrop-blur-xl shadow-[0_20px_60px_rgba(15,14,13,0.12)] border border-text-secondary/10 overflow-hidden"
                         >
                           <div className="py-3">
-                            {link.dropdown.map((s) => (
-                              <Link
-                                key={s.href}
-                                href={s.href}
-                                onClick={() => setDropdownOpen(false)}
-                                className="block px-5 py-2.5 font-body text-sm text-text-primary transition-colors duration-200 hover:bg-accent-gold/10 hover:text-accent-gold"
-                              >
-                                {s.label}
-                              </Link>
-                            ))}
+                            {link.dropdown.map((s, idx) => {
+                              const isFeatured = (s as { featured?: boolean }).featured;
+                              const isFirstAfterFeatured =
+                                idx === 1 &&
+                                (link.dropdown[0] as { featured?: boolean }).featured;
+                              return (
+                                <div key={s.href}>
+                                  {isFirstAfterFeatured && (
+                                    <div className="mx-5 my-1.5 border-t border-text-secondary/15" />
+                                  )}
+                                  <Link
+                                    href={s.href}
+                                    onClick={() => setDropdownOpen(false)}
+                                    className={`block px-5 py-2.5 font-body text-sm transition-colors duration-200 hover:bg-accent-gold/10 hover:text-accent-gold ${
+                                      isFeatured
+                                        ? "text-accent-gold font-semibold uppercase tracking-[0.1em] text-xs"
+                                        : "text-text-primary"
+                                    }`}
+                                  >
+                                    {s.label}
+                                  </Link>
+                                </div>
+                              );
+                            })}
                           </div>
                         </motion.div>
                       )}

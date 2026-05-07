@@ -233,6 +233,7 @@ export function Footer() {
           <motion.div variants={fadeInUp}>
             <FooterColumn title="Tratamientos" collapsible>
               <nav aria-label="Tratamientos">
+                <FooterLink href="/tratamientos">Catálogo de Tratamientos</FooterLink>
                 <FooterLink href="/medicina-estetica">Med. Estética · Mujer · Facial</FooterLink>
                 <FooterLink href="/medicina-estetica/corporal">Med. Estética · Mujer · Cuerpo</FooterLink>
                 <FooterLink href="/medicina-estetica/hombre">Med. Estética · Hombre · Facial</FooterLink>
