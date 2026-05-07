@@ -35,6 +35,15 @@ const tratamientos = [
     priceFrom: "700 €",
   },
   {
+    image: "/images/sections/closeup-rostro.webp",
+    category: "100% Autólogo",
+    title: "Plasma-Gel Relleno",
+    description:
+      "Relleno facial obtenido de tu propia sangre. Sin alergias, 25 % de fijación definitiva.",
+    href: "/tratamientos/plasma-gel-relleno",
+    priceFrom: "50 €/ml",
+  },
+  {
     image: "/images/sections/hero-treatment-mesoterapia.webp",
     category: "Inyectable Personalizado",
     title: "Mesoterapia Facial · Corporal · Capilar",
@@ -51,6 +60,15 @@ const tratamientos = [
       "Único tratamiento capaz de aumentar el número de fibroblastos. Capilar, facial y de escote.",
     href: "/tratamientos/prp",
     priceFrom: "100 €",
+  },
+  {
+    image: "/images/sections/hero-treatment-mesoterapia.webp",
+    category: "Micropunción",
+    title: "DermaPen · Micropunción",
+    description:
+      "65.000 microcanales por minuto. Absorción de activos + estímulo de colágeno y elastina.",
+    href: "/tratamientos/dermapen-micropuncion",
+    priceFrom: "83 €",
   },
   {
     image: "/images/sections/hero-treatment-ipl.webp",
@@ -70,6 +88,63 @@ const tratamientos = [
     href: "/tratamientos/laser-vascular",
   },
   {
+    image: "/images/sections/closeup-acne.webp",
+    category: "Tecnología Láser",
+    title: "Láser Erbio YAG",
+    description:
+      "Tres modalidades: quirúrgico, Velo de Novia (peeling láser) y fraccionado/resurfacing.",
+    href: "/tratamientos/laser-erbio-yag",
+  },
+  {
+    image: "/images/sections/closeup-rostro.webp",
+    category: "Renovación Cutánea",
+    title: "Peelings Médicos",
+    description:
+      "Cuatro profundidades: superficial, medio, profundo y New Melan específico para melasma.",
+    href: "/tratamientos/peelings-medicos",
+    priceFrom: "75 €",
+  },
+  {
+    image: "/images/sections/closeup-mandibula.webp",
+    category: "Tercio Inferior",
+    title: "Armonización Mandibular",
+    description:
+      "Forma en V femenina o definición masculina con ácido hialurónico. Rápido e indoloro.",
+    href: "/tratamientos/armonizacion-mandibular",
+  },
+  {
+    image: "/images/sections/closeup-hombre-mandibula.webp",
+    category: "Exclusivo Hombre",
+    title: "MASCULOOK",
+    description:
+      "Armonización mandibular masculina. Mandíbula marcada, ángulo definido y mentón prominente.",
+    href: "/tratamientos/masculook",
+  },
+  {
+    image: "/images/sections/closeup-cejas.webp",
+    category: "Cejas Semipermanentes",
+    title: "Microblading · Micropigmentación",
+    description:
+      "Maquillaje semipermanente pelo a pelo con aspecto totalmente natural. Durabilidad 1-3 años.",
+    href: "/tratamientos/micropigmentacion-microblading",
+  },
+  {
+    image: "/images/sections/closeup-labios.webp",
+    category: "Arrugas Peribucales",
+    title: "Código de Barras",
+    description:
+      "Tratamiento personalizado: ácido hialurónico, toxina botulínica y láser CO2/plasma según el grado.",
+    href: "/tratamientos/codigo-de-barras",
+  },
+  {
+    image: "/images/sections/closeup-abdomen.webp",
+    category: "Remodelación Corporal",
+    title: "BodyTite",
+    description:
+      "Alternativa mínimamente invasiva a la liposucción. Aprobado por la FDA. FaceTite y AccuTite incluidos.",
+    href: "/tratamientos/bodytite",
+  },
+  {
     image: "/images/sections/hero-treatment-intralipoterapia.webp",
     category: "Cuerpo · Sin cirugía",
     title: "Intralipoterapia",
@@ -87,11 +162,37 @@ const tratamientos = [
     href: "/tratamientos/rellenos-corporales",
   },
   {
+    image: "/images/sections/closeup-flancos.webp",
+    category: "Cuerpo",
+    title: "Tratamiento de Celulitis",
+    description:
+      "Maderoterapia + mesoterapia drenante + Alidya® específico. Ataca las causas, no solo el síntoma.",
+    href: "/tratamientos/tratamiento-celulitis",
+    priceFrom: "75 €",
+  },
+  {
+    image: "/images/sections/closeup-piernas.webp",
+    category: "Médico Ambulatorio",
+    title: "Esclerosis de Varices",
+    description:
+      "Esclerosante inyectable para varículas y varices. Sin cirugía si se aborda a tiempo.",
+    href: "/tratamientos/esclerosis-varices",
+    priceFrom: "80 €",
+  },
+  {
+    image: "/images/sections/closeup-brazo.webp",
+    category: "Cuerpo · Brazos",
+    title: "Eliminación de Tatuajes con Láser",
+    description:
+      "Borrado progresivo y controlado. Sin cicatrices, sin marcas, respetando la piel.",
+    href: "/tratamientos/eliminacion-tatuajes",
+  },
+  {
     image: "/images/sections/closeup-brazo.webp",
     category: "Sudoración Excesiva",
     title: "Hiperhidrosis",
     description:
-      "Toxina botulínica o Morpheus 8 para axilas, manos, pies y otras zonas. 90% de efectividad.",
+      "Toxina botulínica o Morpheus 8 para axilas, manos, pies y otras zonas. 90 % de efectividad.",
     href: "/tratamientos/hiperhidrosis",
     priceFrom: "500 €",
   },
@@ -102,6 +203,24 @@ const tratamientos = [
     description:
       "Relaja la causa del rechinar nocturno y protege ATM y dientes. También afina la mandíbula.",
     href: "/tratamientos/bruxismo",
+  },
+  {
+    image: "/images/sections/closeup-brazo.webp",
+    category: "Bienestar Integral",
+    title: "Sueroterapia · 7 Fórmulas",
+    description:
+      "Antiaging, Sport, Inmuno, Energy, Detox, Mayers, Fitness. Vía intravenosa, máxima absorción.",
+    href: "/tratamientos/sueroterapia",
+    priceFrom: "130 €",
+  },
+  {
+    image: "/images/sections/closeup-hombre-intima.webp",
+    category: "Zona Íntima",
+    title: "Engrosamiento de Pene · Aumento Labios Mayores",
+    description:
+      "Tratamientos íntimos con ácido hialurónico corporal. Discreción y técnica reversible.",
+    href: "/tratamientos/tratamientos-intimos",
+    priceFrom: "600 €",
   },
 ];
 
