@@ -1,72 +1,528 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Sparkles, Heart, Activity } from "lucide-react";
-import { staggerFast, fadeInUp } from "@/lib/animations";
+import {
+  Sparkles,
+  Heart,
+  Activity,
+  Footprints,
+  Brain,
+  Star,
+  Droplet,
+  Bandage,
+  Hand,
+  Wind,
+  Dumbbell,
+  Flame,
+  LucideIcon,
+} from "lucide-react";
+import { fadeInUp, staggerContainer, staggerFast } from "@/lib/animations";
+import { ZonaNav } from "./ZonaNav";
+import { BulletListBlock } from "./BulletListBlock";
+import { HighlightCallout } from "./HighlightCallout";
+import { ConsultaBlock } from "./ConsultaBlock";
 
-const masajes = [
+const categorias = [
+  { id: "esteticos", label: "Estéticos" },
+  { id: "relajantes", label: "Relajantes" },
+  { id: "terapeuticos", label: "Terapéuticos" },
+];
+
+type MasajeData = {
+  name: string;
+  duration: string;
+  price?: string;
+  description: string;
+  icon: LucideIcon;
+  highlight?: boolean;
+};
+
+const esteticos: MasajeData[] = [
   {
+    name: "Reafirmante",
+    duration: "30 min · 50 min",
+    price: "25 € / 40 €",
+    description:
+      "Activa la elastina con cremas reafirmantes, rehidrata y mejora la calidad de la piel. Ideal combinado con mesoterapia.",
     icon: Sparkles,
-    title: "Masaje Estético · Anticelulítico",
-    description:
-      "Masaje profundo que actúa sobre los nódulos grasos, mejora el drenaje linfático y reactiva la circulación. Especialmente efectivo combinado con productos lipolíticos y protocolos corporales.",
   },
   {
-    icon: Heart,
-    title: "Masaje Relajante",
+    name: "Anticelulítico",
+    duration: "30 min · 50 min",
+    price: "25 € / 40 €",
     description:
-      "Sesión de bienestar pensada para liberar tensiones y desconectar. Maniobras suaves y constantes con aceites cálidos en un ambiente íntimo y silencioso.",
-  },
-  {
+      "Masaje vigoroso que rompe y desencapsula nódulos adiposos. Combinado con mesoterapia o Alidya® para resultados óptimos.",
     icon: Activity,
-    title: "Masaje Terapéutico",
+  },
+  {
+    name: "KOBIDO",
+    duration: "30 min · 45 min",
+    price: "30 € / 45 €",
     description:
-      "Trabajo manual focalizado sobre contracturas, sobrecargas musculares y zonas con dolor. Combina técnicas descontracturantes y de movilización articular.",
+      "Ancestral ritual japonés conocido como 'lifting facial natural'. Manipulación profunda con aceite Tsubaki.",
+    icon: Star,
+    highlight: true,
+  },
+];
+
+const relajantes: MasajeData[] = [
+  {
+    name: "Templado",
+    duration: "Piedras calientes",
+    description: "Sesión con piedras volcánicas calientes que desbloquean tensiones profundas con calor envolvente.",
+    icon: Flame,
+  },
+  {
+    name: "Relajante",
+    duration: "Clásico",
+    description: "Maniobras suaves y constantes, aceites cálidos y ambiente íntimo. El masaje de cabecera para desconectar.",
+    icon: Heart,
+  },
+  {
+    name: "Pies",
+    duration: "Reflexología relax",
+    description: "Masaje específico de pies y tobillos. Alivia carga, mejora circulación y produce sensación de ligereza global.",
+    icon: Footprints,
+  },
+  {
+    name: "Cráneo-facial",
+    duration: "Cara y cabeza",
+    description: "Trabajo suave en cuero cabelludo, sienes y rostro. Ideal para insomnio, fatiga ocular y estrés acumulado.",
+    icon: Brain,
+  },
+  {
+    name: "Californiano",
+    duration: "Anti-estrés",
+    description: "Maniobras largas y envolventes características del anti-estrés californiano. Reconecta cuerpo y mente.",
+    icon: Sparkles,
+  },
+  {
+    name: "Aromático",
+    duration: "Aceites esenciales",
+    description: "Aceites esenciales seleccionados según tu necesidad. La aromaterapia potencia el efecto del masaje.",
+    icon: Droplet,
+  },
+];
+
+const terapeuticos: MasajeData[] = [
+  {
+    name: "Vendajes Neurotape",
+    duration: "Kinesiotaping",
+    description: "Vendaje neuromuscular elástico que estabiliza la articulación sin limitar movimiento. Útil en lesiones deportivas.",
+    icon: Bandage,
+  },
+  {
+    name: "Reflexología Podal",
+    duration: "Terapia refleja",
+    description: "Estimulación de zonas reflejas del pie que se corresponden con órganos y sistemas del cuerpo.",
+    icon: Footprints,
+  },
+  {
+    name: "Drenaje Linfático Manual",
+    duration: "Sistema linfático",
+    description: "Estimulación suave del sistema linfático. Reduce edemas, mejora retorno venoso y depura el organismo.",
+    icon: Droplet,
+  },
+  {
+    name: "Descontracturante",
+    duration: "Contracturas",
+    description: "Trabajo profundo y focalizado sobre contracturas musculares de cuello, espalda, hombros y zona lumbar.",
+    icon: Hand,
+  },
+  {
+    name: "Deportivo",
+    duration: "Deportistas",
+    description: "Para deportistas en pre o post entreno. Mejora rendimiento, previene lesiones y acelera la recuperación.",
+    icon: Dumbbell,
+  },
+  {
+    name: "Circulatorio",
+    duration: "Retorno venoso",
+    description: "Estimulación del retorno venoso para piernas pesadas, mala circulación o sensación de hinchazón frecuente.",
+    icon: Wind,
   },
 ];
 
 export function MasajesSection() {
   return (
-    <section className="bg-bg-primary py-20 lg:py-28">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <motion.div
-          variants={staggerFast}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
-        >
-          {masajes.map(({ icon: Icon, title, description }) => (
-            <motion.div
-              key={title}
-              variants={fadeInUp}
-              className="group rounded-2xl bg-white p-8 lg:p-10 shadow-[0_4px_20px_rgba(15,14,13,0.05)] transition-all duration-[400ms] ease-[cubic-bezier(0.25,0.4,0.25,1)] hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(15,14,13,0.1)]"
-            >
-              <div className="w-12 h-12 rounded-full bg-accent-gold/10 flex items-center justify-center mb-6 transition-colors duration-300 group-hover:bg-accent-gold/20">
-                <Icon size={22} strokeWidth={1.6} className="text-accent-gold" />
-              </div>
-              <h3 className="font-display font-normal text-xl lg:text-2xl text-text-primary leading-tight tracking-[-0.01em] mb-3">
-                {title}
-              </h3>
-              <p className="font-body text-sm text-text-secondary leading-[1.8]">
-                {description}
-              </p>
-            </motion.div>
-          ))}
-        </motion.div>
+    <section className="bg-bg-primary pt-12 pb-20 lg:pb-28">
+      {/* ── Categoria nav ── */}
+      <div className="mb-12 lg:mb-16">
+        <ZonaNav zonas={categorias} />
+      </div>
 
+      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+        {/* ── Intro general ── */}
         <motion.div
           variants={fadeInUp}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.5 }}
-          className="mt-16 text-center"
+          viewport={{ once: true, amount: 0.4 }}
+          className="text-center max-w-2xl mx-auto mb-16"
         >
-          <p className="font-body text-sm text-text-secondary max-w-xl mx-auto leading-[1.8]">
-            Sesiones impartidas por <span className="text-accent-gold font-medium">Ricardo Ferrando</span>, masajista terapeuta del equipo Maysoon. Reserva tu cita por WhatsApp.
+          <p className="font-body text-base lg:text-lg text-text-secondary leading-[1.85]">
+            Profesionales titulados altamente cualificados y productos de la
+            más alta calidad. Tres familias de masajes para que encuentres el
+            tuyo.
           </p>
         </motion.div>
+
+        {/* ═════════ ESTÉTICOS ═════════ */}
+        <CategoryHeader
+          id="esteticos"
+          eyebrow="Categoría · Estéticos"
+          title="Apoyo a tus Tratamientos"
+          description="Abordan directamente celulitis y flacidez. Son el complemento ideal de los tratamientos médicos: aceleran y potencian su efectividad."
+        />
+
+        <MasajesGrid masajes={esteticos} />
+
+        {/* KOBIDO featured */}
+        <HighlightCallout
+          eyebrow="KOBIDO · El detalle"
+          text="Lifting facial sin cirugía. Tonifica musculatura facial, atenúa líneas de expresión, ojeras y bolsas, mejora la luminosidad y reduce migrañas y bruxismo."
+          icon="star"
+        />
+
+        <BulletListBlock
+          eyebrow="KOBIDO · Contraindicaciones"
+          title="Cuándo no aplicarlo"
+          items={[
+            "Inflamaciones o infecciones en piel de la zona",
+            "Flemones",
+            "Heridas abiertas, irritaciones o dermatitis",
+            "Procesos neoplásicos",
+            "Pacientes con hilos tensores faciales de menos de 4 meses",
+          ]}
+          style="warning"
+          columns={2}
+        />
+
+        {/* ═════════ RELAJANTES ═════════ */}
+        <CategoryHeader
+          id="relajantes"
+          eyebrow="Categoría · Relajantes"
+          title="Combatir el Estrés y la Ansiedad"
+          description="El estrés aumenta la producción de radicales libres, acelera el envejecimiento cutáneo, debilita el sistema inmune y provoca arrugas, deshidratación y pérdida de elasticidad."
+        />
+
+        <PriceBanner
+          text="Todos los masajes relajantes"
+          price="30 min · 25 € · 50 min · 40 €"
+        />
+
+        <MasajesGrid masajes={relajantes} />
+
+        {/* ═════════ TERAPÉUTICOS ═════════ */}
+        <CategoryHeader
+          id="terapeuticos"
+          eyebrow="Categoría · Terapéuticos"
+          title="Atacar la Causa, no la Consecuencia"
+          description="Abordaje alternativo o complementario a la medicación para patologías musculares, dolores, contracturas y problemas circulatorios. Acortan el tratamiento farmacológico y reducen dosis."
+        />
+
+        <PriceBanner
+          text="Todos los masajes terapéuticos"
+          price="30 min · 25 € · 50 min · 40 €"
+        />
+
+        <MasajesGrid masajes={terapeuticos} />
+
+        {/* ═════════ CONTRAINDICACIONES GENERALES ═════════ */}
+        <ContraindicationsBlock />
+
+        <ConsultaBlock
+          title="¿Qué masaje necesita tu cuerpo hoy?"
+          description="Reservamos una valoración rápida para recomendar el masaje (o combinación) que mejor se adapta a ti."
+        />
       </div>
     </section>
+  );
+}
+
+/* ─────────────────────────────────────────────────
+   Sub-componentes
+   ───────────────────────────────────────────────── */
+
+function CategoryHeader({
+  id,
+  eyebrow,
+  title,
+  description,
+}: {
+  id: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+}) {
+  return (
+    <motion.div
+      id={id}
+      variants={staggerFast}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.3 }}
+      className="scroll-mt-24 pt-16 lg:pt-20 mb-10 lg:mb-12 border-t border-text-secondary/15 first:border-t-0 first:pt-12"
+    >
+      <motion.div
+        variants={fadeInUp}
+        className="flex items-center gap-3 mb-4"
+      >
+        <span className="block w-8 h-px bg-accent-gold" />
+        <span className="font-body text-[10px] sm:text-xs font-medium uppercase tracking-[0.3em] text-accent-gold">
+          {eyebrow}
+        </span>
+      </motion.div>
+      <motion.h2
+        variants={fadeInUp}
+        className="font-display font-normal text-text-primary leading-[1.1] tracking-[-0.02em] mb-4"
+        style={{ fontSize: "clamp(1.7rem, 3.6vw, 2.6rem)" }}
+      >
+        {title}
+      </motion.h2>
+      <motion.p
+        variants={fadeInUp}
+        className="font-body text-sm lg:text-base text-text-secondary leading-[1.85] max-w-3xl"
+      >
+        {description}
+      </motion.p>
+    </motion.div>
+  );
+}
+
+function PriceBanner({ text, price }: { text: string; price: string }) {
+  return (
+    <motion.div
+      variants={fadeInUp}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.5 }}
+      className="mb-8 lg:mb-10 rounded-2xl bg-bg-secondary border border-accent-gold/20 px-6 py-5 lg:px-8 lg:py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
+    >
+      <span className="font-body text-sm lg:text-base text-text-primary">
+        <span className="text-accent-gold">·</span> {text}
+      </span>
+      <span className="font-display text-base lg:text-lg text-accent-gold">
+        {price}
+      </span>
+    </motion.div>
+  );
+}
+
+function MasajesGrid({ masajes }: { masajes: MasajeData[] }) {
+  return (
+    <motion.div
+      variants={staggerFast}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.05 }}
+      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"
+    >
+      {masajes.map((m) => (
+        <MasajeCard key={m.name} {...m} />
+      ))}
+    </motion.div>
+  );
+}
+
+function MasajeCard({
+  name,
+  duration,
+  price,
+  description,
+  icon: Icon,
+  highlight,
+}: MasajeData) {
+  return (
+    <motion.div
+      variants={fadeInUp}
+      whileHover={{ y: -4 }}
+      transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
+      className={`group relative rounded-2xl p-6 lg:p-7 overflow-hidden h-full flex flex-col transition-shadow duration-[400ms] ${
+        highlight
+          ? "bg-bg-dark text-text-light shadow-[0_4px_20px_rgba(15,14,13,0.18)] hover:shadow-[0_20px_50px_rgba(15,14,13,0.24)]"
+          : "bg-white text-text-primary shadow-[0_2px_10px_rgba(15,14,13,0.04)] hover:shadow-[0_12px_30px_rgba(15,14,13,0.08)]"
+      }`}
+    >
+      {highlight && (
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(circle at 100% 0%, rgba(184,115,85,0.18), transparent 60%)",
+          }}
+        />
+      )}
+      <div className="relative flex flex-col flex-1">
+        <div
+          className={`w-11 h-11 rounded-full flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110 ${
+            highlight
+              ? "bg-accent-gold/15 border border-accent-gold/30"
+              : "bg-bg-secondary border border-accent-gold/20"
+          }`}
+        >
+          <Icon size={18} strokeWidth={1.6} className="text-accent-gold" />
+        </div>
+        <h4
+          className={`font-display font-normal text-xl lg:text-2xl leading-tight tracking-[-0.01em] mb-1 ${
+            highlight ? "text-text-light" : "text-text-primary"
+          }`}
+        >
+          {name}
+        </h4>
+        <p
+          className={`font-body text-[11px] uppercase tracking-[0.18em] mb-3 ${
+            highlight ? "text-accent-gold" : "text-accent-gold/85"
+          }`}
+        >
+          {duration}
+        </p>
+        <p
+          className={`font-body text-sm leading-[1.7] mb-4 flex-1 ${
+            highlight ? "text-text-light/75" : "text-text-secondary"
+          }`}
+        >
+          {description}
+        </p>
+        {price && (
+          <div
+            className={`pt-4 border-t ${
+              highlight ? "border-text-light/15" : "border-text-secondary/15"
+            }`}
+          >
+            <span
+              className={`font-body text-[10px] uppercase tracking-[0.2em] block mb-1 ${
+                highlight ? "text-text-light/55" : "text-text-secondary"
+              }`}
+            >
+              Tarifa
+            </span>
+            <span className="font-display text-base lg:text-lg text-accent-gold">
+              {price}
+            </span>
+          </div>
+        )}
+      </div>
+    </motion.div>
+  );
+}
+
+function ContraindicationsBlock() {
+  return (
+    <motion.div
+      variants={staggerContainer}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+      className="mt-20 lg:mt-24 rounded-3xl bg-bg-secondary p-8 lg:p-12 relative overflow-hidden"
+    >
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle at 100% 100%, rgba(184,115,85,0.06), transparent 60%)",
+        }}
+      />
+      <div className="relative">
+        <motion.div
+          variants={fadeInUp}
+          className="flex items-center gap-3 mb-4"
+        >
+          <span className="block w-8 h-px bg-accent-gold" />
+          <span className="font-body text-[10px] sm:text-xs font-medium uppercase tracking-[0.3em] text-accent-gold">
+            Información médica
+          </span>
+        </motion.div>
+        <motion.h3
+          variants={fadeInUp}
+          className="font-display font-normal text-text-primary leading-[1.1] tracking-[-0.02em] mb-3"
+          style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)" }}
+        >
+          Contraindicaciones generales
+        </motion.h3>
+        <motion.p
+          variants={fadeInUp}
+          className="font-body text-sm lg:text-base text-text-secondary leading-[1.8] max-w-3xl mb-10"
+        >
+          Por seguridad, antes de cualquier sesión revisamos tu historial. Las
+          siguientes condiciones son contraindicaciones absolutas o relativas
+          para los masajes.
+        </motion.p>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
+          {/* Absolutas */}
+          <motion.div variants={fadeInUp}>
+            <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-text-primary/10 border border-text-primary/15">
+              <span className="font-body text-[10px] font-medium uppercase tracking-[0.25em] text-text-primary">
+                Absolutas · No se realiza
+              </span>
+            </div>
+            <ul className="flex flex-col gap-2">
+              {[
+                "Tumores",
+                "Riesgo de hemorragia",
+                "Fragilidad capilar en edad avanzada",
+                "Cardiopatías severas descompensadas",
+                "Enfermedades infecciosas",
+                "Heridas graves y traumatismos agudos",
+                "Trombosis, flebitis o tromboflebitis",
+                "Varices tortuosas o con relieve",
+                "Reacciones alérgicas agudas",
+                "Patología renal descompensada",
+                "Quemaduras en zona de tratamiento",
+                "Bursitis en zona",
+                "Roturas musculares o tendinosas",
+                "Micosis en zona",
+              ].map((c) => (
+                <li key={c} className="flex items-start gap-2.5">
+                  <span className="text-text-primary/40 mt-1 flex-shrink-0">
+                    ●
+                  </span>
+                  <span className="font-body text-sm text-text-primary leading-[1.55]">
+                    {c}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* Relativas */}
+          <motion.div variants={fadeInUp}>
+            <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-accent-gold/15 border border-accent-gold/30">
+              <span className="font-body text-[10px] font-medium uppercase tracking-[0.25em] text-accent-gold">
+                Relativas · Precaución
+              </span>
+            </div>
+            <ul className="flex flex-col gap-2">
+              {[
+                "Fracturas y luxaciones (no masajear con inflamación)",
+                "Embarazo (desaconsejado en los primeros 3 meses)",
+                "Cólicos hepáticos o biliares (esperar alta médica)",
+                "Hipertensión (consultar si hay mareos o vómitos)",
+                "Hipotensión (precaución en relajantes)",
+                "Irritación dérmica en la zona",
+                "Enfermedades reumáticas en fase aguda",
+              ].map((c) => (
+                <li key={c} className="flex items-start gap-2.5">
+                  <span className="text-accent-gold mt-1 flex-shrink-0">○</span>
+                  <span className="font-body text-sm text-text-primary leading-[1.55]">
+                    {c}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        </div>
+
+        <motion.p
+          variants={fadeInUp}
+          className="font-body text-xs italic text-text-secondary leading-[1.7] mt-10 pt-6 border-t border-text-secondary/15 max-w-3xl"
+        >
+          Si tienes alguna duda sobre tu caso particular, escríbenos por
+          WhatsApp antes de reservar. Nuestro masajista terapeuta valorará si
+          el masaje es adecuado para ti.
+        </motion.p>
+      </div>
+    </motion.div>
   );
 }
