@@ -36,13 +36,11 @@ const teamMembers = [
     imageObjectPosition: "center top",
   },
   {
-    image: "/images/team/laura-fernandez.webp",
+    image: "/images/team/laura-fernandez-portrait.jpg",
     name: "Laura Fernández",
     role: "Comercial y Ventas",
     description:
       "Tu primera guía. Te acompaña desde el primer contacto, resolviendo dudas y diseñando el plan que mejor encaja con tus objetivos.",
-    imageObjectPosition: "center 5%",
-    imageBgSize: "180% auto",
   },
   {
     image: "/images/team/lisa-recepcion.webp",
