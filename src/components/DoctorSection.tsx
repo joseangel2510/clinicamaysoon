@@ -41,8 +41,8 @@ const teamMembers = [
     role: "Comercial y Ventas",
     description:
       "Tu primera guía. Te acompaña desde el primer contacto, resolviendo dudas y diseñando el plan que mejor encaja con tus objetivos.",
-    imageObjectPosition: "center top",
-    imageScale: 1.6,
+    imageObjectPosition: "center 5%",
+    imageBgSize: "180% auto",
   },
   {
     image: "/images/team/lisa-recepcion.webp",
