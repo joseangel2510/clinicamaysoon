@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Phone, MessageCircle, Mail, Clock, Instagram, Facebook, Youtube } from "lucide-react";
+import { MapPin, Phone, MessageCircle, Mail, Clock, Instagram } from "lucide-react";
 import { fadeInUp, staggerContainer, staggerFast } from "@/lib/animations";
 
 const horario = [
@@ -38,11 +38,7 @@ const contactos = [
   },
 ];
 
-const redes = [
-  { icon: Instagram, name: "Instagram", href: "https://instagram.com/clinicamaysoon" },
-  { icon: Facebook, name: "Facebook", href: "https://facebook.com/clinicamaysoon" },
-  { icon: Youtube, name: "YouTube", href: "https://youtube.com/@clinicamaysoon" },
-];
+const INSTAGRAM_URL = "https://www.instagram.com/clinicamaysoon/";
 
 export function ContactoSection() {
   return (
@@ -133,25 +129,29 @@ export function ContactoSection() {
               </div>
             </motion.div>
 
-            {/* Social */}
+            {/* Instagram CTA */}
             <motion.div variants={fadeInUp}>
               <span className="font-body text-xs font-medium uppercase tracking-[0.3em] text-accent-gold block mb-4">
-                Síguenos
+                Síguenos en Instagram
               </span>
-              <div className="flex gap-3">
-                {redes.map(({ icon: Icon, name, href }) => (
-                  <a
-                    key={name}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={name}
-                    className="w-10 h-10 rounded-full border border-text-secondary/25 flex items-center justify-center text-text-secondary transition-all duration-300 hover:border-accent-gold hover:text-accent-gold hover:bg-accent-gold/10"
-                  >
-                    <Icon size={16} strokeWidth={1.8} />
-                  </a>
-                ))}
-              </div>
+              <p className="font-body text-sm text-text-secondary leading-[1.7] mb-5 max-w-md">
+                Casos antes/después, novedades del equipo y consejos en directo.
+                Únete a nuestra comunidad para no perderte nada.
+              </p>
+              <a
+                href={INSTAGRAM_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Síguenos en Instagram @clinicamaysoon"
+                className="group inline-flex items-center gap-3 px-5 py-3 rounded-lg relative overflow-hidden transition-all duration-300 text-white shadow-[0_8px_24px_rgba(214,41,118,0.25)] hover:shadow-[0_12px_32px_rgba(214,41,118,0.4)] active:scale-[0.97]"
+                style={{
+                  background:
+                    "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
+                }}
+              >
+                <Instagram size={18} strokeWidth={1.8} />
+                <span className="font-body text-sm font-semibold">@clinicamaysoon</span>
+              </a>
             </motion.div>
           </div>
 

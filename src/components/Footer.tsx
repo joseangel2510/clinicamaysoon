@@ -5,54 +5,45 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
-/* ─── Social Icons ─── */
-function SocialIcons() {
-  const socials = [
-    {
-      name: "Instagram",
-      href: "https://instagram.com/clinicamaysoon",
-      icon: (
-        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+/* ─── Instagram CTA ─── */
+function InstagramCTA() {
+  return (
+    <div className="mt-6">
+      <p className="font-body text-xs uppercase tracking-[0.25em] text-text-light/40 mb-3">
+        Síguenos en Instagram
+      </p>
+      <a
+        href="https://www.instagram.com/clinicamaysoon/"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Síguenos en Instagram @clinicamaysoon"
+        className="group inline-flex items-center gap-3 px-4 py-2.5 rounded-lg relative overflow-hidden transition-all duration-300 border border-text-light/15 hover:border-transparent hover:shadow-[0_8px_24px_rgba(214,41,118,0.4)] active:scale-[0.97]"
+      >
+        <span
+          aria-hidden
+          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          style={{
+            background:
+              "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
+          }}
+        />
+        <svg
+          className="relative w-5 h-5 text-text-light/70 group-hover:text-white transition-colors duration-300"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
           <rect x="2" y="2" width="20" height="20" rx="5" />
           <circle cx="12" cy="12" r="5" />
           <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
         </svg>
-      ),
-    },
-    {
-      name: "Facebook",
-      href: "https://facebook.com/clinicamaysoon",
-      icon: (
-        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-        </svg>
-      ),
-    },
-    {
-      name: "TikTok",
-      href: "https://tiktok.com/@clinicamaysoon",
-      icon: (
-        <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 00-.79-.05A6.34 6.34 0 003.15 15.2a6.34 6.34 0 0010.86 4.46V13a8.28 8.28 0 005.58 2.16V11.7a4.84 4.84 0 01-3.77-1.8V2h3.45v.44a4.85 4.85 0 003.77 4.25v3.45a8.3 8.3 0 01-3.45-.75v.3z" />
-        </svg>
-      ),
-    },
-  ];
-
-  return (
-    <div className="flex gap-3 mt-6">
-      {socials.map((s) => (
-        <a
-          key={s.name}
-          href={s.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={s.name}
-          className="w-9 h-9 rounded-full border border-text-light/15 flex items-center justify-center text-text-light/50 transition-all duration-300 hover:border-accent-gold hover:text-accent-gold hover:bg-accent-gold/10"
-        >
-          {s.icon}
-        </a>
-      ))}
+        <span className="relative font-body text-sm font-medium text-text-light/80 group-hover:text-white transition-colors duration-300">
+          @clinicamaysoon
+        </span>
+      </a>
     </div>
   );
 }
@@ -226,7 +217,7 @@ export function Footer() {
               servicio de tu belleza y bienestar.
             </p>
 
-            <SocialIcons />
+            <InstagramCTA />
           </motion.div>
 
           {/* Column 2: Tratamientos */}

@@ -172,14 +172,37 @@ export function Navbar() {
               )}
             </ul>
 
-            {/* Desktop CTA */}
+            {/* Desktop CTA — Instagram */}
             <a
-              href="https://wa.me/34651545268?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20cita"
+              href="https://www.instagram.com/clinicamaysoon/"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden lg:inline-flex items-center bg-accent-gold text-bg-dark px-6 py-2.5 rounded-lg font-body text-sm font-semibold transition-transform transition-colors duration-300 hover:bg-accent-gold-light hover:scale-[1.03] active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-accent-gold/50 shadow-[0_4px_16px_rgba(184,115,85,0.2)]"
+              aria-label="Síguenos en Instagram @clinicamaysoon"
+              className="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-body text-sm font-semibold relative overflow-hidden group transition-all duration-300 border border-accent-gold/50 text-text-primary hover:text-white hover:border-transparent hover:shadow-[0_8px_24px_rgba(214,41,118,0.35)] active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-accent-gold/50"
             >
-              Reserva tu Cita
+              {/* Instagram brand gradient — appears on hover */}
+              <span
+                aria-hidden
+                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{
+                  background:
+                    "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
+                }}
+              />
+              <svg
+                className="relative w-4 h-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="1.8"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <rect x="2" y="2" width="20" height="20" rx="5" />
+                <circle cx="12" cy="12" r="5" />
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+              </svg>
+              <span className="relative">Síguenos</span>
             </a>
 
             {/* Mobile Hamburger */}
@@ -277,7 +300,7 @@ export function Navbar() {
                 )
               )}
               <motion.a
-                href="https://wa.me/34651545268?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20cita"
+                href="https://www.instagram.com/clinicamaysoon/"
                 target="_blank"
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, y: 12 }}
@@ -287,9 +310,26 @@ export function Navbar() {
                   duration: 0.4,
                   ease: [0.16, 1, 0.3, 1],
                 }}
-                className="mt-4 bg-accent-gold text-bg-dark px-8 py-3 rounded-lg font-body text-base font-semibold transition-transform transition-colors duration-300 hover:bg-accent-gold-light active:scale-[0.97]"
+                className="mt-4 inline-flex items-center gap-2.5 text-white px-8 py-3 rounded-lg font-body text-base font-semibold transition-transform duration-300 active:scale-[0.97] shadow-[0_8px_24px_rgba(214,41,118,0.3)]"
+                style={{
+                  background:
+                    "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
+                }}
               >
-                Reserva tu Cita
+                <svg
+                  className="w-5 h-5"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.8"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <rect x="2" y="2" width="20" height="20" rx="5" />
+                  <circle cx="12" cy="12" r="5" />
+                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
+                </svg>
+                Síguenos en Instagram
               </motion.a>
             </div>
           </motion.div>
