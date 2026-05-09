@@ -172,25 +172,20 @@ export function Navbar() {
               )}
             </ul>
 
-            {/* Desktop CTA — Instagram */}
+            {/* Desktop CTA — Instagram (gradiente siempre activo) */}
             <a
               href="https://www.instagram.com/clinicamaysoon/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Síguenos en Instagram @clinicamaysoon"
-              className="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-body text-sm font-semibold relative overflow-hidden group transition-all duration-300 border border-accent-gold/50 text-text-primary hover:text-white hover:border-transparent hover:shadow-[0_8px_24px_rgba(214,41,118,0.35)] active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-accent-gold/50"
+              className="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-body text-sm font-semibold text-white transition-transform duration-300 hover:scale-[1.04] active:scale-[0.97] shadow-[0_8px_24px_rgba(214,41,118,0.35)] hover:shadow-[0_12px_32px_rgba(214,41,118,0.5)] focus-visible:ring-2 focus-visible:ring-accent-gold/50"
+              style={{
+                background:
+                  "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
+              }}
             >
-              {/* Instagram brand gradient — appears on hover */}
-              <span
-                aria-hidden
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                style={{
-                  background:
-                    "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
-                }}
-              />
               <svg
-                className="relative w-4 h-4"
+                className="w-4 h-4"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -202,7 +197,7 @@ export function Navbar() {
                 <circle cx="12" cy="12" r="5" />
                 <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
               </svg>
-              <span className="relative">Síguenos</span>
+              Síguenos
             </a>
 
             {/* Mobile Hamburger */}
