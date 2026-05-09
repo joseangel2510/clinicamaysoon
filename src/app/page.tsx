@@ -37,7 +37,7 @@ const sections = [
     href: "/medicina-estetica",
   },
   {
-    image: "/images/sections/teaser-aparatologia.webp",
+    image: "/images/aparatologia/equipos-cabina.jpg",
     title: "Aparatología & Técnicas",
     description:
       "Láser diodo HS-810 y tecnologías avanzadas para resultados eficaces.",
