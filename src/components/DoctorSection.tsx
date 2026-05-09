@@ -28,11 +28,12 @@ const teamMembers = [
       "El apoyo del gabinete. Acompaña cada tratamiento con precisión, asegurando higiene, seguridad y la calma que necesitas en cada sesión.",
   },
   {
-    image: "/images/team/ricardo-masajista.webp",
+    image: "/images/team/ricardo-cabina.jpg",
     name: "Ricardo",
     role: "Masajista Profesional",
     description:
       "Manos expertas. Especialista en técnicas terapéuticas y de bienestar para liberar tensión y devolver el equilibrio al cuerpo.",
+    imageObjectPosition: "center top",
   },
   {
     image: "/images/team/laura-fernandez.webp",
@@ -40,6 +41,8 @@ const teamMembers = [
     role: "Comercial y Ventas",
     description:
       "Tu primera guía. Te acompaña desde el primer contacto, resolviendo dudas y diseñando el plan que mejor encaja con tus objetivos.",
+    imageObjectPosition: "center top",
+    imageScale: 1.6,
   },
   {
     image: "/images/team/lisa-recepcion.webp",

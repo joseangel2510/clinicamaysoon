@@ -9,6 +9,8 @@ interface TeamMemberCardProps {
   name: string;
   role: string;
   description: string;
+  imageObjectPosition?: string;
+  imageScale?: number;
 }
 
 export function TeamMemberCard({
@@ -16,6 +18,8 @@ export function TeamMemberCard({
   name,
   role,
   description,
+  imageObjectPosition = "center top",
+  imageScale = 1,
 }: TeamMemberCardProps) {
   return (
     <motion.div
@@ -27,7 +31,12 @@ export function TeamMemberCard({
           src={image}
           alt={name}
           fill
-          className="object-cover object-top"
+          className="object-cover"
+          style={{
+            objectPosition: imageObjectPosition,
+            transform: imageScale !== 1 ? `scale(${imageScale})` : undefined,
+            transformOrigin: "center top",
+          }}
           sizes="120px"
         />
       </div>
