@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   Sparkles,
@@ -16,7 +17,14 @@ import {
   Flame,
   LucideIcon,
 } from "lucide-react";
-import { fadeInUp, staggerContainer, staggerFast } from "@/lib/animations";
+import {
+  fadeInUp,
+  fadeInLeft,
+  fadeInRight,
+  clipReveal,
+  staggerContainer,
+  staggerFast,
+} from "@/lib/animations";
 import { ZonaNav } from "./ZonaNav";
 import { BulletListBlock } from "./BulletListBlock";
 import { HighlightCallout } from "./HighlightCallout";
@@ -165,6 +173,153 @@ export function MasajesSection() {
             más alta calidad. Tres familias de masajes para que encuentres el
             tuyo.
           </p>
+        </motion.div>
+
+        {/* ── Editorial gallery: cabin + ritual + therapist ── */}
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 mb-20 lg:mb-24 items-stretch">
+          {/* Left: large cabin shot */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={fadeInLeft}
+            className="lg:col-span-7 relative"
+          >
+            <span
+              aria-hidden
+              className="absolute -top-6 -left-2 sm:-left-4 font-display text-[5rem] sm:text-[6rem] lg:text-[7rem] leading-none text-accent-gold/15 select-none pointer-events-none z-0"
+            >
+              03
+            </span>
+
+            <div className="relative z-10 h-full overflow-hidden rounded-sm shadow-[0_30px_60px_-20px_rgba(15,14,13,0.4)] ring-1 ring-accent-stone/25">
+              <div className="relative h-full min-h-[300px] aspect-[4/3] lg:aspect-auto">
+                <Image
+                  src="/images/masajes/cabina-masajes.jpg"
+                  alt="Cabina de masajes Maysoon — ambiente íntimo y cálido"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                />
+                <div
+                  aria-hidden
+                  className="absolute inset-0 mix-blend-multiply pointer-events-none"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(184,115,85,0.04) 0%, rgba(15,14,13,0.16) 100%)",
+                  }}
+                />
+                <span
+                  aria-hidden
+                  className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 w-8 h-px bg-accent-gold"
+                />
+                <span
+                  aria-hidden
+                  className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 w-px h-8 bg-accent-gold"
+                />
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Right: stacked therapist + ritual */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={staggerFast}
+            className="lg:col-span-5 grid grid-rows-2 gap-6 lg:gap-7"
+          >
+            {/* Therapist portrait */}
+            <motion.div
+              variants={fadeInRight}
+              className="relative overflow-hidden rounded-sm shadow-[0_24px_48px_-16px_rgba(15,14,13,0.35)] ring-1 ring-accent-stone/25"
+            >
+              <div className="relative h-full min-h-[220px] aspect-[3/4] lg:aspect-auto">
+                <Image
+                  src="/images/masajes/ricardo-masajista.jpg"
+                  alt="Ricardo, masajista titulado de Maysoon, preparando los útiles de sesión"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 50vw, 30vw"
+                />
+                <div
+                  aria-hidden
+                  className="absolute inset-0 mix-blend-multiply pointer-events-none"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(184,115,85,0.05) 0%, rgba(15,14,13,0.18) 100%)",
+                  }}
+                />
+              </div>
+            </motion.div>
+
+            {/* Ritual closeup — singing bowl */}
+            <motion.div
+              variants={fadeInRight}
+              className="relative overflow-hidden rounded-sm shadow-[0_24px_48px_-16px_rgba(15,14,13,0.35)] ring-1 ring-accent-stone/25"
+            >
+              <div className="relative h-full min-h-[220px] aspect-[4/3] lg:aspect-auto">
+                <Image
+                  src="/images/masajes/cuenco-tibetano.jpg"
+                  alt="Cuenco tibetano sobre superficie de mármol — detalle del ritual de relajación"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 50vw, 30vw"
+                />
+                <div
+                  aria-hidden
+                  className="absolute inset-0 mix-blend-multiply pointer-events-none"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(184,115,85,0.05) 0%, rgba(15,14,13,0.14) 100%)",
+                  }}
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+
+        {/* Editorial caption beneath gallery */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.4 }}
+          variants={staggerFast}
+          className="grid lg:grid-cols-12 gap-6 lg:gap-12 mb-20 lg:mb-24 items-end border-b border-accent-stone/30 pb-12"
+        >
+          <motion.div variants={fadeInLeft} className="lg:col-span-5">
+            <div className="flex items-center gap-3 mb-4">
+              <span className="block w-8 h-px bg-accent-gold" />
+              <span className="font-body text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-accent-gold">
+                El Ritual
+              </span>
+            </div>
+            <motion.h2
+              variants={clipReveal}
+              className="font-display font-normal not-italic text-text-primary leading-[1.1] tracking-[-0.02em]"
+              style={{ fontSize: "clamp(1.7rem, 3.2vw, 2.4rem)" }}
+            >
+              Cabina íntima,
+            </motion.h2>
+            <motion.h2
+              variants={clipReveal}
+              className="font-display italic text-accent-gold leading-[1.1] tracking-[-0.02em]"
+              style={{ fontSize: "clamp(1.7rem, 3.2vw, 2.4rem)" }}
+            >
+              manos titulada<span className="not-italic">s</span>
+            </motion.h2>
+          </motion.div>
+
+          <motion.p
+            variants={fadeInUp}
+            className="lg:col-span-7 font-body text-base lg:text-lg text-text-secondary leading-[1.85]"
+          >
+            Cada sesión transcurre en una cabina diseñada para el silencio —
+            iluminación cálida, aromas medidos, materiales nobles. Ricardo, nuestro
+            masajista titulado, prepara cada protocolo con los útiles adecuados:
+            cuencos tibetanos, rodillos de bambú, piedras volcánicas o aceites
+            esenciales según lo que tu cuerpo pide hoy.
+          </motion.p>
         </motion.div>
 
         {/* ═════════ ESTÉTICOS ═════════ */}

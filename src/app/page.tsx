@@ -30,7 +30,7 @@ const sections = [
     href: "/quienes-somos",
   },
   {
-    image: "/images/sections/teaser-medicina-estetica.webp",
+    image: "/images/team/doctores-recepcion.jpg",
     title: "Medicina Estética",
     description:
       "Botox, hilos tensores, peelings y protocolos médicos personalizados.",
@@ -65,14 +65,14 @@ const sections = [
     href: "/estetica",
   },
   {
-    image: "/images/sections/teaser-masajes.webp",
+    image: "/images/masajes/cabina-masajes.jpg",
     title: "Masajes",
     description:
       "Sesiones estéticas, relajantes y terapéuticas en manos de un equipo titulado.",
     href: "/masajes",
   },
   {
-    image: "/images/sections/teaser-formaciones.webp",
+    image: "/images/formaciones/aula-completa.jpg",
     title: "Formaciones",
     description:
       "Próximamente: programa de formaciones para profesionales del sector.",
