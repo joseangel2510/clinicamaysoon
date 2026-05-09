@@ -19,8 +19,8 @@ export default function UnidadCapilarPage() {
         titleLine1="Todo el Cuidado"
         titleLine2="del Cabello, en un Solo Lugar"
         subtitle="Diagnóstico, tratamientos médicos avanzados, trasplante capilar e implantes. Un protocolo integral diseñado para tu caso específico."
-        image="/images/sections/hero-capilar.webp"
-        imageAlt="Estudio capilar personalizado en Maysoon"
+        image="/images/sections/unidad-capilar-real.png"
+        imageAlt="Dr. José David realizando un estudio capilar en la cabina de Unidad Capilar de Maysoon"
       />
       <UnidadCapilarSection />
       <Footer />
