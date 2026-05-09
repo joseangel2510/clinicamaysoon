@@ -8,14 +8,14 @@ const ROOT = path.resolve(__dirname, "..");
 
 // Use puppeteer's headless Chrome + canvas to crop the source image to a
 // face-focused 600x600 portrait, then save as JPEG.
-const SRC = path.join(ROOT, "public", "images", "team", "equipo-sala-espera.jpg");
+const SRC = path.join(ROOT, "public", "images", "team", "laura-fernandez.jpg");
 const OUT = path.join(ROOT, "public", "images", "team", "laura-fernandez-portrait.jpg");
 
-// Crop region in source pixels (sala-espera is 660x442).
-// Laura is the front-left woman; the woman with glasses sits to her right
-// starting around x=290. Tight 150x150 crop ending at x=235 keeps her out.
-const CROP = { x: 85, y: 130, w: 150, h: 150 };
-const OUT_SIZE = 480;
+// Crop region in source pixels (laura.jpg is 661x420).
+// Laura stands centered with face at ~(300, 140). Square crop with hair
+// and shoulder breathing room, then upscale.
+const CROP = { x: 190, y: 30, w: 220, h: 220 };
+const OUT_SIZE = 660;
 
 const imgBuf = fs.readFileSync(SRC);
 const b64 = imgBuf.toString("base64");

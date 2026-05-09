@@ -16,7 +16,7 @@ import {
 
 const sections = [
   {
-    image: "/images/sections/teaser-por-que.webp",
+    image: "/images/sections/por-que-maysoon-logo.jpg",
     title: "¿Por qué Maysoon?",
     description:
       "Tecnología, trato y resultados al nivel que mereces. La excelencia como estándar.",
