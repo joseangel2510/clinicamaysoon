@@ -19,8 +19,6 @@ export default function FormacionesPage() {
         titleLine1="Compartir lo"
         titleLine2="que Sabemos Hacer"
         subtitle="Estamos preparando un programa de formaciones para profesionales. Si quieres ser de los primeros en saberlo, escríbenos."
-        image="/images/sections/hero-formaciones.webp"
-        imageAlt="Sesión de formación profesional en Maysoon"
       />
       <FormacionesPlaceholder />
       <Footer />

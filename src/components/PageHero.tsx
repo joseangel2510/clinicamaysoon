@@ -15,8 +15,8 @@ interface PageHeroProps {
   titleLine1: string;
   titleLine2: string;
   subtitle: string;
-  image: string;
-  imageAlt: string;
+  image?: string;
+  imageAlt?: string;
 }
 
 export function PageHero({
@@ -91,27 +91,31 @@ export function PageHero({
         {/* Subtitle */}
         <motion.p
           variants={fadeInUp}
-          className="font-body text-sm sm:text-base text-text-secondary leading-[1.8] max-w-xl mx-auto text-center mb-12 lg:mb-16"
+          className={`font-body text-sm sm:text-base text-text-secondary leading-[1.8] max-w-xl mx-auto text-center ${
+            image ? "mb-12 lg:mb-16" : ""
+          }`}
         >
           {subtitle}
         </motion.p>
 
-        {/* Hero Image */}
-        <motion.div
-          variants={fadeInUp}
-          className="relative aspect-[21/9] rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(15,14,13,0.12)]"
-        >
-          <Image
-            src={image}
-            alt={imageAlt}
-            fill
-            priority
-            className="object-cover"
-            sizes="(max-width: 1024px) 100vw, 1200px"
-          />
-          <div className="absolute inset-0 bg-accent-gold/5" />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-        </motion.div>
+        {/* Hero Image (optional) */}
+        {image && (
+          <motion.div
+            variants={fadeInUp}
+            className="relative aspect-[21/9] rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(15,14,13,0.12)]"
+          >
+            <Image
+              src={image}
+              alt={imageAlt ?? ""}
+              fill
+              priority
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 1200px"
+            />
+            <div className="absolute inset-0 bg-accent-gold/5" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+          </motion.div>
+        )}
       </motion.div>
     </section>
   );
