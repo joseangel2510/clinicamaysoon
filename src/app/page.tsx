@@ -79,7 +79,7 @@ const sections = [
     href: "/formaciones",
   },
   {
-    image: "/images/sections/teaser-contacto.webp",
+    image: "/images/sections/contacto-sala-espera.jpg",
     title: "Contacto · Dónde Estamos",
     description:
       "Avda. Cardenal Benlloch 11, Valencia. Teléfono, WhatsApp y horarios.",

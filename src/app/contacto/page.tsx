@@ -19,8 +19,8 @@ export default function ContactoPage() {
         titleLine1="Reserva tu Cita"
         titleLine2="o Visítanos"
         subtitle="Estamos en Avda. Cardenal Benlloch 11, Valencia. Pide consulta por teléfono, WhatsApp o email — te respondemos lo antes posible."
-        image="/images/sections/hero-contacto.webp"
-        imageAlt="Recepción de Maysoon en Valencia"
+        image="/images/sections/contacto-sala-espera.jpg"
+        imageAlt="Sala de espera de Maysoon en Valencia con sofá amarillo"
       />
       <ContactoSection />
       <Footer />
