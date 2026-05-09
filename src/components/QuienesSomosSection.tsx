@@ -166,15 +166,15 @@ export function QuienesSomosSection() {
               02
             </motion.span>
 
-            {/* Primary image — professional reception shot */}
+            {/* Primary image — playful sala de espera shot */}
             <motion.div
               variants={fadeInUp}
               className="relative z-10 overflow-hidden rounded-sm shadow-[0_30px_60px_-20px_rgba(15,14,13,0.35)] ring-1 ring-accent-stone/20"
             >
               <div className="relative aspect-[4/3]">
                 <Image
-                  src="/images/team/equipo-recepcion.jpg"
-                  alt="Equipo Maysoon en la recepción de la clínica de Valencia"
+                  src="/images/team/equipo-sala-espera.jpg"
+                  alt="Equipo Maysoon compartiendo un momento distendido en la sala de espera"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 100vw, 60vw"
@@ -208,8 +208,8 @@ export function QuienesSomosSection() {
             >
               <div className="relative aspect-[4/3]">
                 <Image
-                  src="/images/team/equipo-sala-espera.jpg"
-                  alt="Equipo Maysoon compartiendo un momento distendido en la sala de espera"
+                  src="/images/team/doctores-despacho.jpg"
+                  alt="Dr. Daniel Sánchez Salvador y Dr. José David — dirección médica"
                   fill
                   className="object-cover"
                   sizes="(max-width: 1024px) 70vw, 35vw"
