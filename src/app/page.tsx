@@ -23,7 +23,7 @@ const sections = [
     href: "/por-que-maysoon",
   },
   {
-    image: "/images/sections/teaser-quienes-somos.webp",
+    image: "/images/team/equipo-recepcion.jpg",
     title: "Quiénes Somos",
     description:
       "Conoce al Dr. Daniel Sánchez Salvador y al equipo titulado de Maysoon.",

@@ -1,9 +1,11 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   fadeInUp,
   fadeInLeft,
+  fadeInRight,
   clipReveal,
   scaleXReveal,
   staggerContainer,
@@ -142,6 +144,139 @@ export function QuienesSomosSection() {
             >
               Avda. Cardenal Benlloch 11 · 46021 Valencia
             </motion.p>
+          </motion.div>
+        </div>
+
+        {/* Editorial team imagery — asymmetric overlap composition */}
+        <div className="mt-20 lg:mt-28 grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          {/* Left: stacked imagery with overlap */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.25 }}
+            variants={staggerFast}
+            className="lg:col-span-7 relative"
+          >
+            {/* Decorative number marker */}
+            <motion.span
+              variants={fadeInLeft}
+              aria-hidden
+              className="absolute -top-6 -left-2 sm:-left-4 lg:-left-6 font-display text-[5rem] sm:text-[6rem] lg:text-[7rem] leading-none text-accent-gold/15 select-none pointer-events-none z-0"
+            >
+              02
+            </motion.span>
+
+            {/* Primary image — professional reception shot */}
+            <motion.div
+              variants={fadeInUp}
+              className="relative z-10 overflow-hidden rounded-sm shadow-[0_30px_60px_-20px_rgba(15,14,13,0.35)] ring-1 ring-accent-stone/20"
+            >
+              <div className="relative aspect-[4/3]">
+                <Image
+                  src="/images/team/equipo-recepcion.jpg"
+                  alt="Equipo Maysoon en la recepción de la clínica de Valencia"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 60vw"
+                  priority={false}
+                />
+                {/* Warm grading overlay */}
+                <div
+                  aria-hidden
+                  className="absolute inset-0 mix-blend-multiply pointer-events-none"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(184,115,85,0.06) 0%, rgba(15,14,13,0.18) 100%)",
+                  }}
+                />
+                {/* Gold corner accent */}
+                <span
+                  aria-hidden
+                  className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 w-8 h-px bg-accent-gold"
+                />
+                <span
+                  aria-hidden
+                  className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 w-px h-8 bg-accent-gold"
+                />
+              </div>
+            </motion.div>
+
+            {/* Secondary image — overlapping, smaller, off-axis */}
+            <motion.div
+              variants={fadeInRight}
+              className="relative z-20 -mt-16 sm:-mt-20 lg:-mt-24 ml-auto w-[68%] sm:w-[55%] overflow-hidden rounded-sm shadow-[0_24px_48px_-16px_rgba(15,14,13,0.45)] ring-1 ring-accent-stone/30"
+            >
+              <div className="relative aspect-[4/3]">
+                <Image
+                  src="/images/team/equipo-sala-espera.jpg"
+                  alt="Equipo Maysoon compartiendo un momento distendido en la sala de espera"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 70vw, 35vw"
+                />
+                <div
+                  aria-hidden
+                  className="absolute inset-0 mix-blend-multiply pointer-events-none"
+                  style={{
+                    background:
+                      "linear-gradient(180deg, rgba(184,115,85,0.05) 0%, rgba(15,14,13,0.12) 100%)",
+                  }}
+                />
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Right: caption / pull-context */}
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.4 }}
+            variants={staggerFast}
+            className="lg:col-span-5 lg:pl-4"
+          >
+            <motion.div
+              variants={fadeInLeft}
+              className="flex items-center gap-3 mb-5"
+            >
+              <span className="block w-8 h-px bg-accent-gold/70" />
+              <span className="font-body text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-accent-gold">
+                El Equipo
+              </span>
+            </motion.div>
+
+            <motion.h3
+              variants={fadeInUp}
+              className="font-display font-normal not-italic text-text-primary leading-[1.15] tracking-[-0.015em] mb-6"
+              style={{ fontSize: "clamp(1.6rem, 2.6vw, 2.2rem)" }}
+            >
+              Equipo <span className="italic text-accent-gold">titulado</span>,
+              <br className="hidden sm:block" />
+              {" "}trato <span className="italic text-accent-gold">humano</span>.
+            </motion.h3>
+
+            <motion.p
+              variants={fadeInUp}
+              className="font-body text-base text-text-secondary leading-[1.8] mb-6"
+            >
+              Detrás de cada protocolo hay un equipo cohesionado: médicos,
+              auxiliares, recepción y bienestar trabajando en una misma sintonía.
+              La cercanía no es una promesa de marketing — es la forma en que
+              elegimos atenderte.
+            </motion.p>
+
+            <motion.div
+              variants={fadeInUp}
+              className="flex items-center gap-4 pt-4 border-t border-accent-stone/30"
+            >
+              <span className="font-display text-2xl text-accent-gold/80">
+                6
+              </span>
+              <span className="font-body text-xs uppercase tracking-[0.2em] text-text-muted leading-tight">
+                Profesionales titulados
+                <br />
+                al servicio de tu bienestar
+              </span>
+            </motion.div>
           </motion.div>
         </div>
 
