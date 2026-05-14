@@ -248,6 +248,7 @@ function FacialPricingGrid() {
       viewport={{ once: true, amount: 0.05 }}
       className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mt-2"
     >
+      <div id="rellenos-faciales" className="scroll-mt-24">
       <PricingTable
         title="Rellenos Faciales · Teoxane"
         intro="El relleno más extendido por su alta tolerancia y versatilidad. Hidrata, revoluminiza y produce un efecto lifting natural. Tratamiento indoloro con reincorporación inmediata."
@@ -264,7 +265,9 @@ function FacialPricingGrid() {
         ]}
         footnote="Presupuestos personalizados para fullface o técnica MLT 3.1."
       />
+      </div>
 
+      <div id="hilos-tensores" className="scroll-mt-24">
       <PricingTable
         title="Hilos Tensores"
         intro="Tres tipos según necesidad: PDO lisos (generan colágeno), PDO arponados (lifting inmediato) y suturas APTOS (última generación, máxima tracción). Sesión 30–45 min, efecto definitivo a los 2 meses, duración hasta 18 meses."
@@ -287,6 +290,7 @@ function FacialPricingGrid() {
           },
         ]}
       />
+      </div>
     </motion.div>
   );
 }
@@ -305,6 +309,7 @@ function FacialDestacados() {
       className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mt-6 lg:mt-8"
     >
       <FeaturedTreatment
+        id="morpheus-8"
         badge="Aprobado por la FDA"
         title="Morpheus 8"
         description="Radiofrecuencia fraccionada con microagujas. Primer y único dispositivo que trata acumulación de grasa y flacidez cutánea en un solo tratamiento. Rejuvenece, estimula colágeno, reafirma, retensa y elimina grasa de forma permanente."
@@ -315,6 +320,7 @@ function FacialDestacados() {
       />
 
       <FeaturedTreatment
+        id="estimuladores-colageno"
         badge="Bioestimulación"
         title="Estimuladores de Colágeno · Ácido Poliláctico"
         description="Biopolímero reabsorbible y biocompatible. No aporta volumen inmediato — estimula la producción natural de colágeno. Indicado para rostro, cuello, escote y brazos a partir de los 35 años."
@@ -332,11 +338,13 @@ function FacialDestacados() {
    ───────────────────────────────────────────────── */
 
 function FeaturedTreatment({
+  id,
   badge,
   title,
   description,
   extras = [],
 }: {
+  id?: string;
   badge: string;
   title: string;
   description: string;
@@ -344,8 +352,9 @@ function FeaturedTreatment({
 }) {
   return (
     <motion.div
+      id={id}
       variants={fadeInUp}
-      className="rounded-2xl bg-bg-dark text-text-light p-7 lg:p-9 relative overflow-hidden h-full flex flex-col"
+      className="scroll-mt-24 rounded-2xl bg-bg-dark text-text-light p-7 lg:p-9 relative overflow-hidden h-full flex flex-col"
     >
       <div
         className="absolute inset-0 pointer-events-none"
@@ -391,11 +400,12 @@ function FeaturedTreatment({
 function NeuromodulacionFeatured() {
   return (
     <motion.div
+      id="neuromodulacion"
       variants={staggerContainer}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, amount: 0.1 }}
-      className="mt-16 lg:mt-20 rounded-3xl overflow-hidden bg-bg-dark text-text-light relative"
+      className="scroll-mt-24 mt-16 lg:mt-20 rounded-3xl overflow-hidden bg-bg-dark text-text-light relative"
     >
       <div
         className="absolute inset-0 pointer-events-none"

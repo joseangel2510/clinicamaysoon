@@ -16,6 +16,7 @@ const cirugias = [
       "Resultados visibles a partir de los 2 meses",
       "Cicatrices imperceptibles ocultas en los pliegues",
     ],
+    href: "/tratamientos/blefaroplastia-plasmage",
   },
 ];
 

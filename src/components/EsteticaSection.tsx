@@ -17,6 +17,7 @@ const tratamientos = [
       "Sesión inicial + retoque al mes incluido",
     ],
     price: "250 €",
+    href: "/tratamientos/micropigmentacion-microblading",
   },
 ];
 

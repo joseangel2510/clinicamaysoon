@@ -290,7 +290,11 @@ function DestacadosCorporales() {
       </motion.div>
 
       {/* ENDOLÁSER Fox III - full width feature */}
-      <motion.div variants={fadeInUp} className="mt-6 lg:mt-8">
+      <motion.div
+        id="endolaser-fox-iii"
+        variants={fadeInUp}
+        className="scroll-mt-24 mt-6 lg:mt-8"
+      >
         <div className="rounded-2xl bg-bg-dark text-text-light relative overflow-hidden">
           <div
             className="absolute inset-0 pointer-events-none"

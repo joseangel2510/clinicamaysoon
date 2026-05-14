@@ -1,9 +1,10 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { ReactNode } from "react";
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import {
   fadeInUp,
   fadeInLeft,
@@ -11,6 +12,7 @@ import {
   clipReveal,
   staggerContainer,
 } from "@/lib/animations";
+import { getTreatmentLink } from "@/lib/treatmentLinks";
 
 interface ZonaBlockProps {
   id: string;
@@ -95,22 +97,40 @@ export function ZonaBlock({
           {/* Treatments list */}
           {treatments.length > 0 && (
             <motion.ul variants={staggerContainer} className="flex flex-col gap-2.5 mb-2">
-              {treatments.map((t) => (
-                <motion.li
-                  key={t}
-                  variants={fadeInUp}
-                  className="flex items-start gap-3"
-                >
-                  <Check
-                    size={16}
-                    strokeWidth={2}
-                    className="text-accent-gold mt-1 flex-shrink-0"
-                  />
-                  <span className="font-body text-sm lg:text-[15px] text-text-primary leading-[1.65]">
-                    {t}
-                  </span>
-                </motion.li>
-              ))}
+              {treatments.map((t) => {
+                const href = getTreatmentLink(t);
+                return (
+                  <motion.li
+                    key={t}
+                    variants={fadeInUp}
+                    className="flex items-start gap-3"
+                  >
+                    <Check
+                      size={16}
+                      strokeWidth={2}
+                      className="text-accent-gold mt-1 flex-shrink-0"
+                    />
+                    {href ? (
+                      <Link
+                        href={href}
+                        className="group/treatment inline-flex items-start gap-1.5 font-body text-sm lg:text-[15px] text-text-primary leading-[1.65] underline decoration-accent-gold/25 decoration-1 underline-offset-[6px] transition-colors duration-300 hover:text-accent-gold hover:decoration-accent-gold focus-visible:outline-none focus-visible:text-accent-gold focus-visible:decoration-accent-gold"
+                      >
+                        <span>{t}</span>
+                        <ArrowUpRight
+                          size={13}
+                          strokeWidth={2}
+                          className="mt-1 flex-shrink-0 text-accent-gold/40 transition-all duration-300 group-hover/treatment:text-accent-gold group-hover/treatment:translate-x-[1px] group-hover/treatment:-translate-y-[1px]"
+                          aria-hidden
+                        />
+                      </Link>
+                    ) : (
+                      <span className="font-body text-sm lg:text-[15px] text-text-primary leading-[1.65]">
+                        {t}
+                      </span>
+                    )}
+                  </motion.li>
+                );
+              })}
             </motion.ul>
           )}
 

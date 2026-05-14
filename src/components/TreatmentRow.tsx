@@ -1,7 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { ArrowUpRight, Check } from "lucide-react";
 import { fadeInUp } from "@/lib/animations";
 
 interface TreatmentRowProps {
@@ -10,6 +11,7 @@ interface TreatmentRowProps {
   description: string;
   details?: string[];
   price?: string;
+  href?: string;
 }
 
 export function TreatmentRow({
@@ -18,6 +20,7 @@ export function TreatmentRow({
   description,
   details = [],
   price,
+  href,
 }: TreatmentRowProps) {
   const number = String(index + 1).padStart(2, "0");
 
@@ -33,9 +36,26 @@ export function TreatmentRow({
 
       {/* Content */}
       <div>
-        <h3 className="font-display font-normal text-2xl lg:text-3xl text-text-primary leading-tight tracking-[-0.01em] mb-3">
-          {title}
-        </h3>
+        {href ? (
+          <Link
+            href={href}
+            className="group/title inline-flex items-start gap-2 mb-3 transition-colors duration-300 hover:text-accent-gold focus-visible:outline-none focus-visible:text-accent-gold"
+          >
+            <h3 className="font-display font-normal text-2xl lg:text-3xl text-text-primary leading-tight tracking-[-0.01em] transition-colors duration-300 group-hover/title:text-accent-gold group-focus-visible/title:text-accent-gold">
+              {title}
+            </h3>
+            <ArrowUpRight
+              size={20}
+              strokeWidth={1.8}
+              className="mt-2 flex-shrink-0 text-accent-gold/50 transition-all duration-300 group-hover/title:text-accent-gold group-hover/title:translate-x-[2px] group-hover/title:-translate-y-[2px]"
+              aria-hidden
+            />
+          </Link>
+        ) : (
+          <h3 className="font-display font-normal text-2xl lg:text-3xl text-text-primary leading-tight tracking-[-0.01em] mb-3">
+            {title}
+          </h3>
+        )}
         <p className="font-body text-sm lg:text-base text-text-secondary leading-[1.8] mb-5 max-w-2xl">
           {description}
         </p>
