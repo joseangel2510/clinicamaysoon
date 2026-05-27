@@ -38,7 +38,7 @@ const teamMembers = [
   {
     image: "/images/team/laura-fernandez-portrait.jpg",
     name: "Laura Fernández",
-    role: "Comercial y Ventas",
+    role: "Asesora médica, auxiliar de quirófano y planes de financiación",
     description:
       "Tu primera guía. Te acompaña desde el primer contacto, resolviendo dudas y diseñando el plan que mejor encaja con tus objetivos.",
   },
