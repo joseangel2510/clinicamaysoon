@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { DM_Serif_Display, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { JsonLd } from "@/components/JsonLd";
+import { medicalClinicSchema } from "@/lib/schemas";
+import { SITE_URL } from "@/lib/clinic";
 
 const dmSerif = DM_Serif_Display({
   subsets: ["latin"],
@@ -19,6 +22,7 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: "Maysoon | Clínica Médico-Estética en Valencia",
   description:
     "Maysoon — Clínica médico-estética en Valencia. Tratamientos personalizados con tecnología de última generación. Resultados naturales, atención exclusiva. Reserva tu consulta.",
@@ -30,6 +34,9 @@ export const metadata: Metadata = {
     "láser Valencia",
     "tratamientos faciales",
   ],
+  alternates: {
+    canonical: "/",
+  },
 };
 
 export default function RootLayout({
@@ -43,6 +50,7 @@ export default function RootLayout({
       className={`${dmSerif.variable} ${dmSans.variable} h-full`}
     >
       <body className="min-h-full bg-bg-primary text-text-primary font-body antialiased">
+        <JsonLd data={medicalClinicSchema()} />
         {children}
         <WhatsAppButton />
       </body>

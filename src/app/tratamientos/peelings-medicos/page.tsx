@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
+import { TreatmentSchema } from "@/components/TreatmentSchema";
 import { PageHero } from "@/components/PageHero";
 import { PricingTable } from "@/components/PricingTable";
 import { InfoBlock } from "@/components/InfoBlock";
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
 export default function PeelingsMedicosPage() {
   return (
     <main>
+      <TreatmentSchema slug="peelings-medicos" />
       <Navbar />
       <PageHero
         eyebrow="Tratamiento · Renovación Cutánea"

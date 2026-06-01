@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
+import { TreatmentSchema } from "@/components/TreatmentSchema";
 import { PageHero } from "@/components/PageHero";
 import { InfoBlock } from "@/components/InfoBlock";
 import { BulletListBlock } from "@/components/BulletListBlock";
@@ -17,6 +18,7 @@ export const metadata: Metadata = {
 export default function EliminacionTatuajesPage() {
   return (
     <main>
+      <TreatmentSchema slug="eliminacion-tatuajes" />
       <Navbar />
       <PageHero
         eyebrow="Tratamiento · Cuerpo y Brazos"

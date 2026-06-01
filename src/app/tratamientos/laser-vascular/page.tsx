@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
+import { TreatmentSchema } from "@/components/TreatmentSchema";
 import { PageHero } from "@/components/PageHero";
 import { InfoBlock } from "@/components/InfoBlock";
 import { BulletListBlock } from "@/components/BulletListBlock";
@@ -15,6 +16,7 @@ export const metadata: Metadata = {
 export default function LaserVascularPage() {
   return (
     <main>
+      <TreatmentSchema slug="laser-vascular" />
       <Navbar />
       <PageHero
         eyebrow="Tratamiento · Láser Diodo 980 nm"
