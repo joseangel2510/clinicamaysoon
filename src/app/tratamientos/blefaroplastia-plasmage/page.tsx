@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { TreatmentSchema } from "@/components/TreatmentSchema";
+import { TreatmentDirectAnswer } from "@/components/TreatmentDirectAnswer";
+import { TreatmentFAQ } from "@/components/TreatmentFAQ";
+import { ClinicalSignature } from "@/components/ClinicalSignature";
 import { PageHero } from "@/components/PageHero";
 import { PricingTable } from "@/components/PricingTable";
 import { InfoBlock } from "@/components/InfoBlock";
@@ -27,6 +30,7 @@ export default function PlasmagePage() {
         image="/images/sections/hero-treatment-plasmage.webp"
         imageAlt="Tratamiento PLASMAGE — Maysoon"
       />
+      <TreatmentDirectAnswer slug="blefaroplastia-plasmage" />
 
       <section className="bg-bg-primary py-14 lg:py-20">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
@@ -84,6 +88,8 @@ export default function PlasmagePage() {
         </div>
       </section>
 
+      <TreatmentFAQ slug="blefaroplastia-plasmage" />
+      <ClinicalSignature />
       <Footer />
     </main>
   );

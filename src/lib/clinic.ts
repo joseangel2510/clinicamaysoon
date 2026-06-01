@@ -5,6 +5,14 @@
 
 export const SITE_URL = "https://clinicamaysoon.com";
 
+/**
+ * Fecha de última revisión clínica del contenido de las fichas de tratamiento.
+ * Visible en cada ficha (E-E-A-T: señal de frescura para los buscadores de IA).
+ * Actualizar cuando se revise el contenido clínico.
+ */
+export const CONTENT_LAST_REVIEWED = "2026-06-01";
+export const CONTENT_LAST_REVIEWED_LABEL = "1 de junio de 2026";
+
 export const CLINIC = {
   name: "Maysoon",
   legalName: "Clínica Maysoon",

@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { TreatmentSchema } from "@/components/TreatmentSchema";
+import { TreatmentDirectAnswer } from "@/components/TreatmentDirectAnswer";
+import { TreatmentFAQ } from "@/components/TreatmentFAQ";
+import { ClinicalSignature } from "@/components/ClinicalSignature";
 import { PageHero } from "@/components/PageHero";
 import { PricingTable } from "@/components/PricingTable";
 import { InfoBlock } from "@/components/InfoBlock";
@@ -26,6 +29,7 @@ export default function IntralipoterapiaPage() {
         image="/images/sections/hero-treatment-intralipoterapia.webp"
         imageAlt="Tratamiento de Intralipoterapia — Maysoon"
       />
+      <TreatmentDirectAnswer slug="intralipoterapia" />
 
       <section className="bg-bg-primary py-14 lg:py-20">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
@@ -64,6 +68,8 @@ export default function IntralipoterapiaPage() {
         </div>
       </section>
 
+      <TreatmentFAQ slug="intralipoterapia" />
+      <ClinicalSignature />
       <Footer />
     </main>
   );

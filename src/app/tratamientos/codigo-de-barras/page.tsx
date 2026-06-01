@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { TreatmentSchema } from "@/components/TreatmentSchema";
+import { TreatmentDirectAnswer } from "@/components/TreatmentDirectAnswer";
+import { TreatmentFAQ } from "@/components/TreatmentFAQ";
+import { ClinicalSignature } from "@/components/ClinicalSignature";
 import { PageHero } from "@/components/PageHero";
 import { InfoBlock } from "@/components/InfoBlock";
 import { BulletListBlock } from "@/components/BulletListBlock";
@@ -26,6 +29,7 @@ export default function CodigoBarrasPage() {
         image="/images/sections/closeup-labios.webp"
         imageAlt="Tratamiento Código de Barras — Maysoon"
       />
+      <TreatmentDirectAnswer slug="codigo-de-barras" />
 
       <section className="bg-bg-primary py-14 lg:py-20">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
@@ -82,6 +86,8 @@ export default function CodigoBarrasPage() {
         </div>
       </section>
 
+      <TreatmentFAQ slug="codigo-de-barras" />
+      <ClinicalSignature />
       <Footer />
     </main>
   );

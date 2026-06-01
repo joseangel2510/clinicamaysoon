@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { TreatmentSchema } from "@/components/TreatmentSchema";
+import { TreatmentDirectAnswer } from "@/components/TreatmentDirectAnswer";
+import { TreatmentFAQ } from "@/components/TreatmentFAQ";
+import { ClinicalSignature } from "@/components/ClinicalSignature";
 import { PageHero } from "@/components/PageHero";
 import { InfoBlock } from "@/components/InfoBlock";
 import { BulletListBlock } from "@/components/BulletListBlock";
@@ -27,6 +30,7 @@ export default function BodyTitePage() {
         image="/images/sections/closeup-abdomen.webp"
         imageAlt="Tratamiento BodyTite — Maysoon"
       />
+      <TreatmentDirectAnswer slug="bodytite" />
 
       <section className="bg-bg-primary py-14 lg:py-20">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
@@ -98,6 +102,8 @@ export default function BodyTitePage() {
         </div>
       </section>
 
+      <TreatmentFAQ slug="bodytite" />
+      <ClinicalSignature />
       <Footer />
     </main>
   );
