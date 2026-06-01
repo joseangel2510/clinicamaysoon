@@ -1,0 +1,49 @@
+# Maysoon — Clínica Médico-Estética en Valencia
+# https://clinicamaysoon.com
+
+# ─── Default: permitido para todos los crawlers ───
+User-agent: *
+Allow: /
+
+# ─── Crawlers de IA explícitamente permitidos ───
+# OpenAI / ChatGPT
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Anthropic / Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Google AI / Gemini training data
+User-agent: Google-Extended
+Allow: /
+
+# Apple AI
+User-agent: Applebot-Extended
+Allow: /
+
+# Common Crawl (datasets usados por muchos modelos)
+User-agent: CCBot
+Allow: /
+
+# ─── Sitemap ───
+Sitemap: https://clinicamaysoon.com/sitemap.xml

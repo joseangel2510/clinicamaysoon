@@ -471,3 +471,37 @@ Every new project:
 9. [ ] Step 5: Build `index.html`
 10. [ ] Step 6: `npm run dev` → `npm run screenshot` → compare → iterate (2+ rounds)
 11. [ ] Step 7: Deliver
+
+---
+
+## GEO / Visibilidad en IA
+
+> **Cuando el objetivo sea que ChatGPT, Perplexity, Google AI Overviews, Gemini o
+> Claude citen o recomienden a Maysoon, invoca la skill `geo-optimizer`.** Ahí está
+> el proceso de 5 fases (baseline → técnico → contenido → autoridad off-site → reporte).
+
+### Capa técnica GEO que el sitio debe tener (incremental)
+
+- **JSON-LD schema markup** (inyectado vía `<script type="application/ld+json">`):
+  - `LocalBusiness` / `MedicalClinic` con dirección, teléfono, horario, geo de Valencia.
+  - `Physician` para el Dr. Daniel Sánchez Salvador con credenciales y `sameAs`.
+  - `MedicalProcedure` por cada tratamiento detallado en `/tratamientos/<slug>`.
+  - `FAQPage` en cualquier sección con preguntas/respuestas.
+  - `BreadcrumbList` en páginas internas.
+- **`public/llms.txt`** con resumen del sitio para crawlers de IA (qué es Maysoon,
+  servicios principales, ubicación, autoridad, páginas clave).
+- **`public/robots.txt`** que PERMITA expresamente los crawlers de IA: `GPTBot`,
+  `OAI-SearchBot`, `PerplexityBot`, `ClaudeBot`, `Google-Extended`.
+- **Sitemap XML** (Next.js `app/sitemap.ts`) y enviado a **Bing Webmaster Tools**
+  (la búsqueda web de ChatGPT usa el índice de Bing).
+- **HTML semántico**: un solo `<h1>` por página, jerarquía correcta de headings,
+  listas y tablas reales (no divs).
+- **Fechas `dateModified` visibles** en páginas clínicas (señal de frescura).
+
+### Contenido citable
+
+- **Bloques de respuesta directa** de 40–60 palabras al inicio de cada sección
+  clínica (formato que la IA copia tal cual).
+- **FAQ** con las preguntas reales que un paciente le hace a la IA
+  (las preguntas salen de los prompts objetivo de la Fase 1 del baseline).
+- **E-E-A-T**: autor con nombre real, bio + credenciales, fechas, datos con fuente.

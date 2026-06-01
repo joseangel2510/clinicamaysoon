@@ -257,20 +257,23 @@ export default function TratamientosIndexPage() {
           </motion.div>
 
           <div className="mb-6">
-            <motion.h1
-              variants={clipReveal}
-              className="font-display font-normal not-italic text-[#0F0E0D] leading-[1.05] tracking-[-0.02em]"
+            <h1
+              className="font-display font-normal leading-[1.05] tracking-[-0.02em]"
               style={{ fontSize: "clamp(2.25rem, 5vw, 4rem)" }}
             >
-              Fichas Detalladas
-            </motion.h1>
-            <motion.h1
-              variants={clipReveal}
-              className="font-display font-normal italic text-[#7B6E5E] leading-[1.05] tracking-[-0.02em]"
-              style={{ fontSize: "clamp(2.25rem, 5vw, 4rem)" }}
-            >
-              de Cada Técnica
-            </motion.h1>
+              <motion.span
+                variants={clipReveal}
+                className="block not-italic text-[#0F0E0D]"
+              >
+                Fichas Detalladas
+              </motion.span>
+              <motion.span
+                variants={clipReveal}
+                className="block italic text-[#7B6E5E]"
+              >
+                de Cada Técnica
+              </motion.span>
+            </h1>
           </div>
 
           <motion.div

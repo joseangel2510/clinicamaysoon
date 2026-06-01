@@ -56,22 +56,25 @@ export function PageHero({
           <span className="block w-10 h-px bg-accent-gold" />
         </motion.div>
 
-        {/* Dual H1 */}
+        {/* H1 — dos líneas visuales dentro de un único h1 (semántica correcta) */}
         <div className="text-center mb-6">
-          <motion.h1
-            variants={clipReveal}
-            className="font-display font-normal not-italic text-[#0F0E0D] leading-[1.05] tracking-[-0.02em]"
+          <h1
+            className="font-display font-normal leading-[1.05] tracking-[-0.02em]"
             style={{ fontSize: "clamp(2.25rem, 5vw, 4rem)" }}
           >
-            {titleLine1}
-          </motion.h1>
-          <motion.h1
-            variants={clipReveal}
-            className="font-display font-normal italic text-[#7B6E5E] leading-[1.05] tracking-[-0.02em]"
-            style={{ fontSize: "clamp(2.25rem, 5vw, 4rem)" }}
-          >
-            {titleLine2}
-          </motion.h1>
+            <motion.span
+              variants={clipReveal}
+              className="block not-italic text-[#0F0E0D]"
+            >
+              {titleLine1}
+            </motion.span>
+            <motion.span
+              variants={clipReveal}
+              className="block italic text-[#7B6E5E]"
+            >
+              {titleLine2}
+            </motion.span>
+          </h1>
         </div>
 
         {/* Decorative dot separator */}
