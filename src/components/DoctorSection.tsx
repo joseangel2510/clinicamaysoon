@@ -21,13 +21,6 @@ const teamMembers = [
       "Criterio clínico y técnica al servicio del resultado natural. Diseña cada protocolo respetando tus rasgos y tus tiempos.",
   },
   {
-    image: "/images/team/sandra-auxiliar.webp",
-    name: "Sandra",
-    role: "Auxiliar Médica",
-    description:
-      "El apoyo del gabinete. Acompaña cada tratamiento con precisión, asegurando higiene, seguridad y la calma que necesitas en cada sesión.",
-  },
-  {
     image: "/images/team/ricardo-cabina.jpg",
     name: "Ricardo",
     role: "Masajista Profesional",
