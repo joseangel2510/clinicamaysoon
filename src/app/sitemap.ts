@@ -22,6 +22,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/por-que-maysoon", priority: 0.7, changeFrequency: "monthly" as const },
     { path: "/contacto", priority: 0.7, changeFrequency: "yearly" as const },
     { path: "/formaciones", priority: 0.5, changeFrequency: "yearly" as const },
+    { path: "/aviso-legal", priority: 0.3, changeFrequency: "yearly" as const },
+    { path: "/politica-de-privacidad", priority: 0.3, changeFrequency: "yearly" as const },
+    { path: "/politica-de-cookies", priority: 0.3, changeFrequency: "yearly" as const },
   ];
 
   const tratamientos = [

@@ -248,7 +248,8 @@ export function Footer() {
                 <FooterLink href="/quienes-somos">Equipo Médico</FooterLink>
                 <FooterLink href="/por-que-maysoon">¿Por qué Maysoon?</FooterLink>
                 <FooterLink href="/contacto">Contacto</FooterLink>
-                <FooterLink href="/politica-privacidad">Política de Privacidad</FooterLink>
+                <FooterLink href="/politica-de-privacidad">Política de Privacidad</FooterLink>
+                <FooterLink href="/politica-de-cookies">Política de Cookies</FooterLink>
                 <FooterLink href="/aviso-legal">Aviso Legal</FooterLink>
               </nav>
             </FooterColumn>
