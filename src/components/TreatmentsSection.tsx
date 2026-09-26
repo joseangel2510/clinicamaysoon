@@ -137,7 +137,9 @@ export function TreatmentsSection() {
           className="mt-16 text-center"
         >
           <a
-            href="tel:+34963201133"
+            href="https://wa.me/34601212258?text=Hola%2C%20me%20gustar%C3%ADa%20reservar%20una%20consulta"
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center justify-center bg-accent-gold text-bg-dark px-10 py-4 rounded-full font-body text-base font-medium transition-transform transition-shadow duration-300 hover:bg-accent-gold-light hover:scale-[1.03] hover:shadow-[0_8px_30px_rgba(184,115,85,0.3)] active:scale-[0.97] focus-visible:ring-2 focus-visible:ring-accent-gold/50"
           >
             Solicita tu Consulta Gratuita

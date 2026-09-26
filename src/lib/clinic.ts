@@ -22,8 +22,8 @@ export const CLINIC = {
   url: SITE_URL,
   logo: `${SITE_URL}/brand/logo-maysoon.png`,
   image: `${SITE_URL}/images/sections/contacto-sala-espera.jpg`,
-  telephone: "+34963201133",
-  alternatePhones: ["+34601212258", "+34651545268"],
+  telephone: "+34601212258",
+  alternatePhones: ["+34651545268"],
   whatsapp: "+34651545268",
   instagram: "https://www.instagram.com/clinicamaysoon/",
   address: {

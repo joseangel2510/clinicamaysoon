@@ -294,13 +294,15 @@ export function CTASection() {
               },
             }}
           >
-            O llámanos:{" "}
+            O escribe a recepción:{" "}
             <a
-              href="tel:+34963201133"
+              href="https://wa.me/34601212258"
+              target="_blank"
+              rel="noopener noreferrer"
               className="transition-colors duration-300 hover:text-text-light/80 hover:underline"
               style={{ color: "rgba(244,239,231,0.5)" }}
             >
-              +34 963 20 11 33
+              +34 601 21 22 58
             </a>
           </motion.p>
         </div>
