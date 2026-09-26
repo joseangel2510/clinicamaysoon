@@ -130,11 +130,11 @@ export function QuienesSomosSection() {
                 El origen del nombre
               </span>
               <blockquote className="font-display italic text-xl lg:text-2xl text-text-primary leading-[1.4]">
-                «Maysoon» es un nombre árabe que significa
+                Es un nombre árabe que significa
                 <span className="text-accent-gold not-italic font-normal">
-                  {" "}de hermosos rostros y cuerpo
+                  {" "}“Mujer de rostro y cuerpo bellos”
                 </span>
-                . Una filosofía hecha clínica.
+                .
               </blockquote>
             </motion.figure>
 
