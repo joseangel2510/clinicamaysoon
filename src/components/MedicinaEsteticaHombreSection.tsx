@@ -463,7 +463,7 @@ function NeuromodulacionFeaturedHombre() {
               "Sesión de 30 min, indolora",
               "Efecto visible entre los 3 y 5 días",
               "Efecto completo a los 15 días con sesión de revisión",
-              "Trabajamos con Botox (neuromoduladores) y Relfydess",
+              "Trabajamos con neuromoduladores de primeras marcas, también con Relfydess",
             ].map((e) => (
               <motion.li
                 key={e}
@@ -485,7 +485,7 @@ function NeuromodulacionFeaturedHombre() {
             <div className="flex items-center gap-3 mb-5">
               <span className="block w-6 h-px bg-accent-gold" />
               <span className="font-body text-[10px] font-medium uppercase tracking-[0.3em] text-accent-gold">
-                Tarifas · Botox
+                Tarifas · Neuromoduladores
               </span>
             </div>
             <ul className="flex flex-col divide-y divide-text-light/10">
@@ -524,7 +524,7 @@ function NeuromodulacionFeaturedHombre() {
               ))}
             </ul>
             <p className="mt-5 pt-5 border-t border-text-light/10 font-body text-xs text-text-light/60 leading-[1.7]">
-              Precios con la marca Botox. También trabajamos con{" "}
+              Precios con nuestro neuromodulador habitual. También trabajamos con{" "}
               <span className="text-accent-gold">Relfydess</span>, con efecto de
               hasta 5-6 meses: consúltanos su precio.
             </p>

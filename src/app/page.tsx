@@ -33,7 +33,7 @@ const sections = [
     image: "/images/team/doctores-recepcion.jpg",
     title: "Medicina Estética",
     description:
-      "Botox (neuromoduladores), hilos tensores, peelings y protocolos médicos personalizados.",
+      "Neuromoduladores, hilos tensores, peelings y protocolos médicos personalizados.",
     href: "/medicina-estetica",
   },
   {

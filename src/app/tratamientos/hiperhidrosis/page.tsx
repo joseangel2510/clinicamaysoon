@@ -14,7 +14,7 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Hiperhidrosis · Sudoración Excesiva | Maysoon",
   description:
-    "Tratamiento de hiperhidrosis con toxina botulínica (500 €) o Morpheus 8. Hasta 6 meses (botox – neuromoduladores) o 2+ años (Morpheus 8) sin sudoración excesiva. 90% de efectividad.",
+    "Tratamiento de hiperhidrosis con toxina botulínica (500 €) o Morpheus 8. Hasta 6 meses (neuromoduladores) o 2+ años (Morpheus 8) sin sudoración excesiva. 90% de efectividad.",
 };
 
 export default function HiperhidrosisPage() {
@@ -36,7 +36,7 @@ export default function HiperhidrosisPage() {
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <PricingTable
             title="Tarifas"
-            intro="Tratamiento con toxina botulínica (2 viales de Botox (neuromoduladores) o Bocouture)."
+            intro="Tratamiento con neuromoduladores (toxina botulínica): 2 viales."
             rows={[{ label: "Hiperhidrosis · toxina botulínica", price: "500 €" }]}
           />
 
