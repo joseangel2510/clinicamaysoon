@@ -90,6 +90,14 @@ export const TREATMENTS: Record<string, TreatmentMeta> = {
       "Inyección de Adipozon para eliminar grasa localizada sin cirugía. Indoloro, ambulatorio y reincorporación inmediata. Indicado en abdomen, flancos y glúteos.",
     bodyLocation: "Abdomen, flancos, glúteos",
   },
+  "laser-co2": {
+    slug: "laser-co2",
+    name: "Láser CO2 Fraccionado",
+    alternateName: "Resurfacing con láser CO2",
+    description:
+      "Láser ablativo fraccionado de 10.600 nm para resurfacing: arrugas, marcas de acné, cicatrices, textura, poro dilatado y contorno de ojos. Estimula colágeno nuevo con efecto tensor.",
+    bodyLocation: "Rostro, cuello y contorno de ojos",
+  },
   "laser-erbio-yag": {
     slug: "laser-erbio-yag",
     name: "Láser Erbio YAG",

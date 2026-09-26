@@ -38,6 +38,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "esclerosis-varices",
     "hiperhidrosis",
     "intralipoterapia",
+    "laser-co2",
     "laser-erbio-yag",
     "laser-vascular",
     "lifting-retensor-endopeel",

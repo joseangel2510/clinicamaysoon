@@ -296,6 +296,33 @@ export const TREATMENT_CONTENT: Record<string, TreatmentContent> = {
     ],
   },
 
+  "laser-co2": {
+    directAnswer:
+      "El láser CO2 fraccionado es un láser ablativo de 10.600 nm que crea microcolumnas de tratamiento en la piel separadas por tejido sano. Elimina la capa dañada y estimula colágeno nuevo, por lo que trata arrugas, marcas de acné, cicatrices, textura irregular y la flacidez del contorno de ojos.",
+    faqs: [
+      {
+        question: "¿Qué trata el láser CO2?",
+        answer:
+          "Arrugas finas y medias, marcas y cicatrices de acné, poro dilatado, textura irregular, manchas solares y fotoenvejecimiento. Con parámetros específicos también retensa la piel de párpados y ojeras. La indicación y la intensidad se deciden siempre en una valoración médica previa.",
+      },
+      {
+        question: "¿Duele y cómo es la recuperación?",
+        answer:
+          "Se aplica anestesia tópica antes de la sesión, por lo que se tolera bien. Después la piel queda enrojecida y caliente unas horas, y aparecen costritas finas y descamación durante 5-7 días. Hay que hidratar bien la piel y usar fotoprotección estricta durante los meses siguientes.",
+      },
+      {
+        question: "¿Cuándo se ven los resultados?",
+        answer:
+          "Al terminar la descamación la piel ya se ve más lisa y luminosa. El efecto tensor y la mejora de arrugas y cicatrices siguen avanzando durante 3-6 meses, a medida que se forma colágeno nuevo. En cicatrices de acné suelen necesitarse varias sesiones espaciadas.",
+      },
+      {
+        question: "¿En qué se diferencia del láser Erbio YAG?",
+        answer:
+          "Los dos son láseres ablativos. El CO2 genera más calor en la dermis, por lo que produce mayor retensado y estimulación de colágeno, con una recuperación algo más larga. El Erbio YAG es más superficial y selectivo. En consulta se elige el más adecuado para cada piel y objetivo.",
+      },
+    ],
+  },
+
   "laser-erbio-yag": {
     directAnswer:
       "El láser Erbio YAG es una tecnología láser ablativa que actúa sobre las capas superficiales de la piel con alta precisión y mínimo daño térmico al tejido sano circundante. En Maysoon se utiliza en tres modalidades: quirúrgico (lesiones), Velo de Novia (peeling láser) y fraccionado para resurfacing facial.",

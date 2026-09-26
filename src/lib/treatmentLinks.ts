@@ -32,6 +32,7 @@ export function getTreatmentLink(name: string): string | null {
   if (n.includes("dermapen")) return "/tratamientos/dermapen-micropuncion";
   if (n.includes("plasma-gel") || n.includes("plasma gel"))
     return "/tratamientos/plasma-gel-relleno";
+  if (n.includes("co2")) return "/tratamientos/laser-co2";
   if (n.includes("laser erbio")) return "/tratamientos/laser-erbio-yag";
   if (n.includes("marcas de acne")) return "/tratamientos/laser-erbio-yag";
   if (

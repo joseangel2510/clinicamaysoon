@@ -88,6 +88,14 @@ const tratamientos = [
     href: "/tratamientos/laser-vascular",
   },
   {
+    image: "/images/sections/closeup-rostro.webp",
+    category: "Tecnología Láser",
+    title: "Láser CO2",
+    description:
+      "Resurfacing fraccionado para arrugas, marcas de acné, textura y contorno de ojos.",
+    href: "/tratamientos/laser-co2",
+  },
+  {
     image: "/images/sections/closeup-acne.webp",
     category: "Tecnología Láser",
     title: "Láser Erbio YAG",

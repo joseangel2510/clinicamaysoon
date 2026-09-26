@@ -30,6 +30,7 @@
 - DermaPen Micropunción: https://clinicamaysoon.com/tratamientos/dermapen-micropuncion
 - IPL Fotorrejuvenecimiento: https://clinicamaysoon.com/tratamientos/luz-pulsada-ipl
 - Láser Vascular (Diodo 980 nm): https://clinicamaysoon.com/tratamientos/laser-vascular
+- Láser CO2 fraccionado (resurfacing): https://clinicamaysoon.com/tratamientos/laser-co2
 - Láser Erbio YAG (tres modalidades): https://clinicamaysoon.com/tratamientos/laser-erbio-yag
 - Peelings Médicos: https://clinicamaysoon.com/tratamientos/peelings-medicos
 - Armonización Mandibular: https://clinicamaysoon.com/tratamientos/armonizacion-mandibular
