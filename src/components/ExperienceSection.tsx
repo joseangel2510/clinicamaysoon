@@ -18,7 +18,7 @@ const steps = [
     title: "Te Escuchamos",
     description:
       "Desde el primer momento, tu consulta es un espacio personal y sin prisas. Analizamos tu caso, entendemos tus deseos y resolvemos cada duda. Sin compromiso, sin presión.",
-    image: "/media/experience-01-consultation.png",
+    image: "/media/experience-01-consultation.webp",
     icon: (
       <svg viewBox="0 0 64 64" fill="none" className="w-full h-full">
         <circle cx="32" cy="20" r="10" stroke="currentColor" strokeWidth="1.5" />
@@ -34,7 +34,7 @@ const steps = [
     title: "Diseñamos Tu Plan",
     description:
       "Creamos un protocolo único para ti, basado en evidencia científica y adaptado a tus necesidades, tus objetivos y tu ritmo de vida.",
-    image: "/media/experience-02-plan.png",
+    image: "/media/experience-02-plan.webp",
     icon: (
       <svg viewBox="0 0 64 64" fill="none" className="w-full h-full">
         <rect x="14" y="8" width="36" height="48" rx="3" stroke="currentColor" strokeWidth="1.5" />
@@ -52,7 +52,7 @@ const steps = [
     title: "En Las Mejores Manos",
     description:
       "Con la tecnología más avanzada y un equipo médico titulado, tu tratamiento se realiza con precisión milimétrica en un entorno diseñado para tu confort.",
-    image: "/media/experience-03-treatment.png",
+    image: "/media/experience-03-treatment.webp",
     icon: (
       <svg viewBox="0 0 64 64" fill="none" className="w-full h-full">
         <path d="M32 8v48M24 16l8-8 8 8" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
@@ -69,7 +69,7 @@ const steps = [
     title: "Tu Nueva Versión",
     description:
       "No termina con el tratamiento. Te acompañamos en cada paso de tu evolución, porque tu satisfacción es nuestro mejor resultado.",
-    image: "/media/experience-04-results.png",
+    image: "/media/experience-04-results.webp",
     icon: (
       <svg viewBox="0 0 64 64" fill="none" className="w-full h-full">
         <path d="M32 12l4 8 9 1.3-6.5 6.3 1.5 9L32 32l-8 4.6 1.5-9L19 21.3l9-1.3z" stroke="currentColor" strokeWidth="1.5" strokeLinejoin="round" />

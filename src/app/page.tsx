@@ -51,7 +51,7 @@ const sections = [
     href: "/cirugias-menores",
   },
   {
-    image: "/images/sections/unidad-capilar-real.png",
+    image: "/images/sections/unidad-capilar-real.webp",
     title: "Unidad Capilar",
     description:
       "Trasplante FUE, mesoterapia, PRP, Trichotest y Biofibre.",
