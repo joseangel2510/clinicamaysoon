@@ -11,9 +11,9 @@ import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Micropigmentación · Microblading | Maysoon",
+  title: "Micropigmentación de Cejas, Eyeliner y Labios | Maysoon",
   description:
-    "Microblading: maquillaje semipermanente de cejas con trazos finos pelo a pelo. Aspecto totalmente natural, durabilidad 1-3 años. Poco invasivo y prácticamente indoloro.",
+    "Micropigmentación: maquillaje semipermanente de cejas, eyeliner y labios con diseño personalizado y acabado natural. Durabilidad de 1 a 3 años. En Maysoon Valencia.",
 };
 
 export default function MicropigmentacionPage() {
@@ -22,12 +22,12 @@ export default function MicropigmentacionPage() {
       <TreatmentSchema slug="micropigmentacion-microblading" />
       <Navbar />
       <PageHero
-        eyebrow="Tratamiento · Cejas Semipermanentes"
-        titleLine1="Microblading"
-        titleLine2="Pelo a Pelo"
-        subtitle="Procedimiento semipermanente de maquillaje para cejas. Trazos finos que imitan el crecimiento natural del vello — el aspecto más natural posible. Durabilidad de 1 a 3 años."
+        eyebrow="Tratamiento · Maquillaje Semipermanente"
+        titleLine1="Micropigmentación"
+        titleLine2="Cejas, Eyeliner y Labios"
+        subtitle="Maquillaje semipermanente que define cejas, mirada y labios con un acabado natural. Diseño a medida de tu rostro y durabilidad de 1 a 3 años."
         image="/images/sections/closeup-cejas.webp"
-        imageAlt="Tratamiento de Microblading — Maysoon"
+        imageAlt="Tratamiento de micropigmentación — Maysoon"
       />
       <TreatmentDirectAnswer slug="micropigmentacion-microblading" />
 
@@ -35,10 +35,34 @@ export default function MicropigmentacionPage() {
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
           <InfoBlock
             eyebrow="Qué es"
-            title="Maquillaje semipermanente realista"
+            title="Maquillaje semipermanente a medida"
             paragraphs={[
-              "Una herramienta especial crea pequeñas incisiones en la piel y deposita el pigmento siguiendo trazos muy finos que imitan el crecimiento natural del vello.",
-              "El resultado es una ceja con aspecto totalmente natural — diferente al tatuaje convencional o a la micropigmentación tradicional.",
+              "Con un dermógrafo se deposita pigmento en las capas superficiales de la piel. Se diseña antes la forma y el color que mejor encajan con tu rostro, tu tono de piel y tu expresión.",
+              "El resultado es un maquillaje que se mantiene día y noche, resiste el agua y el deporte y se va atenuando poco a poco con el tiempo.",
+            ]}
+          />
+
+          <InfoBlock
+            eyebrow="Cejas"
+            title="Cejas definidas y simétricas"
+            paragraphs={[
+              "Rellena huecos, corrige asimetrías y redibuja la forma de la ceja. Según lo que busques, se trabaja con efecto pelo a pelo, más natural, o con sombreado, con un acabado más de maquillaje.",
+            ]}
+          />
+
+          <InfoBlock
+            eyebrow="Eyeliner"
+            title="Mirada definida"
+            paragraphs={[
+              "Una línea fina en el nacimiento de las pestañas que da densidad y profundidad a la mirada. Desde un efecto sutil que engrosa la pestaña hasta un eyeliner más marcado.",
+            ]}
+          />
+
+          <InfoBlock
+            eyebrow="Labios"
+            title="Contorno y color"
+            paragraphs={[
+              "Define el contorno, corrige asimetrías y aporta un color natural y uniforme a los labios. Muy indicado cuando el labio ha perdido color o definición con los años.",
             ]}
           />
 
@@ -46,9 +70,9 @@ export default function MicropigmentacionPage() {
             eyebrow="Para quién es"
             title="Ideal en casos de"
             items={[
-              "Cejas dispersas o con poco vello",
-              "Cejas asimétricas",
-              "Búsqueda de un diseño más definido y duradero",
+              "Cejas dispersas, con poco vello o asimétricas",
+              "Pestañas poco pobladas o mirada sin definición",
+              "Labios con poco color o contorno desdibujado",
               "Personas que quieren ahorrar tiempo en su rutina diaria",
             ]}
           />
@@ -57,7 +81,7 @@ export default function MicropigmentacionPage() {
             eyebrow="Ventajas"
             title="Por qué funciona"
             items={[
-              "Aspecto totalmente natural",
+              "Acabado natural y diseño personalizado",
               "Durabilidad de 1 a 3 años con cuidados adecuados",
               "Poco invasivo",
               "Relativamente indoloro",
@@ -68,8 +92,8 @@ export default function MicropigmentacionPage() {
           />
 
           <ConsultaBlock
-            title="¿Listo para olvidarte del lápiz de cejas?"
-            description="En consulta diseñamos la forma de tu ceja a medida y te confirmamos si el microblading es el tratamiento ideal para ti."
+            title="¿Lista para olvidarte del maquillaje diario?"
+            description="En consulta diseñamos contigo la forma y el color de tus cejas, eyeliner o labios y te explicamos cómo es el proceso."
           />
         </div>
       </section>

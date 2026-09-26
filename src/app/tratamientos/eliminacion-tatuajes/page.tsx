@@ -77,7 +77,7 @@ export default function EliminacionTatuajesPage() {
             items={[
               "Tatuajes negros y de colores oscuros",
               "Tatuajes coloridos (algunos pigmentos requieren más sesiones)",
-              "Microblading o micropigmentación con la que ya no se identifica",
+              "Micropigmentación con la que ya no se identifica",
               "Borrados parciales para cobertura posterior",
             ]}
             columns={2}

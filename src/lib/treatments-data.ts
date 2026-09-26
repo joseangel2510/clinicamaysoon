@@ -146,9 +146,9 @@ export const TREATMENTS: Record<string, TreatmentMeta> = {
   },
   "micropigmentacion-microblading": {
     slug: "micropigmentacion-microblading",
-    name: "Microblading · Micropigmentación",
+    name: "Micropigmentación de cejas, eyeliner y labios",
     description:
-      "Maquillaje semipermanente pelo a pelo con aspecto natural. Diseño personalizado de cejas, labios o eyeliner. Durabilidad de 1 a 3 años.",
+      "Maquillaje semipermanente con dermógrafo y diseño personalizado de cejas (pelo a pelo o sombreado), eyeliner y labios. Acabado natural y durabilidad de 1 a 3 años.",
     bodyLocation: "Cejas, labios, párpados",
   },
   "peelings-medicos": {

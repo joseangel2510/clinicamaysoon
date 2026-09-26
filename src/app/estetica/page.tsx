@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Estética | Maysoon",
   description:
-    "Microblading de cejas y servicios estéticos personalizados en Maysoon Valencia. Diseño, técnica y resultado natural.",
+    "Micropigmentación de cejas, eyeliner y labios y servicios estéticos personalizados en Maysoon Valencia. Diseño, técnica y resultado natural.",
 };
 
 export default function EsteticaPage() {
@@ -20,7 +20,7 @@ export default function EsteticaPage() {
         titleLine2="en los Detalles"
         subtitle="Servicios estéticos refinados, ejecutados con técnica y mirada artística. Tu rostro merece detalles cuidados al milímetro."
         image="/images/sections/hero-estetica.webp"
-        imageAlt="Sesión de microblading en Maysoon"
+        imageAlt="Sesión de micropigmentación en Maysoon"
       />
       <EsteticaSection />
       <Footer />

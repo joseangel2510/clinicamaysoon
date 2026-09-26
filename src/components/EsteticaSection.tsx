@@ -7,16 +7,15 @@ import { ConsultaBlock } from "./ConsultaBlock";
 
 const tratamientos = [
   {
-    title: "Microblading de Cejas",
+    title: "Micropigmentación · Cejas, Eyeliner y Labios",
     description:
-      "Pigmentación manual técnica pelo a pelo que crea cejas naturales, definidas y duraderas. Diseño personalizado según rostro y expresión.",
+      "Maquillaje semipermanente que define cejas, mirada y labios con un acabado natural. Diseño personalizado según tu rostro y expresión.",
     details: [
-      "Diseño y simetrización personalizada",
-      "Acabado natural pelo a pelo",
-      "Duración: 1 a 1,5 años",
+      "Cejas: efecto pelo a pelo o sombreado",
+      "Eyeliner: mirada definida sin maquillaje diario",
+      "Labios: contorno, color y simetría",
       "Sesión inicial + retoque al mes incluido",
     ],
-    price: "250 €",
     href: "/tratamientos/micropigmentacion-microblading",
   },
 ];

@@ -131,9 +131,9 @@ const tratamientos = [
   {
     image: "/images/sections/closeup-cejas.webp",
     category: "Cejas Semipermanentes",
-    title: "Microblading · Micropigmentación",
+    title: "Micropigmentación",
     description:
-      "Maquillaje semipermanente pelo a pelo con aspecto totalmente natural. Durabilidad 1-3 años.",
+      "Maquillaje semipermanente de cejas, eyeliner y labios con acabado natural. Durabilidad 1-3 años.",
     href: "/tratamientos/micropigmentacion-microblading",
   },
   {

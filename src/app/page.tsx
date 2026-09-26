@@ -61,7 +61,7 @@ const sections = [
     image: "/images/sections/teaser-estetica.webp",
     title: "Estética",
     description:
-      "Microblading y servicios estéticos refinados con técnica y mirada artística.",
+      "Micropigmentación de cejas, eyeliner y labios con técnica y mirada artística.",
     href: "/estetica",
   },
   {

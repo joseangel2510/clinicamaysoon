@@ -153,7 +153,7 @@ export function MedicinaEsteticaSection() {
           title="Marco de la Mirada"
           description="Diseñamos cejas a tu medida combinando técnicas estéticas y médicas: pigmentación, tracción con hilos o corrección de la posición."
           treatments={[
-            "Micropigmentación / Microblading",
+            "Micropigmentación de cejas",
             "Lifting con hilos tensores",
             "Neuromoduladores (toxina botulínica)",
           ]}

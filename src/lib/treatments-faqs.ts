@@ -487,17 +487,17 @@ export const TREATMENT_CONTENT: Record<string, TreatmentContent> = {
 
   "micropigmentacion-microblading": {
     directAnswer:
-      "Microblading y micropigmentación son técnicas de maquillaje semipermanente que introducen pigmento en las capas superficiales de la piel. El microblading dibuja cejas pelo a pelo con un acabado muy natural, mientras la micropigmentación es más versátil (cejas, labios, eyeliner) y suele dar acabado más relleno y duradero.",
+      "La micropigmentación es una técnica de maquillaje semipermanente que deposita pigmento en las capas superficiales de la piel con un dermógrafo. En Maysoon se realiza en cejas (efecto pelo a pelo o sombreado), eyeliner y labios, con diseño personalizado y una durabilidad de 1 a 3 años.",
     faqs: [
       {
-        question: "¿En qué se diferencia el microblading de la micropigmentación?",
+        question: "¿Qué zonas se pueden micropigmentar?",
         answer:
-          "El microblading se hace de forma manual con una herramienta tipo cuchilla que dibuja pelo a pelo el pigmento; el acabado es muy natural pero menos duradero. La micropigmentación se realiza con dermógrafo eléctrico, permite efectos pelo a pelo, sombreado o relleno completo, y suele durar más tiempo.",
+          "Cejas, para rellenar, corregir la forma o dar simetría; eyeliner, para definir la mirada y dar densidad a las pestañas; y labios, para mejorar el contorno y aportar color. Cada zona se diseña en consulta según tu rostro, tu tono de piel y el acabado que buscas.",
       },
       {
         question: "¿Cuánto dura el resultado?",
         answer:
-          "El microblading se mantiene 1-1,5 años de media. La micropigmentación puede durar 1-3 años según la piel, el sol y los cuidados. En ambas técnicas se realiza una sesión de retoque al mes de la inicial para perfilar el resultado, y un mantenimiento anual conserva el color vivo y la forma.",
+          "La micropigmentación dura de 1 a 3 años según la zona, el tipo de piel, el sol y los cuidados. Se realiza una sesión de retoque al mes de la inicial para perfilar el resultado, y un mantenimiento periódico conserva el color y la forma.",
       },
       {
         question: "¿Es doloroso?",
@@ -507,7 +507,7 @@ export const TREATMENT_CONTENT: Record<string, TreatmentContent> = {
       {
         question: "¿Para quién está indicado?",
         answer:
-          "Personas con cejas poco pobladas, asimétricas, sin definición o que quieren ahorrarse el maquillaje diario son las candidatas ideales. También para quien busca reparar zonas con cicatrices o alopecia areata localizada. Se desaconseja en pieles con queloides, dermatitis activa o tratamientos anticoagulantes sin valoración previa.",
+          "Personas con cejas poco pobladas o asimétricas, mirada sin definición, labios con poco color o que quieren ahorrarse el maquillaje diario son las candidatas ideales. También para quien busca reparar zonas con cicatrices o alopecia areata localizada. Se desaconseja en pieles con queloides, dermatitis activa o tratamientos anticoagulantes sin valoración previa.",
       },
     ],
   },
