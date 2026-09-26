@@ -37,11 +37,10 @@ export function MedicinaEsteticaHombreSection() {
           index={0}
           eyebrow="Zona Capilar"
           title="Cuero Cabelludo y Cabello"
-          description="Tratamiento integral capilar para hombre: desde mantenimiento médico para frenar la caída hasta soluciones definitivas como el trasplante FUE y la tricopigmentación."
+          description="Tratamiento integral capilar para hombre: desde mantenimiento médico para frenar la caída hasta soluciones definitivas como el trasplante FUE."
           treatments={[
             "Mesoterapia Capilar",
             "Factores de crecimiento (PRP)",
-            "Tricopigmentación capilar",
             "Trasplante capilar FUE",
           ]}
           image="/images/sections/closeup-hombre-capilar.webp"

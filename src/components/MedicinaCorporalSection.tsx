@@ -118,7 +118,7 @@ export function MedicinaCorporalSection() {
           treatments={[
             "Grasa localizada con ENDOLÁSER (Liften Dual)",
             "Mesoterapia Corporal",
-            "Intralipoterapia con AQUALIX",
+            "Intralipoterapia con Adipozon",
             "BodyTite",
           ]}
           image="/images/sections/closeup-flancos.webp"
@@ -137,7 +137,7 @@ export function MedicinaCorporalSection() {
             "Relleno corporal",
             "Tratamiento cartucheras con ENDOLÁSER (Liften Dual)",
             "Mesoterapia Corporal",
-            "Intralipoterapia con AQUALIX",
+            "Intralipoterapia con Adipozon",
             "BodyTite",
           ]}
           image="/images/sections/closeup-gluteos.webp"
@@ -154,7 +154,8 @@ export function MedicinaCorporalSection() {
           description="Las manos son la otra carta de presentación. Eliminamos manchas y devolvemos volumen al dorso para una imagen más joven."
           treatments={[
             "Eliminación de manchas con IPL",
-            "Rejuvenecimiento de manos con rellenos corporales",
+            "Rejuvenecimiento de manos con ácido hialurónico",
+            "Estimulador de colágeno (bioestimuladores)",
           ]}
           image="/images/sections/closeup-manos.webp"
           imageAlt="Manos elegantes — Maysoon"
@@ -267,7 +268,7 @@ function DestacadosCorporales() {
         <FeaturedCard
           icon={Droplet}
           badge="Sin cirugía"
-          title="Intralipoterapia · AQUALIX"
+          title="Intralipoterapia · Adipozon"
           description="Tratamiento inyectable para eliminar grasa localizada sin pasar por quirófano. Aplicación rápida y precisa sobre la zona a tratar."
           extras={[
             "Indicado en abdomen, flancos y glúteos",

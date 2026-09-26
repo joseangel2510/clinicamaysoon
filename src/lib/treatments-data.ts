@@ -87,7 +87,7 @@ export const TREATMENTS: Record<string, TreatmentMeta> = {
     name: "Intralipoterapia",
     alternateName: "Eliminación de grasa localizada con inyectable",
     description:
-      "Inyección de AQUALIX para eliminar grasa localizada sin cirugía. Indoloro, ambulatorio y reincorporación inmediata. Indicado en abdomen, flancos y glúteos.",
+      "Inyección de Adipozon para eliminar grasa localizada sin cirugía. Indoloro, ambulatorio y reincorporación inmediata. Indicado en abdomen, flancos y glúteos.",
     bodyLocation: "Abdomen, flancos, glúteos",
   },
   "laser-erbio-yag": {

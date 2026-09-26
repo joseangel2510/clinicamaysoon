@@ -271,7 +271,7 @@ export const TREATMENT_CONTENT: Record<string, TreatmentContent> = {
 
   "intralipoterapia": {
     directAnswer:
-      "La intralipoterapia es un tratamiento inyectable que elimina grasa localizada sin cirugía. Se aplica AQUALIX, un compuesto que actúa sobre las células grasas (adipocitos) provocando su destrucción controlada. El propio organismo elimina los residuos por vía linfática durante las semanas siguientes a la sesión.",
+      "La intralipoterapia es un tratamiento inyectable que elimina grasa localizada sin cirugía. Se aplica Adipozon, un compuesto que actúa sobre las células grasas (adipocitos) provocando su destrucción controlada. El propio organismo elimina los residuos por vía linfática durante las semanas siguientes a la sesión.",
     faqs: [
       {
         question: "¿En qué zonas se puede aplicar?",
@@ -281,7 +281,7 @@ export const TREATMENT_CONTENT: Record<string, TreatmentContent> = {
       {
         question: "¿Cómo se realiza el procedimiento?",
         answer:
-          "Con una aguja fina se infiltra AQUALIX en múltiples puntos de la zona a tratar. La sesión dura 30-60 minutos según la extensión. No requiere anestesia general — la propia fórmula incorpora anestésico local. La reincorporación a la vida normal es inmediata, salvo deporte intenso durante 48 horas.",
+          "Con una aguja fina se infiltra Adipozon en múltiples puntos de la zona a tratar. La sesión dura 30-60 minutos según la extensión. No requiere anestesia general — la propia fórmula incorpora anestésico local. La reincorporación a la vida normal es inmediata, salvo deporte intenso durante 48 horas.",
       },
       {
         question: "¿Cuántas sesiones se necesitan?",

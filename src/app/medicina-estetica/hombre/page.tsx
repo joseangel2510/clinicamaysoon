@@ -9,7 +9,7 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Medicina Estética Facial · Hombre | Maysoon",
   description:
-    "Tratamientos faciales para hombre en Maysoon Valencia: MASCULOOK (definición masculina del ángulo mandibular), Lumixa, Carbonpeel, trasplante FUE, tricopigmentación y todo el catálogo facial masculino con tarifas reales.",
+    "Tratamientos faciales para hombre en Maysoon Valencia: MASCULOOK (definición masculina del ángulo mandibular), Lumixa, Carbonpeel, trasplante FUE y todo el catálogo facial masculino con tarifas reales.",
 };
 
 export default function MedicinaEsteticaHombrePage() {
