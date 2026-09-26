@@ -27,6 +27,106 @@ const equipos = [
       "Sistema de refrigeración para máximo confort",
     ],
   },
+  {
+    title: "Ultraformer III · HIFU",
+    description:
+      "Ultrasonido focalizado de alta intensidad que actúa en profundidad para tensar la piel y estimular colágeno. Efecto lifting sin cirugía en rostro, cuello y cuerpo.",
+    details: [
+      "Lifting facial y de cuello sin cirugía",
+      "Redefine el óvalo y reduce la papada",
+      "Reafirmación corporal",
+      "Sin tiempo de recuperación",
+    ],
+  },
+  {
+    title: "EMSlim · Tonificación Muscular",
+    description:
+      "Estimulación electromagnética de alta intensidad que genera contracciones musculares intensas para tonificar y ayudar a reducir grasa localizada.",
+    details: [
+      "Abdomen, glúteos, brazos y piernas",
+      "Tonifica y define el músculo",
+      "Sesiones cómodas, sin agujas",
+      "Sin tiempo de recuperación",
+    ],
+  },
+  {
+    title: "PLASMAGE · Plasma",
+    description:
+      "Tecnología de plasma que retrae la piel con gran precisión, sin cortes. Indicada para párpados caídos, arrugas finas y lesiones cutáneas como verrugas o lunares.",
+    details: [
+      "Blefaroplastia sin cirugía",
+      "Arrugas finas y flacidez localizada",
+      "Eliminación de verrugas y pequeñas lesiones",
+    ],
+    href: "/tratamientos/blefaroplastia-plasmage",
+  },
+  {
+    title: "ENDOLÁSER · Liften Dual",
+    description:
+      "Láser de fibra óptica que se introduce bajo la piel para retensar tejidos y reducir grasa localizada sin cirugía. Es la base del endolifting facial y de muchos tratamientos corporales.",
+    details: [
+      "Endolifting facial y reducción de papada",
+      "Grasa localizada: abdomen, flancos, cartucheras",
+      "Flacidez de brazos",
+      "Bolsas de ojeras",
+    ],
+    href: "/medicina-estetica/corporal#endolaser-fox-iii",
+  },
+  {
+    title: "Láser Diodo Vascular",
+    description:
+      "Láser específico para lesiones vasculares: cierra arañas vasculares, puntos rubí y capilares superficiales sin geles ni anestesia.",
+    details: [
+      "Arañas vasculares en rostro y piernas",
+      "Puntos rubí y capilares dilatados",
+      "Sin marcas residuales",
+    ],
+    href: "/tratamientos/laser-vascular",
+  },
+  {
+    title: "Morpheus 8 · Radiofrecuencia con Microagujas",
+    description:
+      "Radiofrecuencia fraccionada que llega a capas profundas de la piel mediante microagujas. Retensa, remodela y mejora la textura del rostro y el cuerpo.",
+    details: [
+      "Flacidez facial y corporal",
+      "Marcas de acné y textura irregular",
+      "Hiperhidrosis axilar",
+    ],
+    href: "/medicina-estetica#morpheus-8",
+  },
+  {
+    title: "IPL · Luz Pulsada Intensa",
+    description:
+      "Luz de amplio espectro que elimina manchas y rojeces y unifica el tono de la piel. Fotorrejuvenecimiento de rostro, cuello, escote y manos.",
+    details: [
+      "Manchas solares y léntigos",
+      "Rojeces y cuperosis",
+      "Fotorrejuvenecimiento",
+    ],
+    href: "/tratamientos/luz-pulsada-ipl",
+  },
+  {
+    title: "Láser CO2 Fraccionado",
+    description:
+      "Láser ablativo de referencia para el resurfacing: renueva la piel en profundidad y estimula colágeno nuevo para tratar arrugas, marcas de acné y textura.",
+    details: [
+      "Arrugas finas y medias",
+      "Marcas y cicatrices de acné",
+      "Párpados y ojeras",
+    ],
+    href: "/tratamientos/laser-co2",
+  },
+  {
+    title: "Láser Q-Switched · Tatuajes",
+    description:
+      "Láser de pulsos ultracortos que fragmenta el pigmento del tatuaje en partículas diminutas que el organismo elimina poco a poco. También trata manchas pigmentadas.",
+    details: [
+      "Eliminación de tatuajes",
+      "Borrado de micropigmentación antigua",
+      "Manchas pigmentadas",
+    ],
+    href: "/tratamientos/eliminacion-tatuajes",
+  },
 ];
 
 export function AparatologiaSection() {

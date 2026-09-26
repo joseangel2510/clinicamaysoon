@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Aparatología y Técnicas Avanzadas | Maysoon",
   description:
-    "Láser diodo HS-810 y tecnologías avanzadas en aparatología estética. Equipos de última generación con protocolos personalizados en Maysoon Valencia.",
+    "Láser diodo HS-810, Ultraformer III (HIFU), EMSlim, PLASMAGE, ENDOLÁSER Liften Dual, láser vascular, Morpheus 8, IPL, láser CO2 y Q-Switched. Equipos de última generación con protocolos personalizados en Maysoon Valencia.",
 };
 
 export default function AparatologiaPage() {
