@@ -288,7 +288,7 @@ function FacialPricingGridHombre() {
               price: "desde 450 €",
             },
             {
-              label: "Otoplastia con APTOS permanentes",
+              label: "Otoplastia con suturas permanentes",
               detail: "ambas orejas",
               price: "900 €",
             },
