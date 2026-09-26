@@ -144,7 +144,7 @@ export function MedicinaCorporalHombreSection() {
           description="Tratamiento médico de varices y arañas vasculares, además del exclusivo aumento de gemelos masculino con rellenos corporales."
           treatments={[
             "Esclerosis de varices",
-            "Láser Vascular (ENDOLÁSER)",
+            "Láser Vascular",
             "Aumento de gemelos · Exclusivo Hombre",
           ]}
           image="/images/sections/closeup-hombre-piernas.webp"

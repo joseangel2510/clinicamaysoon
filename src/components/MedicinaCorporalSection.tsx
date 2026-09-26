@@ -79,7 +79,7 @@ export function MedicinaCorporalSection() {
             "Plasma Rico en Plaquetas (PRP)",
             "Elevación de pechos con hilos tensores",
             "Eliminación de manchas con IPL (Luz Pulsada Intensa)",
-            "Arañas vasculares con ENDOLÁSER",
+            "Arañas vasculares con Láser Vascular",
             "Estimulador de colágeno (bioestimuladores)",
           ]}
           image="/images/sections/closeup-escote.webp"

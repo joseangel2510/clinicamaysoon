@@ -87,7 +87,7 @@ export function ZonePriceCard({
               highlight ? "text-text-light/55" : "text-text-secondary"
             }`}
           >
-            Zonas incluidas
+            Zona a elegir
           </span>
           <ul className="flex flex-wrap gap-1.5">
             {zones.map((z) => (
