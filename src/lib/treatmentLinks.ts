@@ -8,8 +8,8 @@
  *    Neuromodulación, Estimuladores, Rellenos Faciales, Hilos Tensores).
  *
  * El matching es por substring tolerante a tildes/mayúsculas para soportar
- * variantes textuales como "Reducción de papada (ENDOLÁSER Liften)" o
- * "ENDOLÁSER Brazos (Liften)".
+ * variantes textuales como "Reducción de papada (ENDOLÁSER Liften Dual)" o
+ * "ENDOLÁSER Brazos (Liften Dual)".
  */
 
 const DIACRITICS_RE = /[̀-ͯ]/g;
@@ -106,7 +106,7 @@ export function getTreatmentLink(name: string): string | null {
   // ANCLAS IN-PAGE (sin página dedicada propia)
   // ─────────────────────────────────────────────
 
-  // ENDOLÁSER Liften — descrito en la sección corporal mujer
+  // ENDOLÁSER Liften Dual — descrito en la sección corporal mujer
   if (n.includes("endolaser") || n.includes("endolifting"))
     return "/medicina-estetica/corporal#endolaser-fox-iii";
 

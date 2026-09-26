@@ -85,7 +85,7 @@ export function MedicinaEsteticaHombreSection() {
             "Hilos Tensores",
             "Eliminación de manchas con Luz Pulsada Intensa (IPL)",
             "DermaPen — micropunción",
-            "Endolifting (ENDOLÁSER Liften)",
+            "Endolifting (ENDOLÁSER Liften Dual)",
             "Resurfacing con Láser CO2",
           ]}
           image="/images/sections/closeup-hombre-facial.webp"

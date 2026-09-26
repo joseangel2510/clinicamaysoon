@@ -92,7 +92,7 @@ export function MedicinaEsteticaSection() {
             "Eliminación de manchas con Luz Pulsada Intensa (IPL)",
             "DermaPen — micropunción para arrugas, manchas y cicatrices",
             "Resurfacing con Láser CO2",
-            "Endolifting (ENDOLÁSER Liften)",
+            "Endolifting (ENDOLÁSER Liften Dual)",
             "Morpheus 8 — radiofrecuencia fraccionada con microagujas",
             "Estimuladores de colágeno (ácido poliláctico)",
           ]}
@@ -218,6 +218,7 @@ export function MedicinaEsteticaSection() {
           treatments={[
             "Corrección de Bruxismo",
             "Armonización mandibular",
+            "ENDOLÁSER (Liften Dual)",
           ]}
           image="/images/sections/closeup-mandibula.webp"
           imageAlt="Mandíbula y cuello — Maysoon"

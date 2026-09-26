@@ -9,7 +9,7 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Medicina Estética Corporal · Mujer | Maysoon",
   description:
-    "Tratamientos corporales para mujer en Maysoon Valencia: Morpheus 8, BodyTite, ENDOLÁSER Liften, Intralipoterapia AQUALIX y sueroterapia. Catálogo por zona: cuello, brazos, abdomen, glúteos, piernas y más.",
+    "Tratamientos corporales para mujer en Maysoon Valencia: Morpheus 8, BodyTite, ENDOLÁSER Liften Dual, Intralipoterapia AQUALIX y sueroterapia. Catálogo por zona: cuello, brazos, abdomen, glúteos, piernas y más.",
 };
 
 export default function MedicinaCorporalPage() {
@@ -20,7 +20,7 @@ export default function MedicinaCorporalPage() {
         eyebrow="Medicina Estética · Cuerpo · Mujer"
         titleLine1="Tratamientos Corporales"
         titleLine2="que Sienten tu Cuerpo"
-        subtitle="Cada zona del cuerpo merece su técnica. Morpheus 8, BodyTite, ENDOLÁSER Liften y bioestimulación combinados según tu objetivo y tu ritmo."
+        subtitle="Cada zona del cuerpo merece su técnica. Morpheus 8, BodyTite, ENDOLÁSER Liften Dual y bioestimulación combinados según tu objetivo y tu ritmo."
         image="/images/sections/hero-corporal.webp"
         imageAlt="Sala de tratamiento corporal Maysoon"
       />

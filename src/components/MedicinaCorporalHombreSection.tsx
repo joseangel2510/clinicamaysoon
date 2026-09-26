@@ -34,7 +34,7 @@ export function MedicinaCorporalHombreSection() {
           title="Tensado y Definición"
           description="Combinamos láser, hilos, bioestimulación y BodyTite para reafirmar el cuello masculino, una de las zonas que más delata el paso del tiempo."
           treatments={[
-            "Reducción de papada (ENDOLÁSER Liften)",
+            "Reducción de papada (ENDOLÁSER Liften Dual)",
             "Estimulador de colágeno (bioestimuladores)",
             "Hilos tensores",
             "PLASMAGE para lunares y verrugas",
@@ -54,7 +54,7 @@ export function MedicinaCorporalHombreSection() {
           title="Reafirmación y Bienestar"
           description="Tratamientos focalizados en flacidez del brazo masculino, sudoración excesiva, eliminación de tatuajes y bienestar integral con sueroterapia."
           treatments={[
-            "ENDOLÁSER Brazos (Liften)",
+            "ENDOLÁSER Brazos (Liften Dual)",
             "Reducción de sudoración / Hiperhidrosis",
             "BodyTite — remodelación corporal avanzada",
             "Eliminación de tatuajes con láser",
@@ -91,7 +91,7 @@ export function MedicinaCorporalHombreSection() {
             "Mesoterapia Corporal",
             "Rellenos Corporales",
             "Intralipoterapia — eliminación de grasa localizada",
-            "Reducción de grasa con ENDOLÁSER (Liften)",
+            "Reducción de grasa con ENDOLÁSER (Liften Dual)",
             "BodyTite",
           ]}
           image="/images/sections/closeup-hombre-abdomen.webp"
