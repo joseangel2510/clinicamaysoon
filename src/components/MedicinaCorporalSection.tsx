@@ -80,6 +80,7 @@ export function MedicinaCorporalSection() {
             "Elevación de pechos con hilos tensores",
             "Eliminación de manchas con IPL (Luz Pulsada Intensa)",
             "Arañas vasculares con ENDOLÁSER",
+            "Estimulador de colágeno (bioestimuladores)",
           ]}
           image="/images/sections/closeup-escote.webp"
           imageAlt="Escote y clavícula — Maysoon"
