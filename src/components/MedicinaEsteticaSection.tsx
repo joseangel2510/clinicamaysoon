@@ -138,6 +138,7 @@ export function MedicinaEsteticaSection() {
             "Corrección de ojeras con ácido hialurónico",
             "Plasmage / Blefaroplastia sin cirugía",
             "Eliminación de bolsas con Endoláser",
+            "Láser CO2",
           ]}
           image="/images/sections/closeup-ojos.webp"
           imageAlt="Contorno de ojos — Maysoon"

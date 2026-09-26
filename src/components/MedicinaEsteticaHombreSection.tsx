@@ -167,6 +167,7 @@ export function MedicinaEsteticaHombreSection() {
             "Corrección de ojeras con ácido hialurónico",
             "Plasmage / Blefaroplastia",
             "Eliminación de bolsas con Endoláser",
+            "Láser CO2",
           ]}
           image="/images/sections/closeup-hombre-ojeras.webp"
           imageAlt="Contorno de ojos masculino — Maysoon"
