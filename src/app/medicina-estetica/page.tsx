@@ -11,7 +11,7 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Medicina Estética | Maysoon",
   description:
-    "Botox, hilos tensores, peelings médicos y más. Tratamientos de medicina estética con resultados naturales en Maysoon, Valencia.",
+    "Botox (neuromoduladores), hilos tensores, peelings médicos y más. Tratamientos de medicina estética con resultados naturales en Maysoon, Valencia.",
 };
 
 export default function MedicinaEsteticaPage() {

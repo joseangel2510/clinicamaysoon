@@ -463,7 +463,7 @@ function NeuromodulacionFeaturedHombre() {
               "Sesión de 30 min, indolora",
               "Efecto visible entre los 3 y 5 días",
               "Efecto completo a los 15 días con sesión de revisión",
-              "Trabajamos con Botox, Azzalure o Bocouture",
+              "Trabajamos con Botox (neuromoduladores), Azzalure o Bocouture",
             ].map((e) => (
               <motion.li
                 key={e}
