@@ -230,6 +230,14 @@ const tratamientos = [
     href: "/tratamientos/tratamientos-intimos",
     priceFrom: "600 €",
   },
+  {
+    image: "/images/sections/closeup-hombre-intima.webp",
+    category: "Zona Íntima",
+    title: "Escrotox · Neuromoduladores",
+    description:
+      "Toxina botulínica en el genital masculino: escroto más liso y relajado, hiperhidrosis escrotal y dolor escrotal.",
+    href: "/tratamientos/escrotox",
+  },
 ];
 
 export default function TratamientosIndexPage() {

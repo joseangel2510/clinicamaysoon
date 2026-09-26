@@ -195,6 +195,14 @@ export const TREATMENTS: Record<string, TreatmentMeta> = {
       "Protocolo médico combinado de maderoterapia, mesoterapia drenante y Alidya® específico contra los nódulos adiposos. Ataca las causas, no solo el síntoma.",
     bodyLocation: "Muslos, glúteos, abdomen",
   },
+  "escrotox": {
+    slug: "escrotox",
+    name: "Escrotox",
+    alternateName: "Toxina botulínica escrotal · neuromoduladores en genital masculino",
+    description:
+      "Toxina botulínica (neuromoduladores) en el escroto: relaja el músculo dartos para un aspecto más liso, relajado y amplio, reduce la hiperhidrosis escrotal y puede aliviar el dolor escrotal crónico en casos seleccionados.",
+    bodyLocation: "Escroto",
+  },
   "tratamientos-intimos": {
     slug: "tratamientos-intimos",
     name: "Tratamientos Íntimos",

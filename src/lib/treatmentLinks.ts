@@ -49,6 +49,9 @@ export function getTreatmentLink(name: string): string | null {
   )
     return "/tratamientos/rellenos-corporales";
 
+  // ── Escrotox (antes de neuromodulación genérica) ──
+  if (n.includes("escrotox")) return "/tratamientos/escrotox";
+
   // ── Zona íntima (antes de plasmage, porque "verrugas genitales" + plasmage) ──
   if (
     n.includes("aumento de glande") ||

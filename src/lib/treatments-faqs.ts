@@ -674,6 +674,33 @@ export const TREATMENT_CONTENT: Record<string, TreatmentContent> = {
     ],
   },
 
+  "escrotox": {
+    directAnswer:
+      "El Escrotox es la aplicación de toxina botulínica (neuromoduladores) en el escroto. Relaja el músculo dartos, responsable de que la piel se arrugue y se retraiga, y consigue un aspecto más liso, relajado y amplio. También reduce la sudoración excesiva de la zona. El efecto dura aproximadamente de 3 a 6 meses.",
+    faqs: [
+      {
+        question: "¿Qué usos tiene la toxina botulínica en el genital masculino?",
+        answer:
+          "El más habitual es el estético (Escrotox): escroto más liso, menos arrugado y con aspecto más amplio. También trata la hiperhidrosis escrotal y, en casos seleccionados, el dolor escrotal crónico. Su uso en disfunción eréctil y eyaculación precoz está en investigación y no es un tratamiento estándar.",
+      },
+      {
+        question: "¿Duele? ¿Cómo es la recuperación?",
+        answer:
+          "Se aplica crema anestésica y se usa una aguja muy fina, así que la molestia es mínima. La sesión dura unos 20-30 minutos y la vuelta a la vida normal es inmediata. Se recomienda evitar relaciones sexuales, deporte intenso y calor fuerte durante 24-48 horas.",
+      },
+      {
+        question: "¿Cuánto dura el efecto del Escrotox?",
+        answer:
+          "Los cambios empiezan a notarse a partir de la primera o segunda semana y el efecto se mantiene aproximadamente entre 3 y 6 meses. Como en cualquier tratamiento con neuromoduladores, el músculo recupera poco a poco su actividad y se puede repetir la sesión para mantener el resultado.",
+      },
+      {
+        question: "¿Afecta a la fertilidad o a la función sexual?",
+        answer:
+          "La toxina actúa sobre el músculo de la piel del escroto, no sobre los testículos, por lo que no se espera que afecte a la fertilidad ni a la erección. Aun así, cada caso se valora en consulta y se revisan antecedentes, medicación y posibles contraindicaciones antes de tratar.",
+      },
+    ],
+  },
+
   "tratamientos-intimos": {
     directAnswer:
       "En Maysoon se realizan tratamientos íntimos masculinos y femeninos con ácido hialurónico corporal: engrosamiento de pene (hasta 4 cm de circunferencia), aumento de glande, aumento de labios mayores y eliminación de verrugas genitales con PLASMAGE. Todos en consulta reservada con máxima discreción.",

@@ -110,6 +110,7 @@ export function MedicinaCorporalHombreSection() {
             "Aumento de glande",
             "Engrosamiento de pene · ácido hialurónico corporal",
             "Verrugas genitales · eliminación con PLASMAGE",
+            "Escrotox · neuromoduladores (toxina botulínica)",
           ]}
           image="/images/sections/closeup-hombre-intima.webp"
           imageAlt="Detalle estético masculino — Maysoon"

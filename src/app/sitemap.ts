@@ -35,6 +35,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "codigo-de-barras",
     "dermapen-micropuncion",
     "eliminacion-tatuajes",
+    "escrotox",
     "esclerosis-varices",
     "hiperhidrosis",
     "intralipoterapia",
