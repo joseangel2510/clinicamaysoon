@@ -7,7 +7,7 @@ import { Footer } from "@/components/Footer";
 export const metadata: Metadata = {
   title: "Unidad Capilar | Maysoon",
   description:
-    "Trasplante FUE, mesoterapia capilar, PRP, Trichotest, tricopigmentación y Biofibre. Centro de referencia en tratamientos médicos capilares en Valencia.",
+    "Trasplante FUE, mesoterapia capilar, PRP, Trichotest y Biofibre. Centro de referencia en tratamientos médicos capilares en Valencia.",
 };
 
 export default function UnidadCapilarPage() {

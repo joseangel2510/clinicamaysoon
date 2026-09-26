@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Award, MapPin, Palette } from "lucide-react";
 import { fadeInUp, staggerContainer, staggerFast } from "@/lib/animations";
 import { ZonaNav } from "./ZonaNav";
 import { PricingTable } from "./PricingTable";
@@ -15,7 +14,6 @@ import { ConsultaBlock } from "./ConsultaBlock";
 const tecnicas = [
   { id: "estudio", label: "Estudio Capilar" },
   { id: "trasplante", label: "Trasplante FUE" },
-  { id: "tricopigmentacion", label: "Tricopigmentación" },
   { id: "trichotest", label: "Trichotest" },
   { id: "prp", label: "PRP Capilar" },
   { id: "mesoterapia", label: "Mesoterapia" },
@@ -114,7 +112,7 @@ export function UnidadCapilarSection() {
             },
             {
               feature: "Unidades por sesión",
-              values: ["Hasta 1.500", "Hasta 4.000", "Hasta 2.500"],
+              values: ["Hasta 4.000", "Hasta 4.000", "Hasta 2.500"],
             },
             {
               feature: "Cicatriz",
@@ -122,7 +120,7 @@ export function UnidadCapilarSection() {
             },
             {
               feature: "Rasurado",
-              values: ["Opcional (con DHI)", "Requerido", "Requerido"],
+              values: ["Requerido", "Requerido", "Requerido"],
             },
             {
               feature: "Limitado por zona donante",
@@ -152,20 +150,11 @@ export function UnidadCapilarSection() {
         />
 
         <InfoBlock
-          eyebrow="Técnica 1"
+          eyebrow="Nuestra técnica"
           title="FUE Clásica"
           paragraphs={[
             "Extracción individual de los folículos uno a uno desde la zona donante (nuca y región occipital), implantación en la zona receptora.",
             "Sin puntos de sutura ni cicatrices visibles. Trabajamos con folículos de 1 a 4 pelos según la densidad necesaria en cada zona del cuero cabelludo.",
-          ]}
-        />
-
-        <InfoBlock
-          eyebrow="Técnica 2"
-          title="DHI · FUE sin Rasurado"
-          paragraphs={[
-            "Misma extracción que la FUE, pero con implantación directa mediante dispositivo 'implanter' (aguja hueca, sin necesidad de orificio receptor previo).",
-            "Ventajas: menos sangrado, mayor densidad posible, puede hacerse sin rasurado y la curación es más rápida. Contras: intervención más larga, coste superior y mayor manipulación del folículo.",
           ]}
         />
 
@@ -196,69 +185,14 @@ export function UnidadCapilarSection() {
             "Indoloro con anestesia local",
             "Resultados visibles a los 3 meses",
             "Resultado óptimo entre 9 y 12 meses",
-            "Modalidad con o sin rasurado",
           ]}
           style="plus"
         />
 
-        {/* ═════════ 03 · TRICOPIGMENTACIÓN ═════════ */}
-        <TechniqueHeader
-          id="tricopigmentacion"
-          number="03"
-          eyebrow="Sin trasplante"
-          title="Tricopigmentación Capilar 3D"
-        />
-
-        <PricingTable
-          title="Tarifas · Tricopigmentación 3D"
-          rows={[
-            {
-              label: "1 zona",
-              detail: "2 sesiones · inicial + retoque mensual",
-              price: "1.000 €",
-            },
-            {
-              label: "2 zonas",
-              detail: "3 sesiones · 2 iniciales + retoque mensual",
-              price: "1.800 €",
-            },
-            {
-              label: "Completa",
-              detail: "4 sesiones · 3 iniciales + retoque mensual",
-              price: "2.500 €",
-            },
-          ]}
-        />
-
-        <InfoBlock
-          title="Tatuaje capilar 3D para look rapado o pelo corto"
-          paragraphs={[
-            "Técnica innovadora de tatuaje capilar 3D que cubre zonas de calvicie sin necesidad de trasplante. Crea el efecto óptico de cabeza poblada con un look rapado o pelo de hasta 5 mm.",
-            "Resultados espectaculares, duraderos y visibles de inmediato. Permanente — puede atenuarse con los años y precisar un repaso. Apto para cualquier paciente, independientemente de sexo, edad o grado de alopecia.",
-          ]}
-        />
-
-        {/* ── Mar Marín Leal · destacada ── */}
-        <ProfessionalFeature />
-
-        <BulletListBlock
-          eyebrow="Tricopigmentación · Contraindicaciones"
-          title="Cuándo no aplicarla"
-          items={[
-            "Pacientes inmunodeprimidos mal controlados",
-            "Pacientes en quimioterapia sin consentimiento del oncólogo",
-            "Inflamaciones o infecciones activas en la zona",
-            "Dermatitis o irritaciones del cuero cabelludo",
-            "Alergia a los componentes de los pigmentos",
-          ]}
-          style="warning"
-          columns={2}
-        />
-
-        {/* ═════════ 04 · TRICHOTEST ═════════ */}
+        {/* ═════════ 03 · TRICHOTEST ═════════ */}
         <TechniqueHeader
           id="trichotest"
-          number="04"
+          number="03"
           eyebrow="Test genético"
           title="Trichotest Capilar"
         />
@@ -302,10 +236,10 @@ export function UnidadCapilarSection() {
           style="plus"
         />
 
-        {/* ═════════ 05 · PRP CAPILAR ═════════ */}
+        {/* ═════════ 04 · PRP CAPILAR ═════════ */}
         <TechniqueHeader
           id="prp"
-          number="05"
+          number="04"
           eyebrow="Bioestimulación"
           title="PRP · Plasma Rico en Plaquetas"
         />
@@ -339,10 +273,10 @@ export function UnidadCapilarSection() {
           ]}
         />
 
-        {/* ═════════ 06 · MESOTERAPIA ═════════ */}
+        {/* ═════════ 05 · MESOTERAPIA ═════════ */}
         <TechniqueHeader
           id="mesoterapia"
-          number="06"
+          number="05"
           eyebrow="Activos directos"
           title="Mesoterapia Capilar"
         />
@@ -421,83 +355,6 @@ function TechniqueHeader({
   );
 }
 
-function ProfessionalFeature() {
-  return (
-    <motion.div
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      className="my-12 lg:my-14 rounded-3xl bg-bg-dark text-text-light relative overflow-hidden"
-    >
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at 0% 100%, rgba(184,115,85,0.22), transparent 60%)",
-        }}
-      />
-      <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 p-10 lg:p-14 items-center">
-        <div>
-          <motion.div
-            variants={fadeInUp}
-            className="inline-flex items-center gap-2 mb-5 px-3 py-1 rounded-full bg-accent-gold/15 border border-accent-gold/30"
-          >
-            <Award size={12} strokeWidth={2.2} className="text-accent-gold" />
-            <span className="font-body text-[10px] font-medium uppercase tracking-[0.3em] text-accent-gold">
-              La firma · Maysoon
-            </span>
-          </motion.div>
-          <motion.h3
-            variants={fadeInUp}
-            className="font-display font-normal text-3xl lg:text-4xl text-text-light leading-[1.1] tracking-[-0.02em] mb-3"
-          >
-            Mar Marín Leal
-          </motion.h3>
-          <motion.p
-            variants={fadeInUp}
-            className="font-body italic text-sm lg:text-base text-accent-gold mb-5"
-          >
-            Pintora valenciana especializada en hiperrealismo
-          </motion.p>
-          <motion.p
-            variants={fadeInUp}
-            className="font-body text-sm lg:text-[15px] text-text-light/75 leading-[1.85] max-w-xl mb-6"
-          >
-            La tricopigmentación es un arte. Mar Marín firma cada sesión con la
-            precisión de quien expone en galerías de Nueva York y ha realizado
-            retratos para la Casa Real Española.
-          </motion.p>
-          <motion.div
-            variants={fadeInUp}
-            className="flex flex-wrap gap-2"
-          >
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-text-light/5 border border-text-light/10 font-body text-xs text-text-light/85">
-              <MapPin size={12} strokeWidth={2} className="text-accent-gold" />
-              Galerías en Nueva York
-            </span>
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-text-light/5 border border-text-light/10 font-body text-xs text-text-light/85">
-              <Award size={12} strokeWidth={2} className="text-accent-gold" />
-              Retratos · Casa Real Española
-            </span>
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-text-light/5 border border-text-light/10 font-body text-xs text-text-light/85">
-              <Palette size={12} strokeWidth={2} className="text-accent-gold" />
-              Hiperrealismo
-            </span>
-          </motion.div>
-        </div>
-        <motion.div
-          variants={fadeInUp}
-          className="hidden lg:flex items-center justify-center"
-        >
-          <div className="relative w-48 h-48 rounded-full bg-accent-gold/10 border border-accent-gold/30 flex items-center justify-center">
-            <Palette size={56} strokeWidth={1.2} className="text-accent-gold" />
-          </div>
-        </motion.div>
-      </div>
-    </motion.div>
-  );
-}
 
 function ExtrasBlock() {
   return (

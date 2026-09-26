@@ -54,7 +54,7 @@ const sections = [
     image: "/images/sections/unidad-capilar-real.png",
     title: "Unidad Capilar",
     description:
-      "Trasplante FUE, mesoterapia, PRP, Trichotest, tricopigmentación y Biofibre.",
+      "Trasplante FUE, mesoterapia, PRP, Trichotest y Biofibre.",
     href: "/unidad-capilar",
   },
   {

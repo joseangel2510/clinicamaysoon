@@ -92,8 +92,6 @@ export function getTreatmentLink(name: string): string | null {
   // ── Unidad capilar ──
   if (n.includes("trasplante") && n.includes("fue"))
     return "/unidad-capilar#trasplante";
-  if (n.includes("tricopigmentacion"))
-    return "/unidad-capilar#tricopigmentacion";
 
   // ── PRP / factores de crecimiento ──
   if (

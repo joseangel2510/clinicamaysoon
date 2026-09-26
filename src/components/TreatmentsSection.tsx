@@ -35,7 +35,7 @@ const treatments = [
     image: "/images/treatments/capilar.webp",
     title: "Tratamientos Capilares",
     description:
-      "La única clínica en Valencia con todo el abanico: trasplante, PRP, mesoterapia, Biofibre y tricopigmentación.",
+      "La única clínica en Valencia con todo el abanico: trasplante, PRP, mesoterapia, Trichotest y Biofibre.",
     link: "/tratamientos/capilares",
   },
   {
