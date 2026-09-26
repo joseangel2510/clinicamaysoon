@@ -45,7 +45,7 @@ export const CLINIC = {
 /**
  * Horarios de la clínica.
  * Lunes a jueves: mañana 09:30-13:30, tarde 16:30-20:30.
- * Viernes: mañana 09:30-13:30, tarde 15:30-18:30.
+ * Viernes: mañana 09:30-14:00, tarde 15:30-18:30.
  */
 export const OPENING_HOURS = [
   {
@@ -61,7 +61,7 @@ export const OPENING_HOURS = [
   {
     dayOfWeek: "Friday",
     opens: "09:30",
-    closes: "13:30",
+    closes: "14:00",
   },
   {
     dayOfWeek: "Friday",
@@ -95,6 +95,6 @@ export const DIRECTOR_MEDICO = {
     "Licenciado en Medicina — Universidad de Salamanca",
     "Máster en Técnicas Avanzadas de Medicina Estética y Láser — CEU",
     "Diploma en Estudios Avanzados (DEA) — Sobresaliente",
-    "+10 años de experiencia en medicina estética",
+    "+14 años de experiencia en medicina estética",
   ],
 } as const;

@@ -96,7 +96,7 @@ export function DoctoresMedEsteticaSection() {
               className="flex items-center gap-4 pt-5 border-t border-accent-stone/30"
             >
               <span className="font-display text-3xl text-accent-gold/80 leading-none">
-                10+
+                14+
               </span>
               <span className="font-body text-xs uppercase tracking-[0.2em] text-text-muted leading-tight">
                 años de experiencia

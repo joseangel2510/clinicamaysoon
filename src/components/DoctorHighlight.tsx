@@ -14,7 +14,7 @@ const credentials = [
   "Licenciado en Medicina — Universidad de Salamanca",
   "Máster en Técnicas Avanzadas de Medicina Estética y Láser — CEU",
   "Diploma en Estudios Avanzados (DEA) — Sobresaliente",
-  "+10 años de experiencia en medicina estética",
+  "+14 años de experiencia en medicina estética",
 ];
 
 export function DoctorHighlight() {

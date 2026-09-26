@@ -7,12 +7,12 @@ import { fadeInUp, staggerFast } from "@/lib/animations";
 const trustItems = [
   {
     icon: Star,
-    stat: "4.5/5",
+    stat: "4,7/5",
     label: "Más de 114 reseñas",
   },
   {
     icon: Clock,
-    stat: "+10 años",
+    stat: "+14 años",
     label: "De experiencia",
   },
   {

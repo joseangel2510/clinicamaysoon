@@ -15,7 +15,7 @@ import { FeatureBlock } from "./FeatureBlock";
 
 const counters = [
   {
-    end: 10,
+    end: 14,
     prefix: "+",
     suffix: "",
     label: "Años de experiencia",
@@ -39,7 +39,7 @@ const counters = [
     decimals: 0,
   },
   {
-    end: 4.5,
+    end: 4.7,
     prefix: "",
     suffix: "/5",
     label: "Valoración media",

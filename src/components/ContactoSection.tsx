@@ -6,7 +6,7 @@ import { fadeInUp, staggerContainer, staggerFast } from "@/lib/animations";
 
 const horario = [
   { day: "Lunes – Jueves", hours: "9:30 – 13:30 · 16:30 – 20:30" },
-  { day: "Viernes", hours: "9:30 – 14:00 · 15:00 – 18:30" },
+  { day: "Viernes", hours: "9:30 – 14:00 · 15:30 – 18:30" },
   { day: "Sábado y Domingo", hours: "Cerrado" },
 ];
 

@@ -34,8 +34,8 @@ export function GoogleBadge() {
 
       {/* Rating */}
       <div className="flex items-center gap-3">
-        <span className="font-body text-lg font-semibold text-text-light">4.5 / 5</span>
-        <StarRating stars={4.5} size={16} />
+        <span className="font-body text-lg font-semibold text-text-light">4,7 / 5</span>
+        <StarRating stars={4.7} size={16} />
       </div>
 
       {/* Divider */}
