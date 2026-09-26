@@ -36,8 +36,7 @@ export function MedicinaCorporalSection() {
           title="Tensado y Definición"
           description="Combinamos láser, hilos y bioestimulación para reafirmar el cuello, una de las zonas que más delata el paso del tiempo."
           treatments={[
-            "Reducción de papada (ENDOLÁSER Fox III)",
-            "Lifting Retensor cutáneo (Endopeel)",
+            "Reducción de papada (ENDOLÁSER Liften)",
             "Estimulador de colágeno (bioestimuladores)",
             "Hilos tensores",
             "PLASMAGE para lunares y verrugas",
@@ -56,7 +55,7 @@ export function MedicinaCorporalSection() {
           title="Reafirmación y Bienestar"
           description="Tratamos la flacidez del brazo, la sudoración excesiva y la pigmentación de la zona axilar con tecnología y técnicas inyectables."
           treatments={[
-            "ENDOLÁSER Brazos (Fox III)",
+            "ENDOLÁSER Brazos (Liften)",
             "Mesoterapia Corporal",
             "Reducción de sudoración / Hiperhidrosis",
             "Blanqueamiento con peeling médico",
@@ -96,9 +95,8 @@ export function MedicinaCorporalSection() {
           description="La zona más completa: combinamos tecnologías inyectables, láser y radiofrecuencia para tratar grasa localizada y flacidez en una misma sesión."
           treatments={[
             "Rellenos Corporales",
-            "Lifting Retensor cutáneo (Endopeel)",
             "Mesoterapia Corporal",
-            "ENDOLÁSER (Fox III)",
+            "ENDOLÁSER (Liften)",
             "Intralipoterapia — eliminación de grasa localizada",
             "Hilos tensores",
             "Morpheus 8",
@@ -117,7 +115,7 @@ export function MedicinaCorporalSection() {
           title="Adiós a los Michelines"
           description="Tratamientos focalizados en el contorno de la cintura para reducir grasa localizada con resultados visibles desde la primera sesión."
           treatments={[
-            "Grasa localizada con ENDOLÁSER (Fox III)",
+            "Grasa localizada con ENDOLÁSER (Liften)",
             "Mesoterapia Corporal",
             "Intralipoterapia con AQUALIX",
             "BodyTite",
@@ -136,8 +134,7 @@ export function MedicinaCorporalSection() {
           description="Recuperamos firmeza y proyección sin cirugía: rellenos para volumen, hilos para elevación y tecnologías para tratar cartucheras y celulitis."
           treatments={[
             "Relleno corporal",
-            "Tratamiento cartucheras con ENDOLÁSER (Fox III)",
-            "Elevación de glúteos (Lifting Endopeel)",
+            "Tratamiento cartucheras con ENDOLÁSER (Liften)",
             "Mesoterapia Corporal",
             "Intralipoterapia con AQUALIX",
             "BodyTite",
@@ -289,7 +286,7 @@ function DestacadosCorporales() {
         />
       </motion.div>
 
-      {/* ENDOLÁSER Fox III - full width feature */}
+      {/* ENDOLÁSER Liften - full width feature */}
       <motion.div
         id="endolaser-fox-iii"
         variants={fadeInUp}
@@ -313,7 +310,7 @@ function DestacadosCorporales() {
                   Tecnología transversal
                 </span>
                 <h4 className="font-display font-normal text-2xl text-text-light leading-tight tracking-[-0.01em] mt-1">
-                  ENDOLÁSER Fox III
+                  ENDOLÁSER Liften
                 </h4>
               </div>
             </div>
@@ -325,7 +322,7 @@ function DestacadosCorporales() {
                 </span>
               </div>
               <h4 className="hidden lg:block font-display font-normal text-2xl lg:text-3xl text-text-light leading-tight tracking-[-0.01em] mb-3">
-                ENDOLÁSER Fox III
+                ENDOLÁSER Liften
               </h4>
               <p className="font-body text-sm lg:text-[15px] text-text-light/75 leading-[1.8] mb-4">
                 La tecnología láser que está detrás de muchos de nuestros

@@ -76,7 +76,6 @@ export default function PlasmagePage() {
             items={[
               "Rellenos con ácido hialurónico",
               "Hilos tensores",
-              "Endopeel",
             ]}
             style="plus"
           />

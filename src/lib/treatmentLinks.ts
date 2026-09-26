@@ -8,8 +8,8 @@
  *    Neuromodulación, Estimuladores, Rellenos Faciales, Hilos Tensores).
  *
  * El matching es por substring tolerante a tildes/mayúsculas para soportar
- * variantes textuales como "Reducción de papada (ENDOLÁSER Fox III)" o
- * "ENDOLÁSER Brazos (Fox III)".
+ * variantes textuales como "Reducción de papada (ENDOLÁSER Liften)" o
+ * "ENDOLÁSER Brazos (Liften)".
  */
 
 const DIACRITICS_RE = /[̀-ͯ]/g;
@@ -106,7 +106,7 @@ export function getTreatmentLink(name: string): string | null {
   // ANCLAS IN-PAGE (sin página dedicada propia)
   // ─────────────────────────────────────────────
 
-  // ENDOLÁSER Fox III — descrito en la sección corporal mujer
+  // ENDOLÁSER Liften — descrito en la sección corporal mujer
   if (n.includes("endolaser") || n.includes("endolifting"))
     return "/medicina-estetica/corporal#endolaser-fox-iii";
 
@@ -130,7 +130,7 @@ export function getTreatmentLink(name: string): string | null {
   if (n.includes("neuromodul") || n.includes("toxina botulinica"))
     return "/medicina-estetica#neuromodulacion";
 
-  // Rellenos faciales con ácido hialurónico (Teoxane)
+  // Rellenos faciales con ácido hialurónico
   if (
     n.includes("relleno") &&
     (n.includes("facial") || n.includes("teoxane"))

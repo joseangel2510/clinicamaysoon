@@ -34,8 +34,7 @@ export function MedicinaCorporalHombreSection() {
           title="Tensado y Definición"
           description="Combinamos láser, hilos, bioestimulación y BodyTite para reafirmar el cuello masculino, una de las zonas que más delata el paso del tiempo."
           treatments={[
-            "Reducción de papada (ENDOLÁSER Fox III)",
-            "Lifting Retensor cutáneo (Endopeel)",
+            "Reducción de papada (ENDOLÁSER Liften)",
             "Estimulador de colágeno (bioestimuladores)",
             "Hilos tensores",
             "PLASMAGE para lunares y verrugas",
@@ -55,7 +54,7 @@ export function MedicinaCorporalHombreSection() {
           title="Reafirmación y Bienestar"
           description="Tratamientos focalizados en flacidez del brazo masculino, sudoración excesiva, eliminación de tatuajes y bienestar integral con sueroterapia."
           treatments={[
-            "ENDOLÁSER Brazos (Fox III)",
+            "ENDOLÁSER Brazos (Liften)",
             "Reducción de sudoración / Hiperhidrosis",
             "BodyTite — remodelación corporal avanzada",
             "Eliminación de tatuajes con láser",
@@ -74,7 +73,6 @@ export function MedicinaCorporalHombreSection() {
           title="Pectoral con Definición"
           description="Tratamiento específico de la zona pectoral masculina: reafirmación cutánea y volumen estructural con técnicas reversibles e indoloras."
           treatments={[
-            "Lifting Retensor cutáneo (Endopeel)",
             "Rellenos Corporales",
           ]}
           image="/images/sections/closeup-hombre-pectoral.webp"
@@ -90,11 +88,10 @@ export function MedicinaCorporalHombreSection() {
           title="Tratamiento Integral"
           description="Catálogo completo para el abdomen masculino: combinamos lifting, mesoterapia, rellenos, intralipoterapia, láser y BodyTite según el objetivo."
           treatments={[
-            "Lifting Endopeel",
             "Mesoterapia Corporal",
             "Rellenos Corporales",
             "Intralipoterapia — eliminación de grasa localizada",
-            "Reducción de grasa con ENDOLÁSER (Fox III)",
+            "Reducción de grasa con ENDOLÁSER (Liften)",
             "BodyTite",
           ]}
           image="/images/sections/closeup-hombre-abdomen.webp"

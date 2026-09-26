@@ -84,7 +84,7 @@ export function MedicinaEsteticaSection() {
           title="Tratamientos de Rostro"
           description="El corazón de nuestra medicina estética. Rellenos, hilos, láser, radiofrecuencia y bioestimulación combinados según las necesidades reales de tu piel."
           treatments={[
-            "Rellenos Faciales con ácido hialurónico (Teoxane)",
+            "Rellenos Faciales con ácido hialurónico",
             "Plasma-Gel relleno",
             "Mesoterapia Facial",
             "Factores de crecimiento (PRP)",
@@ -117,6 +117,7 @@ export function MedicinaEsteticaSection() {
           description="Combinamos tecnologías láser y radiofrecuencia para tratar marcas de acné, lesiones vasculares e hiperpigmentación con resultados visibles."
           treatments={[
             "Marcas de acné con Láser Erbio YAG",
+            "Láser CO2",
             "Láser Vascular",
             "Luz Pulsada Intensa (IPL)",
             "Morpheus 8",
@@ -134,7 +135,7 @@ export function MedicinaEsteticaSection() {
           title="Mirada Descansada"
           description="Tratamos surcos, oscurecimiento y bolsas con técnicas específicas para el contorno de ojos. Producto y dosis pensados para esta zona delicada."
           treatments={[
-            "Corrección de ojeras con Redensity II de Teoxane",
+            "Corrección de ojeras con ácido hialurónico",
             "Plasmage / Blefaroplastia sin cirugía",
             "Eliminación de bolsas con Endoláser",
           ]}
@@ -249,7 +250,7 @@ function FacialPricingGrid() {
     >
       <div id="rellenos-faciales" className="scroll-mt-24">
       <PricingTable
-        title="Rellenos Faciales · Teoxane"
+        title="Rellenos Faciales · Ácido hialurónico"
         intro="El relleno más extendido por su alta tolerancia y versatilidad. Hidrata, revoluminiza y produce un efecto lifting natural. Tratamiento indoloro con reincorporación inmediata."
         rows={[
           { label: "Labios", price: "280 €" },

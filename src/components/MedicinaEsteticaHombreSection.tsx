@@ -58,6 +58,7 @@ export function MedicinaEsteticaHombreSection() {
           description="Combinamos láser, radiofrecuencia y peelings específicos para tratar marcas de acné, lesiones vasculares e hiperpigmentación. Incluye protocolos exclusivos en nuestro catálogo masculino."
           treatments={[
             "Marcas de acné con Láser Erbio YAG",
+            "Láser CO2",
             "Láser Vascular",
             "Luz Pulsada Intensa (IPL)",
             "Morpheus 8",
@@ -80,13 +81,12 @@ export function MedicinaEsteticaHombreSection() {
             "Rellenos Faciales con ácido hialurónico",
             "Plasma-Gel relleno",
             "Mesoterapia Facial",
-            "Lifting Retensor cutáneo (Endopeel)",
             "Factores de crecimiento (PRP)",
             "Hilos Tensores",
             "Eliminación de manchas con Luz Pulsada Intensa (IPL)",
             "DermaPen — micropunción",
-            "Endolifting (ENDOLÁSER Fox III)",
-            "Resurfacing con Láser Erbio YAG",
+            "Endolifting (ENDOLÁSER Liften)",
+            "Resurfacing con Láser CO2",
           ]}
           image="/images/sections/closeup-hombre-facial.webp"
           imageAlt="Retrato editorial masculino — Maysoon"
@@ -164,7 +164,7 @@ export function MedicinaEsteticaHombreSection() {
           title="Mirada Descansada"
           description="Tratamos surcos, oscurecimiento y bolsas con técnicas específicas para el contorno de ojos masculino. Producto y dosis ajustados."
           treatments={[
-            "Corrección de ojeras con Redensity II de Teoxane",
+            "Corrección de ojeras con ácido hialurónico",
             "Plasmage / Blefaroplastia",
             "Eliminación de bolsas con Endoláser",
           ]}
@@ -256,7 +256,7 @@ function FacialPricingGridHombre() {
       </motion.p>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
         <PricingTable
-          title="Rellenos Faciales · Teoxane"
+          title="Rellenos Faciales · Ácido hialurónico"
           intro="El relleno más extendido por su alta tolerancia y versatilidad. Hidrata, revoluminiza y produce un efecto lifting natural."
           rows={[
             { label: "Labios", price: "280 €" },
