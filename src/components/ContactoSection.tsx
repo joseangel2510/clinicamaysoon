@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Phone, MessageCircle, Mail, Clock, Instagram } from "lucide-react";
+import { MapPin, MessageCircle, Mail, Clock, Instagram } from "lucide-react";
 import { fadeInUp, staggerContainer, staggerFast } from "@/lib/animations";
 
 const horario = [
@@ -11,12 +11,6 @@ const horario = [
 ];
 
 const contactos = [
-  {
-    icon: Phone,
-    label: "Teléfono",
-    value: "+34 963 20 11 33",
-    href: "tel:+34963201133",
-  },
   {
     icon: MessageCircle,
     label: "WhatsApp recepción",
