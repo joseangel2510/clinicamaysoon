@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { MapPin, MessageCircle, Mail, Clock, Instagram } from "lucide-react";
 import { fadeInUp, staggerContainer, staggerFast } from "@/lib/animations";
 

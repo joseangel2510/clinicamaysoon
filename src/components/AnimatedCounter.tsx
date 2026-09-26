@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { m as motion, useInView } from "framer-motion";
 import { fadeInUp } from "@/lib/animations";
 
 function useCountUp(end: number, duration: number = 2000, decimals: number = 0) {

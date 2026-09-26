@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { Quote, Lightbulb, AlertTriangle, Star } from "lucide-react";
 import { fadeInUp } from "@/lib/animations";
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { staggerFast } from "@/lib/animations";
 import { TreatmentRow } from "./TreatmentRow";
 import { ConsultaBlock } from "./ConsultaBlock";

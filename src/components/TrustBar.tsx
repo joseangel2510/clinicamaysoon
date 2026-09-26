@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { Star, Clock, ShieldCheck, Sparkles } from "lucide-react";
 import { fadeInUp, staggerFast } from "@/lib/animations";
 

@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { ArrowUpRight, Check } from "lucide-react";
 import {
   fadeInUp,

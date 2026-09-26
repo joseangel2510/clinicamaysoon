@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { DM_Serif_Display, DM_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
+import { MotionProvider } from "@/components/MotionProvider";
 import { JsonLd } from "@/components/JsonLd";
 import { medicalClinicSchema } from "@/lib/schemas";
 import { SITE_URL } from "@/lib/clinic";
@@ -51,19 +53,6 @@ export default function RootLayout({
       lang="es"
       className={`${dmSerif.variable} ${dmSans.variable} h-full`}
     >
-      <head>
-        {/* Google Tag Manager */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','${GTM_ID}');`,
-          }}
-        />
-        {/* End Google Tag Manager */}
-      </head>
       <body className="min-h-full bg-bg-primary text-text-primary font-body antialiased">
         {/* Google Tag Manager (noscript) */}
         <noscript>
@@ -76,8 +65,19 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </noscript>
         {/* End Google Tag Manager (noscript) */}
         <JsonLd data={medicalClinicSchema()} />
-        {children}
-        <WhatsAppButton />
+        <MotionProvider>
+          {children}
+          <WhatsAppButton />
+        </MotionProvider>
+        {/* Google Tag Manager: se carga cuando la página ya ha terminado de
+            cargar (lazyOnload) para no competir con el contenido principal. */}
+        <Script id="gtm" strategy="lazyOnload">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${GTM_ID}');`}
+        </Script>
       </body>
     </html>
   );

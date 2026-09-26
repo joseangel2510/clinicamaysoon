@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, m as motion } from "framer-motion";
 
 const slides = [
   { src: "/hero/dsc_0117.webp", alt: "Equipo de Maysoon en la clínica" },
@@ -18,11 +18,11 @@ const FADE_DURATION_S = 1.4;
 export function HeroSlideshow({
   className = "",
   sizes = "100vw",
-  objectPosition = "center",
+  imageClassName = "object-center",
 }: {
   className?: string;
   sizes?: string;
-  objectPosition?: string;
+  imageClassName?: string;
 }) {
   const [index, setIndex] = useState(0);
 
@@ -35,7 +35,9 @@ export function HeroSlideshow({
 
   return (
     <div className={`relative w-full h-full overflow-hidden ${className}`}>
-      <AnimatePresence>
+      {/* initial={false}: la primera foto se pinta al instante (LCP) y el
+          fundido solo se aplica a partir del segundo cambio de slide. */}
+      <AnimatePresence initial={false}>
         <motion.div
           key={index}
           initial={{ opacity: 0, scale: 1.06 }}
@@ -59,8 +61,7 @@ export function HeroSlideshow({
             fill
             priority={index === 0}
             sizes={sizes}
-            className="object-cover"
-            style={{ objectPosition }}
+            className={`object-cover ${imageClassName}`}
           />
         </motion.div>
       </AnimatePresence>

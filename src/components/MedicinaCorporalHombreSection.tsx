@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { Award, Activity, Sparkles } from "lucide-react";
 import { fadeInUp, staggerContainer, staggerFast } from "@/lib/animations";
 import { ZonaNav } from "./ZonaNav";

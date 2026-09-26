@@ -2,7 +2,7 @@
 
 import { useState, useRef, useCallback, useEffect } from "react";
 import Image from "next/image";
-import { motion, useInView, animate } from "framer-motion";
+import { m as motion, useInView, animate } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { scaleUp } from "@/lib/animations";
 

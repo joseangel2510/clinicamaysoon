@@ -1,37 +1,15 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { MessageCircle } from "lucide-react";
-import {
-  heroContainer,
-  fadeInUp,
-  fadeInLeft,
-  clipReveal,
-  scaleXReveal,
-  lineReveal,
-} from "@/lib/animations";
 import { ScrollIndicator } from "./ScrollIndicator";
 import { AuthorizationBadge } from "./AuthorizationBadge";
 import { HeroSlideshow } from "./HeroSlideshow";
 
+// Componente de servidor: la entrada se anima con CSS (globals.css) para que
+// el titular y la primera foto se pinten sin esperar a la hidratación de React.
 export function HeroSection() {
   return (
     <section className="relative min-h-screen lg:h-screen flex flex-col lg:flex-row overflow-hidden">
-      {/* ── Mobile Image (top, 40vh) ── */}
-      <div className="relative w-full h-[40vh] overflow-hidden lg:hidden flex-shrink-0">
-        <HeroSlideshow sizes="100vw" objectPosition="center top" />
-        {/* Dark overlay for mobile */}
-        <div className="absolute inset-0 bg-gradient-to-b from-bg-dark/30 via-transparent to-bg-primary z-20 pointer-events-none" />
-        <div className="absolute inset-0 bg-accent-gold/5 z-20 pointer-events-none" />
-      </div>
-
       {/* ── Left Side — Text Content ── */}
-      <motion.div
-        variants={heroContainer}
-        initial="hidden"
-        animate="visible"
-        className="relative z-10 flex flex-col justify-center w-full lg:w-1/2 px-8 sm:px-12 lg:pl-20 lg:pr-12 pt-24 pb-10 lg:pt-24 lg:pb-0 bg-gradient-to-b from-bg-primary to-bg-secondary lg:bg-gradient-to-b lg:from-bg-primary lg:to-bg-secondary"
-      >
+      <div className="relative z-10 flex flex-col justify-center w-full lg:w-1/2 px-8 sm:px-12 lg:pl-20 lg:pr-12 pt-24 pb-10 lg:pt-24 lg:pb-0 bg-gradient-to-b from-bg-primary to-bg-secondary lg:bg-gradient-to-b lg:from-bg-primary lg:to-bg-secondary">
         {/* Subtle radial glow */}
         <div
           className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] rounded-full pointer-events-none"
@@ -43,12 +21,15 @@ export function HeroSection() {
 
         <div className="relative max-w-xl">
           {/* Eyebrow */}
-          <motion.div variants={fadeInLeft} className="flex items-center gap-3 mb-6 lg:mb-8">
+          <div
+            className="hero-fade-left flex items-center gap-3 mb-6 lg:mb-8"
+            style={{ animationDelay: "0.05s" }}
+          >
             <span className="block w-10 h-px bg-accent-gold" />
             <span className="font-body text-xs font-medium uppercase tracking-[0.35em] text-accent-gold">
               Medicina Estética Avanzada en Valencia
             </span>
-          </motion.div>
+          </div>
 
           {/* H1 — dos líneas visuales dentro de un único h1 (semántica correcta) */}
           <div className="mb-5 lg:mb-6">
@@ -56,49 +37,45 @@ export function HeroSection() {
               className="font-display font-normal leading-[1.05] tracking-[-0.02em]"
               style={{ fontSize: "clamp(2.25rem, 5vw, 4.5rem)" }}
             >
-              <motion.span
-                variants={clipReveal}
-                className="block not-italic text-[#0F0E0D]"
+              <span
+                className="hero-fade-up block not-italic text-[#0F0E0D]"
+                style={{ animationDelay: "0.1s" }}
               >
                 Tu Belleza,
-              </motion.span>
-              <motion.span
-                variants={clipReveal}
-                className="block italic text-[#7B6E5E]"
+              </span>
+              <span
+                className="hero-fade-up block italic text-[#7B6E5E]"
+                style={{ animationDelay: "0.2s" }}
               >
                 Nuestra Ciencia
-              </motion.span>
+              </span>
             </h1>
           </div>
 
           {/* Decorative separator with breathing pulse */}
-          <motion.div
-            variants={scaleXReveal}
-            className="flex items-center gap-3 mb-6 lg:mb-8 origin-left"
+          <div
+            className="hero-scale-x flex items-center gap-3 mb-6 lg:mb-8 origin-left"
+            style={{ animationDelay: "0.3s" }}
           >
             <span className="block w-[60px] h-px bg-accent-gold/50" />
-            <motion.span
-              animate={{ opacity: [0.4, 0.7, 0.4] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="block w-1.5 h-1.5 rounded-full bg-accent-gold"
-            />
+            <span className="soft-pulse block w-1.5 h-1.5 rounded-full bg-accent-gold" />
             <span className="block w-[60px] h-px bg-accent-gold/50" />
-          </motion.div>
+          </div>
 
           {/* Subtitle */}
-          <motion.p
-            variants={fadeInUp}
-            className="font-body text-sm sm:text-base text-text-secondary leading-[1.8] max-w-[480px] mb-8 lg:mb-10"
+          <p
+            className="hero-fade-up font-body text-sm sm:text-base text-text-secondary leading-[1.8] max-w-[480px] mb-8 lg:mb-10"
+            style={{ animationDelay: "0.35s" }}
           >
             Donde las técnicas más avanzadas en medicina estética y láser se ponen
             al servicio de tu bienestar. Resultados naturales, atención
             personalizada.
-          </motion.p>
+          </p>
 
           {/* CTA + Badge row */}
-          <motion.div
-            variants={fadeInUp}
-            className="flex flex-col sm:flex-row items-center sm:items-center gap-5"
+          <div
+            className="hero-fade-up flex flex-col sm:flex-row items-center sm:items-center gap-5"
+            style={{ animationDelay: "0.45s" }}
           >
             {/* Authorization Badge */}
             <AuthorizationBadge />
@@ -113,25 +90,27 @@ export function HeroSection() {
               <MessageCircle size={20} strokeWidth={2} />
               Escríbenos por WhatsApp
             </a>
-          </motion.div>
+          </div>
         </div>
-      </motion.div>
+      </div>
 
       {/* ── Decorative vertical gold line between sides ── */}
-      <motion.div
-        variants={lineReveal}
-        initial="hidden"
-        animate="visible"
-        className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-accent-gold/15 z-20 origin-top"
-      />
+      <div className="hero-line hidden lg:block absolute left-1/2 top-0 bottom-0 w-px bg-accent-gold/15 z-20 origin-top" />
 
-      {/* ── Right Side — Desktop Hero Slideshow ── */}
-      <div className="hidden lg:block relative w-1/2 h-screen overflow-hidden">
-        <HeroSlideshow sizes="50vw" objectPosition="center" />
+      {/* ── Slideshow único: arriba en móvil (40vh), a la derecha en escritorio.
+          Un solo componente para que solo se descargue una foto inicial. ── */}
+      <div className="relative order-first lg:order-last w-full h-[40vh] lg:w-1/2 lg:h-screen overflow-hidden flex-shrink-0">
+        <HeroSlideshow
+          sizes="(min-width: 1024px) 50vw, 100vw"
+          imageClassName="object-top lg:object-center"
+        />
 
-        {/* Gradient overlay — left fade into text area */}
+        {/* Mobile: dark overlay into the text */}
+        <div className="lg:hidden absolute inset-0 bg-gradient-to-b from-bg-dark/30 via-transparent to-bg-primary z-20 pointer-events-none" />
+
+        {/* Desktop: gradient overlay — left fade into text area */}
         <div
-          className="absolute inset-y-0 left-0 w-[35%] z-10 pointer-events-none"
+          className="hidden lg:block absolute inset-y-0 left-0 w-[35%] z-10 pointer-events-none"
           style={{
             background:
               "linear-gradient(to right, var(--color-bg-primary) 0%, transparent 100%)",

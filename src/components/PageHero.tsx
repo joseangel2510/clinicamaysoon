@@ -1,14 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import { motion } from "framer-motion";
-import {
-  fadeInLeft,
-  fadeInUp,
-  clipReveal,
-  scaleXReveal,
-  heroContainer,
-} from "@/lib/animations";
 
 interface PageHeroProps {
   eyebrow: string;
@@ -19,6 +9,8 @@ interface PageHeroProps {
   imageAlt?: string;
 }
 
+// Componente de servidor: la entrada se anima con CSS (globals.css) para que
+// el título y la imagen se pinten sin esperar a la hidratación de React.
 export function PageHero({
   eyebrow,
   titleLine1,
@@ -38,23 +30,18 @@ export function PageHero({
         }}
       />
 
-      <motion.div
-        variants={heroContainer}
-        initial="hidden"
-        animate="visible"
-        className="relative mx-auto max-w-6xl px-6 lg:px-8"
-      >
+      <div className="relative mx-auto max-w-6xl px-6 lg:px-8">
         {/* Eyebrow */}
-        <motion.div
-          variants={fadeInLeft}
-          className="flex items-center justify-center gap-3 mb-6"
+        <div
+          className="hero-fade-left flex items-center justify-center gap-3 mb-6"
+          style={{ animationDelay: "0.05s" }}
         >
           <span className="block w-10 h-px bg-accent-gold" />
           <span className="font-body text-xs font-medium uppercase tracking-[0.35em] text-accent-gold">
             {eyebrow}
           </span>
           <span className="block w-10 h-px bg-accent-gold" />
-        </motion.div>
+        </div>
 
         {/* H1 — dos líneas visuales dentro de un único h1 (semántica correcta) */}
         <div className="text-center mb-6">
@@ -62,64 +49,61 @@ export function PageHero({
             className="font-display font-normal leading-[1.05] tracking-[-0.02em]"
             style={{ fontSize: "clamp(2.25rem, 5vw, 4rem)" }}
           >
-            <motion.span
-              variants={clipReveal}
-              className="block not-italic text-[#0F0E0D]"
+            <span
+              className="hero-fade-up block not-italic text-[#0F0E0D]"
+              style={{ animationDelay: "0.1s" }}
             >
               {titleLine1}
-            </motion.span>
-            <motion.span
-              variants={clipReveal}
-              className="block italic text-[#7B6E5E]"
+            </span>
+            <span
+              className="hero-fade-up block italic text-[#7B6E5E]"
+              style={{ animationDelay: "0.2s" }}
             >
               {titleLine2}
-            </motion.span>
+            </span>
           </h1>
         </div>
 
         {/* Decorative dot separator */}
-        <motion.div
-          variants={scaleXReveal}
-          className="flex items-center justify-center gap-3 mb-8 origin-center"
+        <div
+          className="hero-scale-x flex items-center justify-center gap-3 mb-8 origin-center"
+          style={{ animationDelay: "0.3s" }}
         >
           <span className="block w-[60px] h-px bg-accent-gold/50" />
-          <motion.span
-            animate={{ opacity: [0.4, 0.7, 0.4] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-            className="block w-1.5 h-1.5 rounded-full bg-accent-gold"
-          />
+          <span className="soft-pulse block w-1.5 h-1.5 rounded-full bg-accent-gold" />
           <span className="block w-[60px] h-px bg-accent-gold/50" />
-        </motion.div>
+        </div>
 
         {/* Subtitle */}
-        <motion.p
-          variants={fadeInUp}
-          className={`font-body text-sm sm:text-base text-text-secondary leading-[1.8] max-w-xl mx-auto text-center ${
+        <p
+          className={`hero-fade-up font-body text-sm sm:text-base text-text-secondary leading-[1.8] max-w-xl mx-auto text-center ${
             image ? "mb-12 lg:mb-16" : ""
           }`}
+          style={{ animationDelay: "0.35s" }}
         >
           {subtitle}
-        </motion.p>
+        </p>
 
         {/* Hero Image (optional) */}
         {image && (
-          <motion.div
-            variants={fadeInUp}
-            className="relative aspect-[21/9] rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(15,14,13,0.12)]"
+          <div
+            className="hero-rise relative aspect-[21/9] rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(15,14,13,0.12)]"
+            style={{ animationDelay: "0.1s" }}
           >
             <Image
               src={image}
               alt={imageAlt ?? ""}
               fill
               priority
+              fetchPriority="high"
               className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 1200px"
+              sizes="(max-width: 1024px) 100vw, 1152px"
             />
             <div className="absolute inset-0 bg-accent-gold/5" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
-          </motion.div>
+          </div>
         )}
-      </motion.div>
+      </div>
     </section>
   );
 }

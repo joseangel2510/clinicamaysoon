@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { m as motion } from "framer-motion";
 import { Navbar } from "@/components/Navbar";
 import { TratamientoCard } from "@/components/TratamientoCard";
 import { ConsultaBlock } from "@/components/ConsultaBlock";

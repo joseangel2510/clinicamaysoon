@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { m as motion, useInView } from "framer-motion";
 import { useRef, useEffect, useState, useCallback } from "react";
 import { fadeInUp, staggerContainer } from "@/lib/animations";
 
@@ -43,7 +43,7 @@ function GoldenParticles() {
       });
     }
 
-    const animate = () => {
+    const draw = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       for (const p of particles) {
         p.y -= p.speed;
@@ -60,11 +60,25 @@ function GoldenParticles() {
         ctx.fillStyle = `rgba(184, 115, 85, ${p.opacity})`;
         ctx.fill();
       }
-      animationId = requestAnimationFrame(animate);
+      animationId = requestAnimationFrame(draw);
     };
-    animate();
+
+    // Solo animar mientras la sección está en pantalla: así el bucle no
+    // ocupa el hilo principal durante la carga inicial de la página.
+    let running = false;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && !running) {
+        running = true;
+        draw();
+      } else if (!entry.isIntersecting && running) {
+        running = false;
+        cancelAnimationFrame(animationId);
+      }
+    });
+    observer.observe(canvas);
 
     return () => {
+      observer.disconnect();
       cancelAnimationFrame(animationId);
       window.removeEventListener("resize", resize);
     };

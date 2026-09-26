@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, type MotionValue, useTransform } from "framer-motion";
+import { m as motion, type MotionValue, useTransform } from "framer-motion";
 
 export function ExperienceProgressBar({
   progress,
