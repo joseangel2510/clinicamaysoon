@@ -11,11 +11,12 @@ const tratamientos = [
     description:
       "Maquillaje semipermanente que define cejas, mirada y labios con un acabado natural. Diseño personalizado según tu rostro y expresión.",
     details: [
-      "Cejas: efecto pelo a pelo o sombreado",
-      "Eyeliner: mirada definida sin maquillaje diario",
-      "Labios: contorno, color y simetría",
+      "Cejas: efecto pelo a pelo o sombreado (250 €)",
+      "Eyeliner: mirada definida sin maquillaje diario (250 €)",
+      "Labios: contorno, color y simetría (270 €)",
       "Sesión inicial + retoque al mes incluido",
     ],
+    price: "250 €",
     href: "/tratamientos/micropigmentacion-microblading",
   },
 ];

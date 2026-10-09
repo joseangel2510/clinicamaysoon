@@ -5,6 +5,7 @@ import { TreatmentDirectAnswer } from "@/components/TreatmentDirectAnswer";
 import { TreatmentFAQ } from "@/components/TreatmentFAQ";
 import { ClinicalSignature } from "@/components/ClinicalSignature";
 import { PageHero } from "@/components/PageHero";
+import { PricingTable } from "@/components/PricingTable";
 import { InfoBlock } from "@/components/InfoBlock";
 import { BulletListBlock } from "@/components/BulletListBlock";
 import { ConsultaBlock } from "@/components/ConsultaBlock";
@@ -33,6 +34,16 @@ export default function MicropigmentacionPage() {
 
       <section className="bg-bg-primary py-14 lg:py-20">
         <div className="mx-auto max-w-4xl px-6 lg:px-8">
+          <PricingTable
+            title="Tarifas · Por zona"
+            intro="Cada precio incluye la sesión inicial y el retoque al mes."
+            rows={[
+              { label: "Cejas", price: "250 €" },
+              { label: "Labios", price: "270 €" },
+              { label: "Eyeliner", price: "250 €" },
+            ]}
+          />
+
           <InfoBlock
             eyebrow="Qué es"
             title="Maquillaje semipermanente a medida"

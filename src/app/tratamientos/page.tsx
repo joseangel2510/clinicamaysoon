@@ -135,6 +135,7 @@ const tratamientos = [
     description:
       "Maquillaje semipermanente de cejas, eyeliner y labios con acabado natural. Durabilidad 1-3 años.",
     href: "/tratamientos/micropigmentacion-microblading",
+    priceFrom: "250 €",
   },
   {
     image: "/images/sections/closeup-labios.webp",
