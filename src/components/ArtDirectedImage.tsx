@@ -7,10 +7,13 @@ interface ArtDirectedImageProps {
   sizes: string;
   className?: string;
   eager?: boolean;
+  /** Ancho (px) a partir del cual se usa `src` en lugar de `mobileSrc`. */
+  minWidth?: number;
 }
 
-// Foto con versión propia para móvil (<768px): cada dispositivo descarga solo
-// la suya. Se comporta como <Image fill>, así que el padre debe ser relative.
+// Foto con versión propia para móvil (<768px por defecto): cada dispositivo
+// descarga solo la suya. Se comporta como <Image fill>, así que el padre debe
+// ser relative.
 export function ArtDirectedImage({
   src,
   mobileSrc,
@@ -18,6 +21,7 @@ export function ArtDirectedImage({
   sizes,
   className,
   eager = false,
+  minWidth = 768,
 }: ArtDirectedImageProps) {
   const common = { alt, sizes, fill: true };
   const {
@@ -33,7 +37,7 @@ export function ArtDirectedImage({
 
   return (
     <picture>
-      <source media="(min-width: 768px)" srcSet={desktop} sizes={sizes} />
+      <source media={`(min-width: ${minWidth}px)`} srcSet={desktop} sizes={sizes} />
       <img {...rest} srcSet={mobile} alt={alt} className={className} />
     </picture>
   );

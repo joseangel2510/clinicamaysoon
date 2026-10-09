@@ -3,9 +3,16 @@
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AnimatePresence, m as motion } from "framer-motion";
+import { ArtDirectedImage } from "@/components/ArtDirectedImage";
 
-const slides = [
-  { src: "/hero/dsc_0117.webp", alt: "Equipo de Maysoon en la clínica" },
+// mobileSrc: versión para <1024px, donde el hueco es una franja apaisada
+// (en escritorio ocupa media pantalla a toda altura, formato vertical).
+const slides: { src: string; alt: string; mobileSrc?: string }[] = [
+  {
+    src: "/images/team/equipo-maysoon-vertical.webp",
+    mobileSrc: "/images/team/equipo-maysoon-horizontal.webp",
+    alt: "Equipo de Maysoon en la sala de espera de la clínica",
+  },
   { src: "/hero/dsc_9921.webp", alt: "Logo Maysoon en la recepción de la clínica" },
   { src: "/hero/dsc_0429.webp", alt: "Sala de tratamiento Maysoon" },
   { src: "/hero/dsc_0428.webp", alt: "Tecnología láser de última generación" },
@@ -55,14 +62,26 @@ export function HeroSlideshow({
           }}
           className="absolute inset-0"
         >
-          <Image
-            src={slides[index].src}
-            alt={slides[index].alt}
-            fill
-            priority={index === 0}
-            sizes={sizes}
-            className={`object-cover ${imageClassName}`}
-          />
+          {slides[index].mobileSrc ? (
+            <ArtDirectedImage
+              src={slides[index].src}
+              mobileSrc={slides[index].mobileSrc}
+              alt={slides[index].alt}
+              minWidth={1024}
+              eager={index === 0}
+              sizes={sizes}
+              className={`object-cover ${imageClassName}`}
+            />
+          ) : (
+            <Image
+              src={slides[index].src}
+              alt={slides[index].alt}
+              fill
+              priority={index === 0}
+              sizes={sizes}
+              className={`object-cover ${imageClassName}`}
+            />
+          )}
         </motion.div>
       </AnimatePresence>
 
