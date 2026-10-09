@@ -21,6 +21,13 @@ const teamMembers = [
       "Criterio clínico y técnica al servicio del resultado natural. Diseña cada protocolo respetando tus rasgos y tus tiempos.",
   },
   {
+    image: "/images/team/diana.webp",
+    name: "Diana",
+    role: "Especialista en cosmetología",
+    description: "Auxiliar de medicina estética, aparatología y quirófano.",
+    imageObjectPosition: "center",
+  },
+  {
     image: "/images/team/ricardo-cabina.jpg",
     name: "Ricardo",
     role: "Masajista Profesional",

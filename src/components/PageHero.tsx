@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ArtDirectedImage } from "@/components/ArtDirectedImage";
 
 interface PageHeroProps {
   eyebrow: string;
@@ -7,6 +8,9 @@ interface PageHeroProps {
   subtitle: string;
   image?: string;
   imageAlt?: string;
+  // Versión vertical para móvil: el marco pasa a 4:5 por debajo de md
+  mobileImage?: string;
+  imageClassName?: string;
 }
 
 // Componente de servidor: la entrada se anima con CSS (globals.css) para que
@@ -18,6 +22,8 @@ export function PageHero({
   subtitle,
   image,
   imageAlt,
+  mobileImage,
+  imageClassName = "",
 }: PageHeroProps) {
   return (
     <section className="relative pt-32 lg:pt-40 pb-16 lg:pb-20 overflow-hidden bg-bg-primary">
@@ -87,18 +93,31 @@ export function PageHero({
         {/* Hero Image (optional) */}
         {image && (
           <div
-            className="hero-rise relative aspect-[21/9] rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(15,14,13,0.12)]"
+            className={`hero-rise relative ${
+              mobileImage ? "aspect-[4/5] md:aspect-[21/9]" : "aspect-[21/9]"
+            } rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(15,14,13,0.12)]`}
             style={{ animationDelay: "0.1s" }}
           >
-            <Image
-              src={image}
-              alt={imageAlt ?? ""}
-              fill
-              priority
-              fetchPriority="high"
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 1152px"
-            />
+            {mobileImage ? (
+              <ArtDirectedImage
+                src={image}
+                mobileSrc={mobileImage}
+                alt={imageAlt ?? ""}
+                eager
+                className={`object-cover ${imageClassName}`}
+                sizes="(max-width: 1024px) 100vw, 1152px"
+              />
+            ) : (
+              <Image
+                src={image}
+                alt={imageAlt ?? ""}
+                fill
+                priority
+                fetchPriority="high"
+                className={`object-cover ${imageClassName}`}
+                sizes="(max-width: 1024px) 100vw, 1152px"
+              />
+            )}
             <div className="absolute inset-0 bg-accent-gold/5" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
           </div>

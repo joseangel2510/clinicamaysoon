@@ -31,8 +31,10 @@ export default function QuienesSomosPage() {
         titleLine1="Nuestra Historia,"
         titleLine2="Nuestro Equipo"
         subtitle="Maysoon significa rostros y cuerpos hermosos. Nuestra filosofía: armonía entre rostro y cuerpo, basada en una cultura ancestral de belleza."
-        image="/images/team/equipo-recepcion.jpg"
-        imageAlt="Equipo Maysoon en la recepción de la clínica de Valencia"
+        image="/images/team/equipo-maysoon-horizontal.webp"
+        mobileImage="/images/team/equipo-maysoon-vertical.webp"
+        imageAlt="Equipo Maysoon en la sala de espera de la clínica de Valencia"
+        imageClassName="object-[50%_65%] md:object-[50%_45%]"
       />
       <QuienesSomosSection />
       <DoctorSection />

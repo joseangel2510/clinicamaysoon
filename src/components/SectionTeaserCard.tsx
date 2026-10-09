@@ -5,23 +5,31 @@ import Link from "next/link";
 import { m as motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 import { fadeInUp } from "@/lib/animations";
+import { ArtDirectedImage } from "@/components/ArtDirectedImage";
 
 interface SectionTeaserCardProps {
   image: string;
+  mobileImage?: string;
+  imageClassName?: string;
   title: string;
   description: string;
   href: string;
   index: number;
 }
 
+const IMAGE_SIZES = "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw";
+
 export function SectionTeaserCard({
   image,
+  mobileImage,
+  imageClassName = "",
   title,
   description,
   href,
   index,
 }: SectionTeaserCardProps) {
   const number = String(index + 1).padStart(2, "0");
+  const imageClasses = `object-cover transition-transform duration-[700ms] ease-[cubic-bezier(0.25,0.4,0.25,1)] group-hover:scale-[1.06] ${imageClassName}`;
 
   return (
     <motion.div variants={fadeInUp} className="h-full">
@@ -31,13 +39,23 @@ export function SectionTeaserCard({
       >
         {/* Image */}
         <div className="relative aspect-[4/3] overflow-hidden">
-          <Image
-            src={image}
-            alt={title}
-            fill
-            className="object-cover transition-transform duration-[700ms] ease-[cubic-bezier(0.25,0.4,0.25,1)] group-hover:scale-[1.06]"
-            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-          />
+          {mobileImage ? (
+            <ArtDirectedImage
+              src={image}
+              mobileSrc={mobileImage}
+              alt={title}
+              className={imageClasses}
+              sizes={IMAGE_SIZES}
+            />
+          ) : (
+            <Image
+              src={image}
+              alt={title}
+              fill
+              className={imageClasses}
+              sizes={IMAGE_SIZES}
+            />
+          )}
 
           {/* Warm tint */}
           <div className="absolute inset-0 bg-accent-gold/5" />

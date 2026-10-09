@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { m as motion } from "framer-motion";
+import { ArtDirectedImage } from "@/components/ArtDirectedImage";
 import {
   fadeInUp,
   fadeInLeft,
@@ -166,19 +167,18 @@ export function QuienesSomosSection() {
               02
             </motion.span>
 
-            {/* Primary image — playful sala de espera shot */}
+            {/* Primary image — equipo en la sala de espera */}
             <motion.div
               variants={fadeInUp}
               className="relative z-10 overflow-hidden rounded-sm shadow-[0_30px_60px_-20px_rgba(15,14,13,0.35)] ring-1 ring-accent-stone/20"
             >
-              <div className="relative aspect-[4/3]">
-                <Image
-                  src="/images/team/equipo-sala-espera.jpg"
-                  alt="Equipo Maysoon compartiendo un momento distendido en la sala de espera"
-                  fill
-                  className="object-cover"
+              <div className="relative aspect-[4/5] md:aspect-[4/3]">
+                <ArtDirectedImage
+                  src="/images/team/equipo-maysoon-horizontal.webp"
+                  mobileSrc="/images/team/equipo-maysoon-vertical.webp"
+                  alt="Equipo Maysoon reunido en la sala de espera de la clínica"
+                  className="object-cover object-[50%_75%] md:object-center"
                   sizes="(max-width: 1024px) 100vw, 60vw"
-                  priority={false}
                 />
                 {/* Warm grading overlay */}
                 <div
