@@ -47,7 +47,7 @@ const areas: { img: string; nombre: string; texto: string; href: string }[] = [
   {
     img: "/images/sections/unidad-capilar-real.webp",
     nombre: "Unidad Capilar",
-    texto: "Trasplante FUE, mesoterapia, PRP, Trichotest y Biofibre.",
+    texto: "Trasplante FUE, mesoterapia, PRP y Trichotest.",
     href: "/unidad-capilar",
   },
   {

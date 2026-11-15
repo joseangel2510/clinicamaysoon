@@ -192,7 +192,7 @@ export function UnidadCapilarSection() {
         <PricingTable
           title="Tarifa"
           intro="Incluye realización del test, informe completo y pauta de tratamiento domiciliario."
-          rows={[{ label: "Trichotest · genético capilar", price: "250 €" }]}
+          rows={[{ label: "Trichotest · genético capilar", price: "280 €" }]}
         />
         </div>
 
