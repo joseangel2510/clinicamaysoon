@@ -21,10 +21,20 @@ const slides: { src: string; alt: string; mobileSrc?: string; pos?: string; rotu
     pos: "object-[50%_18%] md:object-[50%_30%]",
     rotulo: "El equipo",
   },
-  { src: "/hero/dsc_9921.webp", alt: "Logo Maysoon en la recepción de la clínica", rotulo: "Recepción" },
+  {
+    src: "/hero/dsc_9921.webp",
+    mobileSrc: "/hero/dsc_9921-movil.webp",
+    alt: "Logo Maysoon en la recepción de la clínica",
+    rotulo: "Recepción",
+  },
   { src: "/hero/dsc_0429.webp", alt: "Sala de tratamiento Maysoon", rotulo: "Sala de tratamiento" },
   { src: "/hero/dsc_0428.webp", alt: "Tecnología láser de última generación", rotulo: "Tecnología láser" },
-  { src: "/hero/dsc_0444.webp", alt: "Instalaciones de Maysoon", rotulo: "Instalaciones" },
+  {
+    src: "/hero/dsc_0444.webp",
+    mobileSrc: "/hero/dsc_0444-movil.webp",
+    alt: "Instalaciones de Maysoon",
+    rotulo: "Instalaciones",
+  },
 ];
 
 const DURA = 5600;
