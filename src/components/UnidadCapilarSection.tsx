@@ -356,23 +356,11 @@ function ExtrasBlock() {
           <span className="pildora pildora--arena">También disponibles</span>
         </div>
         <h3 className="tit tit--m ai__cap-tit ai__cap-tit--h3" data-tit>
-          Para casos no recuperables
+          Tratamiento complementario
         </h3>
       </div>
       <div className="ai__cap-cont">
-        <div className="ai__extras">
-          <div className="ai__extra" data-ap>
-            <span className="ai__lis3 ai__lis3--s" aria-hidden="true">
-              <i />
-              <i />
-              <i />
-            </span>
-            <h4 className="tit ai__extra-tit">Implante Capilar Biofibre</h4>
-            <p className="ai__extra-txt">
-              Solución para pacientes que no son candidatos a trasplante FUE.
-              Implante de fibras capilares biocompatibles para densidad inmediata.
-            </p>
-          </div>
+        <div className="ai__extras ai__extras--uno">
           <div className="ai__extra" data-ap>
             <span className="ai__lis3 ai__lis3--s" aria-hidden="true">
               <i />
