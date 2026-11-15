@@ -1,0 +1,352 @@
+/* Ficha de tratamiento — sistema de artículo: respuesta directa, bloques de
+   texto, listas con raya, nota oscura, pasos y fórmulas. Prefijo ft__ . */
+
+/* ── Marca de tres listones ── */
+.ft__marca {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 18px;
+  flex: none;
+  color: var(--color-terracota);
+}
+.ft__marca > i {
+  display: block;
+  width: 2px;
+  border-radius: 1px;
+  background: currentColor;
+}
+.ft__marca > i:nth-child(1) {
+  height: 10px;
+}
+.ft__marca > i:nth-child(2) {
+  height: 18px;
+}
+.ft__marca > i:nth-child(3) {
+  height: 6px;
+}
+
+/* La píldora puede partir en dos líneas si la etiqueta es larga (390px) */
+.ft__pil {
+  max-width: 100%;
+  height: auto;
+  min-height: 33px;
+  padding-block: 7px;
+  line-height: 1.35;
+  white-space: normal;
+}
+.ft__pil::before {
+  flex: none;
+}
+
+/* ── Respuesta directa ── */
+.ft__lead-sec {
+  background: var(--color-crema);
+  padding-top: clamp(40px, 5vw, 72px);
+}
+.ft__lead {
+  position: relative;
+  border-radius: 26px;
+  background: var(--color-arena);
+  color: var(--color-cacao);
+  padding: clamp(24px, 4.2vw, 48px);
+}
+.ft__lead-cab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: clamp(18px, 2.4vw, 28px);
+}
+.ft__lead-txt {
+  max-width: 44em;
+  font-size: clamp(1.25rem, 1.75vw, 1.375rem);
+  font-weight: 400;
+  line-height: 1.52;
+  letter-spacing: -0.018em;
+  text-wrap: pretty;
+}
+
+/* ── Bloque de artículo ── */
+.ft__bloque {
+  padding-block: clamp(40px, 5vw, 64px);
+  border-top: 1px solid var(--color-linea);
+  color: var(--color-cacao);
+}
+.ft__bloque:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+.ft__ceja {
+  margin-bottom: 18px;
+}
+.ft__tit {
+  max-width: 22em;
+  line-height: 1.1;
+}
+.ft__txt {
+  display: flex;
+  flex-direction: column;
+  gap: 1.05em;
+  margin-top: clamp(18px, 2vw, 26px);
+}
+.ft__p {
+  max-width: 62ch;
+  font-size: clamp(1rem, 1.15vw, 1.0625rem);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  text-wrap: pretty;
+}
+.ft__intro {
+  margin-top: clamp(16px, 1.8vw, 22px);
+}
+
+/* ── Lista con raya ── */
+.ft__lista {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  column-gap: clamp(28px, 4vw, 56px);
+  margin: clamp(22px, 2.6vw, 34px) 0 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px dashed rgba(134, 100, 82, 0.35);
+}
+.ft__item {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  column-gap: 14px;
+  align-items: start;
+  padding: 15px 0;
+  border-top: 1px dashed rgba(134, 100, 82, 0.35);
+  font-size: clamp(0.9688rem, 1.1vw, 1.0313rem);
+  line-height: 1.55;
+  color: var(--color-cacao);
+}
+.ft__ico {
+  width: 18px;
+  height: 18px;
+  margin-top: 0.22em;
+  color: var(--color-terracota);
+}
+.ft__ico--aviso {
+  color: var(--color-moka);
+}
+@media (min-width: 640px) {
+  .ft__lista--2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ── Nota oscura: el momento fuerte de la ficha ── */
+.ft__nota-caja {
+  margin-block: clamp(44px, 5.5vw, 72px);
+}
+.ft__nota {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 26px;
+  background: var(--color-cacao);
+  color: var(--color-crema);
+  padding: clamp(26px, 4.6vw, 56px);
+}
+/* Listones de roble apenas insinuados en el borde derecho */
+.ft__nota::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(38%, 300px);
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(196, 122, 58, 0.34) 0,
+    rgba(196, 122, 58, 0.34) 2px,
+    transparent 2px,
+    transparent 22px
+  );
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 100%);
+  opacity: 0.55;
+  pointer-events: none;
+}
+.ft__nota-cab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: clamp(20px, 2.8vw, 34px);
+}
+.ft__nota-ico {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(248, 244, 238, 0.22);
+  color: #f2c7a8;
+}
+.ft__nota-ico svg {
+  width: 19px;
+  height: 19px;
+}
+.ft__nota-txt {
+  max-width: 30em;
+  font-size: clamp(1.3125rem, 2.3vw, 1.875rem);
+  font-weight: 400;
+  line-height: 1.32;
+  letter-spacing: -0.028em;
+  text-wrap: pretty;
+}
+
+/* ── Pasos unidos por un listón ── */
+.ft__pasos {
+  margin: clamp(28px, 3.4vw, 44px) 0 0;
+  padding: 0;
+  list-style: none;
+}
+.ft__paso {
+  position: relative;
+  display: grid;
+  grid-template-columns: clamp(46px, 7vw, 76px) minmax(0, 1fr);
+  padding-bottom: clamp(30px, 3.6vw, 44px);
+}
+.ft__paso:last-child {
+  padding-bottom: 0;
+}
+/* El listón baja desde el número hasta el siguiente */
+.ft__paso::before {
+  content: "";
+  position: absolute;
+  left: 11px;
+  top: 40px;
+  bottom: 6px;
+  width: 2px;
+  border-radius: 1px;
+  background: var(--color-linea);
+}
+.ft__paso:last-child::before {
+  display: none;
+}
+.ft__num {
+  font-size: clamp(1.625rem, 2.2vw, 1.875rem);
+  line-height: 1;
+  color: var(--color-terracota);
+  font-variant-numeric: tabular-nums;
+}
+.ft__paso-tit {
+  font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.028em;
+  color: var(--color-cacao);
+}
+.ft__paso-txt {
+  margin-top: 10px;
+}
+
+/* ── Fórmulas ── */
+.ft__formulas {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+  margin-top: clamp(26px, 3vw, 40px);
+}
+@media (min-width: 640px) {
+  .ft__formulas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1024px) {
+  .ft__formulas {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+.ft__formula {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid var(--color-linea);
+  background: #fff;
+  color: var(--color-cacao);
+  padding: 22px 22px 24px;
+}
+.ft__formula--dest {
+  border-color: transparent;
+  background: var(--color-arena);
+}
+/* Listón superior: fijo en la destacada, crece al pasar en las demás */
+.ft__formula::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 22px;
+  width: 44px;
+  height: 2px;
+  background: var(--color-terracota);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.6s var(--ease-seda);
+}
+.ft__formula--dest::before {
+  transform: none;
+}
+.ft__formula-ico {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  margin-bottom: 22px;
+  border-radius: 50%;
+  background: var(--color-arena);
+  color: var(--color-terracota);
+  transition: transform 0.6s var(--ease-seda);
+}
+.ft__formula--dest .ft__formula-ico {
+  background: #fff;
+}
+.ft__formula-ico svg {
+  width: 18px;
+  height: 18px;
+}
+.ft__formula-nom {
+  font-size: clamp(1.1875rem, 1.5vw, 1.3125rem);
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: -0.028em;
+}
+.ft__formula-lema {
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.45;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-terracota);
+}
+.ft__formula-txt {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px dashed rgba(134, 100, 82, 0.35);
+  font-size: 0.9375rem;
+  line-height: 1.62;
+  color: var(--color-text-secondary);
+}
+@media (hover: hover) {
+  .ft__formula:hover::before {
+    transform: none;
+  }
+  .ft__formula:hover .ft__formula-ico {
+    transform: translateY(-3px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .ft__formula::before,
+  .ft__formula-ico {
+    transition: none;
+  }
+}

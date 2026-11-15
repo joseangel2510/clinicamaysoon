@@ -1,7 +1,6 @@
-"use client";
-
-import { m as motion } from "framer-motion";
-import { fadeInRight } from "@/lib/animations";
+// Una razón: fila grande con línea fina. El índice (01, 02…) lo pone el CSS
+// con un contador, en cursiva serif.
+import "./nuevo/nosotros.css";
 import type { ComponentType } from "react";
 
 interface FeatureBlockProps {
@@ -18,27 +17,12 @@ export function FeatureBlock({
   isLast = false,
 }: FeatureBlockProps) {
   return (
-    <motion.div variants={fadeInRight} className="group">
-      <div className="flex items-start gap-4 py-6">
-        <div className="w-12 h-12 rounded-xl bg-accent-gold/10 flex items-center justify-center flex-shrink-0">
-          <Icon
-            size={22}
-            strokeWidth={1.8}
-            className="text-accent-gold transition-transform duration-300 group-hover:rotate-12 group-hover:scale-110"
-          />
-        </div>
-
-        <div>
-          <h3 className="font-body font-semibold text-base text-text-primary transition-colors duration-300 group-hover:text-accent-gold">
-            {title}
-          </h3>
-          <p className="font-body text-sm text-text-secondary leading-[1.7] mt-1">
-            {description}
-          </p>
-        </div>
-      </div>
-
-      {!isLast && <div className="h-px bg-bg-secondary" />}
-    </motion.div>
+    <div className={`no__razon${isLast ? " no__razon--fin" : ""}`} data-ap>
+      <h3 className="no__razon-tit">{title}</h3>
+      <p className="no__razon-desc">{description}</p>
+      <span className="no__razon-ico" aria-hidden="true">
+        <Icon size={20} strokeWidth={1.5} />
+      </span>
+    </div>
   );
 }

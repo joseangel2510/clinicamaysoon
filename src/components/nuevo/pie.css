@@ -1,0 +1,291 @@
+/* Pie: tarjeta de cacao encajada en la página, con el nombre en grande
+   asomando por abajo. Sin JS propio: las apariciones son del motor global. */
+
+.pie {
+  --pie-x: max(clamp(22px, 5vw, 72px), calc((100vw - 1440px) / 2 + 70px));
+  --pie-y: clamp(36px, 5vw, 72px);
+  --pie-melocoton: #f2c7a8;
+  --pie-hilo: rgba(248, 244, 238, 0.14);
+  position: relative;
+  margin: 10px;
+  border-radius: 26px;
+  overflow: hidden;
+  background: var(--color-cacao);
+  color: var(--color-crema);
+}
+.pie a:focus-visible {
+  outline: 2px solid var(--pie-melocoton);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.pie .btn:focus-visible {
+  border-radius: 999px;
+}
+
+/* ── Banda alta: declaración + Instagram ── */
+.pie__alto {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: var(--pie-y) var(--pie-x) clamp(28px, 3.4vw, 48px);
+}
+.pie__lema {
+  max-width: 27em;
+  color: var(--color-crema);
+}
+.pie__insta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  flex: none;
+}
+.pie__eti {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(248, 244, 238, 0.55);
+}
+
+/* ── Listones apoyados en la línea ── */
+.pie__raya {
+  display: flex;
+  align-items: flex-end;
+  gap: 7px;
+  height: 34px;
+  margin-inline: var(--pie-x);
+  border-bottom: 1px solid var(--pie-hilo);
+}
+.pie__raya span {
+  width: 2px;
+  background: rgba(242, 199, 168, 0.25);
+}
+.pie__raya span:nth-child(1) {
+  height: 14px;
+}
+.pie__raya span:nth-child(2) {
+  height: 22px;
+}
+.pie__raya span:nth-child(3) {
+  height: 34px;
+}
+.pie__raya span:nth-child(4) {
+  height: 26px;
+}
+.pie__raya span:nth-child(5) {
+  height: 18px;
+}
+
+/* ── Columnas ── */
+.pie__cols {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 44px;
+  padding: clamp(36px, 4.4vw, 64px) var(--pie-x) 0;
+}
+.pie__col {
+  min-width: 0;
+}
+.pie__logo {
+  display: block;
+  width: 150px;
+  height: auto;
+  filter: invert(1) brightness(1.7);
+}
+.pie__nombre {
+  margin-top: 18px;
+  font-size: 18px;
+  letter-spacing: 0.04em;
+  color: var(--color-crema);
+}
+.pie__sub {
+  margin-top: 4px;
+  font-size: 10px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(248, 244, 238, 0.55);
+}
+.pie__tit {
+  margin-bottom: 14px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pie-melocoton);
+}
+
+.pie__lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+/* En móvil, Tratamientos en dos columnas que se leen de arriba abajo */
+.pie__lista--doble {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(6, auto);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 20px;
+  row-gap: 12px;
+}
+.pie__lista--doble .pie__enlace {
+  align-items: flex-start;
+  line-height: 1.3;
+}
+.pie__enlace {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding-block: 4px;
+  font-size: 15px;
+  line-height: 1.25;
+  color: rgba(248, 244, 238, 0.78);
+  transition: color 0.35s var(--ease-seda);
+}
+.pie__enlace::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 12px;
+  height: 2px;
+  margin-top: -1px;
+  background: var(--color-terracota);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.45s var(--ease-seda);
+}
+.pie__enlace > span {
+  display: block;
+  transition: transform 0.45s var(--ease-seda);
+}
+
+/* Contacto */
+.pie__contacto {
+  display: flex;
+  flex-direction: column;
+  font-style: normal;
+}
+.pie__dato {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding-block: 4px;
+  font-size: 15px;
+  line-height: 1.4;
+  color: rgba(248, 244, 238, 0.78);
+  overflow-wrap: anywhere;
+  transition: color 0.35s var(--ease-seda);
+}
+.pie__horas {
+  margin: 14px 0 0;
+  border-top: 1px dashed rgba(248, 244, 238, 0.2);
+}
+.pie__hora {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 2px 16px;
+  padding-block: 9px;
+  border-bottom: 1px dashed rgba(248, 244, 238, 0.2);
+  font-size: 13px;
+  line-height: 1.4;
+}
+.pie__hora dt {
+  color: rgba(248, 244, 238, 0.55);
+}
+.pie__hora dd {
+  margin: 0;
+  color: rgba(248, 244, 238, 0.86);
+  font-variant-numeric: tabular-nums;
+}
+.pie__mapa {
+  margin-top: 22px;
+}
+
+/* ── Cierre: nombre en grande + línea legal ── */
+.pie__cierre {
+  position: relative;
+  margin-top: clamp(44px, 6vw, 96px);
+}
+.pie__marca {
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+  user-select: none;
+}
+.pie__marca span {
+  display: block;
+  margin-bottom: -0.12em;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  font-size: clamp(5.5rem, 24.5vw, 23rem);
+  line-height: 0.78;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  color: var(--pie-melocoton);
+  opacity: 0.16;
+}
+.pie__legal {
+  padding: clamp(20px, 2.4vw, 36px) var(--pie-x) clamp(10px, 1.4vw, 20px);
+  font-size: 12px;
+  line-height: 1.5;
+  text-align: center;
+  text-wrap: balance;
+  color: rgba(248, 244, 238, 0.7);
+}
+
+/* ── Puntero fino: paso de línea de 34px y relevo al pasar ── */
+@media (hover: hover) and (pointer: fine) {
+  .pie__enlace,
+  .pie__dato {
+    min-height: 34px;
+  }
+  .pie__enlace:hover,
+  .pie__dato:hover {
+    color: #fff;
+  }
+  .pie__enlace:hover::before {
+    transform: scaleX(1);
+  }
+  .pie__enlace:hover > span {
+    transform: translateX(20px);
+  }
+}
+
+/* ── Tableta: dos columnas ── */
+@media (min-width: 640px) {
+  .pie__alto {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 48px;
+  }
+  .pie__cols {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 52px 40px;
+  }
+  .pie__lista--doble {
+    display: block;
+  }
+}
+
+/* ── Escritorio: cuatro columnas ── */
+@media (min-width: 1100px) {
+  .pie__cols {
+    grid-template-columns: 1.1fr 1.4fr 1fr 1.4fr;
+    gap: clamp(28px, 3.4vw, 56px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pie__enlace,
+  .pie__enlace::before,
+  .pie__enlace > span,
+  .pie__dato {
+    transition: none;
+  }
+}

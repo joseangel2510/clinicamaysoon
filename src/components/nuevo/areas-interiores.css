@@ -1,0 +1,405 @@
+/* Áreas interiores: /unidad-capilar, /aparatologia, /cirugias-menores y
+   /estetica. Secuencia editorial sobre crema: capítulos con la cabecera fija
+   a la izquierda y el contenido a la derecha, un panel arena con las fotos
+   de la cabina y listas con líneas finas. Prefijo ai__. */
+
+.ai {
+  position: relative;
+  padding-bottom: clamp(72px, 9vw, 140px);
+  background: var(--color-crema);
+  color: var(--color-cacao);
+}
+/* Con raíl de zonas arriba: el raíl es hijo directo y se queda pegado */
+.ai--nav {
+  padding-top: 12px;
+}
+
+/* ── Marca de tres listones ── */
+.ai__lis3 {
+  flex: none;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 46px;
+}
+.ai__lis3 i {
+  width: 2px;
+  border-radius: 2px;
+  background: var(--color-terracota);
+}
+.ai__lis3 i:nth-child(1) {
+  height: 60%;
+  opacity: 0.45;
+}
+.ai__lis3 i:nth-child(2) {
+  height: 100%;
+}
+.ai__lis3 i:nth-child(3) {
+  height: 76%;
+  opacity: 0.7;
+}
+.ai__lis3--s {
+  height: 30px;
+}
+
+/* ── Lema de apertura (Unidad Capilar) ── */
+.ai__lema {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: clamp(26px, 3vw, 40px);
+  padding-block: clamp(56px, 7.5vw, 120px);
+}
+.ai__lema-cita {
+  max-width: 21em;
+  font-size: clamp(1.75rem, 3.5vw, 3.25rem);
+  line-height: 1.14;
+  color: var(--color-cacao);
+  text-wrap: balance;
+}
+.ai__lema-cita span {
+  color: var(--color-terracota);
+}
+.ai__lema-nota {
+  display: flex;
+  align-items: flex-end;
+  gap: 18px;
+  max-width: 400px;
+}
+@media (min-width: 900px) {
+  .ai__lema {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(16px, 2vw, 32px);
+    align-items: end;
+  }
+  .ai__lema-cita {
+    grid-column: 1 / span 8;
+  }
+  .ai__lema-nota {
+    grid-column: 10 / -1;
+    padding-bottom: 0.5vw;
+  }
+}
+
+/* ── Capítulo: cabecera a la izquierda, contenido a la derecha ── */
+.ai__cap {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: clamp(30px, 4vw, 48px);
+  padding-block: clamp(52px, 7vw, 104px);
+  border-top: 1px solid var(--color-linea);
+  /* cabecera fija + raíl de zonas */
+  scroll-margin-top: 150px;
+}
+.ai__cap--fin {
+  padding-bottom: 0;
+}
+/* Capítulo sin cabecera de texto: solo la lista */
+.ai__cap--lista {
+  padding-top: clamp(56px, 7vw, 112px);
+  padding-bottom: 0;
+  border-top: 0;
+}
+.ai__cap-cab {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+.ai__cap-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+}
+.ai__num {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--color-moka-texto);
+  font-variant-numeric: tabular-nums;
+}
+.ai .ai__cap-tit {
+  margin-top: clamp(18px, 1.8vw, 24px);
+  font-size: clamp(2rem, 3.3vw, 3rem);
+  line-height: 1.06;
+}
+.ai .ai__cap-tit--h3 {
+  font-size: clamp(1.7rem, 2.6vw, 2.5rem);
+}
+.ai__cap-cont {
+  min-width: 0;
+}
+/* El último bloque no arrastra su aire: ya lo pone el capítulo */
+.ai__cap-cont > :last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+.ai__margen {
+  display: none;
+}
+@media (min-width: 1100px) {
+  .ai__cap {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(16px, 2vw, 32px);
+    align-items: start;
+  }
+  .ai__cap-cab,
+  .ai__margen {
+    grid-column: 1 / span 4;
+    position: sticky;
+    top: 164px;
+  }
+  .ai__margen {
+    display: block;
+    top: 128px;
+  }
+  .ai__cap-cont {
+    grid-column: 5 / -1;
+  }
+}
+
+/* ── Sello «gratuito» ── */
+.ai__gratis {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+  max-width: 100%;
+  margin-top: clamp(22px, 2.2vw, 30px);
+  padding: 6px 18px 6px 6px;
+  border-radius: 22px;
+  background: #fff;
+}
+.ai__gratis-sello {
+  display: inline-flex;
+  align-items: center;
+  height: 33px;
+  padding: 0 14px;
+  border-radius: 999px;
+  background: var(--color-terracota-texto);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.ai__gratis-pto {
+  color: var(--color-moka);
+  line-height: 1;
+}
+.ai__gratis-txt {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  color: var(--color-cacao);
+}
+@media (max-width: 420px) {
+  .ai__gratis-pto {
+    display: none;
+  }
+  .ai__gratis-txt {
+    padding: 0 0 4px 10px;
+  }
+}
+
+/* ── Tarifas dentro de un capítulo: aire hasta el bloque siguiente ── */
+.ai__tarifa {
+  margin-bottom: clamp(40px, 5vw, 64px);
+}
+
+/* ── Tarjetas blancas (Biofibre, orales y tópicos) ── */
+.ai__extras {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+}
+.ai__extra {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 26px 22px 28px;
+  border-radius: 22px;
+  background: #fff;
+}
+.ai .ai__extra-tit {
+  margin-top: clamp(30px, 3.4vw, 48px);
+  font-size: clamp(1.375rem, 1.9vw, 1.75rem);
+  line-height: 1.14;
+  letter-spacing: -0.035em;
+}
+.ai__extra-txt {
+  max-width: 62ch;
+  margin-top: 12px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+@media (min-width: 640px) {
+  .ai__extras {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .ai__extra {
+    padding: 30px 30px 34px;
+  }
+}
+
+/* ── Panel arena: la cabina (Aparatología) ── */
+.ai__panel-caja {
+  padding: 0 10px;
+}
+.ai__panel {
+  border-radius: 26px;
+  background: var(--color-arena);
+  padding: clamp(48px, 7vw, 112px) max(20px, calc(var(--gx) - 10px));
+}
+.ai__cabina {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: clamp(40px, 6vw, 64px);
+  align-items: center;
+}
+.ai__cabina-txt {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+.ai__cabina-tit {
+  margin-top: 20px;
+}
+.ai__cabina-p {
+  max-width: 46ch;
+  margin-top: clamp(18px, 1.8vw, 26px);
+}
+/* Las fotos miden ~660 px: nunca pasan de 600 en pantalla */
+.ai__fotos {
+  position: relative;
+  width: min(100%, 600px);
+  margin-inline: auto;
+  padding-bottom: 19%;
+}
+.ai__foto {
+  --n: 7;
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  border-radius: 22px;
+  background: var(--color-linea);
+}
+.ai__foto img {
+  object-fit: cover;
+}
+.ai__foto--1 {
+  width: 88%;
+  margin-left: auto;
+}
+/* La segunda pisa la esquina de la primera, con un filo del color del panel */
+.ai__foto-2 {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  width: 52%;
+  padding: 6px 6px 0 0;
+  border-radius: 0 26px 0 0;
+  background: var(--color-arena);
+}
+.ai__foto--2 {
+  --n: 5;
+  border-radius: 20px;
+}
+@media (min-width: 1000px) {
+  .ai__cabina {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(16px, 2vw, 32px);
+  }
+  .ai__cabina-txt {
+    grid-column: 1 / span 5;
+  }
+  .ai__fotos {
+    grid-column: 7 / -1;
+    margin-right: 0;
+  }
+}
+
+/* ── Lista de filas (TreatmentRow) ── */
+.ai__filas {
+  display: flex;
+  flex-direction: column;
+}
+.ai__filas > :first-child {
+  padding-top: 0;
+}
+
+/* ── Enlace a una página hermana ── */
+.ai__enlace-caja {
+  margin-top: clamp(40px, 5vw, 64px);
+}
+.ai__enlace {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 24px 22px;
+  border-radius: 22px;
+  background: #fff;
+  color: var(--color-cacao);
+}
+.ai__enlace-txt {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  min-width: 0;
+}
+.ai__enlace-tit {
+  font-size: clamp(1.375rem, 1.9vw, 1.75rem);
+  line-height: 1.14;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+  transition: color 0.45s var(--ease-seda);
+}
+.ai__enlace-ico {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-cacao);
+  color: var(--color-crema);
+  transition: background-color 0.45s var(--ease-seda);
+}
+.ai__enlace-ico svg {
+  transition: transform 0.55s var(--ease-seda);
+}
+.ai__enlace:active .ai__enlace-ico {
+  background: var(--color-terracota);
+}
+@media (hover: hover) {
+  .ai__enlace:hover .ai__enlace-tit {
+    color: var(--color-terracota-texto);
+  }
+  .ai__enlace:hover .ai__enlace-ico {
+    background: var(--color-terracota);
+  }
+  .ai__enlace:hover .ai__enlace-ico svg {
+    transform: translate(3px, -3px);
+  }
+}
+@media (min-width: 640px) {
+  .ai__enlace {
+    padding: 30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ai__enlace-tit,
+  .ai__enlace-ico,
+  .ai__enlace-ico svg {
+    transition: none;
+  }
+}

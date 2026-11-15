@@ -1,13 +1,6 @@
-"use client";
-
-import { m as motion } from "framer-motion";
-import {
-  fadeInUp,
-  fadeInLeft,
-  clipReveal,
-  staggerContainer,
-  staggerFast,
-} from "@/lib/animations";
+// Equipo médico (página Quiénes somos): cabecera, el bloque del director
+// médico, las instituciones y el resto del equipo en retratos en arco.
+import "./nuevo/nosotros.css";
 import { DoctorHighlight } from "./DoctorHighlight";
 import { TeamMemberCard } from "./TeamMemberCard";
 import { CredentialsBadge } from "./CredentialsBadge";
@@ -53,74 +46,45 @@ const teamMembers = [
 
 export function DoctorSection() {
   return (
-    <section id="equipo" className="bg-bg-secondary py-20 lg:py-28">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        {/* ── Section Header ── */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          className="text-center mb-4"
-        >
-          {/* Eyebrow */}
-          <motion.div
-            variants={fadeInLeft}
-            className="flex items-center justify-center gap-3 mb-6"
-          >
-            <span className="block w-10 h-px bg-accent-gold" />
-            <span className="font-body text-xs font-medium uppercase tracking-[0.35em] text-accent-gold">
+    <section id="equipo" className="no__eq sec">
+      <div className="marco">
+        {/* Cabecera */}
+        <div className="no__eq-cab">
+          <div className="no__eq-izq">
+            <span className="pildora" data-ap>
               Equipo Médico
             </span>
-            <span className="block w-10 h-px bg-accent-gold" />
-          </motion.div>
-
-          {/* H2 */}
-          <div className="mb-5">
-            <motion.h2
-              variants={clipReveal}
-              className="font-display font-normal not-italic text-[#0F0E0D] leading-[1.1] tracking-[-0.02em]"
-              style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
-            >
-              Profesionales
-            </motion.h2>
-            <motion.h2
-              variants={clipReveal}
-              className="font-display font-normal italic text-[#7B6E5E] leading-[1.1] tracking-[-0.02em]"
-              style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)" }}
-            >
-              A Tu Servicio
-            </motion.h2>
+            <h2 className="tit tit--l" data-tit>
+              Profesionales <br />
+              <em>A Tu Servicio</em>
+            </h2>
           </div>
 
-          {/* Subtitle */}
-          <motion.p
-            variants={fadeInUp}
-            className="font-body text-sm sm:text-base text-text-secondary leading-[1.8] max-w-xl mx-auto"
-          >
-            Un equipo titulado, con años de experiencia y una pasión genuina por
-            la medicina estética y el bienestar de cada paciente.
-          </motion.p>
-        </motion.div>
+          <div className="no__eq-der" data-ap>
+            <span className="no__marca" aria-hidden="true">
+              <i />
+              <i />
+              <i />
+            </span>
+            <p className="cuerpo no__eq-sub">
+              Un equipo titulado, con años de experiencia y una pasión genuina por
+              la medicina estética y el bienestar de cada paciente.
+            </p>
+          </div>
+        </div>
 
-        {/* ── Doctor Highlight Block ── */}
+        {/* Director médico */}
         <DoctorHighlight />
 
-        {/* ── Credentials Badge Strip ── */}
+        {/* Instituciones */}
         <CredentialsBadge />
 
-        {/* ── Team Member Cards ── */}
-        <motion.div
-          variants={staggerFast}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mt-2"
-        >
+        {/* Resto del equipo */}
+        <div className="no__miembros">
           {teamMembers.map((member) => (
             <TeamMemberCard key={member.name} {...member} />
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

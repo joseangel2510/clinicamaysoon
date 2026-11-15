@@ -1,29 +1,37 @@
 import type { Metadata } from "next";
-import { DM_Serif_Display, DM_Sans } from "next/font/google";
+import { Plus_Jakarta_Sans, Instrument_Serif } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { MotionProvider } from "@/components/MotionProvider";
+import { Movimiento } from "@/components/nuevo/Movimiento";
+import { Preloader } from "@/components/nuevo/Preloader";
 import { JsonLd } from "@/components/JsonLd";
 import { medicalClinicSchema } from "@/lib/schemas";
 import { SITE_URL } from "@/lib/clinic";
 
 const GTM_ID = "GTM-T35GMZ7J";
 
-const dmSerif = DM_Serif_Display({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-display",
+  variable: "--font-jakarta",
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const instrument = Instrument_Serif({
+  subsets: ["latin"],
+  variable: "--font-instrument",
   display: "swap",
   weight: ["400"],
   style: ["normal", "italic"],
 });
 
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-body",
-  display: "swap",
-  weight: ["400", "500", "700"],
-});
+// Marca <html> antes del primer pintado para que las apariciones partan
+// ocultas solo si hay JavaScript; si el motor de movimiento no llega a
+// cargar, a los 5 s se quita la marca y todo queda visible.
+const ARRANQUE =
+  "(function(){var d=document.documentElement;if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;d.classList.add('mov');try{if(sessionStorage.getItem('maysoon-pre'))d.classList.add('sin-pre')}catch(e){}setTimeout(function(){if(!d.dataset.movListo)d.classList.remove('mov')},5000)})()";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -51,7 +59,8 @@ export default function RootLayout({
   return (
     <html
       lang="es"
-      className={`${dmSerif.variable} ${dmSans.variable} h-full`}
+      className={`${jakarta.variable} ${instrument.variable} h-full`}
+      suppressHydrationWarning
     >
       <body className="min-h-full bg-bg-primary text-text-primary font-body antialiased">
         {/* Google Tag Manager (noscript) */}
@@ -64,7 +73,10 @@ export default function RootLayout({
           />
         </noscript>
         {/* End Google Tag Manager (noscript) */}
+        <script dangerouslySetInnerHTML={{ __html: ARRANQUE }} />
         <JsonLd data={medicalClinicSchema()} />
+        <Preloader />
+        <Movimiento />
         <MotionProvider>
           {children}
           <WhatsAppButton />

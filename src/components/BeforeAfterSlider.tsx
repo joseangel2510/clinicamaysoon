@@ -1,10 +1,9 @@
 "use client";
 
+import "./nuevo/confianza.css";
 import { useState, useRef, useCallback, useEffect } from "react";
 import Image from "next/image";
-import { m as motion, useInView, animate } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-import { scaleUp } from "@/lib/animations";
 
 interface BeforeAfterSliderProps {
   beforeImage: string;
@@ -12,6 +11,14 @@ interface BeforeAfterSliderProps {
   title: string;
   description: string;
 }
+
+// Pasos de la demostración al entrar en pantalla: 50 → 30 → 70 → 50
+const DEMO = [
+  { to: 30, duration: 400 },
+  { to: 70, duration: 500 },
+  { to: 50, duration: 400 },
+];
+const suave = (t: number) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
 
 export function BeforeAfterSlider({
   beforeImage,
@@ -23,35 +30,55 @@ export function BeforeAfterSlider({
   const [isDragging, setIsDragging] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
   const hasPlayedDemo = useRef(false);
-  const inViewRef = useRef<HTMLDivElement>(null);
-  const isInView = useInView(inViewRef, { once: true, amount: 0.4 });
+  const tocado = useRef(false);
 
   // Demo swipe animation on first viewport entry
   useEffect(() => {
-    if (isInView && !hasPlayedDemo.current) {
-      hasPlayedDemo.current = true;
-      const timeout = setTimeout(() => {
-        // Animate: 50 → 30 → 70 → 50
-        const steps = [
-          { to: 30, duration: 0.4 },
-          { to: 70, duration: 0.5 },
-          { to: 50, duration: 0.4 },
-        ];
-        let delay = 0;
-        steps.forEach((step) => {
-          setTimeout(() => {
-            animate(position, step.to, {
-              duration: step.duration,
-              ease: [0.25, 0.4, 0.25, 1],
-              onUpdate: (v) => setPosition(v),
-            });
-          }, delay * 1000);
-          delay += step.duration + 0.05;
-        });
-      }, 600);
-      return () => clearTimeout(timeout);
-    }
-  }, [isInView]);
+    const el = containerRef.current;
+    if (!el || typeof IntersectionObserver === "undefined") return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let raf = 0;
+    let espera: ReturnType<typeof setTimeout> | undefined;
+
+    const reproducir = () => {
+      let paso = 0;
+      let desde = 50;
+      let t0 = 0;
+      const tic = (ahora: number) => {
+        if (tocado.current) return;
+        if (!t0) t0 = ahora;
+        const { to, duration } = DEMO[paso];
+        const p = Math.min(1, (ahora - t0) / duration);
+        setPosition(desde + (to - desde) * suave(p));
+        if (p >= 1) {
+          paso += 1;
+          if (paso >= DEMO.length) return;
+          desde = to;
+          t0 = ahora + 50;
+        }
+        raf = requestAnimationFrame(tic);
+      };
+      raf = requestAnimationFrame(tic);
+    };
+
+    const io = new IntersectionObserver(
+      (entradas) => {
+        if (!entradas.some((e) => e.isIntersecting) || hasPlayedDemo.current) return;
+        hasPlayedDemo.current = true;
+        io.disconnect();
+        espera = setTimeout(reproducir, 900);
+      },
+      { threshold: 0.4 }
+    );
+    io.observe(el);
+
+    return () => {
+      io.disconnect();
+      if (espera) clearTimeout(espera);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
 
   const updatePosition = useCallback((clientX: number) => {
     if (!containerRef.current) return;
@@ -61,7 +88,14 @@ export function BeforeAfterSlider({
     setPosition(Math.max(2, Math.min(98, pct)));
   }, []);
 
-  const handleMouseDown = useCallback(() => setIsDragging(true), []);
+  const handleMouseDown = useCallback(
+    (e: React.MouseEvent) => {
+      tocado.current = true;
+      setIsDragging(true);
+      updatePosition(e.clientX);
+    },
+    [updatePosition]
+  );
 
   useEffect(() => {
     if (!isDragging) return;
@@ -80,6 +114,11 @@ export function BeforeAfterSlider({
     };
   }, [isDragging, updatePosition]);
 
+  const handleTouchStart = useCallback(() => {
+    tocado.current = true;
+    setIsDragging(true);
+  }, []);
+
   const handleTouchMove = useCallback(
     (e: React.TouchEvent) => {
       updatePosition(e.touches[0].clientX);
@@ -88,29 +127,30 @@ export function BeforeAfterSlider({
   );
 
   return (
-    <motion.div ref={inViewRef} variants={scaleUp} className="group">
+    <div className="co__sl" data-ap>
       {/* Slider container */}
       <div
         ref={containerRef}
-        className="relative aspect-square rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(15,14,13,0.08)] cursor-ew-resize select-none transition-shadow duration-400 group-hover:shadow-[0_24px_70px_rgba(15,14,13,0.14)] group-hover:scale-[1.02] transition-transform"
+        className="co__sl-marco"
+        data-arrastre={isDragging ? "" : undefined}
         onMouseDown={handleMouseDown}
-        onTouchStart={() => setIsDragging(true)}
+        onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={() => setIsDragging(false)}
+        onTouchCancel={() => setIsDragging(false)}
       >
         {/* After image (base layer) */}
         <Image
           src={afterImage}
           alt="Después del tratamiento"
           fill
-          className="object-cover"
           sizes="(max-width: 768px) 100vw, 33vw"
           draggable={false}
         />
 
         {/* Before image (clipped overlay) */}
         <div
-          className="absolute inset-0"
+          className="co__sl-antes"
           style={{
             clipPath: `inset(0 ${100 - position}% 0 0)`,
           }}
@@ -119,47 +159,30 @@ export function BeforeAfterSlider({
             src={beforeImage}
             alt="Antes del tratamiento"
             fill
-            className="object-cover"
             sizes="(max-width: 768px) 100vw, 33vw"
             draggable={false}
           />
         </div>
 
         {/* Labels */}
-        <span className="absolute top-4 left-4 z-10 bg-black/60 backdrop-blur-sm text-white text-[10px] font-body font-medium uppercase tracking-[0.15em] px-3 py-1.5 rounded-full pointer-events-none">
-          Antes
-        </span>
-        <span className="absolute top-4 right-4 z-10 bg-accent-gold text-bg-dark text-[10px] font-body font-medium uppercase tracking-[0.15em] px-3 py-1.5 rounded-full pointer-events-none">
-          Después
-        </span>
+        <span className="co__sl-eti co__sl-eti--antes">Antes</span>
+        <span className="co__sl-eti co__sl-eti--despues">Después</span>
 
-        {/* Drag handle line */}
-        <div
-          className="absolute top-0 bottom-0 z-20 pointer-events-none"
-          style={{ left: `${position}%`, transform: "translateX(-50%)" }}
-        >
-          {/* Vertical line */}
-          <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-[2px] bg-white/90 shadow-[0_0_8px_rgba(0,0,0,0.3)]" />
-
-          {/* Circle handle */}
-          <div
-            className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white border border-black/10 shadow-lg flex items-center justify-center gap-0.5 transition-transform duration-200 ${
-              isDragging ? "scale-110" : ""
-            }`}
-          >
-            <ChevronLeft size={14} className="text-accent-gold" strokeWidth={2.5} />
-            <ChevronRight size={14} className="text-accent-gold" strokeWidth={2.5} />
-          </div>
+        {/* Drag handle: listón vertical con empuñadura redonda */}
+        <div className="co__sl-tirador" style={{ left: `${position}%` }}>
+          <span className="co__sl-liston" />
+          <span className="co__sl-puno">
+            <ChevronLeft size={15} strokeWidth={1.5} />
+            <ChevronRight size={15} strokeWidth={1.5} />
+          </span>
         </div>
       </div>
 
       {/* Treatment info below slider */}
-      <div className="mt-5 text-center">
-        <h3 className="font-body font-semibold text-base text-text-primary">
-          {title}
-        </h3>
-        <p className="font-body text-sm text-text-muted mt-1">{description}</p>
+      <div className="co__sl-pie">
+        <h3 className="co__sl-tit">{title}</h3>
+        <p className="co__sl-desc">{description}</p>
       </div>
-    </motion.div>
+    </div>
   );
 }

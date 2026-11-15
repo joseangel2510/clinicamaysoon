@@ -1,0 +1,278 @@
+/* Cierre — la llamada final: panel oscuro redondeado, luz cálida desenfocada,
+   titular a la izquierda y el equipo a la derecha, abierto por listones. */
+
+.cie {
+  position: relative;
+  padding: 10px;
+  background: var(--color-crema);
+}
+.cie__panel {
+  position: relative;
+  display: grid;
+  align-items: center;
+  min-height: min(820px, 92vh);
+  padding-block: clamp(28px, 5vw, 72px);
+  border-radius: 26px;
+  overflow: hidden;
+  background: var(--color-cacao);
+  color: #fff;
+  isolation: isolate;
+}
+
+/* Luz: dos halos desenfocados que derivan despacio */
+.cie__luz,
+.cie__listones {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.cie__halo {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(110px);
+  animation: cie-deriva 14s ease-in-out infinite alternate paused;
+}
+.cie__halo--terracota {
+  right: -120px;
+  bottom: -160px;
+  width: 520px;
+  height: 520px;
+  background: var(--color-terracota);
+  opacity: 0.55;
+}
+.cie__halo--roble {
+  left: -110px;
+  top: -130px;
+  width: 380px;
+  height: 380px;
+  background: var(--color-roble);
+  opacity: 0.3;
+  animation-direction: alternate-reverse;
+}
+.cie.is-vista .cie__halo {
+  animation-play-state: running;
+}
+@keyframes cie-deriva {
+  from {
+    translate: 0 0;
+  }
+  to {
+    translate: -30px -30px;
+  }
+}
+
+/* Textura: nueve listones finos en el borde derecho */
+.cie__listones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 14px;
+}
+.cie__liston {
+  flex: none;
+  width: 2px;
+  height: 100%;
+  background: rgba(242, 199, 168, 0.18);
+  transform-origin: top;
+}
+
+/* El contenido se alinea con el marco del resto de la página (el panel ya
+   está 10px metido). */
+.cie .cie__marco {
+  position: relative;
+  display: grid;
+  gap: 44px;
+  padding-inline: max(18px, calc(clamp(18px, 5.5vw, 80px) - 10px));
+}
+
+.cie__txt {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+  padding-top: 8px;
+}
+.cie .cie__tit {
+  margin-top: clamp(20px, 2vw, 28px);
+  font-size: clamp(2.6rem, 5.6vw, 5.4rem);
+}
+.cie__sub {
+  max-width: 500px;
+  margin-top: clamp(22px, 2.2vw, 32px);
+}
+.cie__botones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: clamp(28px, 2.8vw, 40px);
+}
+.cie__rec {
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 1.3;
+  color: rgba(248, 244, 238, 0.7);
+}
+.cie__rec a {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  color: var(--color-crema);
+  white-space: nowrap;
+}
+.cie__rec a::before,
+.cie__rec a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 11px;
+  height: 1px;
+  background: rgba(248, 244, 238, 0.28);
+}
+.cie__rec a::after {
+  background: #f2c7a8;
+  transform: scaleX(0);
+  transform-origin: 100% 50%;
+  transition: transform 0.6s var(--ease-seda);
+}
+.cie__rec a:focus-visible {
+  outline: 1px solid #f2c7a8;
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+@media (hover: hover) {
+  .cie__rec a:hover::after {
+    transform: scaleX(1);
+    transform-origin: 0 50%;
+  }
+}
+
+/* Foto del equipo */
+.cie__lado {
+  min-width: 0;
+  padding-bottom: 14px;
+}
+.cie__figura {
+  position: relative;
+  width: fit-content;
+  max-width: 100%;
+  margin-inline: auto;
+}
+.cie__foto {
+  --n: 7;
+  position: relative;
+  aspect-ratio: 4 / 5;
+  height: min(420px, calc((100vw - 76px) * 1.25));
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(242, 199, 168, 0.06);
+}
+.cie__foto img {
+  object-fit: cover;
+  object-position: 50% 40%;
+}
+.cie__chip {
+  position: absolute;
+  left: -10px;
+  bottom: 22px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 12px 0 11px;
+  border-radius: 999px;
+  background: rgba(42, 18, 6, 0.46);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform-origin: 0 100%;
+}
+/* Los tres trazos del logo */
+.cie__trazos {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 12px;
+}
+.cie__trazos i {
+  width: 2px;
+  height: 100%;
+  border-radius: 1px;
+  background: #f2c7a8;
+}
+.cie__trazos i:nth-child(2) {
+  height: 70%;
+}
+
+@media (max-width: 899.98px) {
+  .cie__halo--terracota {
+    width: 360px;
+    height: 360px;
+    right: -140px;
+    bottom: -120px;
+  }
+  .cie__halo--roble {
+    width: 260px;
+    height: 260px;
+  }
+  .cie__listones {
+    gap: 8px;
+  }
+  .cie__liston:nth-child(-n + 6) {
+    display: none;
+  }
+}
+
+@media (min-width: 900px) {
+  .cie .cie__marco {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(16px, 2vw, 32px);
+    align-items: center;
+  }
+  .cie__txt {
+    grid-column: 1 / 8;
+    padding-top: 0;
+  }
+  .cie__lado {
+    grid-column: 9 / 13;
+    padding-bottom: 0;
+  }
+  .cie__figura {
+    width: 100%;
+    max-width: 440px;
+    margin-inline: auto 0;
+  }
+  .cie__foto {
+    aspect-ratio: 3 / 4;
+    width: 100%;
+    height: auto;
+  }
+  .cie__chip {
+    left: -22px;
+    bottom: 28px;
+    gap: 10px;
+    padding: 0 15px 0 13px;
+    font-size: 11px;
+    letter-spacing: 0.07em;
+  }
+}
+
+/* Sin movimiento: todo a la vista, la foto ya en su giro final */
+@media (prefers-reduced-motion: reduce) {
+  .cie__halo {
+    animation: none;
+  }
+  .cie__figura {
+    rotate: 2.5deg;
+  }
+  .cie__rec a::after {
+    transition: none;
+  }
+}

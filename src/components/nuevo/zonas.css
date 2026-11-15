@@ -1,0 +1,686 @@
+/* Catálogos por zonas (/medicina-estetica y hermanas): cápsula de pestañas,
+   raíl de zonas, bloques editoriales alternos, filas de tratamiento y
+   paneles destacados. Prefijo zo__. */
+
+/* ── Pestañas entre catálogos: cápsula segmentada ── */
+.zo__tabs {
+  display: flex;
+  justify-content: center;
+  padding-block: 4px clamp(20px, 3vw, 40px);
+}
+.zo__tabs-cap {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  width: 100%;
+  max-width: 420px;
+  padding: 5px;
+  border-radius: 28px;
+  background: rgba(239, 231, 219, 0.82);
+  box-shadow: inset 0 0 0 1px var(--color-linea);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+}
+.zo__tab {
+  display: grid;
+  place-items: center;
+  min-height: 46px;
+  padding: 0 18px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  white-space: nowrap;
+  color: var(--color-text-secondary);
+  transition:
+    background-color 0.45s var(--ease-seda),
+    color 0.45s var(--ease-seda);
+}
+.zo__tab[aria-current="page"] {
+  background: var(--color-cacao);
+  color: var(--color-crema);
+}
+.zo__tab:focus-visible,
+.zo__pill:focus-visible,
+.zo__trat-a:focus-visible,
+.zo__fila-a:focus-visible {
+  outline: 2px solid var(--color-terracota);
+  outline-offset: 3px;
+}
+@media (hover: hover) {
+  .zo__tab:not([aria-current="page"]):hover {
+    background: #fff;
+    color: var(--color-cacao);
+  }
+}
+@media (min-width: 700px) {
+  .zo__tabs-cap {
+    display: inline-flex;
+    width: auto;
+    max-width: 100%;
+    border-radius: 999px;
+  }
+  .zo__tab {
+    padding: 0 22px;
+    font-size: 14px;
+  }
+}
+
+/* ── Raíl de zonas: cápsula esmerilada que se queda bajo la cabecera ── */
+.zo__nav {
+  position: sticky;
+  top: 84px;
+  z-index: 30;
+  display: flex;
+  justify-content: center;
+  padding-inline: clamp(12px, 5.5vw, 80px);
+  pointer-events: none;
+}
+.zo__nav-cap {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  max-width: 100%;
+  padding: 5px;
+  border-radius: 999px;
+  background: rgba(239, 231, 219, 0.8);
+  box-shadow: inset 0 0 0 1px rgba(221, 211, 197, 0.9);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.zo__nav-cap::-webkit-scrollbar {
+  display: none;
+}
+.zo__nav-cap > .pildora {
+  flex: none;
+  height: 44px;
+  margin-right: 4px;
+}
+.zo__nav-rail {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.zo__nav-rail li {
+  flex: none;
+}
+.zo__pill {
+  display: grid;
+  place-items: center;
+  height: 44px;
+  padding: 0 15px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  color: var(--color-text-secondary);
+  transition:
+    background-color 0.45s var(--ease-seda),
+    color 0.45s var(--ease-seda);
+}
+.zo__pill:active {
+  background: var(--color-cacao);
+  color: var(--color-crema);
+}
+@media (hover: hover) {
+  .zo__pill:hover {
+    background: var(--color-cacao);
+    color: var(--color-crema);
+  }
+}
+
+/* ── Sección ── */
+.zo {
+  background: var(--color-crema);
+  color: var(--color-cacao);
+  padding-block: clamp(20px, 3vw, 40px) clamp(80px, 9vw, 140px);
+}
+.zo__cuerpo {
+  margin-top: clamp(28px, 4vw, 56px);
+}
+/* Las anclas dejan sitio a la cabecera y al raíl */
+.zo__ancla {
+  scroll-margin-top: 156px;
+}
+
+/* ── Bloque de zona: imagen y texto alternos ── */
+.zo__blq {
+  scroll-margin-top: 156px;
+  padding-block: clamp(52px, 7vw, 104px);
+  border-top: 1px solid var(--color-linea);
+}
+.zo__blq:first-child {
+  border-top: 0;
+  padding-top: clamp(20px, 3vw, 40px);
+}
+.zo__blq-in {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(30px, 4vw, 48px);
+}
+.zo__cab {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: clamp(18px, 2vw, 26px);
+}
+.zo__cab .pildora {
+  white-space: normal;
+  height: auto;
+  min-height: 33px;
+  padding-block: 7px;
+  line-height: 1.3;
+}
+/* Índice suelto, cuando el bloque no lleva imagen */
+.zo__idx {
+  font-size: 30px;
+  line-height: 1;
+  color: var(--color-terracota);
+  font-variant-numeric: tabular-nums;
+}
+.zo__desc {
+  max-width: 62ch;
+  margin-top: clamp(16px, 1.6vw, 22px);
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+
+/* Tratamientos: filas con línea discontinua */
+.zo__trats {
+  margin: clamp(24px, 2.8vw, 36px) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--color-linea);
+}
+.zo__trat {
+  border-bottom: 1px dashed rgba(134, 100, 82, 0.35);
+}
+.zo__trat-a,
+.zo__trat-t {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 54px;
+  padding: 13px 2px;
+  font-size: 16px;
+  line-height: 1.4;
+  color: var(--color-cacao);
+}
+.zo__trat-a {
+  transition: color 0.45s var(--ease-seda);
+}
+.zo__trat-a > span {
+  transition: transform 0.55s var(--ease-seda);
+}
+.zo__trat-ico {
+  flex: none;
+  color: var(--color-terracota);
+  opacity: 0.55;
+  transition:
+    transform 0.55s var(--ease-seda),
+    opacity 0.45s var(--ease-seda);
+}
+@media (hover: hover) {
+  .zo__trat-a:hover {
+    color: var(--color-terracota);
+  }
+  .zo__trat-a:hover > span {
+    transform: translateX(8px);
+  }
+  .zo__trat-a:hover .zo__trat-ico {
+    opacity: 1;
+    transform: translate(3px, -3px);
+  }
+}
+.zo__extra {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-top: 36px;
+}
+
+/* Imagen: marco redondeado que se abre por listones, con el índice encima */
+.zo__fig {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 4 / 3;
+}
+.zo__fig--alta {
+  aspect-ratio: 4 / 5;
+  max-width: 520px;
+}
+.zo__lis {
+  --n: 7;
+  position: absolute;
+  inset: 0;
+  border-radius: 22px;
+  overflow: hidden;
+  background: var(--color-arena);
+  isolation: isolate;
+}
+.zo__lis img {
+  object-fit: cover;
+}
+.zo__lis::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(28deg, rgba(42, 18, 6, 0.5) 0%, rgba(42, 18, 6, 0) 46%);
+  pointer-events: none;
+}
+.zo__num {
+  position: absolute;
+  z-index: 2;
+  left: clamp(18px, 2vw, 28px);
+  bottom: clamp(12px, 1.4vw, 20px);
+  font-size: clamp(64px, 7vw, 108px);
+  line-height: 0.9;
+  color: var(--color-crema);
+  font-variant-numeric: tabular-nums;
+  pointer-events: none;
+}
+
+@media (min-width: 960px) {
+  .zo__blq-in--foto {
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+    column-gap: clamp(40px, 6vw, 96px);
+    align-items: start;
+  }
+  .zo__blq-in--inv {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+  }
+  .zo__blq-in--inv .zo__txt {
+    order: 2;
+  }
+  .zo__blq-in--inv .zo__fig {
+    order: 1;
+    justify-self: start;
+  }
+  .zo__fig {
+    position: sticky;
+    top: 156px;
+    justify-self: end;
+  }
+}
+
+/* ── Rejilla de dos tarjetas (tarifas, destacados) ── */
+.zo__par {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(14px, 1.6vw, 22px);
+  align-items: start;
+}
+.zo__par + .zo__par {
+  margin-top: clamp(14px, 1.6vw, 22px);
+}
+.zo__par--igual {
+  align-items: stretch;
+}
+.zo__aviso {
+  margin-bottom: clamp(18px, 2vw, 26px);
+  font-size: clamp(19px, 1.7vw, 23px);
+  line-height: 1.3;
+  text-align: center;
+  color: var(--color-moka);
+}
+@media (min-width: 960px) {
+  .zo__par {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ── Tarjeta destacada sobre arena ── */
+.zo__dest {
+  scroll-margin-top: 156px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 100%;
+  padding: clamp(26px, 3vw, 40px);
+  border-radius: 22px;
+  background: var(--color-arena);
+}
+.zo__dest-tit {
+  margin-top: 18px;
+  font-size: clamp(1.5rem, 2.1vw, 2rem);
+  line-height: 1.1;
+}
+.zo__dest-desc {
+  margin-top: 14px;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+
+/* Lista con la marca de tres listones */
+.zo__pts {
+  width: 100%;
+  margin: auto 0 0;
+  padding: 26px 0 0;
+  list-style: none;
+}
+.zo__pt {
+  display: grid;
+  grid-template-columns: 22px minmax(0, 1fr);
+  align-items: start;
+  padding: 13px 0;
+  border-top: 1px dashed rgba(134, 100, 82, 0.35);
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--color-cacao);
+}
+.zo__marca {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 14px;
+  margin-top: 4px;
+}
+.zo__marca i {
+  width: 2px;
+  border-radius: 2px;
+  background: var(--color-terracota);
+}
+.zo__marca i:nth-child(1) {
+  height: 60%;
+  opacity: 0.45;
+}
+.zo__marca i:nth-child(2) {
+  height: 100%;
+}
+.zo__marca i:nth-child(3) {
+  height: 76%;
+  opacity: 0.7;
+}
+.zo__marca--xl {
+  gap: 16px;
+  height: clamp(150px, 16vw, 220px);
+  margin: 0;
+}
+.zo__marca--xl i {
+  width: 10px;
+  border-radius: 10px;
+}
+
+/* ── Panel destacado (arena, 26 px): texto + tarifas o texto + marca ── */
+.zo__panel {
+  scroll-margin-top: 156px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(30px, 4vw, 64px);
+  margin-top: clamp(8px, 2vw, 24px);
+  padding: clamp(26px, 5vw, 72px);
+  border-radius: 26px;
+  background: var(--color-arena);
+}
+.zo__panel--medio {
+  margin-top: 0;
+  margin-bottom: clamp(52px, 7vw, 104px);
+}
+.zo__panel-txt {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.zo__panel-txt .pildora {
+  white-space: normal;
+  height: auto;
+  min-height: 33px;
+  padding-block: 7px;
+  line-height: 1.3;
+}
+.zo__panel-tit {
+  margin-top: clamp(18px, 2vw, 26px);
+}
+.zo__panel-tit .zo__sub {
+  display: inline-block;
+  margin-top: 0.3em;
+  font-size: 0.58em;
+  line-height: 1.1;
+}
+.zo__panel-desc {
+  max-width: 56ch;
+  margin-top: clamp(16px, 1.8vw, 24px);
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+.zo__panel .zo__pts {
+  margin-top: 0;
+  max-width: 56ch;
+}
+.zo__sello {
+  display: none;
+}
+
+/* Tarifas dentro del panel: tarjeta blanca, precio en cursiva serif */
+.zo__tar {
+  padding: clamp(22px, 2.6vw, 36px);
+  border-radius: 20px;
+  background: #fff;
+}
+.zo__tar-filas {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.zo__tar-fila {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 15px 0;
+  border-bottom: 1px dashed rgba(134, 100, 82, 0.35);
+}
+.zo__tar-txt {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.zo__tar-nom {
+  font-size: 16px;
+  line-height: 1.4;
+}
+.zo__tar-det {
+  margin-top: 2px;
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--color-text-secondary);
+}
+.zo__precio {
+  flex: none;
+  font-size: clamp(22px, 2vw, 26px);
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--color-terracota);
+  font-variant-numeric: tabular-nums;
+}
+.zo__tar-nota {
+  margin-top: 18px;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+.zo__tar-nota span {
+  color: var(--color-terracota);
+}
+@media (min-width: 960px) {
+  .zo__panel {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+  .zo__panel--medio {
+    align-items: center;
+  }
+  .zo__sello {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    font-size: 26px;
+    line-height: 1;
+    color: var(--color-moka);
+  }
+}
+
+/* ── Fila de tratamiento (TreatmentRow) ── */
+.zo__fila {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+  padding: clamp(28px, 3.4vw, 46px) 0;
+  border-bottom: 1px solid var(--color-linea);
+}
+.zo__fila:last-child {
+  border-bottom: 0;
+}
+.zo__fila::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 3px;
+  background: var(--color-terracota);
+  transform: scaleY(0);
+  transform-origin: 50% 0;
+  transition: transform 0.6s var(--ease-seda);
+}
+.zo__fila-num {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1;
+  color: var(--color-moka);
+  font-variant-numeric: tabular-nums;
+  transition: transform 0.6s var(--ease-seda);
+}
+.zo__fila-tit {
+  font-size: clamp(1.45rem, 2.2vw, 1.9rem);
+  line-height: 1.12;
+  text-wrap: balance;
+}
+.zo__fila-a {
+  display: inline-flex;
+  align-items: flex-start;
+  gap: 10px;
+  min-height: 44px;
+  color: var(--color-cacao);
+  transition: color 0.45s var(--ease-seda);
+}
+.zo__fila-a svg {
+  flex: none;
+  margin-top: 0.45em;
+  color: var(--color-terracota);
+  transition: transform 0.55s var(--ease-seda);
+}
+.zo__fila-desc {
+  max-width: 62ch;
+  margin-top: 10px;
+  font-size: clamp(1rem, 1.1vw, 1.0625rem);
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+.zo__fila-dets {
+  max-width: 62ch;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.zo__fila-det {
+  position: relative;
+  padding: 10px 0 10px 22px;
+  border-top: 1px dashed rgba(134, 100, 82, 0.35);
+  font-size: 15px;
+  line-height: 1.55;
+}
+.zo__fila-det::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 1.35em;
+  width: 10px;
+  height: 1px;
+  background: var(--color-terracota);
+}
+.zo__fila-precio {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.zo__fila-desde {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--color-moka);
+}
+.zo__fila-precio .zo__precio {
+  font-size: clamp(26px, 2.4vw, 32px);
+}
+@media (min-width: 960px) {
+  .zo__fila {
+    grid-template-columns: 84px minmax(0, 1fr) auto;
+    column-gap: clamp(20px, 3vw, 48px);
+    align-items: start;
+  }
+  .zo__fila-num {
+    padding: 0.75em 0 0 14px;
+  }
+  .zo__fila-precio {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    min-width: 120px;
+    padding-top: 0.35em;
+  }
+}
+@media (hover: hover) {
+  .zo__fila-a:hover {
+    color: var(--color-terracota);
+  }
+  .zo__fila-a:hover svg {
+    transform: translate(3px, -3px);
+  }
+}
+@media (hover: hover) and (min-width: 960px) {
+  .zo__fila:hover::before {
+    transform: scaleY(1);
+  }
+  .zo__fila:hover .zo__fila-num {
+    transform: translateX(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .zo__tab,
+  .zo__pill,
+  .zo__trat-a,
+  .zo__trat-a > span,
+  .zo__trat-ico,
+  .zo__fila::before,
+  .zo__fila-num,
+  .zo__fila-a,
+  .zo__fila-a svg {
+    transition: none;
+  }
+}
+
+/* Tarifas y destacados que cuelgan del bloque anterior: se le acercan */
+.zo__grupo {
+  margin-top: clamp(-52px, -3.5vw, -26px);
+  margin-bottom: clamp(52px, 7vw, 104px);
+}

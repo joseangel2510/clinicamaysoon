@@ -1,32 +1,48 @@
 "use client";
 
+// Cifra con rótulo. El valor real va en el HTML del servidor; al entrar en
+// pantalla cuenta desde cero hasta él (si no se ha pedido reducir movimiento).
+import "./nuevo/nosotros.css";
 import { useState, useEffect, useRef } from "react";
-import { m as motion, useInView } from "framer-motion";
-import { fadeInUp } from "@/lib/animations";
+import { sinMovimiento } from "@/lib/mov";
 
 function useCountUp(end: number, duration: number = 2000, decimals: number = 0) {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(end);
   const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.5 });
 
   useEffect(() => {
-    if (!inView) return;
+    const el = ref.current;
+    if (!el || sinMovimiento() || typeof IntersectionObserver === "undefined") return;
 
-    const startTime = performance.now();
+    let raf = 0;
+    const io = new IntersectionObserver(
+      (entradas) => {
+        if (!entradas.some((e) => e.isIntersecting)) return;
+        io.disconnect();
+        const startTime = performance.now();
 
-    const animate = (now: number) => {
-      const elapsed = now - startTime;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      setCount(parseFloat((eased * end).toFixed(decimals)));
+        const animate = (now: number) => {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          setCount(progress < 1 ? parseFloat((eased * end).toFixed(decimals)) : end);
 
-      if (progress < 1) {
-        requestAnimationFrame(animate);
-      }
+          if (progress < 1) {
+            raf = requestAnimationFrame(animate);
+          }
+        };
+
+        raf = requestAnimationFrame(animate);
+      },
+      { threshold: 0.5 },
+    );
+    io.observe(el);
+
+    return () => {
+      io.disconnect();
+      cancelAnimationFrame(raf);
     };
-
-    requestAnimationFrame(animate);
-  }, [inView, end, duration, decimals]);
+  }, [end, duration, decimals]);
 
   return { count, ref };
 }
@@ -50,23 +66,22 @@ export function AnimatedCounter({
 }: AnimatedCounterProps) {
   const { count, ref } = useCountUp(end, duration, decimals);
 
+  // La última palabra del rótulo va en cursiva serif
+  const corte = label.lastIndexOf(" ");
+  const inicio = corte > 0 ? label.slice(0, corte) : "";
+  const fin = corte > 0 ? label.slice(corte + 1) : label;
+
   return (
-    <motion.div
-      ref={ref}
-      variants={fadeInUp}
-      className="text-center px-4 py-2"
-    >
-      <span className="font-display text-4xl lg:text-5xl font-bold text-accent-gold tracking-tight">
-        {prefix}
-        {decimals > 0 ? count.toFixed(decimals) : count}
-        {suffix}
-      </span>
-
-      <span className="block w-8 h-px bg-accent-gold/40 mx-auto my-3" />
-
-      <span className="block font-body text-xs uppercase tracking-[0.2em] text-text-light/60">
-        {label}
-      </span>
-    </motion.div>
+    <div ref={ref} className="no__cifra" data-ap>
+      <dt className="no__cifra-rotulo">
+        {inicio ? `${inicio} ` : null}
+        <em className="serif">{fin}</em>
+      </dt>
+      <dd className="no__cifra-valor">
+        {prefix ? <sup>{prefix}</sup> : null}
+        <span>{decimals > 0 ? count.toFixed(decimals) : count}</span>
+        {suffix ? <sup>{suffix}</sup> : null}
+      </dd>
+    </div>
   );
 }

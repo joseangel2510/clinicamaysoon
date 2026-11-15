@@ -1,7 +1,4 @@
-"use client";
-
-import { m as motion } from "framer-motion";
-import { fadeInUp, staggerFast } from "@/lib/animations";
+import "./nuevo/ficha-tarifas.css";
 
 interface Stat {
   value: string;
@@ -16,6 +13,9 @@ interface StatsCardProps {
   variant?: "light" | "dark";
 }
 
+// Datos: cifras en cursiva serif separadas por líneas finas. La variante
+// "dark" es el panel arena (el marrón se reserva para el cierre de la página)
+// y "light", la tarjeta blanca.
 export function StatsCard({
   eyebrow,
   title,
@@ -24,73 +24,27 @@ export function StatsCard({
 }: StatsCardProps) {
   const isDark = variant === "dark";
   return (
-    <motion.div
-      variants={staggerFast}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-      className={`my-10 lg:my-12 rounded-2xl p-7 lg:p-9 relative overflow-hidden ${
-        isDark
-          ? "bg-bg-dark text-text-light"
-          : "bg-bg-secondary text-text-primary"
-      }`}
+    <div
+      className={`fta__dat ${isDark ? "fta__dat--arena" : "fta__dat--blanco"}`}
+      data-ap
     >
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: isDark
-            ? "radial-gradient(circle at 100% 0%, rgba(184,115,85,0.18), transparent 60%)"
-            : "radial-gradient(circle at 0% 100%, rgba(184,115,85,0.08), transparent 60%)",
-        }}
-      />
-      <div className="relative">
-        {eyebrow && (
-          <motion.div
-            variants={fadeInUp}
-            className="flex items-center gap-3 mb-3"
-          >
-            <span className="block w-6 h-px bg-accent-gold" />
-            <span className="font-body text-[10px] font-medium uppercase tracking-[0.3em] text-accent-gold">
-              {eyebrow}
-            </span>
-          </motion.div>
-        )}
-        {title && (
-          <motion.h4
-            variants={fadeInUp}
-            className={`font-display font-normal text-2xl lg:text-3xl leading-tight tracking-[-0.01em] mb-7 ${
-              isDark ? "text-text-light" : "text-text-primary"
-            }`}
-          >
-            {title}
-          </motion.h4>
-        )}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+      {eyebrow && (
+        <span className={isDark ? "pildora" : "pildora pildora--arena"}>
+          {eyebrow}
+        </span>
+      )}
+      {title && <h4 className="tit fta__dat-tit">{title}</h4>}
+      <div className="fta__dat-clip">
+        <div className="fta__dat-red">
           {stats.map((s) => (
-            <motion.div key={`${s.value}-${s.label}`} variants={fadeInUp}>
-              <div className="font-display text-3xl lg:text-4xl text-accent-gold leading-none mb-2">
-                {s.value}
-              </div>
-              <div
-                className={`font-body text-sm leading-[1.5] ${
-                  isDark ? "text-text-light/95" : "text-text-primary"
-                }`}
-              >
-                {s.label}
-              </div>
-              {s.detail && (
-                <div
-                  className={`font-body text-xs leading-[1.5] mt-1 ${
-                    isDark ? "text-text-light/45" : "text-text-secondary"
-                  }`}
-                >
-                  {s.detail}
-                </div>
-              )}
-            </motion.div>
+            <div key={`${s.value}-${s.label}`} className="fta__dato">
+              <div className="serif fta__dato-cifra">{s.value}</div>
+              <div className="fta__dato-nom">{s.label}</div>
+              {s.detail && <div className="fta__dato-det">{s.detail}</div>}
+            </div>
           ))}
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

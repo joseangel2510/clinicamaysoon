@@ -1,0 +1,219 @@
+/* Director médico — retrato recortado que sobresale de un panel de listones,
+   con contorno desplazado; el texto al otro lado. Prefijo: doc__ */
+
+.doc {
+  background: var(--color-arena);
+  overflow: clip;
+}
+.doc__rejilla {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 56px;
+  align-items: center;
+}
+
+/* ── Retrato ── */
+.doc__lado {
+  min-width: 0;
+}
+.doc__retrato {
+  position: relative;
+  width: min(430px, 78vw);
+  aspect-ratio: 430 / 560;
+  /* la cabeza sube por encima de la caja: se le deja sitio */
+  margin: 52px auto 0;
+  isolation: isolate;
+}
+.doc__panel {
+  position: absolute;
+  inset: 14% 0 0 0;
+  z-index: 1;
+  border-radius: 999px 999px 22px 22px;
+}
+.doc__linea {
+  position: absolute;
+  z-index: 0;
+  top: calc(14% - 16px);
+  right: 16px;
+  bottom: 16px;
+  left: -16px;
+  border: 1.5px solid var(--color-terracota);
+  border-radius: 999px 999px 22px 22px;
+  pointer-events: none;
+}
+/* Solo recorta por abajo, con el mismo redondeo del panel */
+.doc__figura {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  clip-path: inset(-40% 0 0 0 round 0 0 22px 22px);
+}
+.doc__foto {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 104%;
+  max-width: none;
+  height: auto;
+  margin-left: -52%;
+}
+.doc__ficha {
+  position: absolute;
+  z-index: 3;
+  left: -14px;
+  bottom: 34px;
+  display: grid;
+  gap: 3px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: rgba(248, 244, 238, 0.9);
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  color: var(--color-cacao);
+}
+.doc__ficha span {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-terracota-texto);
+}
+.doc__ficha strong {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+/* ── Texto ── */
+.doc__txt {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.doc__tit {
+  margin-top: 20px;
+  color: var(--color-cacao);
+}
+.doc__rol {
+  margin-top: 18px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--color-terracota-texto);
+}
+.doc__cita {
+  position: relative;
+  margin-top: clamp(28px, 3vw, 44px);
+  padding-left: clamp(20px, 2vw, 30px);
+  max-width: 620px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.45rem, 2.1vw, 2rem);
+  line-height: 1.28;
+  letter-spacing: -0.015em;
+  color: var(--color-cacao);
+  text-wrap: pretty;
+}
+.doc__barra {
+  position: absolute;
+  top: 0.2em;
+  bottom: 0.2em;
+  left: 0;
+  width: 2px;
+  background: var(--color-terracota);
+}
+.doc__desc {
+  margin-top: clamp(20px, 2vw, 28px);
+  max-width: 540px;
+}
+
+.doc__creds {
+  width: 100%;
+  max-width: 640px;
+  margin-top: clamp(28px, 3vw, 44px);
+}
+.doc__fila {
+  position: relative;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  align-items: baseline;
+  padding-block: 15px;
+}
+.doc__raya {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: rgba(42, 18, 6, 0.14);
+}
+.doc__num {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  color: var(--color-moka-texto);
+}
+.doc__cred {
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+  color: var(--color-cacao);
+}
+
+.doc__inst {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 14px;
+  width: 100%;
+  max-width: 640px;
+  padding-top: 18px;
+  border-top: 1px solid rgba(42, 18, 6, 0.14);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--color-moka-texto);
+}
+.doc__inst li {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+}
+/* Separador: un listón pequeño */
+.doc__inst li + li::before {
+  content: "";
+  width: 1px;
+  height: 12px;
+  background: rgba(42, 18, 6, 0.32);
+}
+.doc__cta {
+  margin-top: clamp(28px, 3vw, 40px);
+}
+
+@media (min-width: 900px) {
+  .doc__rejilla {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 24px;
+    row-gap: 0;
+  }
+  .doc__lado {
+    grid-column: 1 / span 5;
+  }
+  .doc__txt {
+    grid-column: 7 / -1;
+  }
+  .doc__retrato {
+    width: min(430px, 100%);
+    margin-top: 60px;
+  }
+  .doc__ficha {
+    left: -22px;
+    bottom: 44px;
+  }
+}

@@ -1,7 +1,12 @@
 "use client";
 
-import { useState, useEffect, useCallback, useRef } from "react";
-import { m as motion, PanInfo } from "framer-motion";
+// Testimonios de uno en uno. Se pasa con las flechas, con las marcas de
+// listón, arrastrando o con las teclas ← →. El listón activo se va llenando:
+// cuando termina, pasa a la cita siguiente (en pausa mientras se lee con el
+// puntero encima, con el foco dentro o mientras se arrastra).
+import "./nuevo/confianza.css";
+import { useState, useEffect, useCallback, useRef, useSyncExternalStore } from "react";
+import type { CSSProperties, FocusEvent, KeyboardEvent, PointerEvent } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { TestimonialCard } from "./TestimonialCard";
 
@@ -17,40 +22,25 @@ interface TestimonialCarouselProps {
   testimonials: Testimonial[];
 }
 
-const GAP = 24;
+const UMBRAL = 50;
+const sinSuscripcion = () => () => {};
 
 export function TestimonialCarousel({ testimonials }: TestimonialCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(3);
   const [starKey, setStarKey] = useState(0);
-  const [containerWidth, setContainerWidth] = useState(0);
-  const isPaused = useRef(false);
+  const [pausa, setPausa] = useState(false);
+  const [dx, setDx] = useState<number | null>(null);
+  const inicio = useRef<number | null>(null);
   const resumeTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
+  // El reloj del pase automático solo arranca ya hidratado: así no se pierde
+  // su final si la página tarda en cargar.
+  const montado = useSyncExternalStore(
+    sinSuscripcion,
+    () => true,
+    () => false
+  );
 
-  const maxIndex = Math.max(0, testimonials.length - visibleCount);
-
-  // Measure container + responsive visible count
-  useEffect(() => {
-    function update() {
-      const w = window.innerWidth;
-      if (w < 768) setVisibleCount(1);
-      else if (w < 1024) setVisibleCount(2);
-      else setVisibleCount(3);
-
-      if (containerRef.current) {
-        setContainerWidth(containerRef.current.offsetWidth);
-      }
-    }
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
-
-  // Clamp index when visibleCount changes
-  useEffect(() => {
-    if (currentIndex > maxIndex) setCurrentIndex(maxIndex);
-  }, [maxIndex, currentIndex]);
+  const maxIndex = Math.max(0, testimonials.length - 1);
 
   const goTo = useCallback(
     (index: number) => {
@@ -69,115 +59,179 @@ export function TestimonialCarousel({ testimonials }: TestimonialCarouselProps) 
     goTo(currentIndex <= 0 ? maxIndex : currentIndex - 1);
   }, [currentIndex, maxIndex, goTo]);
 
-  // Autoplay
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (!isPaused.current) next();
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [next]);
+    return () => {
+      if (resumeTimeout.current) clearTimeout(resumeTimeout.current);
+    };
+  }, []);
 
   function pauseAutoplay() {
-    isPaused.current = true;
     if (resumeTimeout.current) clearTimeout(resumeTimeout.current);
+    setPausa(true);
   }
 
   function resumeAutoplay() {
     if (resumeTimeout.current) clearTimeout(resumeTimeout.current);
     resumeTimeout.current = setTimeout(() => {
-      isPaused.current = false;
+      setPausa(false);
     }, 3000);
   }
 
-  function handleDragEnd(_: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) {
-    if (info.offset.x < -50) next();
-    else if (info.offset.x > 50) prev();
+  // Teclado: ← → con el foco en cualquier control del carrusel
+  function handleKeyDown(e: KeyboardEvent<HTMLDivElement>) {
+    if (e.key === "ArrowLeft") {
+      e.preventDefault();
+      pauseAutoplay();
+      prev();
+      resumeAutoplay();
+    } else if (e.key === "ArrowRight") {
+      e.preventDefault();
+      pauseAutoplay();
+      next();
+      resumeAutoplay();
+    }
+  }
+
+  function handleFocus(e: FocusEvent<HTMLDivElement>) {
+    if (e.target.matches(":focus-visible")) pauseAutoplay();
+  }
+
+  // Arrastre
+  function handlePointerDown(e: PointerEvent<HTMLDivElement>) {
+    if (e.pointerType === "mouse" && e.button !== 0) return;
+    inicio.current = e.clientX;
+    pauseAutoplay();
+  }
+
+  function handlePointerMove(e: PointerEvent<HTMLDivElement>) {
+    if (inicio.current === null) return;
+    if (e.pointerType === "mouse" && e.buttons === 0) {
+      // se soltó fuera de la escena
+      handlePointerEnd(e, true);
+      return;
+    }
+    const d = e.clientX - inicio.current;
+    if (dx === null && Math.abs(d) < 6) return;
+    if (dx === null) {
+      try {
+        e.currentTarget.setPointerCapture(e.pointerId);
+      } catch {
+        // sin captura: el arrastre sigue funcionando dentro de la escena
+      }
+    }
+    setDx(d * 0.55);
+  }
+
+  function handlePointerEnd(e: PointerEvent<HTMLDivElement>, cancelado: boolean) {
+    if (inicio.current === null) return;
+    const d = e.clientX - inicio.current;
+    inicio.current = null;
+    setDx(null);
+    if (!cancelado) {
+      if (d < -UMBRAL) next();
+      else if (d > UMBRAL) prev();
+    }
     resumeAutoplay();
   }
 
-  // Compute slide offset in pixels
-  const cardWidth = containerWidth > 0
-    ? (containerWidth - GAP * (visibleCount - 1)) / visibleCount
-    : 0;
-  const offsetX = -(currentIndex * (cardWidth + GAP));
-
-  const dotCount = maxIndex + 1;
-
   return (
     <div
-      ref={containerRef}
-      className="relative"
-      onMouseEnter={pauseAutoplay}
-      onMouseLeave={resumeAutoplay}
+      className="co__car"
+      data-pausa={pausa ? "" : undefined}
+      onPointerEnter={(e) => {
+        if (e.pointerType === "mouse") pauseAutoplay();
+      }}
+      onPointerLeave={(e) => {
+        if (e.pointerType === "mouse") resumeAutoplay();
+      }}
+      onFocus={handleFocus}
+      onBlur={resumeAutoplay}
+      onKeyDown={handleKeyDown}
     >
       {/* Carousel track */}
-      <div className="overflow-hidden">
-        <motion.div
-          className="flex"
-          style={{ gap: GAP }}
-          animate={{ x: offsetX }}
-          drag="x"
-          dragConstraints={{ left: 0, right: 0 }}
-          dragElastic={0.1}
-          onDragStart={pauseAutoplay}
-          onDragEnd={handleDragEnd}
-          transition={{ duration: 0.5, ease: [0.25, 0.4, 0.25, 1] }}
-        >
-          {testimonials.map((t, i) => {
-            const centerIndex = currentIndex + Math.floor(visibleCount / 2);
-            return (
-              <motion.div
-                key={i}
-                className="shrink-0"
-                style={{ width: cardWidth > 0 ? cardWidth : `calc((100% - ${GAP * (visibleCount - 1)}px) / ${visibleCount})` }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.05 }}
-              >
-                <TestimonialCard
-                  {...t}
-                  isActive={visibleCount >= 3 && i === centerIndex}
-                  animateStars={true}
-                  key={`${i}-${starKey}`}
-                />
-              </motion.div>
-            );
-          })}
-        </motion.div>
+      <div
+        className="co__car-escena"
+        data-arrastre={dx !== null ? "" : undefined}
+        style={{ "--dx": `${dx ?? 0}px` } as CSSProperties}
+        onPointerDown={handlePointerDown}
+        onPointerMove={handlePointerMove}
+        onPointerUp={(e) => handlePointerEnd(e, false)}
+        onPointerCancel={(e) => handlePointerEnd(e, true)}
+      >
+        {testimonials.map((t, i) => {
+          const activa = i === currentIndex;
+          return (
+            <div
+              key={i}
+              className="co__car-lam"
+              data-activa={activa ? "" : undefined}
+              aria-hidden={!activa}
+            >
+              <TestimonialCard
+                {...t}
+                isActive={activa}
+                animateStars={activa}
+                key={activa ? `${i}-${starKey}` : `${i}`}
+              />
+            </div>
+          );
+        })}
       </div>
 
-      {/* Navigation arrows + dots */}
-      <div className="mt-8 flex items-center justify-center gap-6 lg:mt-0">
-        <button
-          onClick={() => { pauseAutoplay(); prev(); resumeAutoplay(); }}
-          aria-label="Testimonio anterior"
-          className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-transparent text-text-light transition-colors hover:border-white/40 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-accent-gold lg:absolute lg:-left-16 lg:top-1/2 lg:-translate-y-1/2"
-        >
-          <ChevronLeft size={20} />
-        </button>
-
-        <div className="flex items-center gap-2">
-          {Array.from({ length: dotCount }, (_, i) => (
-            <button
-              key={i}
-              onClick={() => { pauseAutoplay(); goTo(i); resumeAutoplay(); }}
-              aria-label={`Ir al grupo de testimonios ${i + 1}`}
-              className={`rounded-full transition-all duration-300 ${
-                i === currentIndex
-                  ? "h-2.5 w-2.5 bg-accent-gold"
-                  : "h-2 w-2 bg-text-light/20 hover:bg-text-light/40"
-              }`}
-            />
-          ))}
+      {/* Navigation arrows + marks */}
+      <div className="co__car-pie">
+        <div className="co__car-marcas">
+          {testimonials.map((_, i) => {
+            const activa = i === currentIndex;
+            return (
+              <button
+                key={i}
+                type="button"
+                onClick={() => {
+                  pauseAutoplay();
+                  goTo(i);
+                  resumeAutoplay();
+                }}
+                aria-label={`Ir al grupo de testimonios ${i + 1}`}
+                aria-current={activa ? "true" : undefined}
+                className="co__car-marca"
+                data-activa={activa ? "" : undefined}
+              >
+                <span>
+                  {activa && montado && <i key={starKey} onAnimationEnd={next} />}
+                </span>
+              </button>
+            );
+          })}
         </div>
 
-        <button
-          onClick={() => { pauseAutoplay(); next(); resumeAutoplay(); }}
-          aria-label="Siguiente testimonio"
-          className="flex h-12 w-12 items-center justify-center rounded-full border border-white/20 bg-transparent text-text-light transition-colors hover:border-white/40 hover:bg-white/10 focus-visible:ring-2 focus-visible:ring-accent-gold lg:absolute lg:-right-16 lg:top-1/2 lg:-translate-y-1/2"
-        >
-          <ChevronRight size={20} />
-        </button>
+        <div className="co__car-flechas">
+          <button
+            type="button"
+            onClick={() => {
+              pauseAutoplay();
+              prev();
+              resumeAutoplay();
+            }}
+            aria-label="Testimonio anterior"
+            className="co__car-flecha"
+          >
+            <ChevronLeft size={20} strokeWidth={1.5} />
+          </button>
+
+          <button
+            type="button"
+            onClick={() => {
+              pauseAutoplay();
+              next();
+              resumeAutoplay();
+            }}
+            aria-label="Siguiente testimonio"
+            className="co__car-flecha"
+          >
+            <ChevronRight size={20} strokeWidth={1.5} />
+          </button>
+        </div>
       </div>
     </div>
   );

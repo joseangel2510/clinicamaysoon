@@ -7,6 +7,7 @@
  * Renderizado server-side (sin animaciones) → texto visible al instante,
  * óptimo para crawlers de IA.
  */
+import "./nuevo/ficha-texto.css";
 
 interface DirectAnswerProps {
   /** Etiqueta corta — por defecto "En breve". */
@@ -20,26 +21,18 @@ export function DirectAnswer({
   children,
 }: DirectAnswerProps) {
   return (
-    <section className="bg-bg-primary pt-10 lg:pt-14">
-      <div className="mx-auto max-w-3xl px-6 lg:px-8">
-        <aside
-          className="relative rounded-2xl bg-bg-secondary border border-accent-gold/25 px-6 py-6 lg:px-8 lg:py-7 shadow-[0_8px_24px_-12px_rgba(15,14,13,0.08)]"
-          aria-label="Resumen del tratamiento"
-        >
-          {/* Gold corner accent */}
-          <span
-            aria-hidden
-            className="absolute top-0 left-6 lg:left-8 w-12 h-px bg-accent-gold"
-          />
-          <div className="flex items-center gap-3 mb-3">
-            <span className="font-body text-[10px] sm:text-xs font-medium uppercase tracking-[0.3em] text-accent-gold">
-              {label}
+    <section className="ft__lead-sec">
+      <div className="mx-auto max-w-4xl px-6 lg:px-8">
+        <aside className="ft__lead" aria-label="Resumen del tratamiento">
+          <div className="ft__lead-cab">
+            <span className="pildora ft__pil">{label}</span>
+            <span className="ft__marca" aria-hidden="true">
+              <i />
+              <i />
+              <i />
             </span>
-            <span className="block w-6 h-px bg-accent-gold/40" />
           </div>
-          <p className="font-display italic text-base lg:text-lg text-text-primary leading-[1.7]">
-            {children}
-          </p>
+          <p className="ft__lead-txt">{children}</p>
         </aside>
       </div>
     </section>

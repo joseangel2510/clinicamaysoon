@@ -1,8 +1,5 @@
-"use client";
-
-import { m as motion } from "framer-motion";
 import { Check, AlertCircle, Plus } from "lucide-react";
-import { fadeInUp, staggerFast } from "@/lib/animations";
+import "./nuevo/ficha-texto.css";
 
 type BulletStyle = "check" | "warning" | "plus";
 
@@ -30,64 +27,31 @@ export function BulletListBlock({
   columns = 1,
 }: BulletListBlockProps) {
   const Icon = ICONS[style];
-  const iconColor = style === "warning" ? "text-text-secondary" : "text-accent-gold";
+  const iconClass = style === "warning" ? "ft__ico ft__ico--aviso" : "ft__ico";
 
   return (
-    <motion.div
-      variants={staggerFast}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      className="py-10 lg:py-12 border-t border-text-secondary/15"
-    >
+    <div className="ft__bloque">
       {eyebrow && (
-        <motion.div
-          variants={fadeInUp}
-          className="flex items-center gap-3 mb-4"
-        >
-          <span className="block w-8 h-px bg-accent-gold" />
-          <span className="font-body text-[10px] sm:text-xs font-medium uppercase tracking-[0.3em] text-accent-gold">
-            {eyebrow}
-          </span>
-        </motion.div>
+        <div className="ft__ceja" data-ap>
+          <span className="pildora pildora--arena ft__pil">{eyebrow}</span>
+        </div>
       )}
-      <motion.h3
-        variants={fadeInUp}
-        className="font-display font-normal text-text-primary leading-[1.1] tracking-[-0.02em] mb-4"
-        style={{ fontSize: "clamp(1.4rem, 2.6vw, 1.9rem)" }}
-      >
+      <h3 className="tit tit--m ft__tit" data-tit>
         {title}
-      </motion.h3>
+      </h3>
       {intro && (
-        <motion.p
-          variants={fadeInUp}
-          className="font-body text-sm lg:text-base text-text-secondary leading-[1.8] max-w-3xl mb-6"
-        >
+        <p className="ft__p ft__intro" data-ap>
           {intro}
-        </motion.p>
+        </p>
       )}
-      <ul
-        className={`grid grid-cols-1 ${
-          columns === 2 ? "sm:grid-cols-2" : ""
-        } gap-x-8 gap-y-2.5`}
-      >
+      <ul className={columns === 2 ? "ft__lista ft__lista--2" : "ft__lista"}>
         {items.map((it) => (
-          <motion.li
-            key={it}
-            variants={fadeInUp}
-            className="flex items-start gap-3"
-          >
-            <Icon
-              size={16}
-              strokeWidth={2}
-              className={`${iconColor} mt-1 flex-shrink-0`}
-            />
-            <span className="font-body text-sm lg:text-[15px] text-text-primary leading-[1.65]">
-              {it}
-            </span>
-          </motion.li>
+          <li key={it} className="ft__item" data-ap>
+            <Icon strokeWidth={1.5} className={iconClass} aria-hidden="true" />
+            <span>{it}</span>
+          </li>
         ))}
       </ul>
-    </motion.div>
+    </div>
   );
 }

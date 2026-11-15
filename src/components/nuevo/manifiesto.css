@@ -1,0 +1,139 @@
+/* Manifiesto — la frase de la clínica con fotos ovaladas entre las palabras,
+   y debajo el párrafo y la tarjeta del nombre. */
+
+.man {
+  background: var(--color-crema);
+  color: var(--color-cacao);
+}
+
+/* ── La frase ── */
+.man .man__frase {
+  --man-ovalo: 1.4em;
+  max-width: 1180px;
+  margin-top: clamp(22px, 2.6vw, 36px);
+  font-size: clamp(2rem, 4.3vw, 4.1rem);
+  line-height: 1.14;
+  /* sin balance: al abrirse los óvalos no debe recolocarse toda la frase */
+  text-wrap: balance;
+}
+.man .man__frase em {
+  line-height: inherit;
+}
+.man__pal {
+  display: inline-block;
+}
+
+/* Óvalo en línea: --crece (0 → 1) lo abre desde nada hasta su ancho */
+.man__ovalo {
+  --crece: 1;
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  width: var(--man-ovalo);
+  height: 0.78em;
+  margin: 0 0.06em 0 0.2em;
+  border-radius: 999px;
+  clip-path: inset(0 calc((1 - var(--crece)) * 50%) round 999px);
+  vertical-align: -0.06em;
+  background: var(--color-arena);
+}
+.man__ovalo-img {
+  object-fit: cover;
+}
+
+/* ── Debajo de la frase ── */
+.man__pie {
+  margin-top: clamp(48px, 6.5vw, 96px);
+}
+.man__linea {
+  height: 1px;
+  background: var(--color-linea);
+  transform-origin: left center;
+}
+.man__rejilla {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 44px;
+  padding-top: clamp(28px, 4vw, 56px);
+}
+.man__texto {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 28px;
+}
+.man__texto .cuerpo {
+  max-width: 46ch;
+}
+
+/* Tarjeta del nombre */
+.man__nombre {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(28px, 2.4vw, 32px);
+  border-radius: 22px;
+  background: var(--color-arena);
+}
+.man__palabra {
+  display: block;
+  margin-top: clamp(40px, 5vw, 72px);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(3.2rem, 6vw, 5.6rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--color-terracota);
+}
+.man__significado {
+  max-width: 30ch;
+  margin-top: 16px;
+  font-size: clamp(1.02rem, 1.3vw, 1.22rem);
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  color: var(--color-cacao);
+}
+
+/* Los tres trazos del logo, en la esquina */
+.man__trazos {
+  position: absolute;
+  top: clamp(28px, 2.4vw, 32px);
+  right: clamp(28px, 2.4vw, 32px);
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 33px;
+}
+.man__trazos i {
+  width: 2px;
+  background: color-mix(in srgb, var(--color-cacao) 25%, transparent);
+  transform-origin: center bottom;
+}
+.man__trazos i:nth-child(1) {
+  height: 58%;
+}
+.man__trazos i:nth-child(2) {
+  height: 100%;
+}
+.man__trazos i:nth-child(3) {
+  height: 76%;
+}
+
+@media (min-width: 900px) {
+  .man .man__frase {
+    --man-ovalo: 1.55em;
+  }
+  .man__rejilla {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 24px;
+    align-items: start;
+  }
+  .man__texto {
+    grid-column: 1 / span 5;
+    gap: 36px;
+  }
+  .man__nombre {
+    grid-column: 8 / span 5;
+  }
+}

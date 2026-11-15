@@ -1,0 +1,323 @@
+/* Maysoon 2026 — sistema visual: tipografía, píldoras, botones, marco y
+   apariciones. Se importa desde globals.css, después del @theme. */
+
+@property --abre {
+  syntax: "<number>";
+  inherits: true;
+  initial-value: 1;
+}
+
+:root {
+  /* margen exterior de la página y el de dentro de los paneles a sangre */
+  --gx: max(clamp(18px, 5.5vw, 80px), calc((100vw - 1440px) / 2 + 80px));
+  --gh: max(clamp(18px, 3.2vw, 44px), calc((100vw - 1440px) / 2 + 70px));
+  --color-terracota-texto: #a34a31;
+  --color-moka-texto: #775847;
+}
+
+/* Lenis */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: clip;
+}
+
+/* ── Tipografía: sans ligera + cursiva serif en el énfasis ──
+   Vale también para las páginas interiores: cualquier titular con
+   .font-display pasa a la sans, y su parte en cursiva a la serif. */
+h1.font-display,
+h2.font-display,
+h3.font-display,
+h4.font-display {
+  font-weight: 400 !important;
+  letter-spacing: -0.035em;
+}
+.font-display.italic,
+.font-display em,
+.font-display i,
+.font-display .italic,
+.tit em,
+.serif {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400 !important;
+  letter-spacing: -0.03em;
+}
+.font-display.italic,
+.font-display em,
+.font-display .italic {
+  font-size: 1.07em;
+}
+
+.tit {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  line-height: 1.04;
+  text-wrap: balance;
+}
+.tit em {
+  font-size: 1.08em;
+  line-height: 0.9;
+  color: var(--color-moka);
+}
+.tit--xl {
+  font-size: clamp(2.75rem, 6.6vw, 6.5rem);
+}
+.tit--l {
+  font-size: clamp(2.2rem, 4.4vw, 4.25rem);
+}
+.tit--m {
+  font-size: clamp(1.7rem, 2.6vw, 2.5rem);
+}
+.sobre-oscuro .tit em,
+.tit--claro em {
+  color: #f2c7a8;
+}
+
+.cuerpo {
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+.sobre-oscuro .cuerpo {
+  color: rgba(248, 244, 238, 0.74);
+}
+
+/* Píldora de sección con punto */
+.pildora {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 33px;
+  padding: 0 15px 0 12px;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--color-cacao);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.pildora::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--color-terracota);
+}
+.pildora--cristal {
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  -webkit-backdrop-filter: blur(18px);
+  backdrop-filter: blur(18px);
+}
+.pildora--cristal::before {
+  background: #f2c7a8;
+}
+.pildora--arena {
+  background: var(--color-arena);
+}
+
+/* Botón con insignia circular: el texto y la flecha se relevan al pasar */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 8px 0 22px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  background: var(--color-cacao);
+  color: var(--color-crema);
+  transition:
+    background-color 0.45s var(--ease-seda),
+    color 0.45s var(--ease-seda),
+    scale 0.3s var(--ease-seda);
+}
+.btn:active {
+  scale: 0.97;
+}
+.btn__t {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+  line-height: 1.5;
+}
+.btn__t > span {
+  display: block;
+  transition: transform 0.5s var(--ease-seda);
+}
+.btn__t > span + span {
+  position: absolute;
+  inset: 0;
+  transform: translateY(110%);
+}
+.btn__i {
+  position: relative;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-crema);
+  color: var(--color-cacao);
+  transition:
+    background-color 0.45s var(--ease-seda),
+    color 0.45s var(--ease-seda);
+}
+.btn__i svg {
+  grid-area: 1 / 1;
+  width: 16px;
+  height: 16px;
+  transition: transform 0.5s var(--ease-seda);
+}
+.btn__i svg + svg {
+  transform: translate(-140%, 140%);
+}
+@media (hover: hover) {
+  .btn:hover {
+    background: var(--color-terracota);
+    color: #fff;
+  }
+  .btn:hover .btn__t > span:first-child {
+    transform: translateY(-110%);
+  }
+  .btn:hover .btn__t > span + span {
+    transform: none;
+  }
+  .btn:hover .btn__i svg:first-child {
+    transform: translate(140%, -140%);
+  }
+  .btn:hover .btn__i svg + svg {
+    transform: none;
+  }
+}
+.btn--claro {
+  background: #fff;
+  color: var(--color-cacao);
+}
+.btn--claro .btn__i {
+  background: var(--color-terracota);
+  color: #fff;
+}
+@media (hover: hover) {
+  .btn--claro:hover .btn__i {
+    background: #fff;
+    color: var(--color-terracota);
+  }
+}
+.btn--linea {
+  background: transparent;
+  color: inherit;
+  box-shadow: inset 0 0 0 1px currentColor;
+}
+.btn--linea .btn__i {
+  background: var(--color-cacao);
+  color: var(--color-crema);
+}
+.sobre-oscuro .btn--linea .btn__i {
+  background: var(--color-crema);
+  color: var(--color-cacao);
+}
+@media (hover: hover) {
+  .btn--linea:hover {
+    box-shadow: none;
+  }
+  .btn--linea:hover .btn__i,
+  .sobre-oscuro .btn--linea:hover .btn__i {
+    background: #fff;
+    color: var(--color-terracota);
+  }
+}
+.btn--s {
+  height: 44px;
+  padding-left: 18px;
+  font-size: 13px;
+}
+.btn--s .btn__i {
+  width: 30px;
+  height: 30px;
+}
+
+/* Marco de página: un solo par de márgenes en toda la web */
+.marco {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: var(--gx);
+}
+.sec {
+  padding-block: clamp(72px, 9vw, 140px);
+}
+
+/* ── Listones: la imagen se abre por franjas verticales, como el muro de
+   roble de la recepción. --abre va de 0 (cerrado) a 1 (abierto). ── */
+.listones {
+  --n: 9;
+  -webkit-mask-image: repeating-linear-gradient(
+    90deg,
+    #000 0,
+    #000 calc(var(--abre) * 100% / var(--n) + 0.6px),
+    transparent calc(var(--abre) * 100% / var(--n) + 0.6px),
+    transparent calc(100% / var(--n))
+  );
+  mask-image: repeating-linear-gradient(
+    90deg,
+    #000 0,
+    #000 calc(var(--abre) * 100% / var(--n) + 0.6px),
+    transparent calc(var(--abre) * 100% / var(--n) + 0.6px),
+    transparent calc(100% / var(--n))
+  );
+}
+
+/* Muro de listones dibujado en CSS (fondo del panel del doctor, pie…) */
+.muro {
+  background-color: #a8632d;
+  background-image:
+    linear-gradient(180deg, rgba(42, 18, 6, 0) 40%, rgba(42, 18, 6, 0.55) 100%),
+    repeating-linear-gradient(
+      90deg,
+      #d08a4a 0,
+      #c47a3a 58%,
+      #8a4a1c 58.5%,
+      #3a1a09 62%,
+      #2a1206 100%
+    );
+  background-size:
+    100% 100%,
+    calc(100% / var(--n, 11)) 100%;
+}
+
+/* Estados de partida de las apariciones: solo con JS y con movimiento. */
+html.mov [data-ap] {
+  opacity: 0;
+}
+html.mov [data-lis] {
+  --abre: 0;
+}
+html.mov [data-tit] {
+  visibility: hidden;
+}
+@media (prefers-reduced-motion: reduce) {
+  html.mov [data-ap] {
+    opacity: 1;
+  }
+  html.mov [data-lis] {
+    --abre: 1;
+  }
+  html.mov [data-tit] {
+    visibility: visible;
+  }
+}

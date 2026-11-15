@@ -1,8 +1,4 @@
-"use client";
-
-import { m as motion } from "framer-motion";
-import { Award, Sparkles, Zap } from "lucide-react";
-import { fadeInUp, staggerContainer, staggerFast } from "@/lib/animations";
+import "./nuevo/zonas.css";
 import { ZonaNav } from "./ZonaNav";
 import { ZonaBlock } from "./ZonaBlock";
 import { PricingTable } from "./PricingTable";
@@ -24,13 +20,11 @@ const zonasNav = [
 
 export function MedicinaEsteticaHombreSection() {
   return (
-    <section className="bg-bg-primary pt-12 pb-20 lg:pb-28">
-      {/* ── Zona nav ── */}
-      <div className="mb-12 lg:mb-16">
-        <ZonaNav zonas={zonasNav} />
-      </div>
+    <section className="zo">
+      {/* ── Raíl de zonas: se queda bajo la cabecera ── */}
+      <ZonaNav zonas={zonasNav} />
 
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+      <div className="marco zo__cuerpo">
         {/* ── 01 · CAPILAR ── */}
         <ZonaBlock
           id="zona-capilar"
@@ -241,20 +235,11 @@ export function MedicinaEsteticaHombreSection() {
 
 function FacialPricingGridHombre() {
   return (
-    <motion.div
-      variants={staggerFast}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.05 }}
-      className="mt-2"
-    >
-      <motion.p
-        variants={fadeInUp}
-        className="font-body italic text-sm text-text-secondary text-center mb-6"
-      >
+    <div className="zo__grupo">
+      <p className="serif zo__aviso" data-ap>
         Tarifas idénticas a la sección Mujer · transparencia total.
-      </motion.p>
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
+      </p>
+      <div className="zo__par">
         <PricingTable
           title="Rellenos Faciales · Ácido hialurónico"
           intro="El relleno más extendido por su alta tolerancia y versatilidad. Hidrata, revoluminiza y produce un efecto lifting natural."
@@ -295,7 +280,7 @@ function FacialPricingGridHombre() {
           ]}
         />
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -305,103 +290,48 @@ function FacialPricingGridHombre() {
 
 function MasculookFeatured() {
   return (
-    <motion.div
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
-      className="mt-10 lg:mt-12 rounded-3xl overflow-hidden bg-bg-dark text-text-light relative"
-    >
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at 20% 80%, rgba(184,115,85,0.22), transparent 60%)",
-        }}
-      />
-      <div className="relative grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-0 lg:gap-12 p-10 lg:p-14 items-center">
-        {/* Left: copy */}
-        <div>
-          <motion.div
-            variants={fadeInUp}
-            className="inline-flex items-center gap-2 mb-5 px-3 py-1 rounded-full bg-accent-gold/15 border border-accent-gold/30"
-          >
-            <Award size={12} strokeWidth={2.2} className="text-accent-gold" />
-            <span className="font-body text-[10px] font-medium uppercase tracking-[0.3em] text-accent-gold">
-              Exclusivo · Hombre
-            </span>
-          </motion.div>
+    <div className="zo__panel zo__panel--medio">
+      {/* Left: copy */}
+      <div className="zo__panel-txt">
+        <span className="pildora" data-ap>
+          Exclusivo · Hombre
+        </span>
 
-          <motion.h3
-            variants={fadeInUp}
-            className="font-display font-normal text-3xl lg:text-5xl text-text-light leading-[1.05] tracking-[-0.02em] mb-5"
-          >
-            <span className="block not-italic">MASCULOOK</span>
-            <span className="block italic text-accent-gold text-2xl lg:text-3xl mt-2">
-              Definición masculina del ángulo mandibular
-            </span>
-          </motion.h3>
+        <h3 className="tit tit--l zo__panel-tit" data-tit>
+          MASCULOOK <br />
+          <em className="zo__sub">
+            Definición masculina del ángulo mandibular
+          </em>
+        </h3>
 
-          <motion.p
-            variants={fadeInUp}
-            className="font-body text-sm lg:text-base text-text-light/75 leading-[1.85] mb-5 max-w-xl"
-          >
-            Protocolo desarrollado para reforzar el ángulo mandibular masculino,
-            ganar definición lateral y conseguir una mandíbula más marcada sin
-            perder naturalidad. Una de las firmas del catálogo masculino de
-            Maysoon.
-          </motion.p>
+        <p className="zo__panel-desc" data-ap>
+          Protocolo desarrollado para reforzar el ángulo mandibular masculino,
+          ganar definición lateral y conseguir una mandíbula más marcada sin
+          perder naturalidad. Una de las firmas del catálogo masculino de
+          Maysoon.
+        </p>
 
-          <motion.ul
-            variants={staggerContainer}
-            className="flex flex-col gap-2.5"
-          >
-            {[
-              "Definición precisa del ángulo mandibular",
-              "Refuerzo lateral y proyección del mentón",
-              "Resultado masculino, natural y reversible",
-              "Combinable con corrección de bruxismo",
-            ].map((e) => (
-              <motion.li
-                key={e}
-                variants={fadeInUp}
-                className="flex items-start gap-2.5"
-              >
-                <span className="text-accent-gold mt-1 flex-shrink-0">✦</span>
-                <span className="font-body text-sm text-text-light/70 leading-[1.65]">
-                  {e}
-                </span>
-              </motion.li>
-            ))}
-          </motion.ul>
-        </div>
-
-        {/* Right: visual placeholder using an icon stack */}
-        <motion.div
-          variants={fadeInUp}
-          className="relative hidden lg:flex items-center justify-center"
-        >
-          <div className="relative w-full aspect-square max-w-[380px]">
-            {/* Decorative concentric rings */}
-            <div className="absolute inset-0 rounded-full border border-accent-gold/15" />
-            <div className="absolute inset-8 rounded-full border border-accent-gold/20" />
-            <div className="absolute inset-16 rounded-full border border-accent-gold/30" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <Zap
-                  size={56}
-                  strokeWidth={1.2}
-                  className="text-accent-gold mx-auto mb-4"
-                />
-                <span className="font-display italic text-text-light/80 text-lg block">
-                  Solo hombre
-                </span>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+        <ul className="zo__pts">
+          {[
+            "Definición precisa del ángulo mandibular",
+            "Refuerzo lateral y proyección del mentón",
+            "Resultado masculino, natural y reversible",
+            "Combinable con corrección de bruxismo",
+          ].map((e) => (
+            <li key={e} className="zo__pt" data-ap>
+              <Marca />
+              <span>{e}</span>
+            </li>
+          ))}
+        </ul>
       </div>
-    </motion.div>
+
+      {/* Right: la marca de tres listones, en grande (solo escritorio) */}
+      <div className="zo__sello" data-ap>
+        <Marca grande />
+        <span className="serif">Solo hombre</span>
+      </div>
+    </div>
   );
 }
 
@@ -411,126 +341,88 @@ function MasculookFeatured() {
 
 function NeuromodulacionFeaturedHombre() {
   return (
-    <motion.div
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
-      className="mt-16 lg:mt-20 rounded-3xl overflow-hidden bg-bg-dark text-text-light relative"
-    >
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at 80% 20%, rgba(184,115,85,0.18), transparent 60%)",
-        }}
-      />
-      <div className="relative grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-14 p-10 lg:p-14">
-        {/* Left: copy */}
-        <div>
-          <motion.div
-            variants={fadeInUp}
-            className="inline-flex items-center gap-2 mb-5 px-3 py-1 rounded-full bg-accent-gold/15 border border-accent-gold/30"
-          >
-            <Sparkles size={12} strokeWidth={2.2} className="text-accent-gold" />
-            <span className="font-body text-[10px] font-medium uppercase tracking-[0.3em] text-accent-gold">
-              Neuromodulación · Toxina botulínica
-            </span>
-          </motion.div>
+    <div className="zo__panel">
+      {/* Left: copy */}
+      <div className="zo__panel-txt">
+        <span className="pildora" data-ap>
+          Neuromodulación · Toxina botulínica
+        </span>
 
-          <motion.h3
-            variants={fadeInUp}
-            className="font-display font-normal text-3xl lg:text-4xl text-text-light leading-[1.1] tracking-[-0.02em] mb-5"
-          >
-            <span className="block not-italic">Menos es</span>
-            <span className="block italic text-accent-gold">Más Natural</span>
-          </motion.h3>
+        <h3 className="tit tit--l zo__panel-tit" data-tit>
+          Menos es <br />
+          <em>Más Natural</em>
+        </h3>
 
-          <motion.p
-            variants={fadeInUp}
-            className="font-body text-sm lg:text-base text-text-light/75 leading-[1.85] mb-5 max-w-xl"
-          >
-            En hombre buscamos relajar musculatura sin perder expresión. El
-            objetivo es un rostro descansado, no un rostro &ldquo;tratado&rdquo;.
-            Mismo protocolo y mismas tarifas que en la sección Mujer.
-          </motion.p>
+        <p className="zo__panel-desc" data-ap>
+          En hombre buscamos relajar musculatura sin perder expresión. El
+          objetivo es un rostro descansado, no un rostro &ldquo;tratado&rdquo;.
+          Mismo protocolo y mismas tarifas que en la sección Mujer.
+        </p>
 
-          <motion.ul
-            variants={staggerContainer}
-            className="flex flex-col gap-2.5 mb-2"
-          >
-            {[
-              "Sesión de 30 min, indolora",
-              "Efecto visible entre los 3 y 5 días",
-              "Efecto completo a los 15 días con sesión de revisión",
-              "Trabajamos con neuromoduladores de primeras marcas, también con Relfydess",
-            ].map((e) => (
-              <motion.li
-                key={e}
-                variants={fadeInUp}
-                className="flex items-start gap-2.5"
-              >
-                <span className="text-accent-gold mt-1 flex-shrink-0">✦</span>
-                <span className="font-body text-sm text-text-light/70 leading-[1.65]">
-                  {e}
-                </span>
-              </motion.li>
-            ))}
-          </motion.ul>
-        </div>
-
-        {/* Right: pricing */}
-        <motion.div variants={fadeInUp}>
-          <div className="rounded-2xl bg-text-light/5 border border-text-light/10 p-7 lg:p-8 backdrop-blur-sm">
-            <div className="flex items-center gap-3 mb-5">
-              <span className="block w-6 h-px bg-accent-gold" />
-              <span className="font-body text-[10px] font-medium uppercase tracking-[0.3em] text-accent-gold">
-                Tarifas · Neuromoduladores
-              </span>
-            </div>
-            <ul className="flex flex-col divide-y divide-text-light/10">
-              {[
-                {
-                  label: "Zona única",
-                  detail: "frente o entrecejo",
-                  price: "100 €",
-                },
-                {
-                  label: "Zona única",
-                  detail: "patas de gallo",
-                  price: "120 €",
-                },
-                { label: "Tercio superior completo", price: "300 €" },
-                { label: "Hiperhidrosis", price: "500 €" },
-              ].map((r) => (
-                <li
-                  key={`${r.label}-${r.price}`}
-                  className="flex items-baseline justify-between gap-4 py-3.5"
-                >
-                  <div className="flex flex-col min-w-0">
-                    <span className="font-body text-sm text-text-light/95 leading-[1.5]">
-                      {r.label}
-                    </span>
-                    {r.detail && (
-                      <span className="font-body text-xs text-text-light/45 leading-[1.5] mt-0.5">
-                        {r.detail}
-                      </span>
-                    )}
-                  </div>
-                  <span className="font-display text-lg text-accent-gold whitespace-nowrap">
-                    {r.price}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-5 pt-5 border-t border-text-light/10 font-body text-xs text-text-light/60 leading-[1.7]">
-              Precios con nuestro neuromodulador habitual. También trabajamos con{" "}
-              <span className="text-accent-gold">Relfydess</span>, con efecto de
-              hasta 5-6 meses: consúltanos su precio.
-            </p>
-          </div>
-        </motion.div>
+        <ul className="zo__pts">
+          {[
+            "Sesión de 30 min, indolora",
+            "Efecto visible entre los 3 y 5 días",
+            "Efecto completo a los 15 días con sesión de revisión",
+            "Trabajamos con neuromoduladores de primeras marcas, también con Relfydess",
+          ].map((e) => (
+            <li key={e} className="zo__pt" data-ap>
+              <Marca />
+              <span>{e}</span>
+            </li>
+          ))}
+        </ul>
       </div>
-    </motion.div>
+
+      {/* Right: pricing */}
+      <div className="zo__tar" data-ap>
+        <span className="pildora pildora--arena">
+          Tarifas · Neuromoduladores
+        </span>
+        <ul className="zo__tar-filas">
+          {[
+            {
+              label: "Zona única",
+              detail: "frente o entrecejo",
+              price: "100 €",
+            },
+            {
+              label: "Zona única",
+              detail: "patas de gallo",
+              price: "120 €",
+            },
+            { label: "Tercio superior completo", price: "300 €" },
+            { label: "Hiperhidrosis", price: "500 €" },
+          ].map((r) => (
+            <li key={`${r.label}-${r.price}`} className="zo__tar-fila">
+              <div className="zo__tar-txt">
+                <span className="zo__tar-nom">{r.label}</span>
+                {r.detail && <span className="zo__tar-det">{r.detail}</span>}
+              </div>
+              <span className="serif zo__precio">{r.price}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="zo__tar-nota">
+          Precios con nuestro neuromodulador habitual. También trabajamos con{" "}
+          <span>Relfydess</span>, con efecto de hasta 5-6 meses: consúltanos su
+          precio.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* Marca de tres listones, en lugar de viñeta */
+function Marca({ grande = false }: { grande?: boolean }) {
+  return (
+    <span
+      className={`zo__marca${grande ? " zo__marca--xl" : ""}`}
+      aria-hidden="true"
+    >
+      <i />
+      <i />
+      <i />
+    </span>
   );
 }

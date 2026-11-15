@@ -1,7 +1,4 @@
-"use client";
-
-import { m as motion } from "framer-motion";
-import { staggerFast } from "@/lib/animations";
+import "./nuevo/areas-interiores.css";
 import { TreatmentRow } from "./TreatmentRow";
 import { ConsultaBlock } from "./ConsultaBlock";
 
@@ -50,21 +47,28 @@ const cirugias = [
   },
 ];
 
+// Las intervenciones en filas con línea fina; en escritorio, la marca de
+// listones acompaña la lectura desde el margen. Componente de servidor.
 export function CirugiasMenoresSection() {
   return (
-    <section className="bg-bg-primary py-20 lg:py-28">
-      <div className="mx-auto max-w-5xl px-6 lg:px-8">
-        <motion.div
-          variants={staggerFast}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
-          className="flex flex-col"
-        >
-          {cirugias.map((t, i) => (
-            <TreatmentRow key={t.title} index={i} {...t} />
-          ))}
-        </motion.div>
+    <section className="ai">
+      <div className="marco">
+        <div className="ai__cap ai__cap--lista">
+          <div className="ai__margen" aria-hidden="true">
+            <span className="ai__lis3">
+              <i />
+              <i />
+              <i />
+            </span>
+          </div>
+          <div className="ai__cap-cont">
+            <div className="ai__filas">
+              {cirugias.map((t, i) => (
+                <TreatmentRow key={t.title} index={i} {...t} />
+              ))}
+            </div>
+          </div>
+        </div>
 
         <ConsultaBlock
           title="Más cirugías menores bajo valoración médica"

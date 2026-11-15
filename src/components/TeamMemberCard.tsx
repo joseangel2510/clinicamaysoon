@@ -1,7 +1,7 @@
-"use client";
-
-import { m as motion } from "framer-motion";
-import { fadeInUp } from "@/lib/animations";
+// Miembro del equipo: retrato en arco con nombre, cargo y descripción debajo
+// (en móvil, en fila: retrato a la izquierda y texto a la derecha).
+import "./nuevo/nosotros.css";
+import Image from "next/image";
 
 interface TeamMemberCardProps {
   image: string;
@@ -9,13 +9,14 @@ interface TeamMemberCardProps {
   role: string;
   description: string;
   /**
-   * CSS background-position value for the avatar (e.g. "center 25%").
+   * CSS position value for the portrait (e.g. "center 25%").
    * Defaults to "center top" so head-anchored portraits look right.
    */
   imageObjectPosition?: string;
   /**
-   * CSS background-size value (e.g. "150% auto") to zoom into the face.
-   * Defaults to "cover".
+   * CSS size value (e.g. "150% auto") to zoom into the face.
+   * Defaults to "cover". Solo "contain" cambia el encaje; el resto se
+   * trata como "cover" (el retrato en arco ya recorta).
    */
   imageBgSize?: string;
 }
@@ -29,33 +30,25 @@ export function TeamMemberCard({
   imageBgSize = "cover",
 }: TeamMemberCardProps) {
   return (
-    <motion.div
-      variants={fadeInUp}
-      className="group bg-white rounded-2xl p-6 shadow-[0_4px_20px_rgba(15,14,13,0.05)] text-center transition-transform transition-shadow duration-300 hover:-translate-y-1 hover:shadow-[0_8px_30px_rgba(15,14,13,0.1)]"
-    >
-      <div
-        className="w-[120px] h-[120px] mx-auto rounded-full overflow-hidden border-3 border-bg-secondary transition-colors duration-300 group-hover:border-accent-gold bg-bg-secondary"
-        style={{
-          backgroundImage: `url('${image}')`,
-          backgroundSize: imageBgSize,
-          backgroundPosition: imageObjectPosition,
-          backgroundRepeat: "no-repeat",
-        }}
-        role="img"
-        aria-label={name}
-      />
+    <div className="no__mi" data-ap>
+      <div className="no__mi-foto">
+        <Image
+          src={image}
+          alt={name}
+          fill
+          sizes="(min-width: 1100px) 240px, (min-width: 640px) 30vw, 108px"
+          style={{
+            objectPosition: imageObjectPosition,
+            objectFit: imageBgSize === "contain" ? "contain" : "cover",
+          }}
+        />
+      </div>
 
-      <h3 className="font-display font-semibold text-lg text-text-primary mt-4">
-        {name}
-      </h3>
-
-      <p className="font-body text-xs uppercase tracking-[0.2em] text-accent-gold mt-1">
-        {role}
-      </p>
-
-      <p className="font-body text-sm text-text-secondary leading-[1.6] mt-3">
-        {description}
-      </p>
-    </motion.div>
+      <div className="no__mi-txt">
+        <h3 className="no__mi-nombre">{name}</h3>
+        <p className="no__mi-rol">{role}</p>
+        <p className="no__mi-desc">{description}</p>
+      </div>
+    </div>
   );
 }

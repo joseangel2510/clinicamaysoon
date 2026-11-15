@@ -10,6 +10,7 @@
  * Renderizado server-side, sin animaciones.
  */
 
+import "./nuevo/ficha-tarifas.css";
 import { JsonLd } from "./JsonLd";
 import { faqSchema } from "@/lib/schemas";
 import { TREATMENT_CONTENT } from "@/lib/treatments-faqs";
@@ -21,39 +22,23 @@ export function TreatmentFAQ({ slug }: { slug: string }) {
   return (
     <>
       <JsonLd data={faqSchema(content.faqs.map((f) => ({ question: f.question, answer: f.answer })))} />
-      <section className="bg-bg-primary py-14 lg:py-20 border-t border-text-secondary/10">
-        <div className="mx-auto max-w-3xl px-6 lg:px-8">
+      <section className="fta__faq">
+        <div className="marco fta__faq-red">
           {/* ── Header ── */}
-          <header className="text-center mb-10 lg:mb-12">
-            <div className="flex items-center justify-center gap-3 mb-5">
-              <span className="block w-10 h-px bg-accent-gold" />
-              <span className="font-body text-[10px] sm:text-xs font-medium uppercase tracking-[0.3em] text-accent-gold">
-                Preguntas Frecuentes
-              </span>
-              <span className="block w-10 h-px bg-accent-gold" />
-            </div>
-            <h2
-              className="font-display font-normal text-text-primary leading-[1.1] tracking-[-0.02em]"
-              style={{ fontSize: "clamp(1.6rem, 3.2vw, 2.4rem)" }}
-            >
+          <header className="fta__faq-cab">
+            <span className="pildora pildora--arena">Preguntas Frecuentes</span>
+            <h2 className="tit tit--l">
               Las dudas más{" "}
-              <span className="italic text-accent-gold/85">comunes</span>
+              <em>comunes</em>
             </h2>
           </header>
 
           {/* ── Q&A list ── */}
-          <div className="flex flex-col">
+          <div className="fta__faq-lista">
             {content.faqs.map((qa) => (
-              <article
-                key={qa.question}
-                className="py-7 lg:py-8 border-t border-text-secondary/15 first:border-t-0"
-              >
-                <h3 className="font-display font-normal text-xl lg:text-2xl text-text-primary leading-[1.25] tracking-[-0.01em] mb-3">
-                  {qa.question}
-                </h3>
-                <p className="font-body text-sm lg:text-base text-text-secondary leading-[1.8]">
-                  {qa.answer}
-                </p>
+              <article key={qa.question} className="fta__qa">
+                <h3 className="fta__q">{qa.question}</h3>
+                <p className="fta__a">{qa.answer}</p>
               </article>
             ))}
           </div>

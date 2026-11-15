@@ -1,11 +1,16 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+// Cabecera: logo, enlaces en píldoras de cristal y botón de reserva. Sobre la
+// foto del hero va en blanco; al bajar se recoge en una barra crema que se
+// esconde al bajar y vuelve al subir. «Servicios» abre un panel con las once
+// áreas. En móvil, panel flotante con enlaces grandes.
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { m as motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
-import { fadeInDown } from "@/lib/animations";
+import { usePathname } from "next/navigation";
+import { Boton } from "@/components/nuevo/Boton";
+import { scrollSuave } from "@/components/nuevo/Movimiento";
+import { WA_CONSULTA } from "@/lib/mov";
 
 const services = [
   { label: "Catálogo de Tratamientos", href: "/tratamientos", featured: true },
@@ -25,311 +30,222 @@ const navLinks = [
   { label: "Inicio", href: "/" },
   { label: "¿Por qué Maysoon?", href: "/por-que-maysoon" },
   { label: "Quiénes Somos", href: "/quienes-somos" },
-  { label: "Servicios", href: "#", dropdown: services },
+  { label: "Servicios", href: "#", dropdown: true },
   { label: "Formaciones", href: "/formaciones" },
   { label: "Contacto", href: "/contacto" },
 ];
 
-export function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const dropdownRef = useRef<HTMLLIElement>(null);
+const Instagram = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
+    <rect x="3.5" y="3.5" width="17" height="17" rx="5" />
+    <circle cx="12" cy="12" r="4" />
+    <circle cx="17.2" cy="6.8" r="0.9" fill="currentColor" stroke="none" />
+  </svg>
+);
+
+export function Navbar({ sobreFoto = false }: { sobreFoto?: boolean }) {
+  const ruta = usePathname();
+  const [bajado, setBajado] = useState(false);
+  const [oculto, setOculto] = useState(false);
+  const [servicios, setServicios] = useState(false);
+  const [menu, setMenu] = useState(false);
+  const [acordeon, setAcordeon] = useState(false);
+  const caja = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Close dropdown on click outside
-  useEffect(() => {
-    const handler = (e: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
-        setDropdownOpen(false);
+    let antes = window.scrollY;
+    const alScroll = () => {
+      const y = window.scrollY;
+      setBajado(y > 60);
+      if (Math.abs(y - antes) > 6) {
+        setOculto(y > antes && y > 420);
+        antes = y;
       }
     };
-    document.addEventListener("mousedown", handler);
-    return () => document.removeEventListener("mousedown", handler);
+    alScroll();
+    window.addEventListener("scroll", alScroll, { passive: true });
+    return () => window.removeEventListener("scroll", alScroll);
   }, []);
+
+  // El panel de servicios se cierra al pulsar fuera, con Escape o al navegar.
+  useEffect(() => {
+    const fuera = (e: MouseEvent) => {
+      if (caja.current && !caja.current.contains(e.target as Node)) setServicios(false);
+    };
+    const tecla = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setServicios(false);
+        setMenu(false);
+      }
+    };
+    document.addEventListener("mousedown", fuera);
+    document.addEventListener("keydown", tecla);
+    return () => {
+      document.removeEventListener("mousedown", fuera);
+      document.removeEventListener("keydown", tecla);
+    };
+  }, []);
+
+  useEffect(() => {
+    setServicios(false);
+    setMenu(false);
+  }, [ruta]);
+
+  // Con el menú móvil abierto la página no se desplaza.
+  useEffect(() => {
+    document.documentElement.classList.toggle("menu-abierto", menu);
+    const l = scrollSuave();
+    if (menu) l?.stop();
+    else l?.start();
+  }, [menu]);
+
+  const claro = sobreFoto && !bajado && !menu;
+  const activo = (href: string) => (href === "/" ? ruta === "/" : ruta.startsWith(href));
+  const enServicios = services.some((s) => ruta.startsWith(s.href));
 
   return (
     <>
-      <motion.nav
-        variants={fadeInDown}
-        initial="hidden"
-        animate="visible"
-        className={`fixed top-0 left-0 right-0 z-50 transition-colors transition-shadow duration-500 ${
-          scrolled
-            ? "bg-bg-primary/80 backdrop-blur-xl shadow-[0_1px_3px_rgba(15,14,13,0.06)]"
-            : "bg-transparent"
+      <header
+        className={`cab${claro ? " cab--claro" : ""}${bajado ? " cab--bajado" : ""}${
+          oculto && !servicios && !menu ? " cab--oculto" : ""
         }`}
       >
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div
-            className={`flex items-center justify-between transition-[padding] duration-500 ${
-              scrolled ? "py-3" : "py-5"
-            }`}
-          >
-            {/* Logo */}
-            <Link
-              href="/"
-              aria-label="Maysoon — Inicio"
-              className="flex items-center group transition-opacity duration-300 hover:opacity-80"
-            >
-              <Image
-                src="/brand/logo-maysoon.png"
-                alt="Maysoon · Clínica Médico-Estética"
-                width={364}
-                height={121}
-                priority
-                className={`transition-[height] duration-500 w-auto ${
-                  scrolled ? "h-12" : "h-16"
-                }`}
-              />
-            </Link>
+        <div className="cab__in">
+          <Link href="/" aria-label="Maysoon — Inicio" className="cab__logo">
+            <Image
+              src="/brand/logo-maysoon.png"
+              alt="Maysoon · Clínica Médico-Estética"
+              width={364}
+              height={121}
+              priority
+            />
+          </Link>
 
-            {/* Desktop Nav Links */}
-            <ul className="hidden lg:flex items-center gap-7 xl:gap-8">
-              {navLinks.map((link) =>
-                link.dropdown ? (
-                  <li
-                    key={link.label}
-                    ref={dropdownRef}
-                    className="relative"
-                    onMouseEnter={() => setDropdownOpen(true)}
-                    onMouseLeave={() => setDropdownOpen(false)}
-                  >
+          <nav className="cab__nav" aria-label="Principal" ref={caja}>
+            <ul>
+              {navLinks.map((l) =>
+                l.dropdown ? (
+                  <li key={l.label}>
                     <button
                       type="button"
-                      onClick={() => setDropdownOpen((v) => !v)}
-                      aria-expanded={dropdownOpen}
-                      className="relative inline-flex items-center gap-1 font-body text-sm font-medium text-text-secondary transition-colors duration-300 hover:text-accent-gold focus-visible:text-accent-gold after:absolute after:bottom-[-4px] after:left-0 after:h-px after:w-0 after:bg-accent-gold after:transition-[width] after:duration-300 hover:after:w-full"
+                      className={`cab__link${enServicios || servicios ? " is-on" : ""}`}
+                      aria-expanded={servicios}
+                      aria-controls="panel-servicios"
+                      onClick={() => setServicios((v) => !v)}
                     >
-                      {link.label}
-                      <ChevronDown
-                        size={14}
-                        strokeWidth={2}
-                        className={`transition-transform duration-300 ${
-                          dropdownOpen ? "rotate-180" : ""
-                        }`}
-                      />
+                      {l.label}
+                      <svg viewBox="0 0 10 6" aria-hidden="true" className={servicios ? "is-giro" : ""}>
+                        <path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" />
+                      </svg>
                     </button>
-
-                    <AnimatePresence>
-                      {dropdownOpen && (
-                        <motion.div
-                          initial={{ opacity: 0, y: -8 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          exit={{ opacity: 0, y: -8 }}
-                          transition={{
-                            duration: 0.25,
-                            ease: [0.16, 1, 0.3, 1],
-                          }}
-                          className="absolute top-full left-1/2 -translate-x-1/2 mt-3 w-72 rounded-xl bg-bg-primary/95 backdrop-blur-xl shadow-[0_20px_60px_rgba(15,14,13,0.12)] border border-text-secondary/10 overflow-hidden"
-                        >
-                          <div className="py-3">
-                            {link.dropdown.map((s, idx) => {
-                              const isFeatured = (s as { featured?: boolean }).featured;
-                              const isFirstAfterFeatured =
-                                idx === 1 &&
-                                (link.dropdown[0] as { featured?: boolean }).featured;
-                              return (
-                                <div key={s.href}>
-                                  {isFirstAfterFeatured && (
-                                    <div className="mx-5 my-1.5 border-t border-text-secondary/15" />
-                                  )}
-                                  <Link
-                                    href={s.href}
-                                    onClick={() => setDropdownOpen(false)}
-                                    className={`block px-5 py-2.5 font-body text-sm transition-colors duration-200 hover:bg-accent-gold/10 hover:text-accent-gold ${
-                                      isFeatured
-                                        ? "text-accent-gold font-semibold uppercase tracking-[0.1em] text-xs"
-                                        : "text-text-primary"
-                                    }`}
-                                  >
-                                    {s.label}
-                                  </Link>
-                                </div>
-                              );
-                            })}
-                          </div>
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
                   </li>
                 ) : (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="relative font-body text-sm font-medium text-text-secondary transition-colors duration-300 hover:text-accent-gold focus-visible:text-accent-gold after:absolute after:bottom-[-4px] after:left-0 after:h-px after:w-0 after:bg-accent-gold after:transition-[width] after:duration-300 hover:after:w-full"
-                    >
-                      {link.label}
+                  <li key={l.label}>
+                    <Link href={l.href} className={`cab__link${activo(l.href) ? " is-on" : ""}`}>
+                      {l.label}
                     </Link>
                   </li>
-                )
+                ),
               )}
             </ul>
 
-            {/* Desktop CTA — Instagram (gradiente siempre activo) */}
+            <div id="panel-servicios" className={`cab__panel${servicios ? " is-on" : ""}`} inert={!servicios}>
+              <Link href="/tratamientos" className="cab__destacado">
+                <span className="pildora pildora--arena">Catálogo</span>
+                <strong className="tit">
+                  Catálogo de <em>Tratamientos</em>
+                </strong>
+                <span className="cab__flecha" aria-hidden="true">↗</span>
+              </Link>
+              <ul>
+                {services
+                  .filter((s) => !s.featured)
+                  .map((s, i) => (
+                    <li key={s.href}>
+                      <Link href={s.href}>
+                        <i>{String(i + 1).padStart(2, "0")}</i>
+                        {s.label}
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+            </div>
+          </nav>
+
+          <div className="cab__der">
             <a
               href="https://www.instagram.com/clinicamaysoon/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Síguenos en Instagram @clinicamaysoon"
-              className="hidden lg:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-body text-sm font-semibold text-white transition-transform duration-300 hover:scale-[1.04] active:scale-[0.97] shadow-[0_8px_24px_rgba(214,41,118,0.35)] hover:shadow-[0_12px_32px_rgba(214,41,118,0.5)] focus-visible:ring-2 focus-visible:ring-accent-gold/50"
-              style={{
-                background:
-                  "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
-              }}
+              className="cab__ig"
             >
-              <svg
-                className="w-4 h-4"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.8"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <rect x="2" y="2" width="20" height="20" rx="5" />
-                <circle cx="12" cy="12" r="5" />
-                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-              </svg>
-              Síguenos
+              <Instagram />
+              <span>Síguenos</span>
             </a>
-
-            {/* Mobile Hamburger */}
+            <Boton href={WA_CONSULTA} variante={claro ? "claro" : "oscuro"} chico className="cab__cta">
+              Reserva tu Consulta
+            </Boton>
             <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden p-2 text-text-primary transition-colors duration-200 hover:text-accent-gold focus-visible:text-accent-gold"
-              aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
+              type="button"
+              className={`cab__burger${menu ? " is-on" : ""}`}
+              aria-label={menu ? "Cerrar menú" : "Abrir menú"}
+              aria-expanded={menu}
+              onClick={() => setMenu((v) => !v)}
             >
-              {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+              <span />
+              <span />
             </button>
           </div>
         </div>
-      </motion.nav>
+      </header>
 
-      {/* Mobile Menu Overlay */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="fixed inset-0 top-0 z-40 bg-bg-primary/95 backdrop-blur-2xl lg:hidden overflow-y-auto"
-          >
-            <div className="flex flex-col items-center justify-start min-h-full pt-28 pb-16 gap-5">
-              {navLinks.map((link, i) =>
-                link.dropdown ? (
-                  <div key={link.label} className="flex flex-col items-center w-full">
-                    <motion.button
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{
-                        delay: 0.05 * i,
-                        duration: 0.4,
-                        ease: [0.16, 1, 0.3, 1],
-                      }}
-                      type="button"
-                      onClick={() => setMobileServicesOpen((v) => !v)}
-                      className="font-display text-2xl font-normal text-text-primary inline-flex items-center gap-2"
-                    >
-                      {link.label}
-                      <ChevronDown
-                        size={18}
-                        strokeWidth={2}
-                        className={`transition-transform duration-300 ${
-                          mobileServicesOpen ? "rotate-180" : ""
-                        }`}
-                      />
-                    </motion.button>
-                    <AnimatePresence>
-                      {mobileServicesOpen && (
-                        <motion.div
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-                          className="overflow-hidden flex flex-col items-center gap-3 mt-4"
-                        >
-                          {link.dropdown.map((s) => (
-                            <Link
-                              key={s.href}
-                              href={s.href}
-                              onClick={() => {
-                                setMobileOpen(false);
-                                setMobileServicesOpen(false);
-                              }}
-                              className="font-body text-base text-text-secondary transition-colors duration-300 hover:text-accent-gold"
-                            >
-                              {s.label}
-                            </Link>
-                          ))}
-                        </motion.div>
-                      )}
-                    </AnimatePresence>
+      {/* Menú móvil */}
+      <div className={`menu${menu ? " is-on" : ""}`} inert={!menu} data-lenis-prevent>
+        <div className="menu__velo" onClick={() => setMenu(false)} />
+        <div className="menu__panel" role="dialog" aria-label="Menú">
+          <ul className="menu__lista">
+            {navLinks.map((l, i) =>
+              l.dropdown ? (
+                <li key={l.label} style={{ "--i": i } as React.CSSProperties}>
+                  <button type="button" aria-expanded={acordeon} aria-controls="menu-servicios" onClick={() => setAcordeon((v) => !v)}>
+                    <span>{l.label}</span>
+                    <b className={acordeon ? "is-giro" : ""}>+</b>
+                  </button>
+                  <div id="menu-servicios" className={`menu__sub${acordeon ? " is-on" : ""}`} inert={!acordeon}>
+                    <ul>
+                      {services.map((s) => (
+                        <li key={s.href}>
+                          <Link href={s.href} className={s.featured ? "is-dest" : ""}>
+                            {s.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                ) : (
-                  <motion.div
-                    key={link.label}
-                    initial={{ opacity: 0, y: 12 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{
-                      delay: 0.05 * i,
-                      duration: 0.4,
-                      ease: [0.16, 1, 0.3, 1],
-                    }}
-                  >
-                    <Link
-                      href={link.href}
-                      onClick={() => setMobileOpen(false)}
-                      className="font-display text-2xl font-normal text-text-primary transition-colors duration-300 hover:text-accent-gold"
-                    >
-                      {link.label}
-                    </Link>
-                  </motion.div>
-                )
-              )}
-              <motion.a
-                href="https://www.instagram.com/clinicamaysoon/"
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  delay: 0.4,
-                  duration: 0.4,
-                  ease: [0.16, 1, 0.3, 1],
-                }}
-                className="mt-4 inline-flex items-center gap-2.5 text-white px-8 py-3 rounded-lg font-body text-base font-semibold transition-transform duration-300 active:scale-[0.97] shadow-[0_8px_24px_rgba(214,41,118,0.3)]"
-                style={{
-                  background:
-                    "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
-                }}
-              >
-                <svg
-                  className="w-5 h-5"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.8"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <rect x="2" y="2" width="20" height="20" rx="5" />
-                  <circle cx="12" cy="12" r="5" />
-                  <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-                </svg>
-                Síguenos en Instagram
-              </motion.a>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+                </li>
+              ) : (
+                <li key={l.label} style={{ "--i": i } as React.CSSProperties}>
+                  <Link href={l.href} className={activo(l.href) ? "is-on" : ""}>
+                    <span>{l.label}</span>
+                  </Link>
+                </li>
+              ),
+            )}
+          </ul>
+          <div className="menu__pie">
+            <Boton href={WA_CONSULTA}>Reserva tu Consulta</Boton>
+            <a
+              href="https://www.instagram.com/clinicamaysoon/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Síguenos en Instagram @clinicamaysoon"
+            >
+              Síguenos en Instagram
+            </a>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

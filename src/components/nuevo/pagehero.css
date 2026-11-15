@@ -1,0 +1,191 @@
+/* Cabecera de las páginas interiores (PageHero). Entrada en CSS puro. */
+.ph {
+  position: relative;
+  padding-top: clamp(124px, 12vw, 190px);
+  background: var(--color-crema);
+  overflow: clip;
+}
+.ph--sin-foto {
+  padding-bottom: clamp(40px, 5vw, 72px);
+}
+.ph__cab {
+  display: grid;
+  gap: clamp(22px, 3vw, 40px);
+  padding-bottom: clamp(32px, 4.4vw, 64px);
+}
+.ph__izq {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(16px, 1.6vw, 24px);
+}
+.ph .pildora {
+  white-space: normal;
+  height: auto;
+  min-height: 33px;
+  padding-block: 7px;
+  line-height: 1.3;
+}
+.ph__tit {
+  font-size: clamp(2.5rem, 6.2vw, 6rem);
+}
+.ph__linea {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+.ph__linea > * {
+  display: block;
+}
+.ph__tit em {
+  padding-right: 0.06em;
+}
+.ph__der {
+  display: flex;
+  gap: 18px;
+  max-width: 470px;
+}
+.ph__listones {
+  flex: none;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 46px;
+  padding-top: 4px;
+}
+.ph__listones i {
+  width: 2px;
+  background: var(--color-terracota);
+  border-radius: 2px;
+}
+.ph__listones i:nth-child(1) {
+  height: 60%;
+  opacity: 0.45;
+}
+.ph__listones i:nth-child(2) {
+  height: 100%;
+}
+.ph__listones i:nth-child(3) {
+  height: 76%;
+  opacity: 0.7;
+}
+@media (min-width: 900px) {
+  .ph__cab {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 400px);
+    align-items: end;
+  }
+  .ph__der {
+    padding-bottom: 0.7vw;
+  }
+}
+
+.ph__marco-foto {
+  padding: 0 10px 10px;
+}
+.ph__foto {
+  --n: 9;
+  position: relative;
+  aspect-ratio: 21 / 9;
+  max-height: 78vh;
+  width: 100%;
+  border-radius: 26px;
+  overflow: hidden;
+  background: var(--color-arena);
+  animation: ph-abre 1.6s cubic-bezier(0.65, 0, 0.2, 1) 0.15s both;
+}
+.ph__foto img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: ph-zoom 2.2s cubic-bezier(0.19, 1, 0.22, 1) 0.15s both;
+}
+.ph__velo {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(42, 18, 6, 0.28), rgba(42, 18, 6, 0) 45%);
+  pointer-events: none;
+}
+@media (max-width: 767px) {
+  .ph__foto {
+    --n: 5;
+    aspect-ratio: 4 / 3;
+    border-radius: 20px;
+  }
+  .ph__foto--movil {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+/* Entrada */
+.ph__e {
+  animation: ph-foco 1.1s cubic-bezier(0.19, 1, 0.22, 1) both;
+}
+.ph__e--sube {
+  animation-name: ph-sube;
+  animation-duration: 1.25s;
+}
+.ph__e--1 {
+  animation-delay: 0.05s;
+}
+.ph__e--2 {
+  animation-delay: 0.12s;
+}
+.ph__e--3 {
+  animation-delay: 0.24s;
+}
+.ph__e--4 {
+  animation-delay: 0.42s;
+}
+@keyframes ph-foco {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+    filter: blur(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+/* El titular solo se desplaza tras su máscara: nunca parte de opacidad 0 */
+@keyframes ph-sube {
+  from {
+    transform: translateY(112%);
+  }
+  to {
+    transform: none;
+  }
+}
+@keyframes ph-abre {
+  from {
+    --abre: 0;
+  }
+  to {
+    --abre: 1;
+  }
+}
+@keyframes ph-zoom {
+  from {
+    transform: scale(1.16);
+  }
+  to {
+    transform: none;
+  }
+}
+/* Con la cortina de entrada puesta, la animación espera a que se levante. */
+html.mov:not(.sin-pre):not([data-listo]) .ph__e,
+html.mov:not(.sin-pre):not([data-listo]) .ph__foto,
+html.mov:not(.sin-pre):not([data-listo]) .ph__foto img {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .ph__e,
+  .ph__foto,
+  .ph__foto img {
+    animation: none;
+  }
+}

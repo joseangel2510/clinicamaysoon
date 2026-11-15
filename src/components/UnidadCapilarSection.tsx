@@ -1,7 +1,5 @@
-"use client";
-
-import { m as motion } from "framer-motion";
-import { fadeInUp, staggerContainer, staggerFast } from "@/lib/animations";
+import "./nuevo/areas-interiores.css";
+import type { ReactNode } from "react";
 import { ZonaNav } from "./ZonaNav";
 import { PricingTable } from "./PricingTable";
 import { BulletListBlock } from "./BulletListBlock";
@@ -19,62 +17,51 @@ const tecnicas = [
   { id: "mesoterapia", label: "Mesoterapia" },
 ];
 
+// Unidad Capilar: raíl de técnicas pegado arriba, el lema del centro y cinco
+// capítulos numerados. En escritorio la cabecera de cada capítulo se queda
+// fija a la izquierda mientras se lee su contenido. Componente de servidor.
 export function UnidadCapilarSection() {
   return (
-    <section className="bg-bg-primary pt-12 pb-20 lg:pb-28">
-      {/* ── Tech nav ── */}
-      <div className="mb-12 lg:mb-16">
-        <ZonaNav zonas={tecnicas} />
-      </div>
+    <section className="ai ai--nav">
+      {/* ── Tech nav ── (hija directa de la sección: así se queda pegada) */}
+      <ZonaNav zonas={tecnicas} />
 
-      <div className="mx-auto max-w-5xl px-6 lg:px-8">
+      <div className="marco">
         {/* ── Intro institucional ── */}
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          className="text-center mb-16 lg:mb-20"
-        >
-          <motion.p
-            variants={fadeInUp}
-            className="font-display italic text-lg lg:text-2xl text-text-secondary leading-[1.5] max-w-3xl mx-auto mb-4"
-          >
+        <div className="ai__lema">
+          <p className="serif ai__lema-cita" data-ap>
             &ldquo;Uno de los pocos centros nacionales de referencia que reúne
-            <span className="text-accent-gold"> todas </span>
+            <span> todas </span>
             las técnicas médicas capilares.&rdquo;
-          </motion.p>
-          <motion.p
-            variants={fadeInUp}
-            className="font-body text-sm text-text-secondary max-w-2xl mx-auto"
-          >
-            Pioneros en la Comunidad Valenciana desde hace más de 4 años.
-          </motion.p>
-        </motion.div>
+          </p>
+          <div className="ai__lema-nota" data-ap>
+            <span className="ai__lis3" aria-hidden="true">
+              <i />
+              <i />
+              <i />
+            </span>
+            <p className="cuerpo">
+              Pioneros en la Comunidad Valenciana desde hace más de 4 años.
+            </p>
+          </div>
+        </div>
 
         {/* ═════════ 01 · ESTUDIO CAPILAR ═════════ */}
-        <TechniqueHeader
+        <Technique
           id="estudio"
           number="01"
           eyebrow="Punto de partida"
           title="Estudio Capilar Personalizado"
-        />
-
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.4 }}
-          className="mt-6 mb-10 inline-flex items-center gap-3 px-5 py-2.5 rounded-full bg-accent-gold text-bg-dark"
+          aside={
+            <div className="ai__gratis" data-ap>
+              <span className="ai__gratis-sello">100 % Gratuito</span>
+              <span className="ai__gratis-pto">·</span>
+              <span className="ai__gratis-txt">
+                Diagnóstico capilar sin coste
+              </span>
+            </div>
+          }
         >
-          <span className="font-body text-[10px] font-bold uppercase tracking-[0.3em]">
-            100 % Gratuito
-          </span>
-          <span className="font-display text-base">·</span>
-          <span className="font-body text-sm font-medium">
-            Diagnóstico capilar sin coste
-          </span>
-        </motion.div>
 
         <InfoBlock
           title="Tu primer paso"
@@ -129,14 +116,16 @@ export function UnidadCapilarSection() {
           ]}
         />
 
+        </Technique>
+
         {/* ═════════ 02 · TRASPLANTE FUE ═════════ */}
-        <TechniqueHeader
+        <Technique
           id="trasplante"
           number="02"
           eyebrow="Solución definitiva"
           title="Trasplante Capilar FUE"
-        />
-
+        >
+        <div className="ai__tarifa">
         <PricingTable
           title="Tarifas planas · sin límite de unidades foliculares"
           intro="Todas las tarifas incluyen: técnica de Zafiro o implanters según caso, diagnóstico previo, 1 sesión de PRP enriquecido, controles y seguimiento durante 1 año, y prescripción de tratamiento de mantenimiento personalizado."
@@ -148,6 +137,7 @@ export function UnidadCapilarSection() {
             { label: "Trasplante completo", price: "3.000 €" },
           ]}
         />
+        </div>
 
         <InfoBlock
           eyebrow="Nuestra técnica"
@@ -189,19 +179,22 @@ export function UnidadCapilarSection() {
           style="plus"
         />
 
+        </Technique>
+
         {/* ═════════ 03 · TRICHOTEST ═════════ */}
-        <TechniqueHeader
+        <Technique
           id="trichotest"
           number="03"
           eyebrow="Test genético"
           title="Trichotest Capilar"
-        />
-
+        >
+        <div className="ai__tarifa">
         <PricingTable
           title="Tarifa"
           intro="Incluye realización del test, informe completo y pauta de tratamiento domiciliario."
           rows={[{ label: "Trichotest · genético capilar", price: "250 €" }]}
         />
+        </div>
 
         <InfoBlock
           title="ADN al servicio de tu cabello"
@@ -236,14 +229,16 @@ export function UnidadCapilarSection() {
           style="plus"
         />
 
+        </Technique>
+
         {/* ═════════ 04 · PRP CAPILAR ═════════ */}
-        <TechniqueHeader
+        <Technique
           id="prp"
           number="04"
           eyebrow="Bioestimulación"
           title="PRP · Plasma Rico en Plaquetas"
-        />
-
+        >
+        <div className="ai__tarifa">
         <PricingTable
           title="Tarifas · Pauta recomendada"
           intro="Pauta inicial: 3 sesiones espaciadas un mes. Después, mantenimiento personalizado."
@@ -263,6 +258,7 @@ export function UnidadCapilarSection() {
           ]}
           footnote="Trichotest aparte. Resultados 100 % efectivos al combinar PRP con análisis genético."
         />
+        </div>
 
         <InfoBlock
           title="El único que aumenta el número de fibroblastos"
@@ -273,19 +269,22 @@ export function UnidadCapilarSection() {
           ]}
         />
 
+        </Technique>
+
         {/* ═════════ 05 · MESOTERAPIA ═════════ */}
-        <TechniqueHeader
+        <Technique
           id="mesoterapia"
           number="05"
           eyebrow="Activos directos"
           title="Mesoterapia Capilar"
-        />
-
+        >
+        <div className="ai__tarifa">
         <PricingTable
           title="Tarifa · Por sesión con bono"
           intro="Precio por sesión al contratar bono. Consulta tarifas para sesiones sueltas."
           rows={[{ label: "Mesoterapia capilar", price: "desde 80 €" }]}
         />
+        </div>
 
         <InfoBlock
           title="Cocktail personalizado en cuero cabelludo"
@@ -295,6 +294,8 @@ export function UnidadCapilarSection() {
             "Agujas finas y cortas, mínimamente molesto con crema anestésica. Varias sesiones consecutivas para alcanzar el resultado óptimo.",
           ]}
         />
+
+        </Technique>
 
         {/* ═════════ EXTRAS ═════════ */}
         <ExtrasBlock />
@@ -312,101 +313,80 @@ export function UnidadCapilarSection() {
    Sub-componentes
    ───────────────────────────────────────────────── */
 
-function TechniqueHeader({
+// Capítulo de una técnica. El id va en el contenedor (no en la cabecera, que
+// en escritorio se queda fija): así los enlaces #trasplante, #prp… aterrizan
+// siempre al principio del capítulo.
+function Technique({
   id,
   number,
   eyebrow,
   title,
+  aside,
+  children,
 }: {
   id: string;
   number: string;
   eyebrow: string;
   title: string;
+  aside?: ReactNode;
+  children: ReactNode;
 }) {
   return (
-    <motion.div
-      id={id}
-      variants={staggerFast}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-      className="scroll-mt-24 pt-16 lg:pt-20 mb-2 border-t border-text-secondary/15 first:border-t-0 first:pt-12"
-    >
-      <motion.div
-        variants={fadeInUp}
-        className="flex items-baseline gap-4 mb-3"
-      >
-        <span className="font-display text-3xl lg:text-4xl text-accent-gold/60 leading-none">
-          {number}
-        </span>
-        <span className="block w-10 h-px bg-accent-gold/50" />
-        <span className="font-body text-[10px] sm:text-xs font-medium uppercase tracking-[0.3em] text-accent-gold">
-          {eyebrow}
-        </span>
-      </motion.div>
-      <motion.h2
-        variants={fadeInUp}
-        className="font-display font-normal text-text-primary leading-[1.1] tracking-[-0.02em]"
-        style={{ fontSize: "clamp(1.7rem, 3.6vw, 2.6rem)" }}
-      >
-        {title}
-      </motion.h2>
-    </motion.div>
+    <div id={id} className="ai__cap">
+      <div className="ai__cap-cab">
+        <div className="ai__cap-meta" data-ap>
+          <span className="ai__num">{number}</span>
+          <span className="pildora pildora--arena">{eyebrow}</span>
+        </div>
+        <h2 className="tit tit--m ai__cap-tit" data-tit>
+          {title}
+        </h2>
+        {aside}
+      </div>
+      <div className="ai__cap-cont">{children}</div>
+    </div>
   );
 }
 
-
 function ExtrasBlock() {
   return (
-    <motion.div
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      className="mt-16 lg:mt-20 pt-12 border-t border-text-secondary/15"
-    >
-      <motion.div
-        variants={fadeInUp}
-        className="flex items-center gap-3 mb-4"
-      >
-        <span className="block w-8 h-px bg-accent-gold" />
-        <span className="font-body text-[10px] sm:text-xs font-medium uppercase tracking-[0.3em] text-accent-gold">
-          También disponibles
-        </span>
-      </motion.div>
-      <motion.h3
-        variants={fadeInUp}
-        className="font-display font-normal text-text-primary leading-[1.1] tracking-[-0.02em] mb-8"
-        style={{ fontSize: "clamp(1.5rem, 3vw, 2rem)" }}
-      >
-        Para casos no recuperables
-      </motion.h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        <motion.div
-          variants={fadeInUp}
-          className="rounded-2xl bg-bg-secondary p-6 lg:p-7"
-        >
-          <h4 className="font-display text-xl text-text-primary leading-tight mb-3">
-            Implante Capilar Biofibre
-          </h4>
-          <p className="font-body text-sm text-text-secondary leading-[1.7]">
-            Solución para pacientes que no son candidatos a trasplante FUE.
-            Implante de fibras capilares biocompatibles para densidad inmediata.
-          </p>
-        </motion.div>
-        <motion.div
-          variants={fadeInUp}
-          className="rounded-2xl bg-bg-secondary p-6 lg:p-7"
-        >
-          <h4 className="font-display text-xl text-text-primary leading-tight mb-3">
-            Tratamientos Orales y Tópicos
-          </h4>
-          <p className="font-body text-sm text-text-secondary leading-[1.7]">
-            Pautas farmacológicas y dermocosméticas adaptadas, integradas en el
-            protocolo capilar global para potenciar el resultado a largo plazo.
-          </p>
-        </motion.div>
+    <div className="ai__cap ai__cap--fin">
+      <div className="ai__cap-cab">
+        <div className="ai__cap-meta" data-ap>
+          <span className="pildora pildora--arena">También disponibles</span>
+        </div>
+        <h3 className="tit tit--m ai__cap-tit ai__cap-tit--h3" data-tit>
+          Para casos no recuperables
+        </h3>
       </div>
-    </motion.div>
+      <div className="ai__cap-cont">
+        <div className="ai__extras">
+          <div className="ai__extra" data-ap>
+            <span className="ai__lis3 ai__lis3--s" aria-hidden="true">
+              <i />
+              <i />
+              <i />
+            </span>
+            <h4 className="tit ai__extra-tit">Implante Capilar Biofibre</h4>
+            <p className="ai__extra-txt">
+              Solución para pacientes que no son candidatos a trasplante FUE.
+              Implante de fibras capilares biocompatibles para densidad inmediata.
+            </p>
+          </div>
+          <div className="ai__extra" data-ap>
+            <span className="ai__lis3 ai__lis3--s" aria-hidden="true">
+              <i />
+              <i />
+              <i />
+            </span>
+            <h4 className="tit ai__extra-tit">Tratamientos Orales y Tópicos</h4>
+            <p className="ai__extra-txt">
+              Pautas farmacológicas y dermocosméticas adaptadas, integradas en el
+              protocolo capilar global para potenciar el resultado a largo plazo.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }

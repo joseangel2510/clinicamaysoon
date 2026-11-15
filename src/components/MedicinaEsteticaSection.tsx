@@ -1,8 +1,4 @@
-"use client";
-
-import { m as motion } from "framer-motion";
-import { Sparkles, Award } from "lucide-react";
-import { fadeInUp, staggerContainer, staggerFast } from "@/lib/animations";
+import "./nuevo/zonas.css";
 import { ZonaNav } from "./ZonaNav";
 import { ZonaBlock } from "./ZonaBlock";
 import { PricingTable } from "./PricingTable";
@@ -24,13 +20,11 @@ const zonasNav = [
 
 export function MedicinaEsteticaSection() {
   return (
-    <section className="bg-bg-primary pt-12 pb-20 lg:pb-28">
-      {/* ── Sticky-feel zona nav ── */}
-      <div className="mb-12 lg:mb-16">
-        <ZonaNav zonas={zonasNav} />
-      </div>
+    <section className="zo">
+      {/* ── Raíl de zonas: se queda bajo la cabecera ── */}
+      <ZonaNav zonas={zonasNav} />
 
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+      <div className="marco zo__cuerpo">
         {/* ── 01 · CAPILAR ── */}
         <ZonaBlock
           id="zona-capilar"
@@ -102,11 +96,13 @@ export function MedicinaEsteticaSection() {
           imageSide="left"
         />
 
-        {/* ── Facial · Tablas de precios lado a lado ── */}
-        <FacialPricingGrid />
+        <div className="zo__grupo">
+          {/* ── Facial · Tablas de precios lado a lado ── */}
+          <FacialPricingGrid />
 
-        {/* ── Facial · Tratamientos destacados lado a lado ── */}
-        <FacialDestacados />
+          {/* ── Facial · Tratamientos destacados lado a lado ── */}
+          <FacialDestacados />
+        </div>
 
         {/* ── 05 · ACNÉ Y MANCHAS ── */}
         <ZonaBlock
@@ -243,14 +239,8 @@ export function MedicinaEsteticaSection() {
 
 function FacialPricingGrid() {
   return (
-    <motion.div
-      variants={staggerFast}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.05 }}
-      className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mt-2"
-    >
-      <div id="rellenos-faciales" className="scroll-mt-24">
+    <div className="zo__par">
+      <div id="rellenos-faciales" className="zo__ancla">
       <PricingTable
         title="Rellenos Faciales · Ácido hialurónico"
         intro="El relleno más extendido por su alta tolerancia y versatilidad. Hidrata, revoluminiza y produce un efecto lifting natural. Tratamiento indoloro con reincorporación inmediata."
@@ -269,7 +259,7 @@ function FacialPricingGrid() {
       />
       </div>
 
-      <div id="hilos-tensores" className="scroll-mt-24">
+      <div id="hilos-tensores" className="zo__ancla">
       <PricingTable
         title="Hilos Tensores"
         intro="Tres tipos según necesidad: PDO lisos (generan colágeno), PDO arponados (lifting inmediato) y suturas APTOS (última generación, máxima tracción). Sesión 30–45 min, efecto definitivo a los 2 meses, duración hasta 18 meses."
@@ -293,7 +283,7 @@ function FacialPricingGrid() {
         ]}
       />
       </div>
-    </motion.div>
+    </div>
   );
 }
 
@@ -303,13 +293,7 @@ function FacialPricingGrid() {
 
 function FacialDestacados() {
   return (
-    <motion.div
-      variants={staggerFast}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.05 }}
-      className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 mt-6 lg:mt-8"
-    >
+    <div className="zo__par zo__par--igual">
       <FeaturedTreatment
         id="morpheus-8"
         badge="Aprobado por la FDA"
@@ -331,12 +315,12 @@ function FacialDestacados() {
           "Mantenimiento anual recomendado",
         ]}
       />
-    </motion.div>
+    </div>
   );
 }
 
 /* ─────────────────────────────────────────────────
-   FeaturedTreatment — card oscura con badge dorado
+   FeaturedTreatment — tarjeta arena con píldora
    ───────────────────────────────────────────────── */
 
 function FeaturedTreatment({
@@ -353,45 +337,21 @@ function FeaturedTreatment({
   extras?: string[];
 }) {
   return (
-    <motion.div
-      id={id}
-      variants={fadeInUp}
-      className="scroll-mt-24 rounded-2xl bg-bg-dark text-text-light p-7 lg:p-9 relative overflow-hidden h-full flex flex-col"
-    >
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle at 0% 100%, rgba(184,115,85,0.18), transparent 60%)",
-        }}
-      />
-      <div className="relative flex flex-col flex-1">
-        <div className="inline-flex items-center self-start gap-2 mb-4 px-3 py-1 rounded-full bg-accent-gold/15 border border-accent-gold/30">
-          <Award size={12} strokeWidth={2.2} className="text-accent-gold" />
-          <span className="font-body text-[10px] font-medium uppercase tracking-[0.25em] text-accent-gold">
-            {badge}
-          </span>
-        </div>
-        <h4 className="font-display font-normal text-2xl lg:text-3xl text-text-light leading-tight tracking-[-0.01em] mb-4">
-          {title}
-        </h4>
-        <p className="font-body text-sm lg:text-[15px] text-text-light/75 leading-[1.8] mb-5">
-          {description}
-        </p>
-        {extras.length > 0 && (
-          <ul className="flex flex-col gap-2 mt-auto">
-            {extras.map((e) => (
-              <li key={e} className="flex items-start gap-2.5">
-                <span className="text-accent-gold mt-1 flex-shrink-0">✦</span>
-                <span className="font-body text-sm text-text-light/65 leading-[1.6]">
-                  {e}
-                </span>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    </motion.div>
+    <div id={id} className="zo__dest" data-ap>
+      <span className="pildora">{badge}</span>
+      <h4 className="tit zo__dest-tit">{title}</h4>
+      <p className="zo__dest-desc">{description}</p>
+      {extras.length > 0 && (
+        <ul className="zo__pts">
+          {extras.map((e) => (
+            <li key={e} className="zo__pt">
+              <Marca />
+              <span>{e}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }
 
@@ -401,125 +361,89 @@ function FeaturedTreatment({
 
 function NeuromodulacionFeatured() {
   return (
-    <motion.div
-      id="neuromodulacion"
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
-      className="scroll-mt-24 mt-16 lg:mt-20 rounded-3xl overflow-hidden bg-bg-dark text-text-light relative"
-    >
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse at 80% 20%, rgba(184,115,85,0.18), transparent 60%)",
-        }}
-      />
-      <div className="relative grid grid-cols-1 lg:grid-cols-[1.1fr_1fr] gap-10 lg:gap-14 p-10 lg:p-14">
-        {/* Left: copy */}
-        <div>
-          <motion.div
-            variants={fadeInUp}
-            className="inline-flex items-center gap-2 mb-5 px-3 py-1 rounded-full bg-accent-gold/15 border border-accent-gold/30"
-          >
-            <Sparkles size={12} strokeWidth={2.2} className="text-accent-gold" />
-            <span className="font-body text-[10px] font-medium uppercase tracking-[0.3em] text-accent-gold">
-              Neuromodulación · Toxina botulínica
-            </span>
-          </motion.div>
+    <div id="neuromodulacion" className="zo__panel">
+      {/* Left: copy */}
+      <div className="zo__panel-txt">
+        <span className="pildora" data-ap>
+          Neuromodulación · Toxina botulínica
+        </span>
 
-          <motion.h3
-            variants={fadeInUp}
-            className="font-display font-normal text-3xl lg:text-4xl text-text-light leading-[1.1] tracking-[-0.02em] mb-5"
-          >
-            <span className="block not-italic">Menos es</span>
-            <span className="block italic text-accent-gold">Más Natural</span>
-          </motion.h3>
+        <h3 className="tit tit--l zo__panel-tit" data-tit>
+          Menos es <br />
+          <em>Más Natural</em>
+        </h3>
 
-          <motion.p
-            variants={fadeInUp}
-            className="font-body text-sm lg:text-base text-text-light/75 leading-[1.85] mb-5 max-w-xl"
-          >
-            Nuestra filosofía no busca &ldquo;planchar&rdquo; el rostro: relaja
-            la musculatura hiperactiva para conseguir un aspecto más suave y
-            relajado. Minimiza arrugas profundas y elimina las finas, manteniendo
-            la expresión.
-          </motion.p>
+        <p className="zo__panel-desc" data-ap>
+          Nuestra filosofía no busca &ldquo;planchar&rdquo; el rostro: relaja
+          la musculatura hiperactiva para conseguir un aspecto más suave y
+          relajado. Minimiza arrugas profundas y elimina las finas, manteniendo
+          la expresión.
+        </p>
 
-          <motion.ul variants={staggerContainer} className="flex flex-col gap-2.5 mb-2">
-            {[
-              "Sesión de 30 min, indolora",
-              "Efecto visible entre los 3 y 5 días",
-              "Efecto completo a los 15 días con sesión de revisión",
-              "Trabajamos con neuromoduladores de primeras marcas, también con Relfydess",
-            ].map((e) => (
-              <motion.li
-                key={e}
-                variants={fadeInUp}
-                className="flex items-start gap-2.5"
-              >
-                <span className="text-accent-gold mt-1 flex-shrink-0">✦</span>
-                <span className="font-body text-sm text-text-light/70 leading-[1.65]">
-                  {e}
-                </span>
-              </motion.li>
-            ))}
-          </motion.ul>
-        </div>
-
-        {/* Right: pricing */}
-        <motion.div variants={fadeInUp}>
-          <div className="rounded-2xl bg-text-light/5 border border-text-light/10 p-7 lg:p-8 backdrop-blur-sm">
-            <div className="flex items-center gap-3 mb-5">
-              <span className="block w-6 h-px bg-accent-gold" />
-              <span className="font-body text-[10px] font-medium uppercase tracking-[0.3em] text-accent-gold">
-                Tarifas · Neuromoduladores
-              </span>
-            </div>
-            <ul className="flex flex-col divide-y divide-text-light/10">
-              {[
-                {
-                  label: "Zona única",
-                  detail: "frente o entrecejo",
-                  price: "100 €",
-                },
-                {
-                  label: "Zona única",
-                  detail: "patas de gallo",
-                  price: "120 €",
-                },
-                { label: "Tercio superior completo", price: "300 €" },
-                { label: "Hiperhidrosis", price: "500 €" },
-              ].map((r) => (
-                <li
-                  key={`${r.label}-${r.price}`}
-                  className="flex items-baseline justify-between gap-4 py-3.5"
-                >
-                  <div className="flex flex-col min-w-0">
-                    <span className="font-body text-sm text-text-light/95 leading-[1.5]">
-                      {r.label}
-                    </span>
-                    {r.detail && (
-                      <span className="font-body text-xs text-text-light/45 leading-[1.5] mt-0.5">
-                        {r.detail}
-                      </span>
-                    )}
-                  </div>
-                  <span className="font-display text-lg text-accent-gold whitespace-nowrap">
-                    {r.price}
-                  </span>
-                </li>
-              ))}
-            </ul>
-            <p className="mt-5 pt-5 border-t border-text-light/10 font-body text-xs text-text-light/60 leading-[1.7]">
-              Precios con nuestro neuromodulador habitual. También trabajamos con{" "}
-              <span className="text-accent-gold">Relfydess</span>, con efecto de
-              hasta 5-6 meses: consúltanos su precio.
-            </p>
-          </div>
-        </motion.div>
+        <ul className="zo__pts">
+          {[
+            "Sesión de 30 min, indolora",
+            "Efecto visible entre los 3 y 5 días",
+            "Efecto completo a los 15 días con sesión de revisión",
+            "Trabajamos con neuromoduladores de primeras marcas, también con Relfydess",
+          ].map((e) => (
+            <li key={e} className="zo__pt" data-ap>
+              <Marca />
+              <span>{e}</span>
+            </li>
+          ))}
+        </ul>
       </div>
-    </motion.div>
+
+      {/* Right: pricing */}
+      <div className="zo__tar" data-ap>
+        <span className="pildora pildora--arena">
+          Tarifas · Neuromoduladores
+        </span>
+        <ul className="zo__tar-filas">
+          {[
+            {
+              label: "Zona única",
+              detail: "frente o entrecejo",
+              price: "100 €",
+            },
+            {
+              label: "Zona única",
+              detail: "patas de gallo",
+              price: "120 €",
+            },
+            { label: "Tercio superior completo", price: "300 €" },
+            { label: "Hiperhidrosis", price: "500 €" },
+          ].map((r) => (
+            <li key={`${r.label}-${r.price}`} className="zo__tar-fila">
+              <div className="zo__tar-txt">
+                <span className="zo__tar-nom">{r.label}</span>
+                {r.detail && <span className="zo__tar-det">{r.detail}</span>}
+              </div>
+              <span className="serif zo__precio">{r.price}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="zo__tar-nota">
+          Precios con nuestro neuromodulador habitual. También trabajamos con{" "}
+          <span>Relfydess</span>, con efecto de hasta 5-6 meses: consúltanos su
+          precio.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+/* Marca de tres listones, en lugar de viñeta */
+function Marca({ grande = false }: { grande?: boolean }) {
+  return (
+    <span
+      className={`zo__marca${grande ? " zo__marca--xl" : ""}`}
+      aria-hidden="true"
+    >
+      <i />
+      <i />
+      <i />
+    </span>
   );
 }

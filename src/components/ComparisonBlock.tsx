@@ -1,8 +1,6 @@
-"use client";
-
-import { m as motion } from "framer-motion";
+import "./nuevo/ficha-tarifas.css";
+import type { CSSProperties } from "react";
 import { Check, X } from "lucide-react";
-import { fadeInUp, staggerFast } from "@/lib/animations";
 
 interface ComparisonRow {
   feature: string;
@@ -17,6 +15,9 @@ interface ComparisonBlockProps {
   rows: ComparisonRow[];
 }
 
+// Comparativa: filas con línea discontinua y la columna de Maysoon sobre
+// blanco. En móvil cada característica pasa a una fila apilada, con los
+// valores debajo alineados con los nombres de la cabecera.
 export function ComparisonBlock({
   eyebrow,
   title,
@@ -25,69 +26,46 @@ export function ComparisonBlock({
   rows,
 }: ComparisonBlockProps) {
   return (
-    <motion.div
-      variants={staggerFast}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
-      className="py-12 lg:py-16 border-t border-text-secondary/15"
-    >
+    <div className="fta__cmp">
       {eyebrow && (
-        <motion.div
-          variants={fadeInUp}
-          className="flex items-center gap-3 mb-4"
-        >
-          <span className="block w-8 h-px bg-accent-gold" />
-          <span className="font-body text-[10px] sm:text-xs font-medium uppercase tracking-[0.3em] text-accent-gold">
-            {eyebrow}
-          </span>
-        </motion.div>
+        <div data-ap>
+          <span className="pildora pildora--arena">{eyebrow}</span>
+        </div>
       )}
-      <motion.h3
-        variants={fadeInUp}
-        className="font-display font-normal text-text-primary leading-[1.1] tracking-[-0.02em] mb-4"
-        style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)" }}
-      >
+      <h3 className="tit tit--m fta__cmp-tit" data-tit>
         {title}
-      </motion.h3>
+      </h3>
       {intro && (
-        <motion.p
-          variants={fadeInUp}
-          className="font-body text-sm lg:text-base text-text-secondary leading-[1.8] max-w-3xl mb-8"
-        >
+        <p className="fta__cmp-intro" data-ap>
           {intro}
-        </motion.p>
+        </p>
       )}
 
-      <motion.div variants={fadeInUp} className="overflow-x-auto -mx-4 px-4">
-        <table className="w-full min-w-[640px] border-separate border-spacing-0">
-          <thead>
-            <tr>
-              <th className="text-left p-4 align-bottom">
-                <span className="font-body text-[10px] uppercase tracking-[0.2em] text-text-secondary">
-                  Característica
-                </span>
+      <div className="fta__cmp-caja" data-ap>
+        <table
+          role="table"
+          className="fta__tabla"
+          style={{ "--fta-n": competitors.length } as CSSProperties}
+        >
+          <thead role="rowgroup">
+            <tr role="row">
+              <th role="columnheader" scope="col" className="fta__th-car">
+                <span className="fta__micro">Característica</span>
               </th>
               {competitors.map((c, i) => {
                 const isMaysoon = i === 0;
                 return (
                   <th
                     key={c}
-                    className={`text-center p-4 align-bottom ${
-                      isMaysoon
-                        ? "bg-accent-gold/10 rounded-t-xl border-t border-x border-accent-gold/30"
-                        : ""
-                    }`}
+                    role="columnheader"
+                    scope="col"
+                    className={`fta__th${isMaysoon ? " fta__th--casa" : ""}`}
                   >
-                    <span
-                      className={`font-display text-base lg:text-lg block leading-tight ${
-                        isMaysoon ? "text-accent-gold" : "text-text-primary"
-                      }`}
-                    >
+                    <span className={`fta__th-nom${isMaysoon ? " serif" : ""}`}>
                       {c}
                     </span>
                     {isMaysoon && (
-                      <span className="font-body text-[10px] uppercase tracking-[0.2em] text-accent-gold/85 mt-1 block">
+                      <span className="fta__micro fta__th-eq">
                         Nuestro equipo
                       </span>
                     )}
@@ -96,63 +74,37 @@ export function ComparisonBlock({
               })}
             </tr>
           </thead>
-          <tbody>
-            {rows.map((r, idx) => {
-              const isLast = idx === rows.length - 1;
-              return (
-                <tr key={r.feature} className="border-t border-text-secondary/10">
-                  <td className="p-4 border-t border-text-secondary/15 align-middle">
-                    <span className="font-body text-sm text-text-primary leading-[1.5]">
-                      {r.feature}
-                    </span>
-                  </td>
-                  {r.values.map((v, vIdx) => {
-                    const isMaysoon = vIdx === 0;
-                    return (
-                      <td
-                        key={`${r.feature}-${vIdx}`}
-                        className={`p-4 text-center align-middle border-t border-text-secondary/15 ${
-                          isMaysoon
-                            ? `bg-accent-gold/10 border-x border-accent-gold/30 ${
-                                isLast ? "rounded-b-xl border-b" : ""
-                              }`
-                            : ""
-                        }`}
-                      >
-                        {typeof v === "boolean" ? (
-                          v ? (
-                            <Check
-                              size={20}
-                              strokeWidth={2.4}
-                              className="text-accent-gold inline-block"
-                            />
-                          ) : (
-                            <X
-                              size={20}
-                              strokeWidth={2.4}
-                              className="text-text-secondary/50 inline-block"
-                            />
-                          )
+          <tbody role="rowgroup">
+            {rows.map((r) => (
+              <tr key={r.feature} role="row">
+                <td role="cell" className="fta__td-car">
+                  {r.feature}
+                </td>
+                {r.values.map((v, vIdx) => {
+                  const isMaysoon = vIdx === 0;
+                  return (
+                    <td
+                      key={`${r.feature}-${vIdx}`}
+                      role="cell"
+                      className={`fta__td${isMaysoon ? " fta__td--casa" : ""}`}
+                    >
+                      {typeof v === "boolean" ? (
+                        v ? (
+                          <Check size={20} strokeWidth={1.5} className="fta__si" />
                         ) : (
-                          <span
-                            className={`font-body text-sm ${
-                              isMaysoon
-                                ? "text-accent-gold font-medium"
-                                : "text-text-secondary"
-                            }`}
-                          >
-                            {v}
-                          </span>
-                        )}
-                      </td>
-                    );
-                  })}
-                </tr>
-              );
-            })}
+                          <X size={20} strokeWidth={1.5} className="fta__no" />
+                        )
+                      ) : (
+                        <span>{v}</span>
+                      )}
+                    </td>
+                  );
+                })}
+              </tr>
+            ))}
           </tbody>
         </table>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 }

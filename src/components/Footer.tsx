@@ -1,314 +1,183 @@
-"use client";
-
 import Image from "next/image";
-import { m as motion, useInView } from "framer-motion";
-import { useRef, useState } from "react";
-import { fadeInUp, staggerContainer } from "@/lib/animations";
+import Link from "next/link";
+import { Boton } from "./nuevo/Boton";
+import "./nuevo/pie.css";
 
-/* ─── Instagram CTA ─── */
-function InstagramCTA() {
+// Pie de toda la web: tarjeta oscura encajada, con la declaración de la
+// casa, las cuatro columnas y el nombre en grande recortado por el borde.
+// Componente de servidor: las apariciones las mueve el motor global.
+
+const MAPA =
+  "https://maps.google.com/?q=Avda.+Cardenal+Benlloch+11,+46021+Valencia";
+
+type Enlace = { href: string; texto: string };
+
+const TRATAMIENTOS: Enlace[] = [
+  { href: "/tratamientos", texto: "Catálogo de Tratamientos" },
+  { href: "/medicina-estetica", texto: "Med. Estética · Mujer · Facial" },
+  { href: "/medicina-estetica/corporal", texto: "Med. Estética · Mujer · Cuerpo" },
+  { href: "/medicina-estetica/hombre", texto: "Med. Estética · Hombre · Facial" },
+  { href: "/medicina-estetica/hombre/corporal", texto: "Med. Estética · Hombre · Cuerpo" },
+  { href: "/depilacion-laser", texto: "Depilación Láser · HS-810" },
+  { href: "/aparatologia", texto: "Aparatología & Técnicas" },
+  { href: "/cirugias-menores", texto: "Cirugías Menores" },
+  { href: "/unidad-capilar", texto: "Unidad Capilar" },
+  { href: "/estetica", texto: "Estética" },
+  { href: "/masajes", texto: "Masajes" },
+  { href: "/formaciones", texto: "Formaciones" },
+];
+
+const CLINICA: Enlace[] = [
+  { href: "/quienes-somos", texto: "Quiénes Somos" },
+  { href: "/quienes-somos", texto: "Equipo Médico" },
+  { href: "/por-que-maysoon", texto: "¿Por qué Maysoon?" },
+  { href: "/contacto", texto: "Contacto" },
+  { href: "/politica-de-privacidad", texto: "Política de Privacidad" },
+  { href: "/politica-de-cookies", texto: "Política de Cookies" },
+  { href: "/aviso-legal", texto: "Aviso Legal" },
+];
+
+const HORARIO: { dia: string; horas: string }[] = [
+  { dia: "Lun – Jue:", horas: "9:30 – 13:00 · 16:30 – 20:30" },
+  { dia: "Viernes:", horas: "9:30 – 14:00 · 15:30 – 18:30" },
+  { dia: "Sábado y domingo:", horas: "Cerrado" },
+];
+
+function Lista({ enlaces, doble }: { enlaces: Enlace[]; doble?: boolean }) {
   return (
-    <div className="mt-6">
-      <p className="font-body text-xs uppercase tracking-[0.25em] text-text-light/40 mb-3">
-        Síguenos en Instagram
-      </p>
-      <a
-        href="https://www.instagram.com/clinicamaysoon/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Síguenos en Instagram @clinicamaysoon"
-        className="group inline-flex items-center gap-3 px-4 py-2.5 rounded-lg relative overflow-hidden transition-all duration-300 border border-text-light/15 hover:border-transparent hover:shadow-[0_8px_24px_rgba(214,41,118,0.4)] active:scale-[0.97]"
-      >
-        <span
-          aria-hidden
-          className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-          style={{
-            background:
-              "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
-          }}
-        />
-        <svg
-          className="relative w-5 h-5 text-text-light/70 group-hover:text-white transition-colors duration-300"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.5"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <rect x="2" y="2" width="20" height="20" rx="5" />
-          <circle cx="12" cy="12" r="5" />
-          <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-        </svg>
-        <span className="relative font-body text-sm font-medium text-text-light/80 group-hover:text-white transition-colors duration-300">
-          @clinicamaysoon
-        </span>
-      </a>
-    </div>
+    <ul className={doble ? "pie__lista pie__lista--doble" : "pie__lista"}>
+      {enlaces.map((e) => (
+        <li key={e.texto}>
+          <Link href={e.href} className="pie__enlace">
+            <span>{e.texto}</span>
+          </Link>
+        </li>
+      ))}
+    </ul>
   );
 }
 
-/* ─── Footer Column (with optional mobile accordion) ─── */
-function FooterColumn({
-  title,
-  children,
-  collapsible = false,
-}: {
-  title: string;
-  children: React.ReactNode;
-  collapsible?: boolean;
-}) {
-  const [open, setOpen] = useState(false);
-
-  return (
-    <div>
-      <button
-        type="button"
-        className={`font-body font-semibold text-sm uppercase tracking-wider text-text-light mb-5 flex items-center justify-between w-full ${
-          collapsible ? "md:cursor-default" : "cursor-default"
-        }`}
-        onClick={() => collapsible && setOpen(!open)}
-        aria-expanded={collapsible ? open : undefined}
-      >
-        {title}
-        {collapsible && (
-          <svg
-            className={`w-4 h-4 md:hidden transition-transform duration-300 ${open ? "rotate-180" : ""}`}
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            strokeWidth={2}
-          >
-            <path strokeLinecap="round" strokeLinejoin="round" d="M19 9l-7 7-7-7" />
-          </svg>
-        )}
-      </button>
-      <div
-        className={`${
-          collapsible
-            ? `overflow-hidden transition-all duration-300 md:max-h-none md:opacity-100 ${
-                open ? "max-h-96 opacity-100" : "max-h-0 opacity-0 md:max-h-none md:opacity-100"
-              }`
-            : ""
-        }`}
-      >
-        {children}
-      </div>
-    </div>
-  );
-}
-
-/* ─── Footer Link ─── */
-function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
-  return (
-    <a
-      href={href}
-      className="block py-1.5 font-body text-sm text-text-light/40 transition-all duration-300 hover:text-accent-gold hover:translate-x-1"
-    >
-      {children}
-    </a>
-  );
-}
-
-/* ─── Contact Item ─── */
-function ContactItem({
-  icon,
-  href,
-  children,
-  external = false,
-}: {
-  icon: React.ReactNode;
-  href?: string;
-  children: React.ReactNode;
-  external?: boolean;
-}) {
-  const content = (
-    <div className="flex items-start gap-3">
-      <span className="text-accent-gold mt-0.5 shrink-0">{icon}</span>
-      <span className="font-body text-sm text-text-light/50 transition-colors duration-300 group-hover:text-accent-gold">
-        {children}
-      </span>
-    </div>
-  );
-
-  if (href) {
-    return (
-      <a
-        href={href}
-        target={external ? "_blank" : undefined}
-        rel={external ? "noopener noreferrer" : undefined}
-        className="group block"
-      >
-        {content}
-      </a>
-    );
-  }
-  return <div className="group">{content}</div>;
-}
-
-/* ─── Icon components (inline SVGs) ─── */
-const MapPinIcon = () => (
-  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
-    <circle cx="12" cy="10" r="3" />
-  </svg>
-);
-const MessageIcon = () => (
-  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z" />
-  </svg>
-);
-const MailIcon = () => (
-  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="2" y="4" width="20" height="16" rx="2" />
-    <path d="M22 7l-10 7L2 7" />
-  </svg>
-);
-const ClockIcon = () => (
-  <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <circle cx="12" cy="12" r="10" />
-    <path d="M12 6v6l4 2" />
-  </svg>
-);
-
-/* ─── Main Footer ─── */
 export function Footer() {
-  const footerRef = useRef<HTMLElement>(null);
-  const isInView = useInView(footerRef, { once: true, amount: 0.1 });
-
   return (
-    <footer ref={footerRef} className="bg-bg-dark">
-      {/* Main Footer */}
-      <motion.div
-        className="max-w-7xl mx-auto px-6 py-20"
-        variants={staggerContainer}
-        initial="hidden"
-        animate={isInView ? "visible" : "hidden"}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
-          {/* Column 1: Brand */}
-          <motion.div variants={fadeInUp}>
-            <div className="flex flex-col items-start">
-              <Image
-                src="/brand/logo-maysoon.png"
-                alt="Maysoon · Clínica Médico-Estética"
-                width={364}
-                height={121}
-                className="h-20 w-auto brightness-0 invert opacity-90"
-              />
-              <p className="font-display text-lg text-text-light tracking-[0.05em] mt-4">
-                Maysoon
-              </p>
-              <p className="font-body text-[10px] uppercase tracking-[0.3em] text-text-light/40 mt-1">
-                Clínica Médico-Estética
-              </p>
-            </div>
-
-            {/* Terracotta separator */}
-            <div className="w-10 h-px bg-accent-gold/40 my-6" />
-
-            <p className="font-body text-sm text-text-light/50 leading-[1.7] max-w-[280px]">
-              Donde las más avanzadas técnicas en medicina estética y láser se ponen al
-              servicio de tu belleza y bienestar.
-            </p>
-
-            <InstagramCTA />
-          </motion.div>
-
-          {/* Column 2: Tratamientos */}
-          <motion.div variants={fadeInUp}>
-            <FooterColumn title="Tratamientos" collapsible>
-              <nav aria-label="Tratamientos">
-                <FooterLink href="/tratamientos">Catálogo de Tratamientos</FooterLink>
-                <FooterLink href="/medicina-estetica">Med. Estética · Mujer · Facial</FooterLink>
-                <FooterLink href="/medicina-estetica/corporal">Med. Estética · Mujer · Cuerpo</FooterLink>
-                <FooterLink href="/medicina-estetica/hombre">Med. Estética · Hombre · Facial</FooterLink>
-                <FooterLink href="/medicina-estetica/hombre/corporal">Med. Estética · Hombre · Cuerpo</FooterLink>
-                <FooterLink href="/depilacion-laser">Depilación Láser · HS-810</FooterLink>
-                <FooterLink href="/aparatologia">Aparatología & Técnicas</FooterLink>
-                <FooterLink href="/cirugias-menores">Cirugías Menores</FooterLink>
-                <FooterLink href="/unidad-capilar">Unidad Capilar</FooterLink>
-                <FooterLink href="/estetica">Estética</FooterLink>
-                <FooterLink href="/masajes">Masajes</FooterLink>
-                <FooterLink href="/formaciones">Formaciones</FooterLink>
-              </nav>
-            </FooterColumn>
-          </motion.div>
-
-          {/* Column 3: Clínica */}
-          <motion.div variants={fadeInUp}>
-            <FooterColumn title="Clínica" collapsible>
-              <nav aria-label="Clínica">
-                <FooterLink href="/quienes-somos">Quiénes Somos</FooterLink>
-                <FooterLink href="/quienes-somos">Equipo Médico</FooterLink>
-                <FooterLink href="/por-que-maysoon">¿Por qué Maysoon?</FooterLink>
-                <FooterLink href="/contacto">Contacto</FooterLink>
-                <FooterLink href="/politica-de-privacidad">Política de Privacidad</FooterLink>
-                <FooterLink href="/politica-de-cookies">Política de Cookies</FooterLink>
-                <FooterLink href="/aviso-legal">Aviso Legal</FooterLink>
-              </nav>
-            </FooterColumn>
-          </motion.div>
-
-          {/* Column 4: Contacto */}
-          <motion.div variants={fadeInUp}>
-            <FooterColumn title="Contacto">
-              <div className="flex flex-col gap-4">
-                <ContactItem
-                  icon={<MapPinIcon />}
-                  href="https://maps.google.com/?q=Avda.+Cardenal+Benlloch+11,+46021+Valencia"
-                  external
-                >
-                  Avda. Cardenal Benlloch 11
-                  <br />
-                  46021 Valencia, España
-                </ContactItem>
-
-                <ContactItem icon={<MessageIcon />} href="https://wa.me/34601212258" external>
-                  WhatsApp recepción: +34 601 21 22 58
-                </ContactItem>
-
-                <ContactItem icon={<MessageIcon />} href="https://wa.me/34651545268" external>
-                  WhatsApp 24h: +34 651 54 52 68
-                </ContactItem>
-
-                <ContactItem icon={<MailIcon />} href="mailto:info@clinicamaysoon.com">
-                  info@clinicamaysoon.com
-                </ContactItem>
-
-                <ContactItem icon={<ClockIcon />}>
-                  Lun – Jue: 9:30 – 13:00 · 16:30 – 20:30
-                  <br />
-                  Viernes: 9:30 – 14:00 · 15:30 – 18:30
-                  <br />
-                  Sábado y domingo: Cerrado
-                </ContactItem>
-
-                {/* Mini Map */}
-                <a
-                  href="https://maps.google.com/?q=Avda.+Cardenal+Benlloch+11,+46021+Valencia"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-2 block w-full h-[120px] rounded-lg overflow-hidden border border-text-light/10 bg-bg-dark/80 transition-colors duration-300 hover:border-accent-gold relative group"
-                >
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <span className="font-body text-sm text-text-light/40 group-hover:text-accent-gold transition-colors duration-300">
-                      Ver en Google Maps →
-                    </span>
-                  </div>
-                </a>
-              </div>
-            </FooterColumn>
-          </motion.div>
+    <footer className="pie sobre-oscuro">
+      {/* Declaración + Instagram */}
+      <div className="pie__alto">
+        <p className="pie__lema tit tit--m tit--claro" data-tit>
+          Donde las más avanzadas técnicas en medicina estética y láser se ponen
+          al servicio de <em>tu belleza y bienestar.</em>
+        </p>
+        <div className="pie__insta">
+          <p className="pie__eti">Síguenos en Instagram</p>
+          <Boton
+            href="https://www.instagram.com/clinicamaysoon/"
+            variante="linea"
+            chico
+            ariaLabel="Síguenos en Instagram @clinicamaysoon"
+          >
+            @clinicamaysoon
+          </Boton>
         </div>
-      </motion.div>
+      </div>
 
-      {/* Footer Bar */}
-      <div className="border-t border-text-light/8">
-        <div className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-center">
-          <p className="font-body text-xs text-text-light/30 text-center">
-            © 2025 Maysoon · Clínica Médico-Estética. Todos los derechos reservados.
-          </p>
+      {/* Listones apoyados en la línea */}
+      <div className="pie__raya" aria-hidden="true">
+        <span />
+        <span />
+        <span />
+        <span />
+        <span />
+      </div>
+
+      <div className="pie__cols">
+        {/* Marca */}
+        <div className="pie__col pie__col--marca" data-ap>
+          <Image
+            src="/brand/logo-maysoon.png"
+            alt="Maysoon · Clínica Médico-Estética"
+            width={364}
+            height={121}
+            sizes="150px"
+            className="pie__logo"
+          />
+          <p className="pie__nombre">Maysoon</p>
+          <p className="pie__sub">Clínica Médico-Estética</p>
+        </div>
+
+        {/* Tratamientos */}
+        <div className="pie__col" data-ap>
+          <h2 className="pie__tit">Tratamientos</h2>
+          <nav aria-label="Tratamientos">
+            <Lista enlaces={TRATAMIENTOS} doble />
+          </nav>
+        </div>
+
+        {/* Clínica */}
+        <div className="pie__col" data-ap>
+          <h2 className="pie__tit">Clínica</h2>
+          <nav aria-label="Clínica">
+            <Lista enlaces={CLINICA} />
+          </nav>
+        </div>
+
+        {/* Contacto */}
+        <div className="pie__col" data-ap>
+          <h2 className="pie__tit">Contacto</h2>
+          <address className="pie__contacto">
+            <a
+              href={MAPA}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pie__dato"
+            >
+              <span>
+                Avda. Cardenal Benlloch 11
+                <br />
+                46021 Valencia, España
+              </span>
+            </a>
+            <a
+              href="https://wa.me/34601212258"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pie__dato"
+            >
+              <span>WhatsApp recepción: +34 601 21 22 58</span>
+            </a>
+            <a
+              href="https://wa.me/34651545268"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="pie__dato"
+            >
+              <span>WhatsApp 24h: +34 651 54 52 68</span>
+            </a>
+            <a href="mailto:info@clinicamaysoon.com" className="pie__dato">
+              <span>info@clinicamaysoon.com</span>
+            </a>
+          </address>
+
+          <dl className="pie__horas">
+            {HORARIO.map((h) => (
+              <div key={h.dia} className="pie__hora">
+                <dt>{h.dia}</dt>
+                <dd>{h.horas}</dd>
+              </div>
+            ))}
+          </dl>
+
+          <Boton href={MAPA} variante="linea" chico className="pie__mapa">
+            Ver en Google Maps
+          </Boton>
+        </div>
+      </div>
+
+      {/* Nombre en grande, recortado por el borde de la tarjeta */}
+      <div className="pie__cierre">
+        <p className="pie__legal">
+          © {new Date().getFullYear()} Maysoon · Clínica Médico-Estética. Todos los derechos reservados.
+        </p>
+        <div className="pie__marca" data-ap aria-hidden="true">
+          <span>Maysoon</span>
         </div>
       </div>
     </footer>

@@ -1,0 +1,614 @@
+/* Fichas de tratamiento y tarifas: tabla de precios, tarjeta de zonas, datos,
+   comparativa, preguntas frecuentes, firma clínica y cierre con consulta.
+   Prefijo fta__. Filas con línea fina, cifras en cursiva serif, píldoras. */
+
+.fta__tar,
+.fta__dat,
+.fta__cmp,
+.fta__zona,
+.fta__fir,
+.fta__faq {
+  --fta-raya: rgba(134, 100, 82, 0.22);
+  --fta-punto: rgba(134, 100, 82, 0.35);
+}
+
+/* Micro-etiqueta: sustituye a la línea con texto dorado */
+.fta__micro {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-moka);
+}
+
+/* Marca de tres listones */
+.fta__marca {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 4px;
+  height: 22px;
+}
+.fta__marca i {
+  display: block;
+  width: 2px;
+  border-radius: 1px;
+  background: var(--color-terracota);
+}
+.fta__marca i:nth-child(1) {
+  height: 100%;
+}
+.fta__marca i:nth-child(2) {
+  height: 58%;
+}
+.fta__marca i:nth-child(3) {
+  height: 80%;
+}
+
+/* ── Tabla de tarifas ── */
+.fta__tar {
+  border-radius: 22px;
+  background: #fff;
+  color: var(--color-cacao);
+  padding: 26px 22px 24px;
+}
+.fta__tar-tit {
+  margin-top: 18px;
+  font-size: clamp(1.375rem, 1.9vw, 1.75rem);
+  line-height: 1.14;
+  letter-spacing: -0.035em;
+}
+.fta__tar-intro {
+  margin-top: 12px;
+  max-width: 62ch;
+  font-size: 15px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+.fta__filas {
+  margin-top: 22px;
+  border-top: 1px solid var(--fta-raya);
+}
+.fta__fila {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 18px;
+  padding-block: 15px;
+  border-bottom: 1px dashed var(--fta-punto);
+}
+.fta__fila:last-child {
+  border-bottom: 0;
+  padding-bottom: 4px;
+}
+.fta__fila-txt {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.fta__fila-nom {
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+.fta__fila-det {
+  margin-top: 3px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+.fta__precio {
+  flex: none;
+  font-size: clamp(1.375rem, 1.8vw, 1.625rem);
+  line-height: 1.1;
+  color: var(--color-terracota);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.fta__nota {
+  margin-top: 18px;
+  padding-top: 18px;
+  border-top: 1px solid var(--fta-raya);
+  max-width: 62ch;
+  font-size: 13px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+@media (min-width: 1024px) {
+  .fta__tar {
+    padding: 34px 34px 30px;
+  }
+}
+
+/* ── Tarjeta de zona con sus dos precios ── */
+.fta__zona-ap {
+  height: 100%;
+}
+.fta__zona {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 22px;
+  border-radius: 20px;
+  background: #fff;
+  color: var(--color-cacao);
+  transition: transform 0.5s var(--ease-seda);
+}
+@media (hover: hover) {
+  .fta__zona:hover {
+    transform: translateY(-4px);
+  }
+}
+.fta__zona--des {
+  background: var(--color-arena);
+}
+.fta__zona-cab {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 33px;
+}
+.fta__zona-precios {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  margin-top: 24px;
+  padding-bottom: 22px;
+  border-bottom: 1px dashed var(--fta-punto);
+}
+.fta__zona-precio + .fta__zona-precio {
+  padding-left: 18px;
+  border-left: 1px solid var(--fta-raya);
+}
+.fta__zona-cifra {
+  display: block;
+  margin-top: 8px;
+  font-size: clamp(1.75rem, 2.3vw, 2.125rem);
+  line-height: 1;
+  color: var(--color-terracota);
+  font-variant-numeric: tabular-nums;
+}
+.fta__zona-zonas {
+  flex: 1;
+  margin-top: 20px;
+}
+.fta__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+.fta__chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 3px 12px;
+  border: 1px solid var(--color-linea);
+  border-radius: 999px;
+  font-size: 13px;
+  line-height: 1.3;
+}
+.fta__zona--des .fta__chip {
+  border-color: transparent;
+  background: #fff;
+}
+
+/* ── Datos: cifras en cursiva separadas por líneas ── */
+.fta__dat {
+  margin-block: clamp(40px, 4vw, 48px);
+  padding: 26px 22px;
+  border-radius: 22px;
+  color: var(--color-cacao);
+}
+.fta__dat--arena {
+  background: var(--color-arena);
+}
+.fta__dat--blanco {
+  background: #fff;
+}
+.fta__dat-tit {
+  margin-top: 18px;
+  max-width: 24ch;
+  font-size: clamp(1.5rem, 2.3vw, 2.125rem);
+  line-height: 1.1;
+  letter-spacing: -0.035em;
+}
+.fta__dat-clip {
+  margin-top: 26px;
+  overflow: hidden;
+}
+.fta__dat-red {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+.fta__dato {
+  padding-block: 18px;
+  border-top: 1px dashed var(--fta-punto);
+}
+.fta__dato:first-child {
+  border-top: 1px solid var(--fta-raya);
+}
+.fta__dato:last-child {
+  padding-bottom: 2px;
+}
+.fta__dato-cifra {
+  font-size: clamp(2.125rem, 3.2vw, 2.75rem);
+  line-height: 1;
+  color: var(--color-terracota);
+  font-variant-numeric: tabular-nums;
+}
+.fta__dato-nom {
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+.fta__dato-det {
+  margin-top: 3px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--color-text-secondary);
+}
+@media (min-width: 560px) {
+  .fta__dat-clip {
+    padding-top: 22px;
+    border-top: 1px solid var(--fta-raya);
+  }
+  /* La primera línea vertical de cada fila queda fuera del recorte */
+  .fta__dat-red {
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    row-gap: 26px;
+    margin-left: -23px;
+  }
+  .fta__dato,
+  .fta__dato:first-child,
+  .fta__dato:last-child {
+    padding: 2px 16px 2px 22px;
+    border-top: 0;
+    border-left: 1px solid var(--fta-raya);
+  }
+}
+@media (min-width: 1024px) {
+  .fta__dat {
+    padding: 34px;
+  }
+}
+
+/* ── Comparativa ── */
+.fta__cmp {
+  padding-block: clamp(48px, 5vw, 64px);
+  border-top: 1px solid var(--color-linea);
+  color: var(--color-cacao);
+}
+.fta__cmp-tit {
+  margin-top: 18px;
+}
+.fta__cmp-intro {
+  margin-top: 16px;
+  max-width: 62ch;
+  font-size: clamp(1rem, 1.1vw, 1.0625rem);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+.fta__cmp-caja {
+  margin-top: 28px;
+}
+.fta__tabla,
+.fta__tabla thead,
+.fta__tabla tbody {
+  display: block;
+  width: 100%;
+}
+.fta__tabla tr {
+  display: grid;
+  grid-template-columns: repeat(var(--fta-n, 3), minmax(0, 1fr));
+  column-gap: 12px;
+}
+.fta__tabla th,
+.fta__tabla td {
+  display: block;
+  min-width: 0;
+  text-align: left;
+  font-weight: 400;
+  overflow-wrap: anywhere;
+}
+/* En móvil la cabecera «Característica» se lee con lector, pero no ocupa sitio */
+.fta__tabla .fta__th-car {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.fta__th {
+  align-self: end;
+  padding-bottom: 14px;
+}
+.fta__th-nom {
+  display: block;
+  font-size: 15px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.fta__th--casa .fta__th-nom {
+  font-size: 19px;
+  color: var(--color-terracota);
+}
+.fta__th-eq {
+  margin-top: 4px;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: var(--color-terracota);
+}
+.fta__td-car {
+  grid-column: 1 / -1;
+  padding-top: 16px;
+  border-top: 1px dashed var(--fta-punto);
+  font-size: 13px;
+  line-height: 1.4;
+  color: var(--color-moka);
+}
+.fta__td {
+  padding: 6px 0 16px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--color-text-secondary);
+}
+.fta__td--casa {
+  font-weight: 500;
+  color: var(--color-terracota);
+}
+.fta__td svg {
+  display: block;
+}
+.fta__si {
+  color: var(--color-terracota);
+}
+.fta__no {
+  color: var(--color-moka);
+  opacity: 0.5;
+}
+@media (min-width: 768px) {
+  .fta__tabla tr {
+    grid-template-columns: minmax(0, 1.25fr) repeat(var(--fta-n, 3), minmax(0, 1fr));
+    column-gap: 0;
+  }
+  .fta__tabla th,
+  .fta__tabla td {
+    padding: 18px 20px;
+  }
+  .fta__tabla .fta__th-car {
+    position: static;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    clip-path: none;
+    align-self: end;
+    padding-left: 0;
+  }
+  .fta__th,
+  .fta__td {
+    text-align: center;
+  }
+  .fta__tabla .fta__th {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  .fta__th-nom {
+    font-size: 18px;
+  }
+  .fta__tabla .fta__th--casa {
+    border-radius: 18px 18px 0 0;
+    background: #fff;
+    padding-top: 22px;
+  }
+  .fta__th--casa .fta__th-nom {
+    font-size: 24px;
+  }
+  .fta__th-eq {
+    font-size: 10px;
+    letter-spacing: 0.14em;
+  }
+  .fta__tabla .fta__td-car {
+    grid-column: auto;
+    display: flex;
+    align-items: center;
+    padding-left: 0;
+    font-size: 15px;
+    line-height: 1.45;
+    color: var(--color-cacao);
+  }
+  .fta__tabla .fta__td {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px dashed var(--fta-punto);
+    font-size: 15px;
+  }
+  .fta__td--casa {
+    background: #fff;
+  }
+  .fta__tabla tr:last-child .fta__td--casa {
+    border-radius: 0 0 18px 18px;
+    padding-bottom: 24px;
+  }
+}
+
+/* ── Preguntas frecuentes: titular fijo a la izquierda, lista a la derecha ── */
+.fta__faq {
+  background: var(--color-crema);
+  color: var(--color-cacao);
+  padding-block: clamp(64px, 8vw, 128px) clamp(36px, 4.5vw, 64px);
+  border-top: 1px solid var(--color-linea);
+}
+.fta__faq-red {
+  display: grid;
+  gap: 36px;
+}
+.fta__faq-cab .pildora {
+  margin-bottom: 22px;
+}
+.fta__qa {
+  padding-block: 26px;
+  border-top: 1px solid var(--color-linea);
+}
+.fta__qa:last-child {
+  padding-bottom: 0;
+}
+.fta__q {
+  max-width: 34ch;
+  font-size: clamp(1.25rem, 1.55vw, 1.375rem);
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+.fta__a {
+  margin-top: 12px;
+  max-width: 62ch;
+  font-size: clamp(1rem, 1.1vw, 1.0625rem);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+}
+@media (min-width: 1000px) {
+  .fta__faq-red {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    gap: clamp(48px, 7vw, 120px);
+    align-items: start;
+  }
+  .fta__faq-cab {
+    position: sticky;
+    top: 120px;
+  }
+  .fta__qa {
+    padding-block: 32px;
+  }
+}
+
+/* ── Firma clínica ── */
+.fta__fir {
+  background: var(--color-crema);
+  color: var(--color-cacao);
+  padding-block: clamp(20px, 3vw, 40px) clamp(56px, 7vw, 104px);
+}
+.fta__fir-tira {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 18px 16px;
+  padding: 20px;
+  border-radius: 22px;
+  background: var(--color-arena);
+}
+.fta__fir-foto {
+  position: relative;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #fff;
+}
+.fta__fir-img {
+  object-fit: cover;
+  object-position: 50% 12%;
+}
+.fta__fir-nom {
+  display: block;
+  margin-top: 6px;
+  font-size: clamp(1.25rem, 1.6vw, 1.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+}
+.fta__fir-rol {
+  display: block;
+  margin-top: 3px;
+  font-size: 1.0625rem;
+  line-height: 1.3;
+  color: var(--color-text-secondary);
+}
+.fta__fir-fecha {
+  grid-column: 1 / -1;
+  padding-top: 16px;
+  border-top: 1px dashed var(--fta-punto);
+}
+.fta__fir-dia {
+  display: block;
+  margin-top: 4px;
+  font-size: 1.1875rem;
+  line-height: 1.2;
+  font-variant-numeric: tabular-nums;
+}
+@media (min-width: 720px) {
+  .fta__fir-tira {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    gap: 26px;
+    padding: 22px 34px 22px 22px;
+  }
+  .fta__fir-foto {
+    width: 76px;
+    height: 76px;
+  }
+  .fta__fir-fecha {
+    grid-column: auto;
+    padding: 6px 0 6px 28px;
+    border-top: 0;
+    border-left: 1px solid var(--fta-raya);
+    text-align: right;
+  }
+}
+
+/* ── Cierre con consulta: bloque marrón con listones a la derecha ── */
+.fta__con {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 26px;
+  background: var(--color-cacao);
+  color: var(--color-crema);
+  padding: clamp(34px, 5vw, 68px) clamp(24px, 5vw, 64px);
+}
+.fta__con-in {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-width: 600px;
+}
+.fta__con-desc {
+  margin-top: 18px;
+  max-width: 52ch;
+  line-height: 1.65;
+}
+.fta__con-accion {
+  margin-top: 30px;
+}
+.fta__lamas {
+  position: absolute;
+  inset: 0 0 0 auto;
+  z-index: 0;
+  width: clamp(120px, 32%, 360px);
+  opacity: 0.5;
+  pointer-events: none;
+  background-image:
+    linear-gradient(180deg, rgba(42, 18, 6, 0) 25%, rgba(42, 18, 6, 0.8) 100%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(208, 138, 74, 0.34) 0,
+      rgba(196, 122, 58, 0.2) 15px,
+      rgba(42, 18, 6, 0) 15.5px,
+      rgba(42, 18, 6, 0) 26px
+    );
+  -webkit-mask-image: linear-gradient(270deg, #000 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%);
+  mask-image: linear-gradient(270deg, #000 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%);
+}
+@media (min-width: 768px) {
+  .fta__lamas {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,545 @@
+/* Bienestar — páginas de masajes, depilación láser y formaciones: galería de
+   marcos por listones, cabeceras de categoría, filas con raya fina, tarifas
+   en cursiva serif y bloque de lista de espera. Prefijo bi__ . */
+
+.bi {
+  background: var(--color-crema);
+  color: var(--color-cacao);
+  padding-block: clamp(28px, 4vw, 56px) clamp(72px, 9vw, 140px);
+}
+.bi--ficha {
+  padding-top: clamp(24px, 4vw, 56px);
+}
+.bi--aula {
+  padding-top: clamp(56px, 8vw, 120px);
+  overflow: clip;
+}
+.bi__col {
+  max-width: 1040px;
+  margin-inline: auto;
+}
+
+/* ── Marca de tres listones ── */
+.bi__marca {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 18px;
+  flex: none;
+  color: var(--color-terracota);
+}
+.bi__marca > i {
+  display: block;
+  width: 2px;
+  border-radius: 1px;
+  background: currentColor;
+}
+.bi__marca > i:nth-child(1) {
+  height: 10px;
+}
+.bi__marca > i:nth-child(2) {
+  height: 18px;
+}
+.bi__marca > i:nth-child(3) {
+  height: 6px;
+}
+
+/* Índice pequeño y micro-etiqueta */
+.bi__idx,
+.bi__num {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-moka-texto);
+}
+.bi__micro {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 1.5;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-moka-texto);
+}
+.bi__precio {
+  font-size: clamp(1.375rem, 1.9vw, 1.75rem);
+  line-height: 1.15;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-terracota);
+}
+
+/* ── Marcos de foto: se abren por listones ── */
+.bi__foto {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+  border-radius: 18px;
+  background: var(--color-arena);
+  isolation: isolate;
+}
+.bi__foto img {
+  object-fit: cover;
+}
+
+/* ── Masajes: entrada, galería y ritual ── */
+.bi__lead {
+  max-width: 27em;
+  margin-top: clamp(40px, 6vw, 88px);
+  font-size: clamp(1.375rem, 2.3vw, 2rem);
+  line-height: 1.28;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+/* Las tres fotos comparten altura: cada una crece según su proporción, así
+   ninguna se recorta ni se amplía más allá de su tamaño real. */
+.bi__gal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 12px;
+  margin-top: clamp(32px, 4.5vw, 64px);
+}
+.bi__foto--cabina {
+  --n: 7;
+  flex: 0 0 100%;
+  aspect-ratio: 674 / 441;
+}
+.bi__foto--retrato {
+  --n: 3;
+  flex: 0.676 1 0;
+  aspect-ratio: 294 / 435;
+}
+.bi__foto--cuenco {
+  --n: 6;
+  flex: 1.509 1 0;
+  aspect-ratio: 661 / 438;
+}
+
+.bi__ritual {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 22px;
+  margin-top: clamp(40px, 5.5vw, 88px);
+}
+.bi__ritual-cab,
+.bi__aula-cab {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.bi__ritual-tit,
+.bi__cat-tit,
+.bi__aula-tit,
+.bi__espera-tit {
+  margin-top: 20px;
+}
+.bi__ritual-p {
+  max-width: 62ch;
+  line-height: 1.7;
+}
+
+/* ── Cabecera de categoría ── */
+.bi__cat {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 20px;
+  margin-top: clamp(56px, 7vw, 112px);
+  padding-top: clamp(40px, 5vw, 72px);
+  border-top: 1px solid var(--color-linea);
+  /* cabecera fija + raíl de categorías */
+  scroll-margin-top: 150px;
+}
+.bi__cat-desc {
+  max-width: 56ch;
+  line-height: 1.7;
+}
+
+/* ── Tarifa común de una categoría: fila con raya, precio en cursiva ── */
+.bi__tarifa {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: clamp(28px, 3.5vw, 48px);
+  padding-block: 20px;
+  border-block: 1px solid var(--color-linea);
+}
+.bi__tarifa-txt {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+/* ── Lista de masajes ── */
+.bi__lista {
+  margin: clamp(28px, 3.5vw, 48px) 0 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--color-linea);
+}
+.bi__tarifa + .bi__lista {
+  margin-top: 0;
+  border-top: 0;
+}
+.bi__fila {
+  position: relative;
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr);
+  row-gap: 12px;
+  align-items: baseline;
+  padding: 26px 0;
+  border-bottom: 1px solid var(--color-linea);
+}
+.bi__fila > :not(.bi__num) {
+  grid-column: 2;
+}
+/* Listón que crece en el borde izquierdo al pasar el puntero */
+.bi__fila::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 3px;
+  background: var(--color-terracota);
+  transform: scaleY(0);
+  transform-origin: 50% 0;
+  transition: transform 0.6s var(--ease-seda);
+}
+.bi__num > span {
+  display: inline-block;
+  transition: transform 0.6s var(--ease-seda);
+}
+.bi__nombre {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: clamp(1.5rem, 2.2vw, 1.875rem);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.035em;
+}
+.bi__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-terracota-texto);
+}
+.bi__meta svg {
+  flex: none;
+  width: 15px;
+  height: 15px;
+  color: var(--color-moka);
+}
+.bi__desc {
+  max-width: 56ch;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+.bi__coste {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 12px;
+  border-top: 1px dashed rgba(134, 100, 82, 0.35);
+}
+
+/* ── Contraindicaciones generales ── */
+.bi__contra {
+  margin-top: clamp(56px, 7vw, 112px);
+  padding: clamp(26px, 4.6vw, 64px);
+  border-radius: 26px;
+  background: var(--color-arena);
+}
+.bi__contra-tit {
+  margin-top: 18px;
+}
+.bi__contra-intro {
+  max-width: 62ch;
+  margin-top: 16px;
+  line-height: 1.65;
+}
+.bi__contra-red {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 40px clamp(32px, 5vw, 80px);
+  margin-top: clamp(30px, 4vw, 52px);
+}
+.bi__puntos {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px dashed rgba(134, 100, 82, 0.35);
+}
+.bi__puntos li {
+  position: relative;
+  padding: 13px 0 13px 24px;
+  border-top: 1px dashed rgba(134, 100, 82, 0.35);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.bi__puntos li::before {
+  content: "";
+  position: absolute;
+  top: 21px;
+  left: 2px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--color-moka);
+}
+.bi__puntos--rel li::before {
+  background: none;
+  box-shadow: inset 0 0 0 1.5px var(--color-terracota);
+}
+.bi__nota {
+  max-width: 70ch;
+  margin-top: clamp(28px, 3.5vw, 44px);
+  padding-top: 20px;
+  border-top: 1px solid rgba(134, 100, 82, 0.22);
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+
+/* ── Depilación: tarifas por zona ── */
+.bi__zonas-sec {
+  padding-block: clamp(48px, 5vw, 64px);
+  border-top: 1px solid var(--color-linea);
+}
+.bi__zonas-tit {
+  margin-top: 18px;
+}
+.bi__zonas-p {
+  max-width: 62ch;
+  margin-top: 16px;
+  line-height: 1.65;
+}
+.bi__zonas {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 14px;
+  margin-top: clamp(26px, 3vw, 40px);
+}
+
+/* ── Formaciones: aula ── */
+.bi__aula {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 44px;
+}
+.bi__aula-p {
+  max-width: 52ch;
+  margin-top: clamp(18px, 2vw, 26px);
+  line-height: 1.7;
+}
+.bi__rasgos {
+  margin: clamp(26px, 3vw, 40px) 0 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid var(--color-linea);
+}
+.bi__rasgo {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  align-items: center;
+  min-height: 60px;
+  padding: 14px 0;
+  border-top: 1px solid var(--color-linea);
+  font-size: clamp(1.0625rem, 1.4vw, 1.25rem);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+.bi__aula-fotos {
+  width: 100%;
+  max-width: 600px;
+}
+.bi__foto--aula {
+  --n: 8;
+  aspect-ratio: 663 / 435;
+}
+.bi__foto--doc {
+  --n: 6;
+  width: 62%;
+  margin: 12px 0 0 auto;
+  aspect-ratio: 668 / 439;
+}
+
+/* ── Formaciones: lista de espera (el bloque marrón de la página) ── */
+.bi__espera {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-top: clamp(64px, 8vw, 128px);
+  padding: clamp(30px, 5vw, 72px) clamp(24px, 5vw, 64px);
+  border-radius: 26px;
+  background: var(--color-cacao);
+  color: var(--color-crema);
+}
+.bi__espera-in {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  row-gap: 22px;
+}
+.bi__espera-p {
+  max-width: 48ch;
+  line-height: 1.65;
+}
+.bi__espera-accion {
+  margin-top: 28px;
+}
+.bi__lamas {
+  position: absolute;
+  inset: 0 0 0 auto;
+  z-index: 0;
+  width: clamp(90px, 18%, 240px);
+  opacity: 0.45;
+  pointer-events: none;
+  background-image:
+    linear-gradient(180deg, rgba(42, 18, 6, 0) 25%, rgba(42, 18, 6, 0.8) 100%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(208, 138, 74, 0.34) 0,
+      rgba(196, 122, 58, 0.2) 15px,
+      rgba(42, 18, 6, 0) 15.5px,
+      rgba(42, 18, 6, 0) 26px
+    );
+  -webkit-mask-image: linear-gradient(270deg, #000 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%);
+  mask-image: linear-gradient(270deg, #000 0%, rgba(0, 0, 0, 0.5) 50%, transparent 100%);
+}
+
+@media (min-width: 640px) {
+  .bi__tarifa {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .bi__zonas {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .bi__zonas > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (min-width: 768px) {
+  .bi__foto {
+    border-radius: 22px;
+  }
+  .bi__gal {
+    flex-wrap: nowrap;
+    gap: clamp(12px, 1.4vw, 20px);
+  }
+  .bi__foto--cabina {
+    flex: 1.528 1 0;
+  }
+}
+
+@media (min-width: 900px) {
+  .bi__ritual,
+  .bi__cat,
+  .bi__aula,
+  .bi__espera-in {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: clamp(16px, 2vw, 32px);
+    align-items: end;
+  }
+  .bi__ritual-izq,
+  .bi__aula-txt {
+    grid-column: 1 / span 5;
+  }
+  .bi__ritual-p {
+    grid-column: 7 / span 6;
+  }
+  .bi__cat-izq,
+  .bi__espera-izq {
+    grid-column: 1 / span 6;
+  }
+  .bi__cat-desc,
+  .bi__espera-der {
+    grid-column: 8 / span 5;
+  }
+  .bi__aula {
+    align-items: center;
+  }
+  .bi__aula-fotos {
+    grid-column: 7 / span 6;
+    justify-self: end;
+  }
+
+  .bi__fila {
+    grid-template-columns: 64px minmax(0, 4fr) minmax(0, 6fr);
+    column-gap: clamp(16px, 2vw, 32px);
+    padding: 32px 0;
+  }
+  .bi__lista--tarifa .bi__fila {
+    grid-template-columns: 64px minmax(0, 4fr) minmax(0, 5fr) minmax(150px, 2fr);
+  }
+  .bi__fila > :not(.bi__num) {
+    grid-column: auto;
+  }
+  .bi__num {
+    padding-left: 14px;
+  }
+  .bi__coste {
+    display: block;
+    padding-top: 0;
+    border-top: 0;
+    text-align: right;
+  }
+  .bi__coste .bi__precio {
+    display: block;
+    margin-top: 6px;
+  }
+  .bi__contra-red {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .bi__lamas {
+    opacity: 0.8;
+  }
+}
+
+@media (min-width: 1000px) {
+  .bi__zonas {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+  .bi__zonas > * {
+    grid-column: span 2;
+  }
+  .bi__zonas > :nth-child(n + 4),
+  .bi__zonas > :last-child:nth-child(odd) {
+    grid-column: span 3;
+  }
+}
+
+@media (hover: hover) and (min-width: 900px) {
+  .bi__fila:hover::before {
+    transform: scaleY(1);
+  }
+  .bi__fila:hover .bi__num > span {
+    transform: translateX(8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bi__fila::before,
+  .bi__num > span {
+    transition: none;
+  }
+}

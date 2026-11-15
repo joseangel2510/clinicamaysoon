@@ -1,6 +1,4 @@
-"use client";
-
-import { m as motion } from "framer-motion";
+import "@/components/nuevo/bienestar.css";
 import { Navbar } from "@/components/Navbar";
 import { PageHero } from "@/components/PageHero";
 import { InfoBlock } from "@/components/InfoBlock";
@@ -12,7 +10,6 @@ import { ZonePriceCard } from "@/components/ZonePriceCard";
 import { PricingTable } from "@/components/PricingTable";
 import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
-import { fadeInUp, staggerFast } from "@/lib/animations";
 
 const zones = [
   {
@@ -134,8 +131,9 @@ export default function DepilacionLaserPage() {
         imageAlt="Depilación Láser HS-810 — Maysoon"
       />
 
-      <section className="bg-bg-primary py-14 lg:py-20">
-        <div className="mx-auto max-w-5xl px-6 lg:px-8">
+      <section className="bi bi--ficha">
+        <div className="marco">
+          <div className="bi__col">
           {/* ── Tech Stats ── */}
           <StatsCard
             eyebrow="Especificaciones del equipo"
@@ -214,43 +212,25 @@ export default function DepilacionLaserPage() {
           />
 
           {/* ── Tarifas por zona ── */}
-          <motion.div
-            variants={staggerFast}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.05 }}
-            className="py-12 lg:py-16 border-t border-text-secondary/15"
-          >
-            <motion.div
-              variants={fadeInUp}
-              className="flex items-center gap-3 mb-4"
-            >
-              <span className="block w-8 h-px bg-accent-gold" />
-              <span className="font-body text-[10px] sm:text-xs font-medium uppercase tracking-[0.3em] text-accent-gold">
-                Tarifas · Por zona individual
-              </span>
-            </motion.div>
-            <motion.h3
-              variants={fadeInUp}
-              className="font-display font-normal text-text-primary leading-[1.1] tracking-[-0.02em] mb-4"
-              style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)" }}
-            >
-              Cinco categorías · {zones.reduce((acc, z) => acc + z.zones.length, 0)} zonas
-            </motion.h3>
-            <motion.p
-              variants={fadeInUp}
-              className="font-body text-sm lg:text-base text-text-secondary leading-[1.8] max-w-3xl mb-8"
-            >
+          <div className="bi__zonas-sec">
+            <span className="pildora pildora--arena" data-ap>
+              Tarifas · Por zona individual
+            </span>
+            <h3 className="tit tit--m bi__zonas-tit" data-tit>
+              Cinco categorías ·{" "}
+              <em>{zones.reduce((acc, z) => acc + z.zones.length, 0)} zonas</em>
+            </h3>
+            <p className="cuerpo bi__zonas-p" data-ap>
               Cada categoría incluye una serie de zonas con la misma tarifa. Los
               bonos de 5 sesiones suponen un ahorro de aproximadamente un 10 %
               frente al precio individual.
-            </motion.p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            </p>
+            <div className="bi__zonas">
               {zones.map((z) => (
                 <ZonePriceCard key={z.category} {...z} />
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* ── Combos ── */}
           <PricingTable
@@ -264,6 +244,7 @@ export default function DepilacionLaserPage() {
             title="¿Quieres una depilación a medida?"
             description="Reservamos una primera valoración gratuita para diseñar tu plan según fototipo, zonas y objetivo. Estés donde estés en el calendario depilatorio."
           />
+          </div>
         </div>
       </section>
 

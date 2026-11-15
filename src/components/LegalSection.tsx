@@ -6,6 +6,7 @@
  * Server Component estático — sin animaciones — para máxima legibilidad
  * y crawlability.
  */
+import "./nuevo/catalogo.css";
 
 interface LegalSectionProps {
   number: string;
@@ -16,19 +17,12 @@ interface LegalSectionProps {
 export function LegalSection({ number, title, children }: LegalSectionProps) {
   const num = number.padStart(2, "0");
   return (
-    <section className="py-10 lg:py-12 border-t border-text-secondary/15 first:border-t-0 first:pt-0">
-      <header className="flex items-baseline gap-4 mb-6">
-        <span className="font-display text-xl lg:text-2xl text-accent-gold/70 leading-none">
-          {num}
-        </span>
-        <span className="block w-10 h-px bg-accent-gold/40" />
-        <h2 className="font-display font-normal text-xl lg:text-2xl text-text-primary leading-[1.25] tracking-[-0.01em]">
-          {title}
-        </h2>
+    <section className="ca__legal">
+      <header className="ca__legal-cab">
+        <span className="ca__legal-num">{num}</span>
+        <h2 className="tit tit--m ca__legal-tit">{title}</h2>
       </header>
-      <div className="font-body text-sm lg:text-[15px] text-text-secondary leading-[1.85] flex flex-col gap-4">
-        {children}
-      </div>
+      <div className="ca__legal-txt">{children}</div>
     </section>
   );
 }
@@ -40,28 +34,24 @@ export function LegalDefinitionList({
   items: Array<{ term: string; description: React.ReactNode }>;
 }) {
   return (
-    <dl className="grid gap-2.5 pl-0 sm:pl-4 border-l-0 sm:border-l-2 sm:border-accent-gold/25 my-2">
+    <dl className="ca__legal-dl">
       {items.map((it) => (
-        <div key={it.term} className="flex flex-col sm:flex-row sm:gap-3">
-          <dt className="font-body font-medium text-text-primary min-w-[180px]">
-            {it.term}
-          </dt>
-          <dd className="font-body text-text-secondary">{it.description}</dd>
+        <div key={it.term} className="ca__legal-fila">
+          <dt className="ca__legal-dt">{it.term}</dt>
+          <dd className="ca__legal-dd">{it.description}</dd>
         </div>
       ))}
     </dl>
   );
 }
 
-/** Lista con viñetas de acento dorado. */
+/** Lista con viñetas de acento terracota. */
 export function LegalBulletList({ items }: { items: React.ReactNode[] }) {
   return (
-    <ul className="flex flex-col gap-2 mt-1">
+    <ul className="ca__legal-ul">
       {items.map((item, i) => (
-        <li key={i} className="flex items-start gap-3">
-          <span className="text-accent-gold mt-1.5 flex-shrink-0 text-[10px]">
-            ●
-          </span>
+        <li key={i} className="ca__legal-li">
+          <span className="ca__legal-punto">●</span>
           <span>{item}</span>
         </li>
       ))}

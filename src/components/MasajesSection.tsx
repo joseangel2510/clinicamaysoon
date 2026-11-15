@@ -1,7 +1,5 @@
-"use client";
-
+import "./nuevo/bienestar.css";
 import Image from "next/image";
-import { m as motion } from "framer-motion";
 import {
   Sparkles,
   Heart,
@@ -17,14 +15,6 @@ import {
   Flame,
   LucideIcon,
 } from "lucide-react";
-import {
-  fadeInUp,
-  fadeInLeft,
-  fadeInRight,
-  clipReveal,
-  staggerContainer,
-  staggerFast,
-} from "@/lib/animations";
 import { ZonaNav } from "./ZonaNav";
 import { BulletListBlock } from "./BulletListBlock";
 import { HighlightCallout } from "./HighlightCallout";
@@ -153,180 +143,76 @@ const terapeuticos: MasajeData[] = [
 
 export function MasajesSection() {
   return (
-    <section className="bg-bg-primary pt-12 pb-20 lg:pb-28">
-      {/* ── Categoria nav ── */}
-      <div className="mb-12 lg:mb-16">
-        <ZonaNav zonas={categorias} />
-      </div>
+    <section className="bi">
+      {/* ── Categoria nav (hija directa de la sección: así se queda pegada) ── */}
+      <ZonaNav zonas={categorias} />
 
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+      <div className="marco">
         {/* ── Intro general ── */}
-        <motion.div
-          variants={fadeInUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.4 }}
-          className="text-center max-w-2xl mx-auto mb-16"
-        >
-          <p className="font-body text-base lg:text-lg text-text-secondary leading-[1.85]">
-            Profesionales titulados altamente cualificados y productos de la
-            más alta calidad. Tres familias de masajes para que encuentres el
-            tuyo.
-          </p>
-        </motion.div>
+        <p className="bi__lead" data-ap>
+          Profesionales titulados altamente cualificados y productos de la
+          más alta calidad. Tres familias de masajes para que encuentres el
+          tuyo.
+        </p>
 
-        {/* ── Editorial gallery: cabin + ritual + therapist ── */}
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 mb-20 lg:mb-24 items-stretch">
-          {/* Left: large cabin shot */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={fadeInLeft}
-            className="lg:col-span-7 relative"
-          >
-            <span
-              aria-hidden
-              className="absolute -top-6 -left-2 sm:-left-4 font-display text-[5rem] sm:text-[6rem] lg:text-[7rem] leading-none text-accent-gold/15 select-none pointer-events-none z-0"
-            >
-              03
-            </span>
-
-            <div className="relative z-10 h-full overflow-hidden rounded-sm shadow-[0_30px_60px_-20px_rgba(15,14,13,0.4)] ring-1 ring-accent-stone/25">
-              <div className="relative h-full min-h-[300px] aspect-[4/3] lg:aspect-auto">
-                <Image
-                  src="/images/masajes/cabina-masajes.jpg"
-                  alt="Cabina de masajes Maysoon — ambiente íntimo y cálido"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 60vw"
-                />
-                <div
-                  aria-hidden
-                  className="absolute inset-0 mix-blend-multiply pointer-events-none"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, rgba(184,115,85,0.04) 0%, rgba(15,14,13,0.16) 100%)",
-                  }}
-                />
-                <span
-                  aria-hidden
-                  className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 w-8 h-px bg-accent-gold"
-                />
-                <span
-                  aria-hidden
-                  className="absolute bottom-3 left-3 sm:bottom-4 sm:left-4 w-px h-8 bg-accent-gold"
-                />
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right: stacked therapist + ritual */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            variants={staggerFast}
-            className="lg:col-span-5 grid grid-rows-2 gap-6 lg:gap-7"
-          >
-            {/* Therapist portrait */}
-            <motion.div
-              variants={fadeInRight}
-              className="relative overflow-hidden rounded-sm shadow-[0_24px_48px_-16px_rgba(15,14,13,0.35)] ring-1 ring-accent-stone/25"
-            >
-              <div className="relative h-full min-h-[220px] aspect-[3/4] lg:aspect-auto">
-                <Image
-                  src="/images/masajes/ricardo-masajista.jpg"
-                  alt="Ricardo, masajista titulado de Maysoon, preparando los útiles de sesión"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 50vw, 30vw"
-                />
-                <div
-                  aria-hidden
-                  className="absolute inset-0 mix-blend-multiply pointer-events-none"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, rgba(184,115,85,0.05) 0%, rgba(15,14,13,0.18) 100%)",
-                  }}
-                />
-              </div>
-            </motion.div>
-
-            {/* Ritual closeup — singing bowl */}
-            <motion.div
-              variants={fadeInRight}
-              className="relative overflow-hidden rounded-sm shadow-[0_24px_48px_-16px_rgba(15,14,13,0.35)] ring-1 ring-accent-stone/25"
-            >
-              <div className="relative h-full min-h-[220px] aspect-[4/3] lg:aspect-auto">
-                <Image
-                  src="/images/masajes/cuenco-tibetano.jpg"
-                  alt="Cuenco tibetano sobre superficie de mármol — detalle del ritual de relajación"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 50vw, 30vw"
-                />
-                <div
-                  aria-hidden
-                  className="absolute inset-0 mix-blend-multiply pointer-events-none"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, rgba(184,115,85,0.05) 0%, rgba(15,14,13,0.14) 100%)",
-                  }}
-                />
-              </div>
-            </motion.div>
-          </motion.div>
+        {/* ── Galería: cabina + masajista + ritual, a la misma altura ── */}
+        <div className="bi__gal">
+          <div className="bi__foto bi__foto--cabina listones" data-lis>
+            <Image
+              src="/images/masajes/cabina-masajes.jpg"
+              alt="Cabina de masajes Maysoon — ambiente íntimo y cálido"
+              fill
+              sizes="(min-width: 768px) 40vw, 92vw"
+            />
+          </div>
+          <div className="bi__foto bi__foto--retrato listones" data-lis>
+            <Image
+              src="/images/masajes/ricardo-masajista.jpg"
+              alt="Ricardo, masajista titulado de Maysoon, preparando los útiles de sesión"
+              fill
+              sizes="(min-width: 768px) 18vw, 30vw"
+            />
+          </div>
+          <div className="bi__foto bi__foto--cuenco listones" data-lis>
+            <Image
+              src="/images/masajes/cuenco-tibetano.jpg"
+              alt="Cuenco tibetano sobre superficie de mármol — detalle del ritual de relajación"
+              fill
+              sizes="(min-width: 768px) 40vw, 62vw"
+            />
+          </div>
         </div>
 
-        {/* Editorial caption beneath gallery */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.4 }}
-          variants={staggerFast}
-          className="grid lg:grid-cols-12 gap-6 lg:gap-12 mb-20 lg:mb-24 items-end border-b border-accent-stone/30 pb-12"
-        >
-          <motion.div variants={fadeInLeft} className="lg:col-span-5">
-            <div className="flex items-center gap-3 mb-4">
-              <span className="block w-8 h-px bg-accent-gold" />
-              <span className="font-body text-[0.7rem] font-semibold uppercase tracking-[0.32em] text-accent-gold">
-                El Ritual
+        {/* ── El ritual ── */}
+        <div className="bi__ritual">
+          <div className="bi__ritual-izq">
+            <div className="bi__ritual-cab" data-ap>
+              <span className="pildora pildora--arena">El Ritual</span>
+              <span className="bi__idx" aria-hidden="true">
+                03
               </span>
             </div>
-            <motion.h2
-              variants={clipReveal}
-              className="font-display font-normal not-italic text-text-primary leading-[1.1] tracking-[-0.02em]"
-              style={{ fontSize: "clamp(1.7rem, 3.2vw, 2.4rem)" }}
-            >
-              Cabina íntima,
-            </motion.h2>
-            <motion.h2
-              variants={clipReveal}
-              className="font-display italic text-accent-gold leading-[1.1] tracking-[-0.02em]"
-              style={{ fontSize: "clamp(1.7rem, 3.2vw, 2.4rem)" }}
-            >
-              manos titulada<span className="not-italic">s</span>
-            </motion.h2>
-          </motion.div>
+            <h2 className="tit tit--l bi__ritual-tit" data-tit>
+              Cabina íntima, <br />
+              <em>manos tituladas</em>
+            </h2>
+          </div>
 
-          <motion.p
-            variants={fadeInUp}
-            className="lg:col-span-7 font-body text-base lg:text-lg text-text-secondary leading-[1.85]"
-          >
+          <p className="cuerpo bi__ritual-p" data-ap>
             Cada sesión transcurre en una cabina diseñada para el silencio —
             iluminación cálida, aromas medidos, materiales nobles. Ricardo, nuestro
             masajista titulado, prepara cada protocolo con los útiles adecuados:
             cuencos tibetanos, rodillos de bambú, piedras volcánicas o aceites
             esenciales según lo que tu cuerpo pide hoy.
-          </motion.p>
-        </motion.div>
+          </p>
+        </div>
 
         {/* ═════════ ESTÉTICOS ═════════ */}
         <CategoryHeader
           id="esteticos"
           eyebrow="Categoría · Estéticos"
           title="Apoyo a tus Tratamientos"
+          enfasis="Tratamientos"
           description="Abordan directamente celulitis y flacidez. Son el complemento ideal de los tratamientos médicos: aceleran y potencian su efectividad."
         />
 
@@ -358,6 +244,7 @@ export function MasajesSection() {
           id="relajantes"
           eyebrow="Categoría · Relajantes"
           title="Combatir el Estrés y la Ansiedad"
+          enfasis="y la Ansiedad"
           description="El estrés aumenta la producción de radicales libres, acelera el envejecimiento cutáneo, debilita el sistema inmune y provoca arrugas, deshidratación y pérdida de elasticidad."
         />
 
@@ -373,6 +260,7 @@ export function MasajesSection() {
           id="terapeuticos"
           eyebrow="Categoría · Terapéuticos"
           title="Atacar la Causa, no la Consecuencia"
+          enfasis="no la Consecuencia"
           description="Abordaje alternativo o complementario a la medicación para patologías musculares, dolores, contracturas y problemas circulatorios. Acortan el tratamiento farmacológico y reducen dosis."
         />
 
@@ -399,84 +287,72 @@ export function MasajesSection() {
    Sub-componentes
    ───────────────────────────────────────────────── */
 
+// Marca de tres listones (sustituye a los puntos y brillos decorativos).
+function Marca() {
+  return (
+    <span className="bi__marca" aria-hidden="true">
+      <i />
+      <i />
+      <i />
+    </span>
+  );
+}
+
+// El final del título (enfasis) va en cursiva serif; el texto no cambia.
 function CategoryHeader({
   id,
   eyebrow,
   title,
+  enfasis,
   description,
 }: {
   id: string;
   eyebrow: string;
   title: string;
+  enfasis: string;
   description: string;
 }) {
+  const corte = title.endsWith(enfasis)
+    ? title.length - enfasis.length
+    : title.length;
   return (
-    <motion.div
-      id={id}
-      variants={staggerFast}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.3 }}
-      className="scroll-mt-24 pt-16 lg:pt-20 mb-10 lg:mb-12 border-t border-text-secondary/15 first:border-t-0 first:pt-12"
-    >
-      <motion.div
-        variants={fadeInUp}
-        className="flex items-center gap-3 mb-4"
-      >
-        <span className="block w-8 h-px bg-accent-gold" />
-        <span className="font-body text-[10px] sm:text-xs font-medium uppercase tracking-[0.3em] text-accent-gold">
+    <div id={id} className="bi__cat">
+      <div className="bi__cat-izq">
+        <span className="pildora pildora--arena" data-ap>
           {eyebrow}
         </span>
-      </motion.div>
-      <motion.h2
-        variants={fadeInUp}
-        className="font-display font-normal text-text-primary leading-[1.1] tracking-[-0.02em] mb-4"
-        style={{ fontSize: "clamp(1.7rem, 3.6vw, 2.6rem)" }}
-      >
-        {title}
-      </motion.h2>
-      <motion.p
-        variants={fadeInUp}
-        className="font-body text-sm lg:text-base text-text-secondary leading-[1.85] max-w-3xl"
-      >
+        <h2 className="tit tit--l bi__cat-tit" data-tit>
+          {title.slice(0, corte)}
+          <em>{title.slice(corte)}</em>
+        </h2>
+      </div>
+      <p className="cuerpo bi__cat-desc" data-ap>
         {description}
-      </motion.p>
-    </motion.div>
+      </p>
+    </div>
   );
 }
 
 function PriceBanner({ text, price }: { text: string; price: string }) {
   return (
-    <motion.div
-      variants={fadeInUp}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.5 }}
-      className="mb-8 lg:mb-10 rounded-2xl bg-bg-secondary border border-accent-gold/20 px-6 py-5 lg:px-8 lg:py-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3"
-    >
-      <span className="font-body text-sm lg:text-base text-text-primary">
-        <span className="text-accent-gold">·</span> {text}
+    <div className="bi__tarifa" data-ap>
+      <span className="bi__tarifa-txt">
+        <Marca />
+        {text}
       </span>
-      <span className="font-display text-base lg:text-lg text-accent-gold">
-        {price}
-      </span>
-    </motion.div>
+      <span className="serif bi__precio">{price}</span>
+    </div>
   );
 }
 
 function MasajesGrid({ masajes }: { masajes: MasajeData[] }) {
+  const conTarifa = masajes.some((m) => m.price);
   return (
-    <motion.div
-      variants={staggerFast}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.05 }}
-      className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6"
-    >
-      {masajes.map((m) => (
-        <MasajeCard key={m.name} {...m} />
+    <ul className={conTarifa ? "bi__lista bi__lista--tarifa" : "bi__lista"}>
+      {masajes.map((m, k) => (
+        <MasajeCard key={m.name} indice={k + 1} {...m} />
       ))}
-    </motion.div>
+    </ul>
   );
 }
 
@@ -487,197 +363,97 @@ function MasajeCard({
   description,
   icon: Icon,
   highlight,
-}: MasajeData) {
+  indice,
+}: MasajeData & { indice: number }) {
   return (
-    <motion.div
-      variants={fadeInUp}
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
-      className={`group relative rounded-2xl p-6 lg:p-7 overflow-hidden h-full flex flex-col transition-shadow duration-[400ms] ${
-        highlight
-          ? "bg-bg-dark text-text-light shadow-[0_4px_20px_rgba(15,14,13,0.18)] hover:shadow-[0_20px_50px_rgba(15,14,13,0.24)]"
-          : "bg-white text-text-primary shadow-[0_2px_10px_rgba(15,14,13,0.04)] hover:shadow-[0_12px_30px_rgba(15,14,13,0.08)]"
-      }`}
-    >
-      {highlight && (
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(circle at 100% 0%, rgba(184,115,85,0.18), transparent 60%)",
-          }}
-        />
-      )}
-      <div className="relative flex flex-col flex-1">
-        <div
-          className={`w-11 h-11 rounded-full flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110 ${
-            highlight
-              ? "bg-accent-gold/15 border border-accent-gold/30"
-              : "bg-bg-secondary border border-accent-gold/20"
-          }`}
-        >
-          <Icon size={18} strokeWidth={1.6} className="text-accent-gold" />
-        </div>
-        <h4
-          className={`font-display font-normal text-xl lg:text-2xl leading-tight tracking-[-0.01em] mb-1 ${
-            highlight ? "text-text-light" : "text-text-primary"
-          }`}
-        >
+    <li className="bi__fila" data-ap>
+      <span className="bi__num" aria-hidden="true">
+        <span>{String(indice).padStart(2, "0")}</span>
+      </span>
+      <div>
+        <h4 className="bi__nombre">
           {name}
+          {highlight && <Marca />}
         </h4>
-        <p
-          className={`font-body text-[11px] uppercase tracking-[0.18em] mb-3 ${
-            highlight ? "text-accent-gold" : "text-accent-gold/85"
-          }`}
-        >
+        <p className="bi__meta">
+          <Icon strokeWidth={1.5} aria-hidden="true" />
           {duration}
         </p>
-        <p
-          className={`font-body text-sm leading-[1.7] mb-4 flex-1 ${
-            highlight ? "text-text-light/75" : "text-text-secondary"
-          }`}
-        >
-          {description}
-        </p>
-        {price && (
-          <div
-            className={`pt-4 border-t ${
-              highlight ? "border-text-light/15" : "border-text-secondary/15"
-            }`}
-          >
-            <span
-              className={`font-body text-[10px] uppercase tracking-[0.2em] block mb-1 ${
-                highlight ? "text-text-light/55" : "text-text-secondary"
-              }`}
-            >
-              Tarifa
-            </span>
-            <span className="font-display text-base lg:text-lg text-accent-gold">
-              {price}
-            </span>
-          </div>
-        )}
       </div>
-    </motion.div>
+      <p className="bi__desc">{description}</p>
+      {price && (
+        <div className="bi__coste">
+          <span className="bi__micro">Tarifa</span>
+          <span className="serif bi__precio">{price}</span>
+        </div>
+      )}
+    </li>
   );
 }
 
 function ContraindicationsBlock() {
   return (
-    <motion.div
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
-      className="mt-20 lg:mt-24 rounded-3xl bg-bg-secondary p-8 lg:p-12 relative overflow-hidden"
-    >
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle at 100% 100%, rgba(184,115,85,0.06), transparent 60%)",
-        }}
-      />
-      <div className="relative">
-        <motion.div
-          variants={fadeInUp}
-          className="flex items-center gap-3 mb-4"
-        >
-          <span className="block w-8 h-px bg-accent-gold" />
-          <span className="font-body text-[10px] sm:text-xs font-medium uppercase tracking-[0.3em] text-accent-gold">
-            Información médica
-          </span>
-        </motion.div>
-        <motion.h3
-          variants={fadeInUp}
-          className="font-display font-normal text-text-primary leading-[1.1] tracking-[-0.02em] mb-3"
-          style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)" }}
-        >
-          Contraindicaciones generales
-        </motion.h3>
-        <motion.p
-          variants={fadeInUp}
-          className="font-body text-sm lg:text-base text-text-secondary leading-[1.8] max-w-3xl mb-10"
-        >
-          Por seguridad, antes de cualquier sesión revisamos tu historial. Las
-          siguientes condiciones son contraindicaciones absolutas o relativas
-          para los masajes.
-        </motion.p>
+    <div className="bi__contra" data-ap>
+      <span className="pildora">Información médica</span>
+      <h3 className="tit tit--m bi__contra-tit">
+        Contraindicaciones generales
+      </h3>
+      <p className="cuerpo bi__contra-intro">
+        Por seguridad, antes de cualquier sesión revisamos tu historial. Las
+        siguientes condiciones son contraindicaciones absolutas o relativas
+        para los masajes.
+      </p>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          {/* Absolutas */}
-          <motion.div variants={fadeInUp}>
-            <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-text-primary/10 border border-text-primary/15">
-              <span className="font-body text-[10px] font-medium uppercase tracking-[0.25em] text-text-primary">
-                Absolutas · No se realiza
-              </span>
-            </div>
-            <ul className="flex flex-col gap-2">
-              {[
-                "Tumores",
-                "Riesgo de hemorragia",
-                "Fragilidad capilar en edad avanzada",
-                "Cardiopatías severas descompensadas",
-                "Enfermedades infecciosas",
-                "Heridas graves y traumatismos agudos",
-                "Trombosis, flebitis o tromboflebitis",
-                "Varices tortuosas o con relieve",
-                "Reacciones alérgicas agudas",
-                "Patología renal descompensada",
-                "Quemaduras en zona de tratamiento",
-                "Bursitis en zona",
-                "Roturas musculares o tendinosas",
-                "Micosis en zona",
-              ].map((c) => (
-                <li key={c} className="flex items-start gap-2.5">
-                  <span className="text-text-primary/40 mt-1 flex-shrink-0">
-                    ●
-                  </span>
-                  <span className="font-body text-sm text-text-primary leading-[1.55]">
-                    {c}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          {/* Relativas */}
-          <motion.div variants={fadeInUp}>
-            <div className="inline-flex items-center gap-2 mb-4 px-3 py-1 rounded-full bg-accent-gold/15 border border-accent-gold/30">
-              <span className="font-body text-[10px] font-medium uppercase tracking-[0.25em] text-accent-gold">
-                Relativas · Precaución
-              </span>
-            </div>
-            <ul className="flex flex-col gap-2">
-              {[
-                "Fracturas y luxaciones (no masajear con inflamación)",
-                "Embarazo (desaconsejado en los primeros 3 meses)",
-                "Cólicos hepáticos o biliares (esperar alta médica)",
-                "Hipertensión (consultar si hay mareos o vómitos)",
-                "Hipotensión (precaución en relajantes)",
-                "Irritación dérmica en la zona",
-                "Enfermedades reumáticas en fase aguda",
-              ].map((c) => (
-                <li key={c} className="flex items-start gap-2.5">
-                  <span className="text-accent-gold mt-1 flex-shrink-0">○</span>
-                  <span className="font-body text-sm text-text-primary leading-[1.55]">
-                    {c}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
+      <div className="bi__contra-red">
+        {/* Absolutas */}
+        <div>
+          <span className="pildora">Absolutas · No se realiza</span>
+          <ul className="bi__puntos">
+            {[
+              "Tumores",
+              "Riesgo de hemorragia",
+              "Fragilidad capilar en edad avanzada",
+              "Cardiopatías severas descompensadas",
+              "Enfermedades infecciosas",
+              "Heridas graves y traumatismos agudos",
+              "Trombosis, flebitis o tromboflebitis",
+              "Varices tortuosas o con relieve",
+              "Reacciones alérgicas agudas",
+              "Patología renal descompensada",
+              "Quemaduras en zona de tratamiento",
+              "Bursitis en zona",
+              "Roturas musculares o tendinosas",
+              "Micosis en zona",
+            ].map((c) => (
+              <li key={c}>{c}</li>
+            ))}
+          </ul>
         </div>
 
-        <motion.p
-          variants={fadeInUp}
-          className="font-body text-xs italic text-text-secondary leading-[1.7] mt-10 pt-6 border-t border-text-secondary/15 max-w-3xl"
-        >
-          Si tienes alguna duda sobre tu caso particular, escríbenos por
-          WhatsApp antes de reservar. Nuestro masajista terapeuta valorará si
-          el masaje es adecuado para ti.
-        </motion.p>
+        {/* Relativas */}
+        <div>
+          <span className="pildora">Relativas · Precaución</span>
+          <ul className="bi__puntos bi__puntos--rel">
+            {[
+              "Fracturas y luxaciones (no masajear con inflamación)",
+              "Embarazo (desaconsejado en los primeros 3 meses)",
+              "Cólicos hepáticos o biliares (esperar alta médica)",
+              "Hipertensión (consultar si hay mareos o vómitos)",
+              "Hipotensión (precaución en relajantes)",
+              "Irritación dérmica en la zona",
+              "Enfermedades reumáticas en fase aguda",
+            ].map((c) => (
+              <li key={c}>{c}</li>
+            ))}
+          </ul>
+        </div>
       </div>
-    </motion.div>
+
+      <p className="bi__nota">
+        Si tienes alguna duda sobre tu caso particular, escríbenos por
+        WhatsApp antes de reservar. Nuestro masajista terapeuta valorará si
+        el masaje es adecuado para ti.
+      </p>
+    </div>
   );
 }

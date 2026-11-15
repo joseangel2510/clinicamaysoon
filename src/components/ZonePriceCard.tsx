@@ -1,7 +1,4 @@
-"use client";
-
-import { m as motion } from "framer-motion";
-import { fadeInUp } from "@/lib/animations";
+import "./nuevo/ficha-tarifas.css";
 
 interface ZonePriceCardProps {
   category: string;
@@ -11,6 +8,10 @@ interface ZonePriceCardProps {
   highlight?: boolean;
 }
 
+// Tarjeta de zona: categoría en píldora, los dos precios en cursiva serif
+// separados por una línea y las zonas como etiquetas. La destacada va sobre
+// arena y lleva la marca de tres listones. La aparición va en el envoltorio
+// y el hover en la tarjeta, para que no se pisen.
 export function ZonePriceCard({
   category,
   sessionPrice,
@@ -19,92 +20,46 @@ export function ZonePriceCard({
   highlight = false,
 }: ZonePriceCardProps) {
   return (
-    <motion.div
-      variants={fadeInUp}
-      whileHover={{ y: -4 }}
-      transition={{ duration: 0.3, ease: [0.25, 0.4, 0.25, 1] }}
-      className={`group relative rounded-2xl overflow-hidden transition-shadow duration-[400ms] h-full flex flex-col ${
-        highlight
-          ? "bg-bg-dark text-text-light shadow-[0_4px_20px_rgba(15,14,13,0.18)] hover:shadow-[0_20px_50px_rgba(15,14,13,0.24)]"
-          : "bg-bg-secondary text-text-primary shadow-[0_2px_10px_rgba(15,14,13,0.04)] hover:shadow-[0_10px_30px_rgba(15,14,13,0.08)]"
-      }`}
-    >
-      {highlight && (
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(circle at 100% 0%, rgba(184,115,85,0.18), transparent 60%)",
-          }}
-        />
-      )}
-      <div className="relative p-6 lg:p-7 flex flex-col flex-1">
+    <div className="fta__zona-ap" data-ap>
+      <div className={`fta__zona${highlight ? " fta__zona--des" : ""}`}>
         {/* Category badge */}
-        <div
-          className={`inline-flex items-center self-start gap-2 mb-5 px-3 py-1 rounded-full border ${
-            highlight
-              ? "bg-accent-gold/15 border-accent-gold/30"
-              : "bg-white border-accent-gold/20"
-          }`}
-        >
-          <span className="font-body text-[10px] font-medium uppercase tracking-[0.25em] text-accent-gold">
+        <div className="fta__zona-cab">
+          <span className={highlight ? "pildora" : "pildora pildora--arena"}>
             {category}
           </span>
+          {highlight && (
+            <span className="fta__marca" aria-hidden="true">
+              <i />
+              <i />
+              <i />
+            </span>
+          )}
         </div>
 
         {/* Prices */}
-        <div className="grid grid-cols-2 gap-4 mb-6 pb-6 border-b border-text-secondary/15">
-          <div>
-            <span
-              className={`font-body text-[10px] uppercase tracking-[0.2em] block mb-1 ${
-                highlight ? "text-text-light/55" : "text-text-secondary"
-              }`}
-            >
-              Sesión
-            </span>
-            <span className="font-display text-2xl lg:text-3xl text-accent-gold leading-none">
-              {sessionPrice}
-            </span>
+        <div className="fta__zona-precios">
+          <div className="fta__zona-precio">
+            <span className="fta__micro">Sesión</span>
+            <span className="serif fta__zona-cifra">{sessionPrice}</span>
           </div>
-          <div>
-            <span
-              className={`font-body text-[10px] uppercase tracking-[0.2em] block mb-1 ${
-                highlight ? "text-text-light/55" : "text-text-secondary"
-              }`}
-            >
-              Bono · 5 sesiones
-            </span>
-            <span className="font-display text-2xl lg:text-3xl text-accent-gold leading-none">
-              {bonoPrice}
-            </span>
+          <div className="fta__zona-precio">
+            <span className="fta__micro">Bono · 5 sesiones</span>
+            <span className="serif fta__zona-cifra">{bonoPrice}</span>
           </div>
         </div>
 
         {/* Zones included */}
-        <div className="flex-1">
-          <span
-            className={`font-body text-[10px] uppercase tracking-[0.2em] block mb-3 ${
-              highlight ? "text-text-light/55" : "text-text-secondary"
-            }`}
-          >
-            Zona a elegir
-          </span>
-          <ul className="flex flex-wrap gap-1.5">
+        <div className="fta__zona-zonas">
+          <span className="fta__micro">Zona a elegir</span>
+          <ul className="fta__chips">
             {zones.map((z) => (
-              <li
-                key={z}
-                className={`inline-flex items-center px-2.5 py-1 rounded-full font-body text-xs ${
-                  highlight
-                    ? "bg-text-light/10 text-text-light/95"
-                    : "bg-white text-text-primary border border-text-secondary/15"
-                }`}
-              >
+              <li key={z} className="fta__chip">
                 {z}
               </li>
             ))}
           </ul>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

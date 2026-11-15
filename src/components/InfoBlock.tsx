@@ -1,7 +1,4 @@
-"use client";
-
-import { m as motion } from "framer-motion";
-import { fadeInUp, staggerContainer } from "@/lib/animations";
+import "./nuevo/ficha-texto.css";
 
 interface InfoBlockProps {
   eyebrow?: string;
@@ -11,42 +8,22 @@ interface InfoBlockProps {
 
 export function InfoBlock({ eyebrow, title, paragraphs }: InfoBlockProps) {
   return (
-    <motion.div
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.2 }}
-      className="py-10 lg:py-12 border-t border-text-secondary/15 first:border-t-0"
-    >
+    <div className="ft__bloque">
       {eyebrow && (
-        <motion.div
-          variants={fadeInUp}
-          className="flex items-center gap-3 mb-4"
-        >
-          <span className="block w-8 h-px bg-accent-gold" />
-          <span className="font-body text-[10px] sm:text-xs font-medium uppercase tracking-[0.3em] text-accent-gold">
-            {eyebrow}
-          </span>
-        </motion.div>
+        <div className="ft__ceja" data-ap>
+          <span className="pildora pildora--arena ft__pil">{eyebrow}</span>
+        </div>
       )}
-      <motion.h3
-        variants={fadeInUp}
-        className="font-display font-normal text-text-primary leading-[1.1] tracking-[-0.02em] mb-5"
-        style={{ fontSize: "clamp(1.5rem, 3vw, 2.2rem)" }}
-      >
+      <h3 className="tit tit--m ft__tit" data-tit>
         {title}
-      </motion.h3>
-      <div className="flex flex-col gap-4">
+      </h3>
+      <div className="ft__txt">
         {paragraphs.map((p, i) => (
-          <motion.p
-            key={i}
-            variants={fadeInUp}
-            className="font-body text-sm lg:text-base text-text-secondary leading-[1.85] max-w-3xl"
-          >
+          <p key={i} className="ft__p" data-ap>
             {p}
-          </motion.p>
+          </p>
         ))}
       </div>
-    </motion.div>
+    </div>
   );
 }

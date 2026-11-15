@@ -1,17 +1,8 @@
-"use client";
-
+import "./nuevo/zonas.css";
 import Image from "next/image";
 import Link from "next/link";
 import { ReactNode } from "react";
-import { m as motion } from "framer-motion";
-import { ArrowUpRight, Check } from "lucide-react";
-import {
-  fadeInUp,
-  fadeInLeft,
-  fadeInRight,
-  clipReveal,
-  staggerContainer,
-} from "@/lib/animations";
+import { ArrowUpRight } from "lucide-react";
 import { getTreatmentLink } from "@/lib/treatmentLinks";
 
 interface ZonaBlockProps {
@@ -28,6 +19,9 @@ interface ZonaBlockProps {
   children?: ReactNode;
 }
 
+// Bloque de zona: imagen en marco redondeado que se abre por listones, con
+// el índice en cursiva serif encima, y al lado la zona con sus tratamientos
+// en filas. La imagen alterna de lado.
 export function ZonaBlock({
   id,
   index,
@@ -46,120 +40,84 @@ export function ZonaBlock({
   const reverse = imageSide === "left";
 
   return (
-    <motion.div
-      id={id}
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.15 }}
-      className="scroll-mt-24 py-12 lg:py-14 border-t border-text-secondary/15 first:border-t-0"
-    >
+    <div id={id} className="zo__blq">
       <div
-        className={`grid grid-cols-1 ${
-          hasImage ? "lg:grid-cols-[1.1fr_1fr]" : "lg:grid-cols-1"
-        } gap-10 lg:gap-16 items-start`}
+        className={`zo__blq-in${hasImage ? " zo__blq-in--foto" : ""}${
+          hasImage && reverse ? " zo__blq-in--inv" : ""
+        }`}
       >
         {/* Text column */}
-        <div className={reverse && hasImage ? "lg:order-2" : ""}>
-          {/* Numbered eyebrow */}
-          <motion.div
-            variants={fadeInLeft}
-            className="flex items-center gap-3 mb-5"
-          >
-            <span className="font-display text-xl text-accent-gold/70 leading-none">
-              {number}
-            </span>
-            <span className="block w-10 h-px bg-accent-gold/50" />
-            <span className="font-body text-[10px] sm:text-xs font-medium uppercase tracking-[0.3em] text-accent-gold">
-              {eyebrow}
-            </span>
-          </motion.div>
+        <div className="zo__txt">
+          <div className="zo__cab" data-ap>
+            {!hasImage && (
+              <span className="serif zo__idx" aria-hidden="true">
+                {number}
+              </span>
+            )}
+            <span className="pildora pildora--arena">{eyebrow}</span>
+          </div>
 
-          {/* Title */}
-          <motion.h2
-            variants={clipReveal}
-            className="font-display font-normal not-italic text-text-primary leading-[1.1] tracking-[-0.02em] mb-5"
-            style={{ fontSize: "clamp(1.6rem, 3.4vw, 2.6rem)" }}
-          >
+          <h2 className="tit tit--m" data-tit>
             {title}
-          </motion.h2>
+          </h2>
 
-          {/* Description */}
           {description && (
-            <motion.p
-              variants={fadeInUp}
-              className="font-body text-sm lg:text-base text-text-secondary leading-[1.8] mb-7 max-w-xl"
-            >
+            <p className="zo__desc" data-ap>
               {description}
-            </motion.p>
+            </p>
           )}
 
           {/* Treatments list */}
           {treatments.length > 0 && (
-            <motion.ul variants={staggerContainer} className="flex flex-col gap-2.5 mb-2">
+            <ul className="zo__trats">
               {treatments.map((t) => {
                 const href = getTreatmentLink(t);
                 return (
-                  <motion.li
-                    key={t}
-                    variants={fadeInUp}
-                    className="flex items-start gap-3"
-                  >
-                    <Check
-                      size={16}
-                      strokeWidth={2}
-                      className="text-accent-gold mt-1 flex-shrink-0"
-                    />
+                  <li key={t} className="zo__trat" data-ap>
                     {href ? (
-                      <Link
-                        href={href}
-                        className="group/treatment inline-flex items-start gap-1.5 font-body text-sm lg:text-[15px] text-text-primary leading-[1.65] underline decoration-accent-gold/25 decoration-1 underline-offset-[6px] transition-colors duration-300 hover:text-accent-gold hover:decoration-accent-gold focus-visible:outline-none focus-visible:text-accent-gold focus-visible:decoration-accent-gold"
-                      >
+                      <Link href={href} className="zo__trat-a">
                         <span>{t}</span>
                         <ArrowUpRight
-                          size={13}
-                          strokeWidth={2}
-                          className="mt-1 flex-shrink-0 text-accent-gold/40 transition-all duration-300 group-hover/treatment:text-accent-gold group-hover/treatment:translate-x-[1px] group-hover/treatment:-translate-y-[1px]"
+                          size={17}
+                          strokeWidth={1.5}
+                          className="zo__trat-ico"
                           aria-hidden
                         />
                       </Link>
                     ) : (
-                      <span className="font-body text-sm lg:text-[15px] text-text-primary leading-[1.65]">
-                        {t}
-                      </span>
+                      <span className="zo__trat-t">{t}</span>
                     )}
-                  </motion.li>
+                  </li>
                 );
               })}
-            </motion.ul>
+            </ul>
           )}
 
           {/* Extra content (pricing tables, notes) */}
-          {children && <div className="mt-8 flex flex-col gap-8">{children}</div>}
+          {children && <div className="zo__extra">{children}</div>}
         </div>
 
         {/* Image column */}
         {hasImage && image && (
-          <motion.div
-            variants={fadeInRight}
-            className={`relative overflow-hidden rounded-2xl shadow-[0_20px_50px_rgba(15,14,13,0.1)] ${
-              imageOrientation === "portrait"
-                ? "aspect-[4/5]"
-                : "aspect-[4/3]"
-            } ${reverse ? "lg:order-1" : ""}`}
+          <div
+            className={`zo__fig${
+              imageOrientation === "portrait" ? " zo__fig--alta" : ""
+            }`}
           >
-            <Image
-              src={image}
-              alt={imageAlt ?? title}
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-            />
-            <div className="absolute inset-0 bg-accent-gold/5" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/15 via-transparent to-transparent" />
-          </motion.div>
+            <div className="zo__lis listones" data-lis>
+              <Image
+                src={image}
+                alt={imageAlt ?? title}
+                fill
+                sizes="(max-width: 960px) 92vw, 600px"
+              />
+            </div>
+            <span className="serif zo__num" aria-hidden="true" data-ap>
+              {number}
+            </span>
+          </div>
         )}
       </div>
-    </motion.div>
+    </div>
   );
 }

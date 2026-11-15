@@ -1,8 +1,6 @@
-"use client";
-
-import { m as motion } from "framer-motion";
-import { MapPin, MessageCircle, Mail, Clock, Instagram } from "lucide-react";
-import { fadeInUp, staggerContainer, staggerFast } from "@/lib/animations";
+import { MapPin, MessageCircle, Mail, Instagram } from "lucide-react";
+import { Boton } from "@/components/nuevo/Boton";
+import "./nuevo/catalogo.css";
 
 const horario = [
   { day: "Lunes – Jueves", hours: "9:30 – 13:00 · 16:30 – 20:30" },
@@ -35,138 +33,114 @@ const contactos = [
 
 const INSTAGRAM_URL = "https://www.instagram.com/clinicamaysoon/";
 
+// Contacto: a la izquierda los datos en una lista con líneas finas; a la
+// derecha el mapa en un marco redondeado que acompaña la lectura.
 export function ContactoSection() {
   return (
-    <section className="bg-bg-primary py-20 lg:py-28">
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.15 }}
-          className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-10 lg:gap-16"
-        >
+    <section className="ca__co sec">
+      <div className="marco">
+        <div className="ca__co-rejilla">
           {/* Left: Info */}
-          <div className="flex flex-col gap-10">
+          <div className="ca__co-datos">
             {/* Address */}
-            <motion.div variants={fadeInUp}>
-              <div className="flex items-center gap-3 mb-3">
-                <span className="block w-8 h-px bg-accent-gold" />
-                <span className="font-body text-xs font-medium uppercase tracking-[0.3em] text-accent-gold">
-                  Dónde estamos
-                </span>
-              </div>
-              <h3 className="font-display font-normal text-2xl lg:text-3xl text-text-primary leading-tight tracking-[-0.01em] mb-4">
+            <div className="ca__co-dir" data-ap>
+              <span className="pildora pildora--arena">Dónde estamos</span>
+              <h3 className="tit tit--m ca__co-calle">
                 Avinguda del Cardenal Benlloch, 11
               </h3>
-              <p className="font-body text-base text-text-secondary leading-[1.8]">
-                46021 Valencia · España
-              </p>
+              <p className="cuerpo ca__co-ciudad">46021 Valencia · España</p>
               <a
                 href="https://maps.google.com/?q=Avda.+Cardenal+Benlloch+11,+46021+Valencia"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-4 font-body text-sm font-medium text-accent-gold transition-colors duration-300 hover:text-accent-gold-light"
+                className="ca__co-llegar"
               >
-                <MapPin size={16} strokeWidth={2} />
-                Cómo llegar
+                <MapPin size={16} strokeWidth={1.5} aria-hidden="true" />
+                <span>Cómo llegar</span>
               </a>
-            </motion.div>
+            </div>
 
             {/* Contact methods */}
-            <motion.div variants={staggerFast} className="flex flex-col gap-4">
+            <dl className="ca__co-dl">
               {contactos.map(({ icon: Icon, label, value, href, external }) => (
-                <motion.a
-                  key={label}
-                  variants={fadeInUp}
-                  href={href}
-                  target={external ? "_blank" : undefined}
-                  rel={external ? "noopener noreferrer" : undefined}
-                  className="group flex items-center gap-4 py-3 border-b border-text-secondary/15 transition-colors duration-300 hover:border-accent-gold/40"
-                >
-                  <span className="w-10 h-10 rounded-full bg-accent-gold/10 flex items-center justify-center text-accent-gold flex-shrink-0 transition-colors duration-300 group-hover:bg-accent-gold/20">
-                    <Icon size={16} strokeWidth={1.8} />
-                  </span>
-                  <div className="flex-1 flex flex-col">
-                    <span className="font-body text-[10px] uppercase tracking-[0.25em] text-text-secondary">
-                      {label}
-                    </span>
-                    <span className="font-body text-base text-text-primary transition-colors duration-300 group-hover:text-accent-gold">
-                      {value}
-                    </span>
-                  </div>
-                </motion.a>
+                <div key={label} className="ca__co-fila" data-ap>
+                  <dt className="ca__co-dt">
+                    <Icon size={18} strokeWidth={1.5} aria-hidden="true" />
+                    {label}
+                  </dt>
+                  <dd className="ca__co-dd">
+                    {external ? (
+                      <Boton href={href} variante="linea" chico>
+                        {value}
+                      </Boton>
+                    ) : (
+                      <a href={href} className="ca__co-enlace">
+                        {value}
+                      </a>
+                    )}
+                  </dd>
+                </div>
               ))}
-            </motion.div>
+            </dl>
 
             {/* Schedule */}
-            <motion.div variants={fadeInUp}>
-              <div className="flex items-center gap-3 mb-5">
-                <Clock size={16} strokeWidth={2} className="text-accent-gold" />
-                <span className="font-body text-xs font-medium uppercase tracking-[0.3em] text-accent-gold">
-                  Horario
-                </span>
-              </div>
-              <div className="flex flex-col gap-3">
+            <div className="ca__co-horas" data-ap>
+              <span className="pildora pildora--arena">Horario</span>
+              <dl className="ca__co-horario">
                 {horario.map((h) => (
-                  <div
-                    key={h.day}
-                    className="flex flex-col sm:flex-row sm:justify-between gap-1 sm:gap-4"
-                  >
-                    <span className="font-body text-sm text-text-primary font-medium">
-                      {h.day}
-                    </span>
-                    <span className="font-body text-sm text-text-secondary">
-                      {h.hours}
-                    </span>
+                  <div key={h.day} className="ca__co-hora">
+                    <dt className="ca__co-dia">{h.day}</dt>
+                    <dd className="ca__co-rango">{h.hours}</dd>
                   </div>
                 ))}
-              </div>
-            </motion.div>
+              </dl>
+            </div>
 
             {/* Instagram CTA */}
-            <motion.div variants={fadeInUp}>
-              <span className="font-body text-xs font-medium uppercase tracking-[0.3em] text-accent-gold block mb-4">
-                Síguenos en Instagram
-              </span>
-              <p className="font-body text-sm text-text-secondary leading-[1.7] mb-5 max-w-md">
+            <div className="ca__co-ig" data-ap>
+              <span className="pildora">Síguenos en Instagram</span>
+              <Instagram
+                size={22}
+                strokeWidth={1.5}
+                className="ca__co-ig-icono"
+                aria-hidden="true"
+              />
+              <p className="ca__co-ig-txt">
                 Casos antes/después, novedades del equipo y consejos en directo.
                 Únete a nuestra comunidad para no perderte nada.
               </p>
-              <a
+              <Boton
                 href={INSTAGRAM_URL}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Síguenos en Instagram @clinicamaysoon"
-                className="group inline-flex items-center gap-3 px-5 py-3 rounded-lg relative overflow-hidden transition-all duration-300 text-white shadow-[0_8px_24px_rgba(214,41,118,0.25)] hover:shadow-[0_12px_32px_rgba(214,41,118,0.4)] active:scale-[0.97]"
-                style={{
-                  background:
-                    "linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)",
-                }}
+                ariaLabel="Síguenos en Instagram @clinicamaysoon"
               >
-                <Instagram size={18} strokeWidth={1.8} />
-                <span className="font-body text-sm font-semibold">@clinicamaysoon</span>
-              </a>
-            </motion.div>
+                @clinicamaysoon
+              </Boton>
+            </div>
           </div>
 
           {/* Right: Map */}
-          <motion.div
-            variants={fadeInUp}
-            className="relative rounded-2xl overflow-hidden shadow-[0_20px_60px_rgba(15,14,13,0.1)] min-h-[480px] lg:min-h-[600px]"
-          >
+          <div className="ca__co-mapa" data-ap>
             <iframe
               title="Maysoon en Google Maps"
               src="https://www.google.com/maps?q=Avenida+Cardenal+Benlloch+11,+46021+Valencia&output=embed"
-              width="100%"
-              height="100%"
-              style={{ border: 0, position: "absolute", inset: 0 }}
+              className="ca__co-iframe"
               allowFullScreen
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
-          </motion.div>
-        </motion.div>
+            <div className="ca__co-chip">
+              <span className="ca__listones" aria-hidden="true">
+                <i />
+                <i />
+                <i />
+              </span>
+              <div>
+                <p>Avinguda del Cardenal Benlloch, 11</p>
+                <p>46021 Valencia · España</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

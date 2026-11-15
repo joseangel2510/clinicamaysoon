@@ -1,37 +1,47 @@
 @import "tailwindcss";
+@import "./sistema.css";
+@import "./nuevo.css";
 
-@theme {
-  /* Maysoon — paleta de marca: terracota + perla + piedra + negro.
-     Nota: el token "accent-gold" mantiene su nombre por compatibilidad
-     con todos los componentes; su valor ahora es terracota cálida. */
-  --color-bg-primary: #F4EFE7;
-  --color-bg-secondary: #E8E1D2;
-  --color-bg-dark: #0F0E0D;
-  --color-accent-gold: #B87355;
-  --color-accent-gold-light: #C9876B;
-  --color-accent-stone: #BFB39E;
-  --color-text-primary: #0F0E0D;
-  --color-text-secondary: #7A6B5E;
-  --color-text-light: #F4EFE7;
-  --color-text-muted: #A8997F;
+@theme inline {
+  /* Maysoon 2026 — crema, marrón profundo y terracota (los tonos de las fotos
+     de la clínica: listones de roble, uniformes coral, paredes de lino).
+     Los nombres de token se conservan: los usan todos los componentes. */
+  --color-bg-primary: #F8F4EE;
+  --color-bg-secondary: #EFE7DB;
+  --color-bg-dark: #2A1206;
+  --color-accent-gold: #B8573C;
+  --color-accent-gold-light: #D9805F;
+  --color-accent-stone: #C9B8A4;
+  --color-text-primary: #2A1206;
+  --color-text-secondary: #6B584E;
+  --color-text-light: #F8F4EE;
+  --color-text-muted: #A39283;
 
-  --font-display: "DM Serif Display", serif;
-  --font-body: "DM Sans", sans-serif;
+  --color-crema: #F8F4EE;
+  --color-arena: #EFE7DB;
+  --color-cacao: #2A1206;
+  --color-moka: #866452;
+  --color-terracota: #B8573C;
+  --color-coral: #E0694F;
+  --color-roble: #C47A3A;
+  --color-linea: #DDD3C5;
+
+  --font-display: var(--font-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-body: var(--font-jakarta), "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-serif: var(--font-instrument), "Instrument Serif", Georgia, serif;
 
   --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-seda: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
 @layer base {
-  html {
-    scroll-behavior: smooth;
-  }
-
   body {
     font-family: var(--font-body);
     background-color: var(--color-bg-primary);
     color: var(--color-text-primary);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    overflow-x: clip;
   }
 
   ::selection {
@@ -41,7 +51,7 @@
 
   *:focus-visible {
     outline: 2px solid var(--color-accent-gold);
-    outline-offset: 2px;
+    outline-offset: 3px;
   }
 }
 

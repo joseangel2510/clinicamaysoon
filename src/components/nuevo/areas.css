@@ -1,0 +1,387 @@
+/* Áreas — el explorador de las diez áreas: foto de la clínica de fondo,
+   cabecera centrada y un panel marrón translúcido con una fila por área. */
+
+.are {
+  position: relative;
+  padding: 10px;
+  background: var(--color-crema);
+}
+.are__bloque {
+  position: relative;
+  min-height: 100vh;
+  border-radius: 26px;
+  overflow: hidden;
+  background: var(--color-cacao);
+  color: #fff;
+  isolation: isolate;
+}
+
+/* ── Fondo ── */
+.are__fondo {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -10%;
+  height: 120%;
+  z-index: 0;
+}
+.are__fondo img {
+  object-fit: cover;
+  filter: blur(22px) saturate(0.85);
+  opacity: 0.5;
+  scale: 1.12;
+}
+.are__velo {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(38, 17, 5, 0.9) 0%,
+    rgba(38, 17, 5, 0.55) 45%,
+    rgba(38, 17, 5, 0.92) 100%
+  );
+}
+.are__dentro {
+  position: relative;
+  z-index: 2;
+  padding-block: clamp(76px, 9vw, 136px) clamp(40px, 6vw, 96px);
+}
+
+/* ── Cabecera ── */
+.are__cab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(16px, 1.6vw, 22px);
+}
+.are__tit {
+  margin-top: 2px;
+  color: #fff;
+}
+/* aire para la tilde de la Á y la cursiva dentro de la máscara de cada línea */
+.are__linea {
+  padding-block: 0.14em;
+}
+.are__linea-mask {
+  margin-block: -0.14em;
+}
+.are__sub {
+  max-width: 560px;
+}
+
+/* ── Panel ── */
+.are__panel {
+  max-width: 1180px;
+  margin: clamp(36px, 4.6vw, 64px) auto 0;
+  padding: 4px 18px;
+  border-radius: 20px;
+  background: rgba(38, 17, 5, 0.9);
+}
+.are__item {
+  position: relative;
+}
+/* separador discontinuo: se dibuja de izquierda a derecha */
+.are__raya {
+  display: block;
+  height: 1px;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(242, 199, 168, 0.28) 0,
+    rgba(242, 199, 168, 0.28) 5px,
+    transparent 5px,
+    transparent 10px
+  );
+}
+
+/* ── Fila (móvil y tableta): miniatura · textos · círculo ── */
+.are__fila {
+  position: relative;
+  display: block;
+  color: #fff;
+  border-radius: 14px;
+  outline: none;
+}
+.are__fila:focus-visible {
+  outline: 2px solid #f2c7a8;
+  outline-offset: -2px;
+}
+.are__cont {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 1fr) 36px;
+  align-items: center;
+  column-gap: 12px;
+  min-height: 104px;
+  padding-block: 14px;
+}
+.are__mini {
+  --n: 4;
+  position: relative;
+  display: block;
+  width: 64px;
+  height: 84px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+.are__mini img {
+  object-fit: cover;
+}
+.are__txt {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.are__num {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.55);
+  font-variant-numeric: tabular-nums;
+}
+.are__nom {
+  margin-top: 8px;
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+.are__desc {
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 1.45;
+  color: rgba(248, 244, 238, 0.7);
+}
+.are__ir {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 50%;
+  color: #fff;
+}
+.are__ir svg {
+  width: 14px;
+  height: 14px;
+}
+.are__ir-t {
+  display: none;
+}
+
+/* En pantallas estrechas el panel gana ancho sobre el marco */
+@media (max-width: 599px) {
+  .are__panel {
+    margin-inline: calc(8px - clamp(18px, 5.5vw, 80px));
+  }
+}
+
+/* La tarjeta flotante solo existe en escritorio con ratón */
+.are__vista {
+  display: none;
+}
+
+/* ── Escritorio: número · título · texto · «Descubrir» ── */
+@media (min-width: 1000px) {
+  .are__panel {
+    padding: 8px 36px;
+  }
+  .are__fila {
+    margin-inline: -20px;
+    padding-inline: 20px;
+    transition:
+      background-color 0.5s var(--ease-seda),
+      opacity 0.5s var(--ease-seda);
+  }
+  /* listón que marca la fila activa */
+  .are__fila::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 30%;
+    bottom: 30%;
+    width: 2px;
+    border-radius: 2px;
+    background: #f2c7a8;
+    transform: scaleY(0);
+    transition: transform 0.55s var(--ease-seda);
+  }
+  .are__cont {
+    grid-template-columns: 56px minmax(0, 1.1fr) minmax(0, 1.3fr) auto;
+    column-gap: 28px;
+    padding-block: 18px;
+  }
+  .are__mini {
+    display: none;
+  }
+  .are__txt {
+    display: contents;
+  }
+  .are__nom {
+    margin-top: 0;
+    font-size: clamp(22px, 1.9vw, 26px);
+    transition:
+      transform 0.6s var(--ease-seda),
+      color 0.45s var(--ease-seda);
+  }
+  .are__desc {
+    margin-top: 0;
+    max-width: 340px;
+    font-size: 15px;
+    line-height: 1.5;
+  }
+  .are__ir {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    width: auto;
+    height: 38px;
+    padding: 0 16px;
+    border-color: #fff;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    transition:
+      background-color 0.45s var(--ease-seda),
+      color 0.45s var(--ease-seda);
+  }
+  .are__ir svg {
+    width: 13px;
+    height: 13px;
+    transition: transform 0.5s var(--ease-seda);
+  }
+  .are__ir-t {
+    display: inline;
+  }
+
+  /* Fila activa con teclado */
+  .are__fila:focus-visible {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .are__fila:focus-visible::before {
+    transform: none;
+  }
+  .are__fila:focus-visible .are__nom {
+    transform: translateX(12px);
+    color: #f2c7a8;
+  }
+  .are__fila:focus-visible .are__ir {
+    background: #fff;
+    color: var(--color-cacao);
+  }
+  .are__lista:has(.are__fila:focus-visible) .are__fila:not(:focus-visible) {
+    opacity: 0.42;
+  }
+}
+
+@media (min-width: 1000px) and (hover: hover) and (pointer: fine) {
+  .are__fila:hover {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  .are__fila:hover::before {
+    transform: none;
+  }
+  .are__fila:hover .are__nom {
+    transform: translateX(12px);
+    color: #f2c7a8;
+  }
+  .are__fila:hover .are__ir {
+    background: #fff;
+    color: var(--color-cacao);
+  }
+  .are__fila:hover .are__ir svg {
+    transform: translate(2px, -2px);
+  }
+  .are__lista:hover .are__fila:not(:hover) {
+    opacity: 0.42;
+  }
+
+  /* Tarjeta que sigue al puntero: GSAP mueve .are__vista (x, y, giro) y
+     abre y cierra .are__vista-caja (escala, opacidad). */
+  .are__vista.is-lista {
+    display: block;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 30;
+    width: 260px;
+    height: 330px;
+    pointer-events: none;
+    will-change: transform;
+  }
+  .are__vista-caja {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--color-cacao);
+    opacity: 0;
+  }
+  .are__vista-fotos {
+    position: absolute;
+    inset: 0;
+    isolation: isolate;
+  }
+  .are__vista-foto {
+    --n: 7;
+    --abre: 0;
+    position: absolute;
+    inset: 0;
+  }
+  .are__vista-foto img {
+    object-fit: cover;
+  }
+  .are__vista-caja::after {
+    content: "";
+    position: absolute;
+    inset: 45% 0 0;
+    background: linear-gradient(180deg, rgba(38, 17, 5, 0) 0%, rgba(38, 17, 5, 0.6) 100%);
+  }
+  .are__vista-chip {
+    position: absolute;
+    z-index: 1;
+    left: 10px;
+    bottom: 10px;
+    max-width: calc(100% - 20px);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 30px;
+    padding: 0 12px 0 10px;
+    border-radius: 999px;
+    background: #fff;
+    color: var(--color-cacao);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .are__vista-chip b {
+    font-weight: 500;
+    color: var(--color-terracota);
+    font-variant-numeric: tabular-nums;
+  }
+  .are__vista-chip i {
+    flex: none;
+    width: 1px;
+    height: 11px;
+    background: var(--color-linea);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .are__fila,
+  .are__fila::before,
+  .are__nom,
+  .are__ir,
+  .are__ir svg {
+    transition: none;
+  }
+  .are__vista.is-lista {
+    display: none;
+  }
+}

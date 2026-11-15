@@ -1,8 +1,5 @@
-"use client";
-
-import { m as motion } from "framer-motion";
+import "./nuevo/confianza.css";
 import { Award, Zap, Droplet, Sparkles, Activity } from "lucide-react";
-import { fadeInUp, staggerContainer, staggerFast } from "@/lib/animations";
 import { ZonaNav } from "./ZonaNav";
 import { ZonaBlock } from "./ZonaBlock";
 import { ConsultaBlock } from "./ConsultaBlock";
@@ -21,13 +18,11 @@ const zonasNav = [
 
 export function MedicinaCorporalSection() {
   return (
-    <section className="bg-bg-primary pt-12 pb-20 lg:pb-28">
-      {/* ── Zona nav ── */}
-      <div className="mb-12 lg:mb-16">
-        <ZonaNav zonas={zonasNav} />
-      </div>
+    <section className="co__zonas-sec">
+      {/* ── Zona nav ── (hija directa de la sección: así se queda pegada) */}
+      <ZonaNav zonas={zonasNav} />
 
-      <div className="mx-auto max-w-6xl px-6 lg:px-8">
+      <div className="marco co__zonas">
         {/* ── 01 · CUELLO ── */}
         <ZonaBlock
           id="zona-cuello"
@@ -207,42 +202,36 @@ export function MedicinaCorporalSection() {
   );
 }
 
+// Marca de tres listones: sustituye a los adornos de las listas
+function Listones() {
+  return (
+    <span className="co__lis3" aria-hidden="true">
+      <i />
+      <i />
+      <i />
+    </span>
+  );
+}
+
 /* ─────────────────────────────────────────────────
-   DestacadosCorporales — 4 cards 2-col + ENDOLÁSER full-width
+   DestacadosCorporales — 4 tarjetas en 2 columnas + ENDOLÁSER a todo el ancho
    ───────────────────────────────────────────────── */
 
 function DestacadosCorporales() {
   return (
-    <motion.div
-      variants={staggerContainer}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.05 }}
-      className="mt-16 lg:mt-20"
-    >
+    <div className="co__des">
       {/* Header */}
-      <motion.div variants={fadeInUp} className="text-center mb-10 lg:mb-12">
-        <div className="flex items-center justify-center gap-3 mb-5">
-          <span className="block w-10 h-px bg-accent-gold" />
-          <span className="font-body text-xs font-medium uppercase tracking-[0.35em] text-accent-gold">
-            Tecnologías Destacadas
-          </span>
-          <span className="block w-10 h-px bg-accent-gold" />
-        </div>
-        <h3
-          className="font-display font-normal text-text-primary leading-[1.1] tracking-[-0.02em]"
-          style={{ fontSize: "clamp(1.7rem, 3.6vw, 2.6rem)" }}
-        >
-          Las Herramientas{" "}
-          <span className="italic text-accent-gold/85">de Nuestros Resultados</span>
+      <div className="co__des-cab">
+        <span className="pildora pildora--arena" data-ap>
+          Tecnologías Destacadas
+        </span>
+        <h3 className="tit tit--m" data-tit>
+          Las Herramientas <em>de Nuestros Resultados</em>
         </h3>
-      </motion.div>
+      </div>
 
       {/* 2x2 grid of featured */}
-      <motion.div
-        variants={staggerFast}
-        className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8"
-      >
+      <div className="co__des-red">
         <FeaturedCard
           icon={Award}
           badge="Aprobado por la FDA"
@@ -286,79 +275,50 @@ function DestacadosCorporales() {
             "Combinación personalizada por sesión",
           ]}
         />
-      </motion.div>
+      </div>
 
       {/* ENDOLÁSER Liften Dual - full width feature */}
-      <motion.div
-        id="endolaser-fox-iii"
-        variants={fadeInUp}
-        className="scroll-mt-24 mt-6 lg:mt-8"
-      >
-        <div className="rounded-2xl bg-bg-dark text-text-light relative overflow-hidden">
-          <div
-            className="absolute inset-0 pointer-events-none"
-            style={{
-              background:
-                "radial-gradient(ellipse at 100% 50%, rgba(184,115,85,0.22), transparent 60%)",
-            }}
-          />
-          <div className="relative grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-6 lg:gap-10 p-7 lg:p-10 items-center">
-            <div className="flex items-center gap-4">
-              <span className="w-14 h-14 rounded-full bg-accent-gold/15 border border-accent-gold/30 flex items-center justify-center flex-shrink-0">
-                <Zap size={22} strokeWidth={1.6} className="text-accent-gold" />
-              </span>
-              <div className="lg:hidden">
-                <span className="font-body text-[10px] font-medium uppercase tracking-[0.3em] text-accent-gold">
-                  Tecnología transversal
-                </span>
-                <h4 className="font-display font-normal text-2xl text-text-light leading-tight tracking-[-0.01em] mt-1">
-                  ENDOLÁSER Liften Dual
-                </h4>
-              </div>
-            </div>
-
-            <div className="flex flex-col">
-              <div className="hidden lg:flex items-center gap-3 mb-2">
-                <span className="font-body text-[10px] font-medium uppercase tracking-[0.3em] text-accent-gold">
-                  Tecnología transversal
-                </span>
-              </div>
-              <h4 className="hidden lg:block font-display font-normal text-2xl lg:text-3xl text-text-light leading-tight tracking-[-0.01em] mb-3">
-                ENDOLÁSER Liften Dual
-              </h4>
-              <p className="font-body text-sm lg:text-[15px] text-text-light/75 leading-[1.8] mb-4">
-                La tecnología láser que está detrás de muchos de nuestros
-                tratamientos: reducción de papada, eliminación de grasa en
-                brazos, abdomen, flancos y cartucheras, eliminación de bolsas en
-                ojeras y endolifting facial.
-              </p>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-1.5">
-                {[
-                  "Papada y cuello",
-                  "Brazos y axilas",
-                  "Abdomen y flancos",
-                  "Cartucheras y glúteos",
-                  "Bolsas de ojeras",
-                  "Endolifting facial",
-                ].map((u) => (
-                  <li key={u} className="flex items-center gap-2.5">
-                    <span className="text-accent-gold flex-shrink-0">✦</span>
-                    <span className="font-body text-sm text-text-light/65 leading-[1.5]">
-                      {u}
-                    </span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+      <div id="endolaser-fox-iii" className="co__fr" data-ap>
+        <div className="co__fr-cab">
+          <div className="co__fr-marca">
+            <span className="co__ico co__ico--arena">
+              <Zap size={20} strokeWidth={1.5} aria-hidden="true" />
+            </span>
+            <span className="pildora pildora--arena">Tecnología transversal</span>
           </div>
+          <h4 className="co__fr-tit">ENDOLÁSER Liften Dual</h4>
         </div>
-      </motion.div>
-    </motion.div>
+
+        <div>
+          <p className="co__fr-desc">
+            La tecnología láser que está detrás de muchos de nuestros
+            tratamientos: reducción de papada, eliminación de grasa en
+            brazos, abdomen, flancos y cartucheras, eliminación de bolsas en
+            ojeras y endolifting facial.
+          </p>
+          <ul className="co__filas co__filas--2">
+            {[
+              "Papada y cuello",
+              "Brazos y axilas",
+              "Abdomen y flancos",
+              "Cartucheras y glúteos",
+              "Bolsas de ojeras",
+              "Endolifting facial",
+            ].map((u) => (
+              <li key={u} className="co__fila">
+                <Listones />
+                <span>{u}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
   );
 }
 
 /* ─────────────────────────────────────────────────
-   FeaturedCard — card oscura con icono + badge
+   FeaturedCard — tarjeta arena con icono + píldora
    ───────────────────────────────────────────────── */
 
 function FeaturedCard({
@@ -375,45 +335,26 @@ function FeaturedCard({
   extras?: string[];
 }) {
   return (
-    <motion.div
-      variants={fadeInUp}
-      className="rounded-2xl bg-bg-dark text-text-light p-7 lg:p-9 relative overflow-hidden h-full flex flex-col"
-    >
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle at 0% 100%, rgba(184,115,85,0.18), transparent 60%)",
-        }}
-      />
-      <div className="relative flex flex-col flex-1">
-        <div className="flex items-center gap-3 mb-5">
-          <span className="w-10 h-10 rounded-full bg-accent-gold/15 border border-accent-gold/30 flex items-center justify-center flex-shrink-0">
-            <Icon size={16} strokeWidth={1.8} className="text-accent-gold" />
-          </span>
-          <span className="font-body text-[10px] font-medium uppercase tracking-[0.25em] text-accent-gold">
-            {badge}
-          </span>
-        </div>
-        <h4 className="font-display font-normal text-2xl lg:text-3xl text-text-light leading-tight tracking-[-0.01em] mb-4">
-          {title}
-        </h4>
-        <p className="font-body text-sm lg:text-[15px] text-text-light/75 leading-[1.8] mb-5">
-          {description}
-        </p>
-        {extras.length > 0 && (
-          <ul className="flex flex-col gap-2 mt-auto">
-            {extras.map((e) => (
-              <li key={e} className="flex items-start gap-2.5">
-                <span className="text-accent-gold mt-1 flex-shrink-0">✦</span>
-                <span className="font-body text-sm text-text-light/65 leading-[1.6]">
-                  {e}
-                </span>
-              </li>
-            ))}
-          </ul>
-        )}
+    <div className="co__tec" data-ap>
+      <div className="co__tec-cab">
+        <span className="co__ico">
+          <Icon size={18} strokeWidth={1.5} aria-hidden="true" />
+        </span>
+        <span className="pildora">{badge}</span>
       </div>
-    </motion.div>
+      <h4 className="co__tec-tit">{title}</h4>
+      <p className="co__tec-desc">{description}</p>
+      {extras.length > 0 && (
+        <ul className="co__filas">
+          {extras.map((e) => (
+            <li key={e} className="co__fila">
+              <Listones />
+              <span>{e}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }
+

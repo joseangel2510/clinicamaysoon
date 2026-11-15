@@ -1,0 +1,834 @@
+/* Quiénes somos y Por qué Maysoon — la versión larga de las secciones de la
+   portada: filosofía y origen del nombre, equipo, director médico, cifras y
+   razones. Prefijo: no__ */
+
+/* ── Piezas comunes ── */
+.no__marca {
+  flex: none;
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 16px;
+}
+.no__marca i {
+  width: 2px;
+  border-radius: 2px;
+  background: var(--color-terracota);
+}
+.no__marca i:nth-child(1) {
+  height: 60%;
+  opacity: 0.45;
+}
+.no__marca i:nth-child(2) {
+  height: 100%;
+}
+.no__marca i:nth-child(3) {
+  height: 76%;
+  opacity: 0.7;
+}
+
+/* ══ Quiénes somos ══ */
+.no__qs {
+  position: relative;
+  background: var(--color-crema);
+  color: var(--color-cacao);
+  overflow: clip;
+}
+.no__cab {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(28px, 4vw, 56px);
+}
+.no__cab-izq {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+}
+.no__cab-der {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(26px, 2.8vw, 40px);
+  max-width: 62ch;
+}
+.no__intro {
+  font-size: clamp(1.0625rem, 1.25vw, 1.25rem);
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+
+/* Tarjeta con el origen del nombre */
+.no__origen {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+  margin: 0;
+  padding: clamp(24px, 2.8vw, 40px);
+  border-radius: 22px;
+  background: #fff;
+}
+.no__origen blockquote {
+  margin: 0;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.55rem, 2.3vw, 2.125rem);
+  line-height: 1.22;
+  letter-spacing: -0.015em;
+  color: var(--color-cacao);
+  text-wrap: pretty;
+}
+.no__origen blockquote span {
+  color: var(--color-terracota);
+}
+.no__dir {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--color-moka);
+}
+
+/* Foto del equipo y, montada sobre su esquina, la de la dirección médica */
+.no__equipo {
+  margin-top: clamp(64px, 8vw, 128px);
+}
+.no__foto {
+  --n: 7;
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  overflow: hidden;
+  background: var(--color-arena);
+  isolation: isolate;
+}
+.no__foto img {
+  object-fit: cover;
+  object-position: 50% 30%;
+}
+.no__equipo-pie {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 40px;
+  margin-top: clamp(32px, 3.4vw, 48px);
+}
+.no__equipo-txt {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+.no__rotulo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.no__indice {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  color: var(--color-moka);
+}
+.no__equipo-tit {
+  margin-top: 22px;
+}
+.no__equipo-desc {
+  max-width: 56ch;
+  margin-top: 22px;
+  line-height: 1.7;
+}
+.no__dato {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  max-width: 56ch;
+  margin-top: 30px;
+  padding-top: 22px;
+  border-top: 1px solid var(--color-linea);
+}
+.no__dato-num {
+  font-size: 56px;
+  line-height: 1;
+  color: var(--color-terracota);
+  font-variant-numeric: tabular-nums;
+}
+.no__dato-txt {
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1.6;
+  text-transform: uppercase;
+  color: var(--color-moka);
+}
+.no__lado {
+  width: 100%;
+  max-width: 560px;
+}
+.no__lado-foto {
+  --n: 7;
+  position: relative;
+  aspect-ratio: 3 / 2;
+  border-radius: 18px;
+  overflow: hidden;
+  background: var(--color-arena);
+  isolation: isolate;
+}
+.no__lado-foto img {
+  object-fit: cover;
+}
+
+/* Los cuatro pilares: filas con línea en móvil, cuatro columnas con listón
+   entre ellas en escritorio */
+.no__pilares {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  margin: clamp(64px, 8vw, 128px) 0 0;
+  padding: 0;
+  border-top: 1px solid var(--color-linea);
+  list-style: none;
+}
+.no__pilar {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr);
+  align-items: baseline;
+  padding: 26px 0 28px;
+  border-bottom: 1px dashed rgba(134, 100, 82, 0.35);
+}
+.no__pilar::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-terracota);
+  transform: scaleX(0);
+  transform-origin: 0 50%;
+  transition: transform 0.6s var(--ease-seda);
+}
+.no__pilar-num {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  color: var(--color-moka);
+}
+.no__pilar-tit {
+  font-size: clamp(1.375rem, 1.8vw, 1.625rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  color: var(--color-cacao);
+  text-wrap: balance;
+}
+.no__pilar-txt {
+  grid-column: 2;
+  max-width: 44ch;
+  margin-top: 10px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+@media (min-width: 640px) {
+  .no__pilares {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 32px;
+  }
+}
+@media (min-width: 768px) {
+  .no__foto {
+    --n: 11;
+    aspect-ratio: 16 / 9;
+    border-radius: 26px;
+  }
+}
+@media (min-width: 900px) {
+  .no__cab {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 24px;
+    align-items: start;
+  }
+  .no__cab-izq {
+    grid-column: 1 / span 5;
+    position: sticky;
+    top: 120px;
+  }
+  .no__cab-der {
+    grid-column: 7 / -1;
+    padding-top: 55px;
+  }
+  .no__equipo-pie {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 24px;
+    align-items: start;
+  }
+  .no__equipo-txt {
+    grid-column: 1 / span 6;
+    padding-top: clamp(8px, 2vw, 32px);
+  }
+  /* La segunda foto sube sobre la del equipo, con un marco del color del fondo */
+  .no__lado {
+    position: relative;
+    z-index: 2;
+    grid-column: 8 / -1;
+    justify-self: end;
+    margin-top: clamp(-170px, -11vw, -96px);
+    padding: 10px;
+    border-radius: 28px;
+    background: var(--color-crema);
+  }
+}
+@media (min-width: 1040px) {
+  .no__pilares {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    column-gap: 0;
+    border-bottom: 1px solid var(--color-linea);
+  }
+  .no__pilar {
+    display: flex;
+    flex-direction: column;
+    min-height: 300px;
+    padding: 26px 28px 34px;
+    border-bottom: 0;
+  }
+  .no__pilar + .no__pilar {
+    border-left: 1px solid var(--color-linea);
+  }
+  .no__pilar:first-child {
+    padding-left: 0;
+  }
+  .no__pilar-tit {
+    margin-top: auto;
+    padding-top: 48px;
+  }
+  .no__pilar-txt {
+    margin-top: 14px;
+  }
+}
+@media (hover: hover) {
+  .no__pilar:hover::before {
+    transform: scaleX(1);
+  }
+}
+
+/* ══ Equipo médico ══ */
+.no__eq {
+  background: var(--color-arena);
+  color: var(--color-cacao);
+  overflow: clip;
+}
+.no__eq-cab {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(20px, 3vw, 40px);
+}
+.no__eq-izq {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 22px;
+}
+.no__eq-der {
+  display: flex;
+  gap: 18px;
+  max-width: 470px;
+}
+.no__eq-der .no__marca {
+  height: 46px;
+  gap: 4px;
+  padding-top: 4px;
+}
+.no__eq-sub {
+  line-height: 1.7;
+}
+@media (min-width: 900px) {
+  .no__eq-cab {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 440px);
+    align-items: end;
+  }
+  .no__eq-der {
+    padding-bottom: 0.7vw;
+  }
+}
+
+/* Director médico: bloque marrón con el retrato en arco */
+.no__dr {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 44px;
+  margin-top: clamp(40px, 5vw, 72px);
+  padding: clamp(36px, 5.4vw, 80px) clamp(22px, 5.4vw, 80px);
+  border-radius: 26px;
+  background: var(--color-cacao);
+  color: var(--color-crema);
+  overflow: clip;
+}
+.no__dr-retrato {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  margin-inline: auto;
+  isolation: isolate;
+}
+.no__dr-linea {
+  position: absolute;
+  z-index: 0;
+  top: -12px;
+  right: 12px;
+  bottom: 12px;
+  left: -12px;
+  border: 1px solid rgba(242, 199, 168, 0.45);
+  border-radius: 999px 999px 22px 22px;
+  pointer-events: none;
+}
+.no__dr-foto {
+  --n: 9;
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 440 / 590;
+  border-radius: 999px 999px 22px 22px;
+  overflow: hidden;
+  background: #3a1a09;
+}
+.no__dr-foto img {
+  object-fit: cover;
+  object-position: 50% 10%;
+}
+.no__dr-txt {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+.no__dr-nombre {
+  font-size: clamp(2.1rem, 3.6vw, 3.5rem);
+  color: var(--color-crema);
+}
+.no__dr-rol {
+  margin-top: 18px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--color-accent-gold-light);
+}
+.no__dr-cita {
+  position: relative;
+  max-width: 620px;
+  margin: clamp(26px, 3vw, 42px) 0 0;
+  padding-left: clamp(20px, 2vw, 30px);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(1.4rem, 2vw, 1.9rem);
+  line-height: 1.3;
+  letter-spacing: -0.015em;
+  text-wrap: pretty;
+}
+.no__dr-cita::before {
+  content: "";
+  position: absolute;
+  top: 0.2em;
+  bottom: 0.2em;
+  left: 0;
+  width: 2px;
+  background: var(--color-accent-gold-light);
+}
+.no__dr-creds {
+  width: 100%;
+  max-width: 640px;
+  margin: clamp(26px, 3vw, 42px) 0 0;
+  padding: 0;
+  list-style: none;
+  border-bottom: 1px solid rgba(248, 244, 238, 0.16);
+}
+.no__dr-fila {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  align-items: baseline;
+  padding-block: 15px;
+  border-top: 1px solid rgba(248, 244, 238, 0.16);
+}
+.no__dr-num {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.04em;
+  color: rgba(248, 244, 238, 0.5);
+}
+.no__dr-cred {
+  font-size: 16px;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+.no__dr-cta {
+  margin-top: clamp(28px, 3vw, 40px);
+}
+@media (min-width: 900px) {
+  .no__dr {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+    column-gap: clamp(44px, 6.5vw, 104px);
+    align-items: center;
+  }
+}
+
+/* Instituciones: una línea entre listones pequeños */
+.no__inst {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 10px 16px;
+  margin: clamp(28px, 3.4vw, 48px) 0 0;
+  padding: 20px 0;
+  border-block: 1px solid rgba(42, 18, 6, 0.14);
+  list-style: none;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--color-moka);
+}
+.no__inst li {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+}
+.no__inst li + li::before {
+  content: "";
+  width: 1px;
+  height: 12px;
+  background: rgba(42, 18, 6, 0.32);
+}
+
+/* El resto del equipo: filas con retrato en arco en móvil, tarjetas altas
+   en tablet y escritorio */
+.no__miembros {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  margin-top: clamp(28px, 4vw, 64px);
+}
+.no__mi {
+  display: grid;
+  grid-template-columns: 108px minmax(0, 1fr);
+  column-gap: 18px;
+  align-items: center;
+  padding-block: 22px;
+  border-top: 1px dashed rgba(134, 100, 82, 0.35);
+}
+.no__mi:first-child {
+  border-top: 0;
+}
+.no__mi-foto {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: 999px 999px 14px 14px;
+  overflow: hidden;
+  background: var(--color-crema);
+  isolation: isolate;
+}
+.no__mi-foto img {
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-seda);
+}
+.no__mi-nombre {
+  font-size: clamp(1.25rem, 1.6vw, 1.4375rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.035em;
+  color: var(--color-cacao);
+}
+.no__mi-rol {
+  margin-top: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  line-height: 1.5;
+  text-transform: uppercase;
+  color: var(--color-terracota);
+}
+.no__mi-desc {
+  margin-top: 10px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+@media (hover: hover) {
+  .no__mi:hover .no__mi-foto img {
+    transform: scale(1.04);
+  }
+}
+@media (min-width: 640px) {
+  .no__miembros {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 48px 24px;
+  }
+  .no__mi {
+    display: block;
+    max-width: 320px;
+    padding: 0;
+    border: 0;
+  }
+  .no__mi-foto {
+    margin-bottom: 20px;
+    border-radius: 999px 999px 18px 18px;
+  }
+}
+@media (min-width: 1100px) {
+  .no__miembros {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    column-gap: 22px;
+    align-items: start;
+  }
+  /* Las tarjetas pares bajan un poco: la fila no queda en regla */
+  .no__mi:nth-child(even) {
+    margin-top: 44px;
+  }
+}
+
+/* ══ Por qué Maysoon ══ */
+.no__pq {
+  background: var(--color-crema);
+  color: var(--color-cacao);
+}
+.no__pq-cifras {
+  padding-block: clamp(40px, 5vw, 72px) clamp(56px, 7vw, 104px);
+}
+
+/* Cifras: 2 × 2 en móvil, fila de cuatro en escritorio, separadas por listones */
+.no__cifras {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  border-top: 1px solid var(--color-linea);
+}
+.no__cifra {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  padding: 28px 10px 30px;
+  text-align: center;
+}
+.no__cifra:nth-child(even) {
+  border-left: 1px solid var(--color-linea);
+}
+.no__cifra:nth-child(n + 3) {
+  border-top: 1px solid var(--color-linea);
+}
+.no__cifra-valor {
+  display: inline-flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0;
+  color: var(--color-cacao);
+  font-size: clamp(2.6rem, 11vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+.no__cifra-valor sup {
+  position: static;
+  margin-top: 0.12em;
+  padding-inline: 0.08em;
+  color: var(--color-moka);
+  font-size: clamp(1rem, 4.4vw, 1.375rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 0;
+  vertical-align: baseline;
+}
+.no__cifra-rotulo {
+  color: var(--color-cacao);
+  font-size: clamp(1rem, 4.4vw, 1.25rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.no__cifra-rotulo em {
+  color: var(--color-moka);
+  font-size: 1.08em;
+}
+@media (min-width: 760px) {
+  .no__cifras {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+  .no__cifra {
+    padding: 40px 16px 8px;
+  }
+  .no__cifra:nth-child(n + 2) {
+    border-left: 1px solid var(--color-linea);
+  }
+  .no__cifra:nth-child(n + 3) {
+    border-top: 0;
+  }
+}
+
+/* Bloque marrón: el titular de la página y la foto de la clínica */
+.no__pq-caja {
+  padding-inline: 10px;
+}
+.no__pq-panel {
+  border-radius: 26px;
+  padding-block: clamp(56px, 7.5vw, 120px);
+  background: var(--color-cacao);
+  color: var(--color-crema);
+  overflow: clip;
+}
+.no__pq-rejilla {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 44px;
+  align-items: center;
+}
+.no__pq-txt {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
+}
+.no__pq-tit {
+  margin-top: 22px;
+}
+.no__pq-sub {
+  max-width: 46ch;
+  margin-top: clamp(18px, 1.8vw, 26px);
+  line-height: 1.7;
+}
+.no__pq-foto {
+  --n: 9;
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  aspect-ratio: 3 / 2;
+  border-radius: 22px;
+  overflow: hidden;
+  background: #3a1a09;
+  isolation: isolate;
+}
+.no__pq-foto img {
+  object-fit: cover;
+}
+@media (min-width: 900px) {
+  .no__pq-rejilla {
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    column-gap: 24px;
+  }
+  .no__pq-txt {
+    grid-column: 1 / span 6;
+  }
+  .no__pq-foto {
+    grid-column: 8 / -1;
+    justify-self: end;
+  }
+}
+
+/* Las cuatro razones: filas grandes con índice en cursiva serif */
+.no__razones {
+  counter-reset: no-razon;
+}
+.no__razon {
+  counter-increment: no-razon;
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px minmax(0, 1fr) 44px;
+  column-gap: 0;
+  row-gap: 12px;
+  align-items: start;
+  padding: 30px 0;
+  border-top: 1px solid var(--color-linea);
+}
+.no__razon--fin {
+  border-bottom: 1px solid var(--color-linea);
+}
+.no__razon::before {
+  content: counter(no-razon, decimal-leading-zero);
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 22px;
+  line-height: 1.35;
+  color: var(--color-terracota);
+  transition: transform 0.6s var(--ease-seda);
+}
+.no__razon-tit {
+  padding-right: 12px;
+  font-size: clamp(1.5rem, 2.7vw, 2.375rem);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.04em;
+  color: var(--color-cacao);
+  text-wrap: balance;
+  transition: color 0.45s var(--ease-seda);
+}
+.no__razon-desc {
+  grid-column: 2 / -1;
+  max-width: 52ch;
+  font-size: clamp(1rem, 1.15vw, 1.125rem);
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+}
+.no__razon-ico {
+  grid-column: 3;
+  grid-row: 1;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 1px var(--color-linea);
+  color: var(--color-moka);
+  transition:
+    background-color 0.45s var(--ease-seda),
+    color 0.45s var(--ease-seda);
+}
+@media (min-width: 900px) {
+  .no__razon {
+    grid-template-columns: 96px minmax(0, 6fr) minmax(0, 5fr) 52px;
+    column-gap: 24px;
+    padding: 44px 0;
+  }
+  .no__razon::before {
+    font-size: 26px;
+  }
+  .no__razon-desc {
+    grid-column: 3;
+    padding-top: 0.35em;
+  }
+  .no__razon-ico {
+    grid-column: 4;
+    justify-self: end;
+    width: 52px;
+    height: 52px;
+  }
+}
+@media (hover: hover) and (min-width: 900px) {
+  .no__razon:hover::before {
+    transform: translateX(10px);
+  }
+  .no__razon:hover .no__razon-tit {
+    color: var(--color-terracota);
+  }
+  .no__razon:hover .no__razon-ico {
+    background-color: var(--color-terracota);
+    color: #fff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .no__pilar::before,
+  .no__mi-foto img,
+  .no__razon::before,
+  .no__razon-tit,
+  .no__razon-ico {
+    transition: none;
+  }
+}

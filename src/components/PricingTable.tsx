@@ -1,7 +1,4 @@
-"use client";
-
-import { m as motion } from "framer-motion";
-import { fadeInUp, staggerFast } from "@/lib/animations";
+import "./nuevo/ficha-tarifas.css";
 
 interface PricingRow {
   label: string;
@@ -16,71 +13,31 @@ interface PricingTableProps {
   footnote?: string;
 }
 
+// Tarifas: tarjeta blanca con filas separadas por línea discontinua;
+// concepto y detalle a la izquierda, precio en cursiva serif a la derecha.
 export function PricingTable({ title, intro, rows, footnote }: PricingTableProps) {
   return (
-    <motion.div
-      variants={fadeInUp}
-      className="rounded-2xl bg-bg-secondary p-7 lg:p-9 relative overflow-hidden"
-    >
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle at 100% 0%, rgba(184,115,85,0.08), transparent 60%)",
-        }}
-      />
-      <div className="relative">
-        {/* Title */}
-        <div className="flex items-center gap-3 mb-3">
-          <span className="block w-6 h-px bg-accent-gold" />
-          <span className="font-body text-[10px] font-medium uppercase tracking-[0.3em] text-accent-gold">
-            Tarifas
-          </span>
-        </div>
-        <h4 className="font-display font-normal text-xl lg:text-2xl text-text-primary leading-tight tracking-[-0.01em] mb-3">
-          {title}
-        </h4>
-        {intro && (
-          <p className="font-body text-sm text-text-secondary leading-[1.7] mb-6 max-w-2xl">
-            {intro}
-          </p>
-        )}
+    <div className="fta__tar" data-ap>
+      {/* Title */}
+      <span className="pildora pildora--arena">Tarifas</span>
+      <h4 className="tit fta__tar-tit">{title}</h4>
+      {intro && <p className="fta__tar-intro">{intro}</p>}
 
-        {/* Rows */}
-        <motion.ul
-          variants={staggerFast}
-          className="flex flex-col divide-y divide-text-secondary/15"
-        >
-          {rows.map((r) => (
-            <motion.li
-              key={`${r.label}-${r.price}`}
-              variants={fadeInUp}
-              className="flex items-baseline justify-between gap-4 py-3"
-            >
-              <div className="flex flex-col min-w-0">
-                <span className="font-body text-sm lg:text-[15px] text-text-primary leading-[1.5]">
-                  {r.label}
-                </span>
-                {r.detail && (
-                  <span className="font-body text-xs text-text-secondary leading-[1.5] mt-0.5">
-                    {r.detail}
-                  </span>
-                )}
-              </div>
-              <span className="font-display text-base lg:text-lg text-accent-gold whitespace-nowrap">
-                {r.price}
-              </span>
-            </motion.li>
-          ))}
-        </motion.ul>
+      {/* Rows */}
+      <ul className="fta__filas">
+        {rows.map((r) => (
+          <li key={`${r.label}-${r.price}`} className="fta__fila">
+            <div className="fta__fila-txt">
+              <span className="fta__fila-nom">{r.label}</span>
+              {r.detail && <span className="fta__fila-det">{r.detail}</span>}
+            </div>
+            <span className="fta__precio serif">{r.price}</span>
+          </li>
+        ))}
+      </ul>
 
-        {/* Footnote */}
-        {footnote && (
-          <p className="font-body text-xs italic text-text-secondary leading-[1.7] mt-6 pt-5 border-t border-text-secondary/15">
-            {footnote}
-          </p>
-        )}
-      </div>
-    </motion.div>
+      {/* Footnote */}
+      {footnote && <p className="fta__nota">{footnote}</p>}
+    </div>
   );
 }

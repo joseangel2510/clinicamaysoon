@@ -1,19 +1,13 @@
 "use client";
 
-import { m as motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Navbar } from "@/components/Navbar";
+import { PageHero } from "@/components/PageHero";
 import { TratamientoCard } from "@/components/TratamientoCard";
 import { ConsultaBlock } from "@/components/ConsultaBlock";
 import { Footer } from "@/components/Footer";
-import {
-  fadeInLeft,
-  fadeInUp,
-  clipReveal,
-  scaleXReveal,
-  staggerContainer,
-  staggerFast,
-  heroContainer,
-} from "@/lib/animations";
+import "@/components/nuevo/catalogo.css";
 
 const tratamientos = [
   {
@@ -241,96 +235,81 @@ const tratamientos = [
   },
 ];
 
+// Categorías tal como vienen en los datos, en su orden de aparición.
+const categorias = Array.from(new Set(tratamientos.map((t) => t.category)));
+
 export default function TratamientosIndexPage() {
+  // null = todos. Las 26 fichas están siempre en el HTML: filtrar solo oculta.
+  const [filtro, setFiltro] = useState<string | null>(null);
+  // Tras el primer filtrado las fichas dejan la aparición por scroll: así
+  // ninguna se queda sin mostrar al cambiar de posición.
+  const [libre, setLibre] = useState(false);
+
+  const elegir = (categoria: string | null) => {
+    if (categoria === filtro) return;
+    setLibre(true);
+    setFiltro(categoria);
+  };
+
+  // La altura de la página cambia al filtrar: se recalculan los disparadores.
+  useEffect(() => {
+    if (!libre) return;
+    const id = requestAnimationFrame(() => ScrollTrigger.refresh());
+    return () => cancelAnimationFrame(id);
+  }, [filtro, libre]);
+
   return (
     <main>
       <Navbar />
 
       {/* ── Hero ── */}
-      <section className="relative pt-32 lg:pt-40 pb-12 lg:pb-16 overflow-hidden bg-bg-primary">
-        <div
-          className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] rounded-full pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse, rgba(184,115,85,0.08) 0%, transparent 70%)",
-          }}
-        />
+      <PageHero
+        eyebrow="Catálogo de Tratamientos"
+        titleLine1="Fichas Detalladas"
+        titleLine2="de Cada Técnica"
+        subtitle="Profundiza en cada tratamiento que ofrecemos: tarifas reales, qué es la técnica, cómo se aplica, indicaciones y combinaciones clínicas. Todo lo que necesitas para tomar una decisión informada."
+      />
 
-        <motion.div
-          variants={heroContainer}
-          initial="hidden"
-          animate="visible"
-          className="relative mx-auto max-w-6xl px-6 lg:px-8 text-center"
-        >
-          <motion.div
-            variants={fadeInLeft}
-            className="flex items-center justify-center gap-3 mb-6"
-          >
-            <span className="block w-10 h-px bg-accent-gold" />
-            <span className="font-body text-xs font-medium uppercase tracking-[0.35em] text-accent-gold">
-              Catálogo de Tratamientos
-            </span>
-            <span className="block w-10 h-px bg-accent-gold" />
-          </motion.div>
-
-          <div className="mb-6">
-            <h1
-              className="font-display font-normal leading-[1.05] tracking-[-0.02em]"
-              style={{ fontSize: "clamp(2.25rem, 5vw, 4rem)" }}
+      {/* ── Índice de tratamientos ── */}
+      <section className="ca">
+        <div className="marco">
+          <div className="ca__rail" role="group" aria-label="Filtrar por categoría">
+            <button
+              type="button"
+              className="ca__filtro"
+              aria-pressed={filtro === null}
+              onClick={() => elegir(null)}
             >
-              <motion.span
-                variants={clipReveal}
-                className="block not-italic text-[#0F0E0D]"
+              Todos
+            </button>
+            {categorias.map((c) => (
+              <button
+                key={c}
+                type="button"
+                className="ca__filtro"
+                aria-pressed={filtro === c}
+                onClick={() => elegir(c)}
               >
-                Fichas Detalladas
-              </motion.span>
-              <motion.span
-                variants={clipReveal}
-                className="block italic text-[#7B6E5E]"
-              >
-                de Cada Técnica
-              </motion.span>
-            </h1>
+                {c}
+              </button>
+            ))}
           </div>
 
-          <motion.div
-            variants={scaleXReveal}
-            className="flex items-center justify-center gap-3 mb-8 origin-center"
-          >
-            <span className="block w-[60px] h-px bg-accent-gold/50" />
-            <motion.span
-              animate={{ opacity: [0.4, 0.7, 0.4] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="block w-1.5 h-1.5 rounded-full bg-accent-gold"
-            />
-            <span className="block w-[60px] h-px bg-accent-gold/50" />
-          </motion.div>
-
-          <motion.p
-            variants={fadeInUp}
-            className="font-body text-sm sm:text-base text-text-secondary leading-[1.8] max-w-xl mx-auto"
-          >
-            Profundiza en cada tratamiento que ofrecemos: tarifas reales, qué es
-            la técnica, cómo se aplica, indicaciones y combinaciones clínicas.
-            Todo lo que necesitas para tomar una decisión informada.
-          </motion.p>
-        </motion.div>
-      </section>
-
-      {/* ── Grid de tratamientos ── */}
-      <section className="bg-bg-primary pb-20 lg:pb-28">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <motion.div
-            variants={staggerFast}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.05 }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+          <ul
+            key={filtro ?? "todos"}
+            className={"ca__rejilla" + (libre ? " ca__rejilla--libre" : "")}
           >
             {tratamientos.map((t) => (
-              <TratamientoCard key={t.href} {...t} />
+              <li
+                key={t.href}
+                className="ca__item"
+                data-ap={libre ? undefined : ""}
+                hidden={filtro !== null && t.category !== filtro}
+              >
+                <TratamientoCard {...t} />
+              </li>
             ))}
-          </motion.div>
+          </ul>
         </div>
       </section>
 
