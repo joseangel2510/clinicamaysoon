@@ -261,3 +261,79 @@ html:not(.mov) .equ__carta--der {
     --alto: 410px;
   }
 }
+
+/* ── Órbita: con movimiento, las tres fotos van en un arco 3D ── */
+.equ__puntos {
+  display: none;
+}
+.equ--orbita .equ__cartas {
+  --ancho: 48vw;
+  --alto: 63vw;
+  --radio: 16px;
+  position: relative;
+  display: block;
+  height: var(--alto);
+  padding: 0;
+}
+.equ--orbita .equ__carta {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  margin: 0 0 0 calc(var(--ancho) / -2);
+  box-shadow: 0 30px 50px -30px rgba(42, 18, 6, 0.55);
+  will-change: transform;
+}
+/* las de atrás se apagan un poco */
+.equ--orbita .equ__carta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--color-cacao);
+  opacity: var(--som, 0);
+  pointer-events: none;
+}
+.equ--orbita .equ__chip {
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.5s var(--ease-seda);
+}
+.equ--orbita .equ__carta.is-centro .equ__chip {
+  opacity: 1;
+}
+.equ--orbita .equ__puntos {
+  display: flex;
+  justify-content: center;
+  gap: 7px;
+  width: max-content;
+  margin: clamp(20px, 3vw, 30px) auto 0;
+  padding: 9px 13px;
+  border-radius: 99px;
+  background: var(--color-cacao);
+}
+.equ__puntos i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.34);
+  transition:
+    background-color 0.5s var(--ease-seda),
+    width 0.5s var(--ease-seda);
+}
+.equ__puntos i.is-on {
+  width: 18px;
+  background: #f2c7a8;
+}
+@media (min-width: 760px) {
+  .equ--orbita .equ__cartas {
+    --ancho: 270px;
+    --alto: 360px;
+    --radio: 22px;
+  }
+}
+@media (min-width: 1100px) {
+  .equ--orbita .equ__cartas {
+    --ancho: 320px;
+    --alto: 424px;
+  }
+}

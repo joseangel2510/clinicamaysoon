@@ -1,0 +1,111 @@
+/* Por qué Maysoon: las cuatro razones como tarjetas que se apilan al bajar.
+   Cada una se queda pegada un poco más abajo que la anterior. */
+.pq--pila .pq__lista {
+  display: grid;
+  gap: 18px;
+  padding-bottom: 6vh;
+}
+.pq--pila .pq__fila {
+  position: sticky;
+  top: calc(92px + var(--k) * 16px);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-content: space-between;
+  gap: 28px;
+  min-height: clamp(250px, 36vh, 330px);
+  padding: clamp(24px, 3vw, 40px);
+  border: 0;
+  border-radius: 26px;
+  background: var(--fondo);
+  color: var(--tinta);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.4),
+    0 34px 60px -36px rgba(42, 18, 6, 0.55);
+  transform-origin: 50% 0;
+  will-change: transform;
+}
+.pq--pila .pq__fila::before,
+.pq--pila .pq__raya {
+  display: none;
+}
+.pq--pila .pq__fila:nth-child(1) {
+  --fondo: #fff;
+  --tinta: var(--color-cacao);
+  --acento: var(--color-terracota);
+  --suave: var(--color-text-secondary);
+  --enfasis: var(--color-moka);
+}
+.pq--pila .pq__fila:nth-child(2) {
+  --fondo: #ead9c4;
+  --tinta: var(--color-cacao);
+  --acento: var(--color-roble);
+  --suave: #5e4a3f;
+  --enfasis: #8a4a2c;
+}
+.pq--pila .pq__fila:nth-child(3) {
+  --fondo: var(--color-terracota);
+  --tinta: #fff;
+  --acento: #ffd9c2;
+  --suave: rgba(255, 255, 255, 0.88);
+  --enfasis: #ffe4d2;
+}
+.pq--pila .pq__fila:nth-child(4) {
+  --fondo: var(--color-cacao);
+  --tinta: #fff;
+  --acento: #f2c7a8;
+  --suave: rgba(248, 244, 238, 0.76);
+  --enfasis: #f2c7a8;
+}
+.pq--pila .pq__num {
+  padding-left: 0;
+  font-size: clamp(64px, 6.4vw, 100px);
+  line-height: 0.8;
+  color: var(--acento);
+}
+.pq--pila .pq__nombre {
+  font-size: clamp(26px, 2.5vw, 36px);
+}
+.pq--pila .pq__nombre em {
+  color: var(--enfasis);
+}
+.pq--pila .pq__desc {
+  color: var(--suave);
+}
+@media (max-width: 899px) {
+  .pq--pila .pq__fila {
+    top: calc(84px + var(--k) * 12px);
+    min-height: 0;
+  }
+}
+
+/* contador y listones de avance, arriba a la derecha de cada tarjeta */
+.pq__paso {
+  display: none;
+}
+.pq--pila .pq__paso {
+  position: absolute;
+  top: clamp(24px, 3vw, 40px);
+  right: clamp(24px, 3vw, 40px);
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  color: var(--suave);
+}
+.pq__segs {
+  display: flex;
+  gap: 4px;
+}
+.pq__segs i {
+  width: 18px;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  opacity: 0.28;
+}
+.pq__segs i.is-on {
+  background: var(--acento);
+  opacity: 1;
+}

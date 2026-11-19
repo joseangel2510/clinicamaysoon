@@ -124,6 +124,15 @@ export function Hero() {
             .to(".hero__txt", { yPercent: -14, opacity: 0, ease: "none" }, 0)
             .to(".hero__sello", { yPercent: -30, opacity: 0, ease: "none" }, 0);
         });
+        mm.add("(max-width: 899.98px)", () => {
+          gsap
+            .timeline({
+              scrollTrigger: { trigger: el, start: "top top", end: "bottom top", scrub: true },
+            })
+            .to(".hero__panel", { scale: 0.94, borderRadius: 34, ease: "none" }, 0)
+            .to(".hero__fotos", { yPercent: 7, ease: "none" }, 0)
+            .to(".hero__txt", { yPercent: -10, opacity: 0.1, ease: "none" }, 0);
+        });
       }, el);
       ScrollTrigger.refresh();
     });

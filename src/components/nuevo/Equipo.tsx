@@ -1,8 +1,7 @@
 "use client";
 
-// Equipo y cifras: cabecera centrada, tres fotos que salen de detrás de la
-// del centro y se abren en abanico (ligado al scroll en escritorio, de una
-// vez en móvil) y la fila de cuatro cifras, que cuentan al entrar mientras
+// Equipo y cifras: cabecera centrada, tres fotos en un arco 3D que gira con
+// el scroll (en escritorio y en móvil) y la fila de cuatro cifras, que cuentan al entrar mientras
 // sus listones se dibujan.
 import "./equipo.css";
 import { useEffect, useRef } from "react";
@@ -58,7 +57,7 @@ const cifras: Cifra[] = [
   { valor: "4.7", despues: "/5", rotulo: "Valoración", fin: "media" },
 ];
 
-const GIRO = 12;
+const GIRO = 31;
 
 export function Equipo() {
   const raiz = useRef<HTMLElement>(null);
@@ -90,56 +89,88 @@ export function Equipo() {
         enfoca(".equ__cab > *", ".equ__cab", "top 86%");
         enfoca(".equ__accion", ".equ__accion", "top 94%");
 
-        // Abanico
+        // Órbita: las tres fotos en un arco 3D. La del centro mira de frente,
+        // las de los lados quedan detrás y giradas; al bajar, la de la derecha
+        // viene al centro y la de la izquierda da la vuelta por detrás.
         const fila = el.querySelector<HTMLElement>(".equ__cartas");
-        const izq = el.querySelector<HTMLElement>(".equ__carta--izq");
-        const cen = el.querySelector<HTMLElement>(".equ__carta--cen");
-        const der = el.querySelector<HTMLElement>(".equ__carta--der");
-        if (fila && izq && cen && der) {
-          const fotos = gsap.utils.toArray<HTMLElement>(".equ__foto");
-          // Caída de los lados: la misma que usa el CSS sin movimiento
-          const baja = () => parseFloat(getComputedStyle(fila).getPropertyValue("--baja")) || 0;
-          const abrir = (tl: gsap.core.Timeline, dura: number, ease: string) =>
-            tl
-              .fromTo(
-                izq,
-                { x: () => cen.offsetLeft - izq.offsetLeft, y: 0, rotation: 0, scale: 0.9 },
-                { x: 0, y: baja, rotation: -GIRO, scale: 1, duration: dura, ease },
-                0,
-              )
-              .fromTo(
-                der,
-                { x: () => cen.offsetLeft - der.offsetLeft, y: 0, rotation: 0, scale: 0.9 },
-                { x: 0, y: baja, rotation: GIRO, scale: 1, duration: dura, ease },
-                0,
-              )
-              .fromTo(cen, { scale: 0.94 }, { scale: 1, duration: dura, ease }, 0)
-              .fromTo(fotos, { scale: 1.15 }, { scale: 1, duration: dura, ease }, 0);
+        const orb = gsap.utils.toArray<HTMLElement>(".equ__carta");
+        const puntos = gsap.utils.toArray<HTMLElement>(".equ__puntos i");
+        if (fila && orb.length === 3) {
+          el.classList.add("equ--orbita");
+          const est = { t: 0, abre: 0 };
+          const suave = gsap.parseEase("power2.inOut");
+          let centro = -1;
+          const pintar = () => {
+            const k = orb[1].offsetWidth / 300;
+            const X = 323 * k;
+            const Z = -788 * k;
+            fila.style.perspective = `${Math.round(1400 * k)}px`;
+            const abre = 0.28 + 0.72 * est.abre;
+            orb.forEach((c, i) => {
+              let s = i - 1 - est.t;
+              s = ((((s + 1.5) % 3) + 3) % 3) - 1.5;
+              const d = Math.abs(s);
+              let x: number, z: number, r: number, capa: number;
+              if (d <= 1) {
+                x = s * X * abre;
+                z = d * Z;
+                r = -s * GIRO;
+                capa = d < 0.5 ? 3 : 2;
+              } else {
+                // por detrás del mazo, de un lado al otro
+                const u = ((d - 1) / 0.5) * (Math.PI / 2);
+                const lado = Math.sign(s);
+                x = lado * X * Math.cos(u) * abre;
+                z = Z - 240 * k * Math.sin(u);
+                r = -lado * GIRO * Math.cos(u);
+                capa = 1;
+              }
+              c.style.transform = `translate3d(${x.toFixed(2)}px,0,${z.toFixed(2)}px) rotateY(${r.toFixed(3)}deg)`;
+              c.style.zIndex = String(capa);
+              c.style.setProperty("--som", (Math.min(d, 1) * 0.34).toFixed(3));
+            });
+            const ahora = (1 + Math.round(est.t)) % 3;
+            if (ahora !== centro) {
+              centro = ahora;
+              puntos.forEach((p, i) => p.classList.toggle("is-on", i === ahora));
+              orb.forEach((c, i) => c.classList.toggle("is-centro", i === ahora));
+            }
+          };
+          pintar();
 
-          const mm = gsap.matchMedia();
-          mm.add("(min-width: 900px)", () => {
-            abrir(
-              gsap.timeline({
-                scrollTrigger: {
-                  trigger: fila,
-                  start: "top 80%",
-                  end: "center 55%",
-                  scrub: 0.6,
-                  invalidateOnRefresh: true,
-                },
-              }),
-              1,
-              "none",
-            );
+          // Entrada: las de los lados salen de detrás de la central
+          gsap.to(est, {
+            abre: 1,
+            duration: 1.5,
+            ease: "power3.out",
+            onUpdate: pintar,
+            scrollTrigger: { trigger: fila, start: "top 84%", once: true },
           });
-          mm.add("(max-width: 899px)", () => {
-            abrir(
-              gsap.timeline({
-                scrollTrigger: { trigger: fila, start: "top 80%", once: true },
-              }),
-              1.4,
-              "power3.out",
-            );
+          gsap.fromTo(
+            ".equ__foto",
+            { scale: 1.15 },
+            { scale: 1, duration: 1.6, ease: "power3.out", scrollTrigger: { trigger: fila, start: "top 84%", once: true } },
+          );
+          gsap.fromTo(
+            ".equ__puntos",
+            { opacity: 0, y: 14 },
+            { opacity: 1, y: 0, duration: 0.9, ease: "power3.out", scrollTrigger: { trigger: fila, start: "top 70%", once: true } },
+          );
+
+          // El scroll da dos pasos: cada foto pasa una vez por el centro
+          ScrollTrigger.create({
+            trigger: fila,
+            start: "top 62%",
+            end: "bottom 30%",
+            scrub: 0.7,
+            invalidateOnRefresh: true,
+            onRefresh: pintar,
+            onUpdate: (st) => {
+              const bruto = Math.min(st.progress * 2, 1.9999);
+              const paso = Math.floor(bruto);
+              est.t = st.progress >= 1 ? 2 : paso + suave(bruto - paso);
+              pintar();
+            },
           });
         }
 
@@ -193,6 +224,11 @@ export function Equipo() {
     return () => {
       cancelar();
       ctx?.revert();
+      el.classList.remove("equ--orbita");
+      el.querySelectorAll<HTMLElement>(".equ__carta").forEach((c) => {
+        c.style.transform = "";
+        c.style.zIndex = "";
+      });
       // El contador escribe en el DOM: se deja el valor real
       nums.forEach((n) => {
         if (n.dataset.fin) n.textContent = n.dataset.fin;
@@ -227,6 +263,11 @@ export function Equipo() {
               </li>
             ))}
           </ul>
+          <div className="equ__puntos" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+          </div>
 
           <div className="equ__accion">
             <Boton href="/quienes-somos">Conoce a todo el equipo</Boton>

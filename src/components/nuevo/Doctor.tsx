@@ -88,6 +88,22 @@ export function Doctor() {
             }),
         });
 
+        // La cita se enciende palabra a palabra con el scroll
+        const cita = el.querySelector<HTMLElement>(".doc__cita p");
+        if (cita) {
+          const partida = SplitText.create(cita, { type: "words", aria: "none" });
+          gsap.fromTo(
+            partida.words,
+            { opacity: 0.2 },
+            {
+              opacity: 1,
+              ease: "none",
+              stagger: 0.4,
+              scrollTrigger: { trigger: cita, start: "top 82%", end: "bottom 52%", scrub: 0.5 },
+            },
+          );
+        }
+
         gsap.to(".doc__barra", {
           scaleY: 1,
           duration: 1.3,

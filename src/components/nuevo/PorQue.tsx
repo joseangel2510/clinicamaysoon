@@ -6,6 +6,7 @@
 // las cuatro razones en filas separadas por líneas finas. Cada fila dibuja su
 // línea y después se enfoca.
 import "./porque.css";
+import "./pila.css";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import gsap from "gsap";
@@ -119,6 +120,33 @@ export function PorQue() {
           if (raya) tl.fromTo(raya, { scaleX: 0 }, { scaleX: 1, duration: 1.1, ease: "power3.inOut" }, 0);
           tl.fromTo(partes, desenfocado, { ...nitido, stagger: 0.08 }, 0.3);
         });
+
+        // La pila: cada tarjeta se encoge un poco cuando la siguiente la cubre
+        const filas = gsap.utils.toArray<HTMLElement>(".pq__fila");
+        filas.forEach((fila, k) => {
+          const sig = filas[k + 1];
+          if (!sig) return;
+          // Nada cambia hasta que la siguiente empieza a montarse encima; y solo
+          // se apaga y se desenfoca al final, cuando ya la tapa casi entera.
+          const pegada = (f: HTMLElement) => parseFloat(getComputedStyle(f).top) || 0;
+          gsap
+            .timeline({
+              scrollTrigger: {
+                trigger: sig,
+                start: () => `top ${Math.round(pegada(fila) + fila.offsetHeight)}px`,
+                end: () => `top ${Math.round(pegada(sig))}px`,
+                scrub: true,
+                invalidateOnRefresh: true,
+              },
+            })
+            .to(fila, { scale: 0.92, ease: "none", duration: 1 }, 0)
+            .fromTo(
+              fila,
+              { filter: "brightness(1) blur(0px)" },
+              { filter: "brightness(0.74) blur(3px)", ease: "none", duration: 0.22, immediateRender: false },
+              0.78,
+            );
+        });
       }, el);
       ScrollTrigger.refresh();
     });
@@ -130,7 +158,7 @@ export function PorQue() {
   }, []);
 
   return (
-    <section ref={raiz} className="pq sec" aria-labelledby="pq-tit" data-propio>
+    <section ref={raiz} className="pq pq--pila sec" aria-labelledby="pq-tit" data-propio>
       <div className="marco">
         <div className="pq__banda">
           <div className="pq__lis listones">
@@ -166,8 +194,16 @@ export function PorQue() {
 
           <ol className="pq__lista">
             {razones.map((r, k) => (
-              <li key={r.fin} className="pq__fila">
+              <li key={r.fin} className="pq__fila" style={{ "--k": k } as React.CSSProperties}>
                 <i className="pq__raya" aria-hidden="true" />
+                <span className="pq__paso" aria-hidden="true">
+                  <span className="pq__segs">
+                    {razones.map((x, j) => (
+                      <i key={x.fin} className={j <= k ? "is-on" : ""} />
+                    ))}
+                  </span>
+                  {String(k + 1).padStart(2, "0")} / {String(razones.length).padStart(2, "0")}
+                </span>
                 <span className="pq__num" aria-hidden="true">
                   <span>{String(k + 1).padStart(2, "0")}</span>
                 </span>

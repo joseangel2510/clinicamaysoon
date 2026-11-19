@@ -1,0 +1,39 @@
+/* Cinta de palabras empujada por el scroll */
+.cinta {
+  display: grid;
+  gap: 0.08em;
+  padding-block: clamp(34px, 5vw, 76px);
+  overflow: clip;
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8.4vw, 8.2rem);
+  font-weight: 300;
+  line-height: 1.02;
+  letter-spacing: -0.045em;
+  white-space: nowrap;
+  color: var(--color-cacao);
+  background: var(--color-crema);
+}
+.cinta__fila {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+.cinta__fila span {
+  display: inline-flex;
+  align-items: center;
+}
+.cinta__fila span.serif {
+  font-size: 1.1em;
+  color: var(--color-terracota);
+}
+.cinta__fila--1 span:not(.serif) {
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(42, 18, 6, 0.38);
+}
+.cinta__fila i {
+  width: 0.13em;
+  height: 0.13em;
+  margin: 0 0.34em;
+  border-radius: 50%;
+  background: var(--color-roble);
+}
