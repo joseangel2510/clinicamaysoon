@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/Navbar";
-import { Hero } from "@/components/nuevo/Hero";
+import { HeroSeda } from "@/components/nuevo/HeroSeda";
+import { Seda } from "@/components/nuevo/Seda";
 import { Manifiesto } from "@/components/nuevo/Manifiesto";
 import { Equipo } from "@/components/nuevo/Equipo";
 import { Galeria } from "@/components/nuevo/Galeria";
@@ -12,10 +13,11 @@ import { Footer } from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main>
+    <main className="con-seda">
+      <Seda />
       <Progreso />
-      <Navbar sobreFoto />
-      <Hero />
+      <Navbar />
+      <HeroSeda />
       <Manifiesto />
       <Equipo />
       <Cinta />
